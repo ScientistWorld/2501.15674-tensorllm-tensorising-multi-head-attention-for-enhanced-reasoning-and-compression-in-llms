@@ -16,5 +16,9 @@
 - Continuation audit confirmed the implementation is the paper's actual multi-head tensorisation plus shared Tucker/HOOI reconstruction, not a surrogate.
 - Reran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; both passed with the same core-claim scores.
 
+### [2026-06-07 11:01] - core_claim
+- Repaired the official artifact evaluator so `scores.json` includes every declared metric: accuracy, balanced accuracy, loss, prediction-distribution shift, and MHA compression ratio.
+- Local artifact-only validation passed; submitting a CPU test job to verify the packaged scripts inside the managed environment.
+
 ## Stop Justification
 - Completed at milestone `core_claim`.

@@ -18,15 +18,42 @@ def score_predictions(path: Path) -> dict:
     total = 0
     correct = 0
     loss = 0.0
+    label_counts: dict[str, int] = {}
+    prediction_counts: dict[str, int] = {}
+    correct_by_label: dict[str, int] = {}
     with path.open("r", encoding="utf-8") as handle:
         for line in handle:
             row = json.loads(line)
+            label = str(row["label"])
+            prediction = str(row["prediction"])
             total += 1
-            correct += int(row["prediction"] == row["label"])
+            label_counts[label] = label_counts.get(label, 0) + 1
+            prediction_counts[prediction] = prediction_counts.get(prediction, 0) + 1
+            correct_by_label.setdefault(label, 0)
+            is_correct = prediction == label
+            correct += int(is_correct)
+            correct_by_label[label] += int(is_correct)
             loss += float(row["nll"])
     if total == 0:
         raise RuntimeError(f"No predictions found in {path}")
-    return {"accuracy": 100.0 * correct / total, "loss": loss / total}
+    recalls = [
+        correct_by_label.get(label, 0) / count
+        for label, count in label_counts.items()
+        if count > 0
+    ]
+    if not recalls:
+        raise RuntimeError(f"No labels found in {path}")
+    labels = set(label_counts) | set(prediction_counts)
+    distribution_shift = 0.5 * sum(
+        abs(prediction_counts.get(label, 0) / total - label_counts.get(label, 0) / total)
+        for label in labels
+    )
+    return {
+        "accuracy": 100.0 * correct / total,
+        "balanced_accuracy": 100.0 * sum(recalls) / len(recalls),
+        "loss": loss / total,
+        "prediction_distribution_shift": 100.0 * distribution_shift,
+    }
 
 
 def score_key(condition: dict) -> str | None:

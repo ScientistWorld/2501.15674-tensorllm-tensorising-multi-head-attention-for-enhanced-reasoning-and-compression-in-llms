@@ -4,12 +4,16 @@
       "results": {
         "roberta_original": {
           "accuracy": 50.0,
+          "balanced_accuracy": 50.0,
           "loss": 1.097117320005782,
+          "prediction_distribution_shift": 50.0,
           "mha_compression_ratio": 1.0
         },
         "tensorllm_roberta": {
           "accuracy": 54.6875,
+          "balanced_accuracy": 54.6875,
           "loss": 0.6959411553107202,
+          "prediction_distribution_shift": 15.312499999999998,
           "mha_compression_ratio": 1.9947782091692483
         }
       }

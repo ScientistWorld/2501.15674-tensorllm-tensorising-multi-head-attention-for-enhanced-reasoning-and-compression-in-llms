@@ -1,5 +1,5 @@
-action: done
+action: submit
 gpus: 0
-test: false
+test: true
 milestone: core_claim
-notes: "Packaging audit complete: download URLs resolve, fetches are executable public commands, and scripts now run from any checkout path."
+notes: "CPU validation job: rerun artifact scoring, train/test slice scoring, and validate.py --compare after repairing the evaluator metric contract."
