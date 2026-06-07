@@ -2,4 +2,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Core claim supported on row-parity FEVER split: tensorllm_roberta improves accuracy over roberta_original by +3.75 train and +5.625 test while preserving the compression constraint at 1.995x MHA compression; 10 train and 10 test metric values, no nulls or byte-identical slice scores."
+notes: "Packaging audit complete: download URLs resolve, fetches are executable public commands, and scripts now run from any checkout path."

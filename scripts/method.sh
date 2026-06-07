@@ -8,7 +8,7 @@
 
 set -e
 
-cd /home/user
+cd "$(dirname "$0")/.."
 
 python method/tensorllm_roberta.py \
   --model-path data/downloads/roberta-base \

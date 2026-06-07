@@ -17,18 +17,18 @@
 
 set -e
 
-cd /home/user
+cd "$(dirname "$0")/.."
 
 mkdir -p data/downloads/fever data/downloads/roberta-base data/raw
 
 if [ ! -e data/downloads/fever/shared_task_dev.jsonl ]; then
-  curl -L https://fever.ai/download/fever/shared_task_dev.jsonl \
+  curl -fL https://fever.ai/download/fever/shared_task_dev.jsonl \
     -o data/downloads/fever/shared_task_dev.jsonl
 fi
 
 for file in config.json merges.txt vocab.json tokenizer.json tokenizer_config.json model.safetensors; do
   if [ ! -e "data/downloads/roberta-base/${file}" ]; then
-    curl -L "https://huggingface.co/roberta-base/resolve/main/${file}" \
+    curl -fL "https://huggingface.co/roberta-base/resolve/main/${file}" \
       -o "data/downloads/roberta-base/${file}"
   fi
 done

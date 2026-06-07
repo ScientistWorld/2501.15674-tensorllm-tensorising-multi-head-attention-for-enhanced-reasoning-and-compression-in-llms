@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-cd /home/user
+cd "$(dirname "$0")/.."
 
 bash scripts/evaluate_train.sh outputs/tensorllm_fever/manifest.json
 bash scripts/evaluate_test.sh outputs/tensorllm_fever/manifest.json

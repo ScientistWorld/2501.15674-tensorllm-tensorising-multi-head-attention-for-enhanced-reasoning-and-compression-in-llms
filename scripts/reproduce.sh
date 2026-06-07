@@ -8,7 +8,7 @@
 # Assumes:
 #   - Container is built (environment/container.sif)
 #   - Data and models are downloaded (via scripts/download.sh)
-#   - Working directory is /home/user
+#   - Run from any checkout path
 #
 # This is the "gold standard" reproduction — 
 # You do not need to run this, but keep this in good shape
@@ -16,7 +16,7 @@
 
 set -e
 
-cd /home/user
+cd "$(dirname "$0")/.."
 
 bash scripts/download.sh
 bash scripts/method.sh
