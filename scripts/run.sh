@@ -13,4 +13,9 @@ set -e
 
 cd /home/user
 
+export TENSORLLM_LIMIT=80
+export TENSORLLM_BATCH_SIZE=8
+export TENSORLLM_LAYERS="0,6,11"
+export TENSORLLM_RANKS="384,32,3 256,32,3"
+
 bash scripts/method.sh

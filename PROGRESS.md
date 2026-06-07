@@ -4,9 +4,11 @@
 
 The workspace now contains a TensorLLM implementation for RoBERTa attention layers. It tensorizes Q/K/V/O weights by head, applies shared-factor Tucker HOOI reconstruction over the non-head modes, writes the reconstructed weights back, and evaluates FEVER binary predictions from generated artifacts.
 
+Audit on 2026-06-07 found that `eval/` remains separated from `method/`, `validate.py` passes, and the required RoBERTa/FEVER artifacts are present under `data/downloads/` for offline execution.
+
 ## Results
 
-No compute job has completed yet in this turn. The first submitted job will run the RoBERTa FEVER reproduction and write `scoring/scores.json`.
+No compute job has completed yet in this continuation. The next submitted job will run a CPU smoke search over a reduced set of layers/ranks and write `scoring/scores.json`.
 
 ## Remaining
 
