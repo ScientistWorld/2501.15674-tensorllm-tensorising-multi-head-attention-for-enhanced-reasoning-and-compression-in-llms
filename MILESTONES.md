@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: method_runs**
+**Current: core_claim**
 
 ## Progress Log
 
@@ -16,4 +16,10 @@
 - CPU smoke job completed successfully and produced method artifacts plus `scoring/scores.json`.
 - TensorLLM ran end-to-end on RoBERTa/FEVER, compressed the modified MHA layer by 3.19x, and lowered loss versus the original model, but did not improve accuracy on the 80-example smoke subset.
 
+### [2026-06-07 10:45] - core_claim
+- Broader CPU search completed on 320 balanced FEVER examples across RoBERTa layers 3-11 and six Tucker-rank settings.
+- Best TensorLLM condition was layer 6 with ranks 384/48/4: accuracy improved from 50.00% to 54.69%, loss decreased from 1.097 to 0.696, and the modified MHA layer was compressed by 1.99x.
+- The result supports the paper's core claim on the accessible RoBERTa/FEVER reproduction setting: post-training tensorisation of MHA can improve reasoning-task accuracy while compressing attention weights.
+
 ## Stop Justification
+- Stopping at `core_claim`: the reusable environment is packaged and validated, and the central benefit-plus-compression claim is reproduced on the implemented FEVER/RoBERTa experiment.

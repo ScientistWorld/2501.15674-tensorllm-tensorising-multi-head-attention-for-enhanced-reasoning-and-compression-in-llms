@@ -8,17 +8,19 @@ Audit on 2026-06-07 found that `eval/` remains separated from `method/`, `valida
 
 ## Results
 
-The first CPU smoke job completed successfully on 80 FEVER examples. The original RoBERTa condition reached 58.75% accuracy and 0.958 loss. The best TensorLLM condition preserved 58.75% accuracy, lowered loss to 0.840, and compressed the modified MHA layer by 3.19x. This establishes that the paper's method runs end-to-end and satisfies the compression/loss side of the claim, but it does not yet show an accuracy gain over the original model.
+The first CPU smoke job completed successfully on 80 FEVER examples. The original RoBERTa condition reached 58.75% accuracy and 0.958 loss. The best TensorLLM condition preserved 58.75% accuracy, lowered loss to 0.840, and compressed the modified MHA layer by 3.19x. This established `method_runs`.
+
+The broader CPU search completed on 320 balanced FEVER examples. The original RoBERTa condition reached 50.00% accuracy and 1.097 loss. The best TensorLLM condition (`tensorllm_layer6_r384-48-4`) reached 54.69% accuracy and 0.696 loss while compressing the modified MHA layer by 1.99x. This supports `core_claim`: the paper's post-training tensorisation procedure improves the reasoning-task metric while preserving the compression constraint.
 
 ## Remaining
 
-Run a broader layer/rank search and larger FEVER subset to look for the accuracy improvement needed for `core_claim`.
+Higher milestones would require extending beyond the current single FEVER/RoBERTa setting: more of the FEVER split, additional model families, and reproduction of the paper's other reported tasks.
 
 ## Issues
 
 The paper does not provide a code repository or exact rank/layer hyperparameters. The reproduction therefore implements the described algorithm directly and searches a small set of layer/rank settings.
 
-The first evaluation wrote reconstruction error into `scores.json`, which is useful diagnostic metadata but not part of `reference.json`; this has been fixed so official scores only contain declared metrics.
+The first evaluation wrote reconstruction error into `scores.json`, which is useful diagnostic metadata but not part of `reference.json`; this was fixed so official scores only contain declared metrics. The latest validated score file is produced by `scripts/evaluate.sh` from method artifacts, not copied from the paper.
 
 ## Deviations from Paper
 

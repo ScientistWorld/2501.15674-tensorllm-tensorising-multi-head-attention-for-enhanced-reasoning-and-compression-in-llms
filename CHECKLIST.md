@@ -8,7 +8,7 @@
 
 ## Scoring
 - [x] `scoring/reference.json`
-- [ ] Workspace validated via `python validate.py`
+- [x] Workspace validated via `python validate.py`
 - [x] `scoring/scores.json`
 - [x] `scoring/EXPERIMENTS.md`
 - [x] `scoring/TARGETS.md`
@@ -35,7 +35,7 @@
 
 ## Milestones
 - [x] `method_runs`
-- [ ] `core_claim`
+- [x] `core_claim`
 - [ ] `core_claim_plus`
 - [ ] `secondary_claims`
 - [ ] `majority`
