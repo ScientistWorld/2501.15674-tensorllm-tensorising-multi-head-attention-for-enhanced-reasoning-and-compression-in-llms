@@ -3,6 +3,6 @@
 # only after your turn ends. Sleeping blocks the entire pipeline.
 action: submit
 gpus: 0
-test: true
-milestone: none
-notes: "CPU test job: run TensorLLM RoBERTa shared-Tucker MHA denoising on 80 FEVER examples over 3 layers x 2 rank settings and write scoring/scores.json."
+test: false
+milestone: method_runs
+notes: "Normal CPU job: broader TensorLLM RoBERTa shared-Tucker search on 320 FEVER examples over layers 3-11 and six compressed rank settings to seek an accuracy gain for core_claim."
