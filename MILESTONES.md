@@ -1,8 +1,16 @@
 # Reproduction Milestones
 
-**Current: method_runs**
+**Current: core_claim**
 
 ## Progress Log
 
+### [2026-06-07 10:13] - method_runs
+- Implemented the paper's multi-head tensorisation and shared-factor Tucker/HOOI reconstruction for RoBERTa MHA layers.
+- Completed an offline FEVER smoke run that generated original-model and TensorLLM prediction artifacts.
+
+### [2026-06-07 10:31] - core_claim
+- Completed a broader 320-example FEVER/RoBERTa search over layers and Tucker ranks.
+- Best TensorLLM condition improved accuracy from 50.00% to 54.69%, lowered loss from 1.097 to 0.696, and compressed the modified MHA layer by 1.99x.
+
 ## Stop Justification
-- Completed at milestone `method_runs`.
+- Completed at milestone `core_claim`; higher milestones require adding more datasets, larger decoder-only models, LASER hybrid runs, or ablations beyond the minimum validated environment.

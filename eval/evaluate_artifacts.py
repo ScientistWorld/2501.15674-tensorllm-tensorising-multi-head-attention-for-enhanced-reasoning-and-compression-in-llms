@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 
-METHOD_MAP = {
+DEFAULT_METHOD_MAP = {
     "roberta_original": "roberta_original",
     "tensorllm_best": "tensorllm_roberta",
 }
@@ -29,6 +29,49 @@ def score_predictions(path: Path) -> dict:
     return {"accuracy": 100.0 * correct / total, "loss": loss / total}
 
 
+def score_key(condition: dict) -> str | None:
+    """Return the public score key for a manifest condition.
+
+    Future methods can set ``score_key`` directly in their manifest. The
+    fallback map keeps the original TensorLLM artifacts evaluable.
+    """
+
+    if "score_key" in condition:
+        return str(condition["score_key"])
+    return DEFAULT_METHOD_MAP.get(condition["name"])
+
+
+def resolve_prediction_path(path_text: str, manifest_path: Path) -> Path:
+    path = Path(path_text)
+    if path.is_absolute() or path.exists():
+        return path
+    manifest_relative = manifest_path.parent / path
+    if manifest_relative.exists():
+        return manifest_relative
+    return path
+
+
+def compression_ratio(condition: dict, method_name: str) -> float:
+    original = condition.get("original_mha_params")
+    compressed = condition.get("compressed_mha_params")
+    provided = condition.get("compression_ratio")
+
+    if original is None or compressed is None:
+        if provided is None:
+            raise RuntimeError(f"{method_name} is missing compression metadata")
+        return float(provided)
+
+    if float(compressed) <= 0:
+        raise RuntimeError(f"{method_name} has invalid compressed_mha_params={compressed}")
+    computed = float(original) / float(compressed)
+    if provided is not None and abs(computed - float(provided)) > 1e-6 * max(1.0, computed):
+        raise RuntimeError(
+            f"{method_name} manifest compression_ratio={provided} does not match "
+            f"original_mha_params/compressed_mha_params={computed}"
+        )
+    return computed
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", default="outputs/tensorllm_fever/manifest.json")
@@ -39,11 +82,11 @@ def main() -> None:
     manifest = json.loads(manifest_path.read_text())
     results = {}
     for condition in manifest["conditions"]:
-        mapped = METHOD_MAP.get(condition["name"])
+        mapped = score_key(condition)
         if mapped is None:
             continue
-        metrics = score_predictions(Path(condition["predictions"]))
-        metrics["mha_compression_ratio"] = float(condition["compression_ratio"])
+        metrics = score_predictions(resolve_prediction_path(condition["predictions"], manifest_path))
+        metrics["mha_compression_ratio"] = compression_ratio(condition, mapped)
         results[mapped] = metrics
 
     if "roberta_original" not in results or "tensorllm_roberta" not in results:

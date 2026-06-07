@@ -15,8 +15,11 @@
 # This file is read by the system for automated comparison.
 #
 # Example usage:
-#   ./evaluate.sh <method_and_run_name>                             # evaluate with defaults
-#   ./evaluate.sh <method_and_run_name> checkpoints/epoch_10.pt     # evaluate a specific checkpoint
+#   bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json
+#
+# Manifest conditions can include a `score_key` field to choose their public
+# method name in scoring/scores.json. The original TensorLLM artifacts also
+# support the legacy names `roberta_original` and `tensorllm_best`.
 #
 # Called from run.sh after training, or independently.
 

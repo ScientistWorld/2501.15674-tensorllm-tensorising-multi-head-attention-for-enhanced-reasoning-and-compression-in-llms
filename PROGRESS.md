@@ -4,7 +4,7 @@
 
 The workspace now contains a TensorLLM implementation for RoBERTa attention layers. It tensorizes Q/K/V/O weights by head, applies shared-factor Tucker HOOI reconstruction over the non-head modes, writes the reconstructed weights back, and evaluates FEVER binary predictions from generated artifacts.
 
-Audit on 2026-06-07 found that `eval/` remains separated from `method/`, `validate.py` passes, and the required RoBERTa/FEVER artifacts are present under `data/downloads/` for offline execution.
+Audit on 2026-06-07 found that `eval/` remains separated from `method/`, `validate.py` passes, and the required RoBERTa/FEVER artifacts are present under `data/downloads/` for offline execution. The evaluator reads prediction artifacts and independently checks the reported MHA compression ratio against the original and compressed parameter counts in the manifest.
 
 ## Results
 

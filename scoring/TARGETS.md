@@ -13,3 +13,10 @@ Tests whether the accuracy change is achieved while representing the modified at
 
 - **Metric**: mha_compression_ratio (higher is better)
 - **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`
+
+## Secondary: fever_roberta_binary
+
+Tracks uncertainty on the same binary fact-verification examples.
+
+- **Metric**: loss (lower is better)
+- **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`
