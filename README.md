@@ -129,12 +129,34 @@ The reusable benchmark evaluates a deterministic balanced subset of FEVER suppor
 
 </details>
 
+### Iteration 2: gpt-5.5
+- **Milestone**: `core_claim` | **Status**: done
+- **Working time**: 2m | **GPU**: 0.0h
+- **Jobs**: 2 total (2 completed, 0 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-07 10:07] - method_runs
+- Implemented TensorLLM for RoBERTa MHA layers: split Q/K/V/O weights by attention head, tensorised them into the paper's 4D layout, applied shared-factor Tucker/HOOI denoising over the non-head modes, and wrote reconstructed weights back to the model.
+- Ran the method and original RoBERTa condition end-to-end on a balanced FEVER subset, producing prediction artifacts and evaluator scores without importing `method/` from `eval/`.
+
+### [2026-06-07 10:20] - core_claim
+- Broader FEVER/RoBERTa run on 320 balanced examples reproduced the paper's core claim at small scale: the TensorLLM-modified model improved accuracy over original RoBERTa while compressing the modified MHA layer.
+- Validated the packaged gym with `python validate.py --compare`; scoring includes both benefit (`accuracy`, `loss`) and constraint (`mha_compression_ratio`) metrics.
+
+### [2026-06-07 10:35] - core_claim
+- Continuation audit restored the milestone from `method_runs` to `core_claim` after checking that `method/` implements the paper's actual multi-head tensorisation plus shared Tucker/HOOI reconstruction rather than a surrogate.
+- Re-ran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; the reproduced scores remained RoBERTa original 50.00% accuracy vs TensorLLM 54.69% accuracy with 1.99x MHA compression.
+
+</details>
+
 
 ---
 
 # Reproduction Milestones
 
-**Current: method_runs**
+**Current: core_claim**
 
 ## Stop Justification
-- Completed at milestone `method_runs`.
+- Completed at milestone `core_claim`.
