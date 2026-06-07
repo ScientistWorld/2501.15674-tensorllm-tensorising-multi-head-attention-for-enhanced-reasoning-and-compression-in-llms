@@ -21,7 +21,7 @@ The paper argues that existing post-training rank-reduction methods mainly benef
 
 ## Research Question
 
-Can a pretrained transformer language model be post-processed so that its reasoning-task accuracy improves while its attention-block parameters are compressed, without using additional training data or fine-tuning?
+Can a fixed pretrained language model be post-processed so that its reasoning-task accuracy improves while the changed part of the model is represented with fewer parameters, without using additional training data or fine-tuning?
 
 ## Why It Matters
 
@@ -29,7 +29,7 @@ Large language models contain many redundant or noisy parameters. A good post-tr
 
 ## Success Criteria
 
-A successful solution should improve task accuracy over the original pretrained model on a fixed reasoning benchmark, avoid a large increase in prediction loss, and reduce the parameter count needed to represent the modified attention layer.
+A successful solution should improve task accuracy over the original pretrained model on a fixed reasoning benchmark, avoid a large increase in prediction loss, and reduce the parameter count needed to represent the modified model component.
 
 ---
 
@@ -61,11 +61,11 @@ Accuracy is the primary reasoning metric and is reported as the percentage of ex
 
 Loss is the mean negative log-likelihood of the correct answer under the two candidate labels. Lower loss indicates a more confident and better-calibrated prediction.
 
-MHA compression ratio is the original number of multi-head-attention parameters in the modified layer divided by the compressed representation size. Higher is better, and values above 1 mean the layer representation is smaller than the original dense weights.
+Compression ratio is the original parameter count of the modified model component divided by the size of its compressed representation. Higher is better, and values above 1 mean the reported modification uses fewer parameters than the original dense representation.
 
 ## Baselines and Targets
 
-The main baseline is the original pretrained RoBERTa model with no post-training modification. The target is the paper's RoBERTa FEVER result: a small accuracy gain over the original model, lower loss, and a multi-head-attention compression ratio above 1.
+The main baseline is the original fixed pretrained masked language model with no post-training modification. The target is a small accuracy gain over the original model, lower loss, and a compression ratio above 1 for the modified component.
 
 ## Evaluation Protocol
 
@@ -258,6 +258,36 @@ The reusable benchmark evaluates a deterministic balanced subset of FEVER suppor
 ### [2026-06-07 10:45] - core_claim
 - Continuation audit confirmed the implementation is the paper's actual multi-head tensorisation plus shared Tucker/HOOI reconstruction, not a surrogate.
 - Reran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; both passed with the same core-claim scores.
+
+</details>
+
+### Iteration 8: gpt-5.5 (verifier)
+- **Milestone**: `core_claim` | **Status**: done
+- **Working time**: 6m | **GPU**: 0.0h
+- **Jobs**: 4 total (4 completed, 0 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-07 10:13] - method_runs
+- Implemented the paper's multi-head tensorisation and shared-factor Tucker/HOOI reconstruction for RoBERTa MHA layers.
+- Completed an offline FEVER smoke run that generated original-model and TensorLLM prediction artifacts.
+
+### [2026-06-07 10:31] - core_claim
+- Completed a broader 320-example FEVER/RoBERTa search over layers and Tucker ranks.
+- Best TensorLLM condition improved accuracy from 50.00% to 54.69%, lowered loss from 1.097 to 0.696, and compressed the modified MHA layer by 1.99x.
+
+### [2026-06-07 10:45] - core_claim
+- Continuation audit confirmed the implementation is the paper's actual multi-head tensorisation plus shared Tucker/HOOI reconstruction, not a surrogate.
+- Reran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; both passed with the same core-claim scores.
+
+### [2026-06-07 11:01] - core_claim
+- Repaired the official artifact evaluator so `scores.json` includes every declared metric: accuracy, balanced accuracy, loss, prediction-distribution shift, and MHA compression ratio.
+- Local artifact-only validation passed; submitting a CPU test job to verify the packaged scripts inside the managed environment.
+
+### [2026-06-07 11:05] - core_claim
+- Final verification confirmed the method, evaluator, train/test slices, and download script are usable as a research gym.
+- Cleaned method-agnostic documentation and scoring descriptions so from-scratch agents see the problem and constraints without implementation details.
 
 </details>
 
