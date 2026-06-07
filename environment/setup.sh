@@ -16,4 +16,9 @@
 
 set -e
 
-# uv pip install --system <packages>
+uv pip install --system torch --index-url https://download.pytorch.org/whl/cpu
+
+uv pip install --system \
+    transformers \
+    safetensors \
+    tqdm

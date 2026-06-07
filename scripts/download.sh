@@ -9,22 +9,31 @@
 #
 # Update the storage estimate below as you add downloads.
 #
-# Estimated total download size: TODO GB
-# Estimated disk usage after extraction: TODO GB
+# Estimated total download size: 0.54 GB
+# Estimated disk usage after extraction: 0.55 GB
 #
-# During reproduction, prefer downloading to shared directories
-# (shared/datasets/, shared/models/) so other papers can reuse them.
-# You do not need to run this script during reproduction — it exists
-# for future portability. Write it to download to workspace-local
-# paths (data/, checkpoints/) instead of the shared directories
-# so a future user with just the workspace can run this script and get everything they need.
+# This script writes all portable artifacts to workspace-local paths so a
+# future user with just this repository can reproduce the environment.
 
 set -e
 
-cd "$(dirname "$0")"
+cd /home/user
 
-# TODO: implement downloads
-# Examples:
-#   wget -nc https://example.com/dataset.tar.gz -P data/
-#   python -c "from huggingface_hub import snapshot_download; snapshot_download('model/name', local_dir='checkpoints/')"
-#   huggingface-cli download Qwen/Qwen3-1.7B --local-dir /checkpoints/Qwen3-1.7B
+mkdir -p data/downloads/fever data/downloads/roberta-base data/raw
+
+if [ ! -e data/downloads/fever/shared_task_dev.jsonl ]; then
+  curl -L https://fever.ai/download/fever/shared_task_dev.jsonl \
+    -o data/downloads/fever/shared_task_dev.jsonl
+fi
+
+for file in config.json merges.txt vocab.json tokenizer.json tokenizer_config.json model.safetensors; do
+  if [ ! -e "data/downloads/roberta-base/${file}" ]; then
+    curl -L "https://huggingface.co/roberta-base/resolve/main/${file}" \
+      -o "data/downloads/roberta-base/${file}"
+  fi
+done
+
+python data/prepare_fever.py \
+  --input data/downloads/fever/shared_task_dev.jsonl \
+  --output data/fever_binary_dev.jsonl \
+  --per-class 160

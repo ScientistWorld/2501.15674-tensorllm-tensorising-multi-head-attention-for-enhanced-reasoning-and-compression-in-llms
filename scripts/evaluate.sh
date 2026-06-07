@@ -26,5 +26,5 @@ cd /home/user
 
 mkdir -p scoring
 
-# TODO: implement evaluation using code in eval/
-# Must write scoring/scores.json at the end
+MANIFEST="${1:-outputs/tensorllm_fever/manifest.json}"
+python eval/evaluate_artifacts.py --manifest "$MANIFEST" --output scoring/scores.json

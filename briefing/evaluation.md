@@ -1,15 +1,17 @@
 # Evaluation
 
-How success is measured. Describe only the metrics, targets, and evaluation procedure — do NOT describe the paper's method or how they achieved these results. Think of this as a general evaluation protocal for other scientists trying to solve the same problem, where they should not see this paper's solution.
-
 ## Metrics
 
-<!-- What metrics are used? How are they computed? What does higher/lower mean? -->
+Accuracy is the primary reasoning metric and is reported as the percentage of examples with the correct answer. For FEVER binary verification, a claim is predicted as true or false and compared against the gold label.
+
+Loss is the mean negative log-likelihood of the correct answer under the two candidate labels. Lower loss indicates a more confident and better-calibrated prediction.
+
+MHA compression ratio is the original number of multi-head-attention parameters in the modified layer divided by the compressed representation size. Higher is better, and values above 1 mean the layer representation is smaller than the original dense weights.
 
 ## Baselines and Targets
 
-<!-- What performance levels exist as reference points? Include the paper's reported numbers as targets, and any standard baselines. A scientist agent should know what "good" looks like. -->
+The main baseline is the original pretrained RoBERTa model with no post-training modification. The target is the paper's RoBERTa FEVER result: a small accuracy gain over the original model, lower loss, and a multi-head-attention compression ratio above 1.
 
 ## Evaluation Protocol
 
-<!-- How should evaluation be run? What data split, what conditions? Any important details about how to compare fairly (e.g., fixed seeds, specific test sets, averaging over runs). -->
+The reusable benchmark evaluates a deterministic balanced subset of FEVER support/refute claims. Each claim is formatted as a binary verification prompt and scored by comparing the language model probabilities assigned to true and false at a masked answer position. `scripts/evaluate.sh` reads prediction artifacts produced by a candidate method and writes `scoring/scores.json`; it does not import or rerun the paper method.

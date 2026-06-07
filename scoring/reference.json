@@ -1,0 +1,18 @@
+{
+  "experiments": {
+    "fever_roberta_binary": {
+      "description": "FEVER binary fact verification with RoBERTa. Accuracy is the primary reasoning metric; loss measures uncertainty; MHA compression ratio is the constraint/efficiency metric for the modified layer.",
+      "weight": 1.0,
+      "primary_metric": "accuracy",
+      "metrics": {
+        "accuracy": {"higher_is_better": true, "coefficient": 1.0},
+        "loss": {"higher_is_better": false, "coefficient": -0.25},
+        "mha_compression_ratio": {"higher_is_better": true, "coefficient": 0.2}
+      },
+      "results": {
+        "roberta_original": {"type": "baseline", "accuracy": 50.0, "loss": 2.5, "mha_compression_ratio": 1.0},
+        "tensorllm_roberta": {"type": "proposed", "accuracy": 50.45, "loss": 1.47, "mha_compression_ratio": 3.74}
+      }
+    }
+  }
+}

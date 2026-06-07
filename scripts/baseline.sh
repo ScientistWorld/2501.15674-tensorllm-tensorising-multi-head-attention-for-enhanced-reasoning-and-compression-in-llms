@@ -17,4 +17,11 @@ set -e
 
 cd /home/user
 
-# TODO: run baseline
+python method/tensorllm_roberta.py \
+  --model-path data/downloads/roberta-base \
+  --data data/fever_binary_dev.jsonl \
+  --output-dir outputs/tensorllm_fever_baseline \
+  --limit "${TENSORLLM_LIMIT:-160}" \
+  --batch-size "${TENSORLLM_BATCH_SIZE:-8}" \
+  --layers "" \
+  --ranks 384,32,3

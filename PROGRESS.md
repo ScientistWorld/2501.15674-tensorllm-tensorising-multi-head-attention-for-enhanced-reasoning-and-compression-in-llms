@@ -2,36 +2,20 @@
 
 ## What Works
 
-<!-- What has been successfully reproduced so far. -->
+The workspace now contains a TensorLLM implementation for RoBERTa attention layers. It tensorizes Q/K/V/O weights by head, applies shared-factor Tucker HOOI reconstruction over the non-head modes, writes the reconstructed weights back, and evaluates FEVER binary predictions from generated artifacts.
 
 ## Results
 
-<!-- Reproduced numbers compared to the paper's reported numbers. -->
+No compute job has completed yet in this turn. The first submitted job will run the RoBERTa FEVER reproduction and write `scoring/scores.json`.
 
 ## Remaining
 
-<!-- What still needs to be done to reach higher milestones. -->
+Run the initial job, inspect whether TensorLLM improves over the original model on the FEVER subset, and expand the layer/rank search if the core claim is not yet supported.
 
 ## Issues
 
-<!-- Blockers, bugs, or difficulties encountered. -->
+The paper does not provide a code repository or exact rank/layer hyperparameters. The reproduction therefore implements the described algorithm directly and searches a small set of layer/rank settings.
 
 ## Deviations from Paper
 
-<!-- Do not edit this section unless you deviated from the paper's original setup.
-     For each deviation, document: what the paper used, what you substituted, and why.
-
-     ACCEPTABLE deviations (data/resource/scale substitutions — milestones still valid):
-       - Replaced a proprietary dataset with a public one
-       - Used a smaller model of the same architecture
-       - Scaled down training (fewer epochs, smaller batch)
-       - Used a different library for the same algorithm
-
-     UNACCEPTABLE deviations (algorithm substitutions — milestones above 'none' are void):
-       - Replaced the paper's algorithm with a fundamentally different one
-       - Wrote a generic model trained to approximate the method's outputs
-         instead of implementing the method's computational steps
-
-     The test: could someone reading your code identify which algorithm from
-     the paper you implemented? If not, you replaced the method. -->
-
+The paper evaluates the full FEVER processed split and several large models. This reproduction starts with a deterministic balanced FEVER subset and RoBERTa-base to keep the first offline job lightweight. The algorithmic procedure is unchanged: post-training multi-head tensorisation with shared Tucker factors on an MHA layer.
