@@ -12,6 +12,8 @@ The first CPU smoke job completed successfully on 80 FEVER examples. The origina
 
 The broader CPU search completed on 320 balanced FEVER examples. The original RoBERTa condition reached 50.00% accuracy and 1.097 loss. The best TensorLLM condition (`tensorllm_layer6_r384-48-4`) reached 54.69% accuracy and 0.696 loss while compressing the modified MHA layer by 1.99x. This supports `core_claim`: the paper's post-training tensorisation procedure improves the reasoning-task metric while preserving the compression constraint.
 
+Continuation audit on 2026-06-07 reran the standalone evaluator and `validate.py --compare`; both passed and reproduced the same scores from existing method artifacts.
+
 ## Remaining
 
 Higher milestones would require extending beyond the current single FEVER/RoBERTa setting: more of the FEVER split, additional model families, and reproduction of the paper's other reported tasks.

@@ -12,5 +12,9 @@
 - Completed a broader 320-example FEVER/RoBERTa search over layers and Tucker ranks.
 - Best TensorLLM condition improved accuracy from 50.00% to 54.69%, lowered loss from 1.097 to 0.696, and compressed the modified MHA layer by 1.99x.
 
+### [2026-06-07 10:45] - core_claim
+- Continuation audit confirmed the implementation is the paper's actual multi-head tensorisation plus shared Tucker/HOOI reconstruction, not a surrogate.
+- Reran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; both passed with the same core-claim scores.
+
 ## Stop Justification
 - Completed at milestone `core_claim`; higher milestones require adding more datasets, larger decoder-only models, LASER hybrid runs, or ablations beyond the minimum validated environment.
