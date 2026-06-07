@@ -20,3 +20,10 @@ Tracks uncertainty on the same binary fact-verification examples.
 
 - **Metric**: loss (lower is better)
 - **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`
+
+## Robustness: fever_roberta_binary
+
+Tracks whether a candidate improves accuracy without collapsing to a single predicted label.
+
+- **Metrics**: balanced_accuracy (higher is better), prediction_distribution_shift (lower is better)
+- **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`

@@ -40,6 +40,11 @@ def project_except(tensor: torch.Tensor, factors: list[torch.Tensor], skip: int)
 def shared_tucker_hooi(tensor: torch.Tensor, ranks: tuple[int, int, int], n_iter: int = 6) -> tuple[torch.Tensor, int]:
     """HOOI Tucker approximation on modes 0, 1, 2, leaving head mode uncompressed."""
 
+    for mode, rank in enumerate(ranks):
+        max_rank = min(tensor.shape[mode], tensor.numel() // tensor.shape[mode])
+        if rank < 1 or rank > max_rank:
+            raise ValueError(f"Rank {rank} is invalid for mode {mode}; expected 1 <= rank <= {max_rank}")
+
     factors: list[torch.Tensor] = []
     for mode, rank in enumerate(ranks):
         u, _, _ = torch.linalg.svd(mode_unfold(tensor, mode), full_matrices=False)

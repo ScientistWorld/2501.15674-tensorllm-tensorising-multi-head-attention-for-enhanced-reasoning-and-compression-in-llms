@@ -7,7 +7,8 @@
 #
 # Assumes:
 #   - Container is built (environment/container.sif)
-#   - Data and models are downloaded (via scripts/download.sh)
+#   - Data and models were downloaded on an internet-enabled node via
+#     scripts/download.sh before job submission
 #   - Run from any checkout path
 #
 # This is the "gold standard" reproduction — 
@@ -18,5 +19,9 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-bash scripts/download.sh
+if [ ! -e data/downloads/roberta-base/model.safetensors ] || [ ! -e data/fever_binary_dev.jsonl ]; then
+  echo "Missing downloaded data/model artifacts. Run scripts/download.sh on an internet-enabled node before submitting compute jobs." >&2
+  exit 1
+fi
+
 bash scripts/method.sh

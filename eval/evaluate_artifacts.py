@@ -116,8 +116,8 @@ def main() -> None:
         metrics["mha_compression_ratio"] = compression_ratio(condition, mapped)
         results[mapped] = metrics
 
-    if "roberta_original" not in results or "tensorllm_roberta" not in results:
-        raise RuntimeError("Manifest must include roberta_original and tensorllm_best conditions")
+    if not results:
+        raise RuntimeError("Manifest did not contain any scoreable conditions")
 
     scores = {"experiments": {"fever_roberta_binary": {"results": results}}}
     output = Path(args.output)

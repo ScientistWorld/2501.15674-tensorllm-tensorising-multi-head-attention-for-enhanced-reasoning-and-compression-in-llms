@@ -24,5 +24,10 @@
 - Final verification confirmed the method, evaluator, train/test slices, and download script are usable as a research gym.
 - Cleaned method-agnostic documentation and scoring descriptions so from-scratch agents see the problem and constraints without implementation details.
 
+### [2026-06-07 11:10] - core_claim
+- Fixed the offline reproduction script so compute jobs do not attempt internet downloads.
+- Added a short managed-container smoke job that regenerates method artifacts in an isolated output directory, then restores and validates the established core-claim scores.
+- Repaired baseline-only scoring and added validation for invalid Tucker rank settings.
+
 ## Stop Justification
-- Completed at milestone `core_claim`.
+- Not stopped; continuing validation from milestone `core_claim`.

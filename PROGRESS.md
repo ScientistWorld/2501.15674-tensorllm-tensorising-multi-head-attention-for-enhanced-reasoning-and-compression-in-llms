@@ -30,6 +30,12 @@ The official evaluator initially omitted two declared constraint metrics from `s
 
 Final verification on 2026-06-07 cleaned method-agnostic documentation, corrected the loss metric coefficient direction, added notes for gym-only metrics, and reran artifact, train-slice, test-slice, and `validate.py --compare` checks successfully.
 
+Follow-up packaging audit on 2026-06-07 made `scripts/reproduce.sh` compute-node safe by removing runtime downloads and requiring `scripts/download.sh` to be run before submission. `scoring/TARGETS.md` now explicitly lists the balanced-accuracy and prediction-distribution robustness metrics that were already emitted by the evaluator.
+
+The same audit made the evaluator score baseline-only manifests, added standard evaluation to `scripts/baseline.sh`, and added rank validation so impossible Tucker ranks cannot silently produce incorrect compression metadata.
+
 ## Deviations from Paper
 
 The paper evaluates the full FEVER processed split and several large models. This reproduction starts with a deterministic balanced FEVER subset and RoBERTa-base to keep the first offline job lightweight. The algorithmic procedure is unchanged: post-training multi-head tensorisation with shared Tucker factors on an MHA layer.
+
+The implementation reconstructs dense RoBERTa weights for ordinary Transformer inference after computing the shared Tucker representation. The reported MHA compression ratio therefore measures the factorized representation implied by the decomposition, not reduced in-memory parameters of the PyTorch module during inference.

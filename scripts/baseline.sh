@@ -25,3 +25,5 @@ python method/tensorllm_roberta.py \
   --batch-size "${TENSORLLM_BATCH_SIZE:-8}" \
   --layers "" \
   --ranks 384,32,3
+
+bash scripts/evaluate.sh outputs/tensorllm_fever_baseline/manifest.json
