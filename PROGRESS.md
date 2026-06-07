@@ -28,6 +28,8 @@ The first evaluation wrote reconstruction error into `scores.json`, which is use
 
 The official evaluator initially omitted two declared constraint metrics from `scores.json`; this was repaired so the score contract now matches `reference.json`.
 
+Final verification on 2026-06-07 cleaned method-agnostic documentation, corrected the loss metric coefficient direction, added notes for gym-only metrics, and reran artifact, train-slice, test-slice, and `validate.py --compare` checks successfully.
+
 ## Deviations from Paper
 
 The paper evaluates the full FEVER processed split and several large models. This reproduction starts with a deterministic balanced FEVER subset and RoBERTa-base to keep the first offline job lightweight. The algorithmic procedure is unchanged: post-training multi-head tensorisation with shared Tucker factors on an MHA layer.

@@ -20,5 +20,9 @@
 - Repaired the official artifact evaluator so `scores.json` includes every declared metric: accuracy, balanced accuracy, loss, prediction-distribution shift, and MHA compression ratio.
 - Local artifact-only validation passed; submitting a CPU test job to verify the packaged scripts inside the managed environment.
 
+### [2026-06-07 11:05] - core_claim
+- Final verification confirmed the method, evaluator, train/test slices, and download script are usable as a research gym.
+- Cleaned method-agnostic documentation and scoring descriptions so from-scratch agents see the problem and constraints without implementation details.
+
 ## Stop Justification
 - Completed at milestone `core_claim`.

@@ -1,7 +1,8 @@
 {
   "experiments": {
     "fever_roberta_binary": {
-      "description": "FEVER binary fact verification with RoBERTa. Accuracy is the primary reasoning metric; loss measures uncertainty; MHA compression ratio is the constraint/efficiency metric for the modified layer.",
+      "description": "FEVER binary fact verification with the fixed pretrained masked language model. Accuracy is the primary reasoning metric; loss measures uncertainty; compression ratio is the constraint/efficiency metric for the modified component.",
+      "notes": "Accuracy, loss, and compression-ratio reference values are from Table II of the paper. Balanced accuracy and prediction-distribution shift are gym-only artifact metrics not reported in the paper, so no paper reference values are listed for them.",
       "weight": 1.0,
       "primary_metric": "accuracy",
       "metrics": {
@@ -17,7 +18,7 @@
         },
         "loss": {
           "higher_is_better": false,
-          "coefficient": -0.25,
+          "coefficient": 0.25,
           "description": "Mean negative log likelihood reported for the gold label, used as a secondary uncertainty metric."
         },
         "prediction_distribution_shift": {
@@ -28,7 +29,7 @@
         "mha_compression_ratio": {
           "higher_is_better": true,
           "coefficient": 0.25,
-          "description": "Ratio of original dense MHA parameters to compressed MHA parameters for the modified layer."
+          "description": "Ratio of original dense parameters to compressed parameters for the modified component."
         }
       },
       "results": {

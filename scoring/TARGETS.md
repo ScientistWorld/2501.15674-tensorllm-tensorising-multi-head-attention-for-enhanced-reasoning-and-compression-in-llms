@@ -9,7 +9,7 @@ Tests whether a post-training modification improves binary fact-verification acc
 
 ## Constraint: fever_roberta_binary
 
-Tests whether the accuracy change is achieved while representing the modified attention layer with fewer parameters than the original dense MHA weights.
+Tests whether the accuracy change is achieved while representing the modified model component with fewer parameters than its original dense form.
 
 - **Metric**: mha_compression_ratio (higher is better)
 - **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`

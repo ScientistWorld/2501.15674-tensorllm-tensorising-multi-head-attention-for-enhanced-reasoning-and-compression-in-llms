@@ -18,4 +18,4 @@ Report scores only through `scripts/evaluate.sh` from prediction artifacts. Do n
 - [ ] Evaluation data is the provided FEVER binary subset
 - [ ] Prediction artifacts include true labels, predictions, and NLL values
 - [ ] `scripts/evaluate.sh` writes the reported `scoring/scores.json`
-- [ ] Compression is measured for the modified MHA layer, not for unrelated parameters
+- [ ] Compression is measured for the modified component, not for unrelated parameters

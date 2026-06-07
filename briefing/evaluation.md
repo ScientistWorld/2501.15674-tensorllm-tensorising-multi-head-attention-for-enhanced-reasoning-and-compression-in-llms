@@ -6,11 +6,11 @@ Accuracy is the primary reasoning metric and is reported as the percentage of ex
 
 Loss is the mean negative log-likelihood of the correct answer under the two candidate labels. Lower loss indicates a more confident and better-calibrated prediction.
 
-MHA compression ratio is the original number of multi-head-attention parameters in the modified layer divided by the compressed representation size. Higher is better, and values above 1 mean the layer representation is smaller than the original dense weights.
+Compression ratio is the original parameter count of the modified model component divided by the size of its compressed representation. Higher is better, and values above 1 mean the reported modification uses fewer parameters than the original dense representation.
 
 ## Baselines and Targets
 
-The main baseline is the original pretrained RoBERTa model with no post-training modification. The target is the paper's RoBERTa FEVER result: a small accuracy gain over the original model, lower loss, and a multi-head-attention compression ratio above 1.
+The main baseline is the original fixed pretrained masked language model with no post-training modification. The target is a small accuracy gain over the original model, lower loss, and a compression ratio above 1 for the modified component.
 
 ## Evaluation Protocol
 

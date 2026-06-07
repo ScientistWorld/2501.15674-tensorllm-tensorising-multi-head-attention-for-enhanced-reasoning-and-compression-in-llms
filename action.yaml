@@ -1,5 +1,5 @@
-action: submit
+action: done
 gpus: 0
-test: true
+test: false
 milestone: core_claim
-notes: "CPU validation job: rerun artifact scoring, train/test slice scoring, and validate.py --compare after repairing the evaluator metric contract."
+notes: "Final verification passed; workspace is ready for gym use at core_claim with a documented scaled-down RoBERTa/FEVER limitation."
