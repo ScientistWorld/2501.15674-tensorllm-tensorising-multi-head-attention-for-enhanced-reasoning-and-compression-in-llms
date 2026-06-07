@@ -22,4 +22,4 @@
 - The result supports the paper's core claim on the accessible RoBERTa/FEVER reproduction setting: post-training tensorisation of MHA can improve reasoning-task accuracy while compressing attention weights.
 
 ## Stop Justification
-- Stopping at `core_claim`: the reusable environment is packaged and validated, and the central benefit-plus-compression claim is reproduced on the implemented FEVER/RoBERTa experiment.
+- Completed at milestone `core_claim`.
