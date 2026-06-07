@@ -1,4 +1,4 @@
-action: submit
+action: done
 gpus: 0
 test: false
-notes: "Re-run split scoring after filtering manifest variants to benchmark methods declared in scoring/scores.json."
+notes: "Row-parity split over existing FEVER prediction artifacts; 10 train metric values and 10 test metric values across 2 methods; tensorllm_roberta accuracy gain vs baseline is +3.75 train and +5.625 test, with no nulls or byte-identical slice scores."
