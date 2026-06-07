@@ -12,5 +12,9 @@
 - Broader FEVER/RoBERTa run on 320 balanced examples reproduced the paper's core claim at small scale: the TensorLLM-modified model improved accuracy over original RoBERTa while compressing the modified MHA layer.
 - Validated the packaged gym with `python validate.py --compare`; scoring includes both benefit (`accuracy`, `loss`) and constraint (`mha_compression_ratio`) metrics.
 
+### [2026-06-07 10:35] - core_claim
+- Continuation audit restored the milestone from `method_runs` to `core_claim` after checking that `method/` implements the paper's actual multi-head tensorisation plus shared Tucker/HOOI reconstruction rather than a surrogate.
+- Re-ran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; the reproduced scores remained RoBERTa original 50.00% accuracy vs TensorLLM 54.69% accuracy with 1.99x MHA compression.
+
 ## Stop Justification
 - Completed at milestone `core_claim`.
