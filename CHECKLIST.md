@@ -9,7 +9,7 @@
 ## Scoring
 - [x] `scoring/reference.json`
 - [ ] Workspace validated via `python validate.py`
-- [ ] `scoring/scores.json`
+- [x] `scoring/scores.json`
 - [x] `scoring/EXPERIMENTS.md`
 - [x] `scoring/TARGETS.md`
 - [x] `scoring/CONSTRAINTS.md`
@@ -34,7 +34,7 @@
 - [x] Pretrained model downloaded
 
 ## Milestones
-- [ ] `method_runs`
+- [x] `method_runs`
 - [ ] `core_claim`
 - [ ] `core_claim_plus`
 - [ ] `secondary_claims`

@@ -44,8 +44,6 @@ def main() -> None:
             continue
         metrics = score_predictions(Path(condition["predictions"]))
         metrics["mha_compression_ratio"] = float(condition["compression_ratio"])
-        if condition.get("relative_reconstruction_error") is not None:
-            metrics["relative_reconstruction_error"] = float(condition["relative_reconstruction_error"])
         results[mapped] = metrics
 
     if "roberta_original" not in results or "tensorllm_roberta" not in results:

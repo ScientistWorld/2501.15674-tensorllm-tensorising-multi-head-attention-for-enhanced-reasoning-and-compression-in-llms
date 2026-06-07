@@ -8,15 +8,17 @@ Audit on 2026-06-07 found that `eval/` remains separated from `method/`, `valida
 
 ## Results
 
-No compute job has completed yet in this continuation. The next submitted job will run a CPU smoke search over a reduced set of layers/ranks and write `scoring/scores.json`.
+The first CPU smoke job completed successfully on 80 FEVER examples. The original RoBERTa condition reached 58.75% accuracy and 0.958 loss. The best TensorLLM condition preserved 58.75% accuracy, lowered loss to 0.840, and compressed the modified MHA layer by 3.19x. This establishes that the paper's method runs end-to-end and satisfies the compression/loss side of the claim, but it does not yet show an accuracy gain over the original model.
 
 ## Remaining
 
-Run the initial job, inspect whether TensorLLM improves over the original model on the FEVER subset, and expand the layer/rank search if the core claim is not yet supported.
+Run a broader layer/rank search and larger FEVER subset to look for the accuracy improvement needed for `core_claim`.
 
 ## Issues
 
 The paper does not provide a code repository or exact rank/layer hyperparameters. The reproduction therefore implements the described algorithm directly and searches a small set of layer/rank settings.
+
+The first evaluation wrote reconstruction error into `scores.json`, which is useful diagnostic metadata but not part of `reference.json`; this has been fixed so official scores only contain declared metrics.
 
 ## Deviations from Paper
 
