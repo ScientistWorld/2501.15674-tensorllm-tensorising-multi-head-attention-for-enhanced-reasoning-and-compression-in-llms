@@ -29,5 +29,9 @@
 - Added a short managed-container smoke job that regenerates method artifacts in an isolated output directory, then restores and validates the established core-claim scores.
 - Repaired baseline-only scoring and added validation for invalid Tucker rank settings.
 
+### [2026-06-07 11:13] - core_claim
+- Final verifier checked folder separation, scoring files, train/test method-key consistency, artifact-only evaluation, and URL reachability.
+- `python validate.py --compare` passes, and the reproduced TensorLLM score remains above the original RoBERTa baseline while reporting the compression constraint.
+
 ## Stop Justification
-- Not stopped; continuing validation from milestone `core_claim`.
+- Final verification complete. The gym is ready at milestone `core_claim`; remaining limitations are documented in `PROGRESS.md` and `VERIFICATION.md`.

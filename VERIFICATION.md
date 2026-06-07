@@ -2,20 +2,21 @@
 
 ## Initial Assessment
 
-The workspace already claimed `core_claim` and contained a runnable scaled reproduction on RoBERTa/FEVER artifacts. The claim was justified: the method code implements the paper's post-training structured reconstruction procedure, the evaluator reads prediction artifacts rather than rerunning the method, and the reproduced scores improve over the original-model baseline while reporting a compression constraint.
+The workspace already claimed `core_claim` and contained a runnable scaled reproduction on RoBERTa/FEVER artifacts. The claim remains justified: the method code implements the paper's post-training structured reconstruction procedure, the evaluator reads prediction artifacts rather than rerunning the method, and the reproduced scores improve over the original-model baseline while reporting the compression constraint.
 
 ## Issues Found
 
-- Minor: Several method-agnostic or high-level documentation files exposed implementation details more directly than needed for from-scratch mode.
-- Minor: The loss metric coefficient used a negative sign even though `higher_is_better: false` already encodes that lower loss is better.
-- Minor: `reference.json` did not explicitly note that balanced accuracy and prediction-distribution shift are gym-only metrics not reported by the paper.
+- Minor: `action.yaml` still requested a CPU smoke-test submission from the prior iteration instead of signaling final verification completion.
+- Minor: `MILESTONES.md` still described validation as ongoing even though the final verification pass is complete.
 
 ## Fixes Applied
 
-- Generalized problem, evaluation, experiment, target, constraint, and direction text so from-scratch agents see the task, artifact contract, and fixed constraints without architecture or algorithm details.
-- Set the loss coefficient positive while preserving the negative coefficient for prediction-distribution shift as a constraint metric.
-- Added a `reference.json` note explaining which values come from the paper and which metrics are gym-only artifact checks.
-- Re-ran `scripts/evaluate.sh`, `scripts/evaluate_train.sh`, `scripts/evaluate_test.sh`, and `python validate.py --compare`; all checks passed. Also verified the FEVER and RoBERTa download URLs are reachable.
+- Checked strict method-agnostic files and high-level scoring guidance for method leakage; no further edits were needed.
+- Confirmed `eval/` is artifact-only and independent from `method/`, with train/test evaluators using matching method keys.
+- Verified no committed code in `method/`, `eval/`, `baseline/`, `scripts/`, or tracked `data/` references `/home/user/shared` or `shared/`.
+- Verified all URLs in `scripts/download.sh` resolve with `curl -I -L --max-time 15`.
+- Re-ran `python validate.py --compare`; all checks passed.
+- Updated `MILESTONES.md` and `action.yaml` to close the workflow at `core_claim`.
 
 ## Final Judgment
 
@@ -23,5 +24,5 @@ The workspace is ready to serve as a research gym in both improve and from-scrat
 
 - Milestone: core_claim
 - Ready for gym use: yes
-- Confidence: medium
-- Key limitation: Scaled-down RoBERTa/FEVER subset only.
+- Confidence: medium-high
+- Key limitation: Scaled-down RoBERTa/FEVER subset only; compression is scored as the factorized representation ratio, not reduced runtime memory use.

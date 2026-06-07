@@ -1,5 +1,5 @@
-action: submit
+action: done
 gpus: 0
-test: true
+test: false
 milestone: core_claim
-notes: "CPU smoke job: run offline-safe reproduce.sh on a 40-example TensorLLM setting, then restore/evaluate the established FEVER RoBERTa core-claim artifacts."
+notes: "Final verification passed: scoring, separation, URLs, and artifact-only evaluation are ready for gym use."
