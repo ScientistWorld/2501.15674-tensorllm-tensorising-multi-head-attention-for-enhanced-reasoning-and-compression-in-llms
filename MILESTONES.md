@@ -17,4 +17,4 @@
 - Reran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; both passed with the same core-claim scores.
 
 ## Stop Justification
-- Completed at milestone `core_claim`; higher milestones require adding more datasets, larger decoder-only models, LASER hybrid runs, or ablations beyond the minimum validated environment.
+- Completed at milestone `core_claim`.
