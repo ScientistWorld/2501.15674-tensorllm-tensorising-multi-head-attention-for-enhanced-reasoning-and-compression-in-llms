@@ -113,19 +113,37 @@ def compression_ratio(condition: dict, method_name: str) -> float:
     return computed
 
 
+def benchmark_methods(path: Path) -> set[str] | None:
+    if not path.exists():
+        return None
+    scores = json.loads(path.read_text())
+    experiments = scores.get("experiments", scores)
+    experiment = experiments.get(EXPERIMENT)
+    if not isinstance(experiment, dict):
+        return None
+    results = experiment.get("results", experiment)
+    if not isinstance(results, dict):
+        return None
+    return {str(method_name) for method_name in results}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", default="outputs/tensorllm_fever/manifest.json")
     parser.add_argument("--output", default="scoring/scores_train.json")
+    parser.add_argument("--benchmark-scores", default="scoring/scores.json")
     args = parser.parse_args()
 
     manifest_path = Path(args.manifest)
     manifest = json.loads(manifest_path.read_text())
+    requested_methods = benchmark_methods(Path(args.benchmark_scores))
 
     results: dict[str, dict[str, float]] = {}
     counts: dict[str, int] = {}
     for condition in manifest["conditions"]:
         method_name = score_key(condition)
+        if requested_methods is not None and method_name not in requested_methods:
+            continue
         if method_name in results:
             raise RuntimeError(f"Duplicate score key in manifest: {method_name}")
         metrics, count = score_predictions(resolve_prediction_path(condition["predictions"], manifest_path))
@@ -133,6 +151,10 @@ def main() -> None:
         results[method_name] = metrics
         counts[method_name] = count
 
+    if requested_methods is not None:
+        missing = sorted(requested_methods - set(results))
+        if missing:
+            raise RuntimeError(f"Manifest is missing benchmark method keys: {missing}")
     if not results:
         raise RuntimeError("Manifest did not contain any scoreable conditions")
 
@@ -141,6 +163,7 @@ def main() -> None:
             "slice": SLICE_NAME,
             "split": "prediction_row_index_mod_2",
             "manifest": str(manifest_path),
+            "benchmark_scores": str(Path(args.benchmark_scores)),
             "examples_per_method": counts,
         },
         "experiments": {EXPERIMENT: {"results": results}},

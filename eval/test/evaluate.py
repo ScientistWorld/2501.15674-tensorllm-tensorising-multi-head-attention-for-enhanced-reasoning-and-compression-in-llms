@@ -121,16 +121,33 @@ def train_methods(path: Path) -> set[str] | None:
     return set(results)
 
 
+def benchmark_methods(path: Path) -> set[str] | None:
+    if not path.exists():
+        return None
+    scores = json.loads(path.read_text())
+    experiments = scores.get("experiments", scores)
+    experiment = experiments.get(EXPERIMENT)
+    if not isinstance(experiment, dict):
+        return None
+    results = experiment.get("results", experiment)
+    if not isinstance(results, dict):
+        return None
+    return {str(method_name) for method_name in results}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", default="outputs/tensorllm_fever/manifest.json")
     parser.add_argument("--output", default="scoring/scores_test.json")
     parser.add_argument("--train-scores", default="scoring/scores_train.json")
+    parser.add_argument("--benchmark-scores", default="scoring/scores.json")
     args = parser.parse_args()
 
     manifest_path = Path(args.manifest)
     manifest = json.loads(manifest_path.read_text())
     requested_methods = train_methods(Path(args.train_scores))
+    if requested_methods is None:
+        requested_methods = benchmark_methods(Path(args.benchmark_scores))
 
     results: dict[str, dict[str, float]] = {}
     counts: dict[str, int] = {}
@@ -158,6 +175,7 @@ def main() -> None:
             "split": "prediction_row_index_mod_2",
             "manifest": str(manifest_path),
             "train_scores": str(Path(args.train_scores)),
+            "benchmark_scores": str(Path(args.benchmark_scores)),
             "examples_per_method": counts,
         },
         "experiments": {EXPERIMENT: {"results": results}},

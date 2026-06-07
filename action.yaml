@@ -1,4 +1,4 @@
 action: submit
 gpus: 0
 test: false
-notes: "Run evaluate_train.sh and evaluate_test.sh against outputs/tensorllm_fever/manifest.json to populate split scores."
+notes: "Re-run split scoring after filtering manifest variants to benchmark methods declared in scoring/scores.json."
