@@ -34,4 +34,4 @@
 - `python validate.py --compare` passes, and the reproduced TensorLLM score remains above the original RoBERTa baseline while reporting the compression constraint.
 
 ## Stop Justification
-- Final verification complete. The gym is ready at milestone `core_claim`; remaining limitations are documented in `PROGRESS.md` and `VERIFICATION.md`.
+- Completed at milestone `core_claim`.
