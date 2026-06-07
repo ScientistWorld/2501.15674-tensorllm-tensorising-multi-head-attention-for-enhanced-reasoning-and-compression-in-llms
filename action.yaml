@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
-gpus: 0
+action: pending
+gpus: 1
 test: false
-milestone: core_claim
-notes: "Core claim reproduced on the packaged FEVER/RoBERTa environment: TensorLLM improved accuracy from 50.00% to 54.69%, reduced loss from 1.097 to 0.696, and compressed the modified MHA layer by 1.99x."
+milestone: method_runs
+notes: ""
