@@ -1,0 +1,141 @@
+{
+  "paper_id": "2501.15674",
+  "phase": "train",
+  "cohort": [
+    "claude-opus-4-8-xhigh",
+    "claude-opus-xhigh",
+    "gpt-5.6-sol-xhigh",
+    "gpt-5.6-terra-xhigh",
+    "gpt-5.6-luna-xhigh",
+    "gpt-5.5-xhigh",
+    "glm-5-xhigh",
+    "minimax-xhigh",
+    "grok-4.3-xhigh",
+    "gemini-3-pro-preview",
+    "gemini-3.1-flash-lite-preview",
+    "kimi-k2.6-thinking",
+    "mimo-pro-xhigh",
+    "deepseek-v4-pro-xhigh"
+  ],
+  "models_present": [
+    "gpt-5.5-xhigh",
+    "gpt-5.6-luna-xhigh",
+    "gpt-5.6-sol-xhigh",
+    "gpt-5.6-terra-xhigh"
+  ],
+  "n_models": 4,
+  "n_cells": 5,
+  "last_updated": "2026-08-11T19:14:01.653077+00:00",
+  "excluded": false,
+  "typical_spread": 3.437123008275836,
+  "paper_baseline": 0.7076049488093514,
+  "cohort_raw": {
+    "gpt-5.5-xhigh": 0.34205838997298477,
+    "gpt-5.6-luna-xhigh": -0.7071833603577418,
+    "gpt-5.6-sol-xhigh": 1.3442474882864524,
+    "gpt-5.6-terra-xhigh": -0.43693055662022673
+  },
+  "cells": [
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "accuracy",
+      "source": 52.5,
+      "higher_is_better": true,
+      "coefficient": 0.1749008597212472,
+      "prior_weight": 1.0,
+      "spread": 4.030321275448563,
+      "normalizer": 4.030321275448563,
+      "effective_weight": 0.4987954382546211,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": 6.875,
+        "gpt-5.6-terra-xhigh": -0.625,
+        "gpt-5.6-luna-xhigh": -1.875,
+        "gpt-5.5-xhigh": 3.75
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "balanced_accuracy",
+      "source": 52.15759849906192,
+      "higher_is_better": true,
+      "coefficient": 0.09862580846739805,
+      "prior_weight": 0.5,
+      "spread": 3.437123008275836,
+      "normalizer": 3.437123008275836,
+      "effective_weight": 0.23987031910702614,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": 7.207629768605372,
+        "gpt-5.6-terra-xhigh": 0.8286429018136232,
+        "gpt-5.6-luna-xhigh": -0.6410256410256494,
+        "gpt-5.5-xhigh": 3.3771106941838624
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "loss",
+      "source": 0.69337368439883,
+      "higher_is_better": false,
+      "coefficient": 0.7902408567219672,
+      "prior_weight": 0.25,
+      "spread": 0.1141357478007081,
+      "normalizer": 0.1141357478007081,
+      "effective_weight": 0.06382223810031983,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": 0.014407705701887652,
+        "gpt-5.6-terra-xhigh": -0.06285658986307674,
+        "gpt-5.6-luna-xhigh": -0.2353800578042865,
+        "gpt-5.5-xhigh": -0.002439092425629452
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "prediction_distribution_shift",
+      "source": 12.5,
+      "higher_is_better": false,
+      "coefficient": 0.009396552717661242,
+      "prior_weight": 0.2,
+      "spread": 19.48139470323758,
+      "normalizer": 19.48139470323758,
+      "effective_weight": 0.12953271299648658,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": 11.875,
+        "gpt-5.6-terra-xhigh": -33.12499999999999,
+        "gpt-5.6-luna-xhigh": -24.375,
+        "gpt-5.5-xhigh": -15.000000000000004
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "mha_compression_ratio",
+      "source": 1.9947782091692483,
+      "higher_is_better": true,
+      "coefficient": 0.3904689110434912,
+      "prior_weight": 0.25,
+      "spread": 0.24603637027349706,
+      "normalizer": 0.24603637027349706,
+      "effective_weight": 0.06797929154154621,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": -0.34972488238090427,
+        "gpt-5.6-terra-xhigh": -0.5863667356828461,
+        "gpt-5.6-luna-xhigh": -0.4947782091692483,
+        "gpt-5.5-xhigh": -0.92880553512891
+      }
+    }
+  ],
+  "mode": "innovate",
+  "pruned_cells": [
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "accuracy"
+    }
+  ],
+  "locked": true,
+  "locked_at": "2026-08-11T19:17:50.455535+00:00",
+  "locked_n_models": 4
+}

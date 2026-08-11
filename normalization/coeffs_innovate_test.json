@@ -1,0 +1,135 @@
+{
+  "paper_id": "2501.15674",
+  "phase": "test",
+  "cohort": [
+    "claude-opus-4-8-xhigh",
+    "claude-opus-xhigh",
+    "gpt-5.6-sol-xhigh",
+    "gpt-5.6-terra-xhigh",
+    "gpt-5.6-luna-xhigh",
+    "gpt-5.5-xhigh",
+    "glm-5-xhigh",
+    "minimax-xhigh",
+    "grok-4.3-xhigh",
+    "gemini-3-pro-preview",
+    "gemini-3.1-flash-lite-preview",
+    "kimi-k2.6-thinking",
+    "mimo-pro-xhigh",
+    "deepseek-v4-pro-xhigh"
+  ],
+  "models_present": [
+    "gpt-5.5-xhigh",
+    "gpt-5.6-luna-xhigh",
+    "gpt-5.6-sol-xhigh",
+    "gpt-5.6-terra-xhigh"
+  ],
+  "n_models": 4,
+  "n_cells": 5,
+  "last_updated": "2026-08-11T19:14:01.693990+00:00",
+  "excluded": false,
+  "typical_spread": 3.251340282275632,
+  "paper_baseline": 1.3291687093571944,
+  "cohort_raw": {
+    "gpt-5.5-xhigh": -2.160089697306725,
+    "gpt-5.6-luna-xhigh": -1.572088349240798,
+    "gpt-5.6-sol-xhigh": 0.002270739276688624,
+    "gpt-5.6-terra-xhigh": -1.5822260516045663
+  },
+  "cells": [
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "accuracy",
+      "source": 56.875,
+      "higher_is_better": true,
+      "coefficient": 0.10984072650046449,
+      "prior_weight": 1.0,
+      "spread": 3.3608887093545166,
+      "normalizer": 3.3608887093545166,
+      "effective_weight": 0.49067918720858866,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": 0.0,
+        "gpt-5.6-terra-xhigh": -5.0,
+        "gpt-5.6-luna-xhigh": -5.0,
+        "gpt-5.5-xhigh": -8.125
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "balanced_accuracy",
+      "source": 57.30143839899937,
+      "higher_is_better": true,
+      "coefficient": 0.056304399316743914,
+      "prior_weight": 0.5,
+      "spread": 3.251340282275632,
+      "normalizer": 3.251340282275632,
+      "effective_weight": 0.24332395286193775,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": -0.46904315196998425,
+        "gpt-5.6-terra-xhigh": -6.53533458411507,
+        "gpt-5.6-luna-xhigh": -6.253908692933088,
+        "gpt-5.5-xhigh": -7.73921200750469
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "loss",
+      "source": 0.6985086262226105,
+      "higher_is_better": false,
+      "coefficient": 0.4073131632763464,
+      "prior_weight": 0.25,
+      "spread": 0.12038471753841158,
+      "normalizer": 0.12038471753841158,
+      "effective_weight": 0.06517483080899811,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": 0.021320296265184835,
+        "gpt-5.6-terra-xhigh": -0.036889825575053714,
+        "gpt-5.6-luna-xhigh": -0.25257012294605374,
+        "gpt-5.5-xhigh": -0.03989385347813368
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "prediction_distribution_shift",
+      "source": 18.124999999999996,
+      "higher_is_better": false,
+      "coefficient": 0.0053508655418089005,
+      "prior_weight": 0.2,
+      "spread": 18.479824302465648,
+      "normalizer": 18.479824302465648,
+      "effective_weight": 0.13143226269631336,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": 17.499999999999993,
+        "gpt-5.6-terra-xhigh": -25.000000000000004,
+        "gpt-5.6-luna-xhigh": -13.750000000000007,
+        "gpt-5.5-xhigh": -15.625000000000004
+      }
+    },
+    {
+      "experiment": "fever_roberta_binary",
+      "method": "tensorllm_roberta",
+      "metric": "mha_compression_ratio",
+      "source": 1.9947782091692483,
+      "higher_is_better": true,
+      "coefficient": 0.21218564805623,
+      "prior_weight": 0.25,
+      "spread": 0.24603637027349706,
+      "normalizer": 0.24603637027349706,
+      "effective_weight": 0.06938976642416204,
+      "cohort_imp": {
+        "gpt-5.6-sol-xhigh": -0.34972488238090427,
+        "gpt-5.6-terra-xhigh": -0.5863667356828461,
+        "gpt-5.6-luna-xhigh": -0.4947782091692483,
+        "gpt-5.5-xhigh": -0.92880553512891
+      }
+    }
+  ],
+  "mode": "innovate",
+  "pruned_cells": [],
+  "locked": true,
+  "locked_at": "2026-08-11T19:17:50.455535+00:00",
+  "locked_n_models": 4
+}
