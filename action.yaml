@@ -5,4 +5,4 @@ action: submit
 gpus: 1
 test: false
 milestone: core_claim
-notes: "Hardening job: build visible/hidden task splits, reproduce TensorLLM reference (layer x rank search on visible split), score with new evaluator-run patch scorers, then build+score better/weaker variants and shortcuts through the hidden test (redteam/hardening/run.sh). Resumable stages."
+notes: "Rerun hardening job after data-builder fix (duplicate bios prompt dropped from held-out split, LASER decode cleanup). Builds splits, reproduces TensorLLM reference on visible split, scores with evaluator-run patch scorers, builds+scores variants and shortcuts through hidden test."

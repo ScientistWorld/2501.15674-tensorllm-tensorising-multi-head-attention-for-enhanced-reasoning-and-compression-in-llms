@@ -3,7 +3,7 @@
   "tasks": {
     "bios_profession_roberta": {
       "file": "bios_profession_val.jsonl",
-      "sha256": "8d38cc801f66fbd3154b9584f90d37c05eabb1aa2b3f3948e7e21eb3809f7bad",
+      "sha256": "407835c841b718e78923522e0559d118d16f7f8b320114a0af8fc574677560ad",
       "n_examples": 3844,
       "n_full_dataset": 19223,
       "candidates": [

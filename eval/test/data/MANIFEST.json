@@ -1,0 +1,37 @@
+{
+  "split": "held-out test",
+  "tasks": {
+    "bios_profession_roberta": {
+      "file": "bios_profession_test.jsonl",
+      "sha256": "f8aa17c81e1511167ec3f872750327c1e466149f620a3d65700c74ffb7ed0368",
+      "n_examples": 3843,
+      "n_full_dataset": 19223,
+      "portion": "last 20%: positions 15379..19222 of the ordered dataset",
+      "dropped_duplicates_of_visible_prompts": [
+        "bios-dev-36212"
+      ],
+      "label_counts": {
+        "professor": 2351,
+        "teacher": 332,
+        "architect": 214,
+        "model": 157,
+        "poet": 137,
+        "composer": 113,
+        "journalist": 388,
+        "painter": 151
+      }
+    },
+    "fever_roberta_binary": {
+      "file": "fever_test.jsonl",
+      "sha256": "121e51a0aae9500ee72e027d5b5110845f8e0864608e13c6e4cce288bf57b6a0",
+      "n_examples": 6576,
+      "n_full_dataset": 13086,
+      "portion": "FEVER paper_test portion: positions 6510..13085 of the ordered dataset",
+      "dropped_duplicates_of_visible_prompts": [],
+      "label_counts": {
+        "true": 3297,
+        "false": 3279
+      }
+    }
+  }
+}
