@@ -1,4 +1,2 @@
-action: submit
-gpus: 0
-test: true
-notes: "Audit: 3 seeded reference reruns, honest HOOI/search improvements and ablations, 18 artifact shortcuts, all via no-argument hidden test; bundled CPU job."
+action: done
+notes: "Audit complete: 24 hidden-test runs, 17 shortcut attempts, zero reference seed spread; major scoring shortcuts confirmed and mutable gym files restored. See REDTEAM.md."
