@@ -13,7 +13,7 @@
         },
         "loss": {
           "higher_is_better": false,
-          "coefficient": 0.25,
+          "coefficient": 0.1,
           "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold answer token at the masked position."
         },
         "mha_compression_ratio": {
@@ -23,8 +23,18 @@
         }
       },
       "results": {
-        "roberta_original": {"type": "baseline", "accuracy": 50.0, "loss": 2.5, "mha_compression_ratio": 1.0},
-        "tensorllm_roberta": {"type": "proposed", "accuracy": 50.45, "loss": 1.47, "mha_compression_ratio": 3.74}
+        "roberta_original": {
+          "type": "baseline",
+          "accuracy": 50.0,
+          "loss": 2.5,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "type": "proposed",
+          "accuracy": 50.45,
+          "loss": 1.47,
+          "mha_compression_ratio": 3.74
+        }
       }
     },
     "bios_profession_roberta": {
@@ -40,7 +50,7 @@
         },
         "loss": {
           "higher_is_better": false,
-          "coefficient": 0.25,
+          "coefficient": 0.1,
           "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold profession token at the masked position."
         },
         "mha_compression_ratio": {
@@ -50,8 +60,18 @@
         }
       },
       "results": {
-        "roberta_original": {"type": "baseline", "accuracy": 64.5, "loss": 4.91, "mha_compression_ratio": 1.0},
-        "tensorllm_roberta": {"type": "proposed", "accuracy": 72.57, "loss": 6.64, "mha_compression_ratio": 8.78}
+        "roberta_original": {
+          "type": "baseline",
+          "accuracy": 64.5,
+          "loss": 4.91,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "type": "proposed",
+          "accuracy": 72.57,
+          "loss": 6.64,
+          "mha_compression_ratio": 8.78
+        }
       }
     }
   }

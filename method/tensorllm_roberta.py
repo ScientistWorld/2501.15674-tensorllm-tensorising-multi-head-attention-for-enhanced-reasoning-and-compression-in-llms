@@ -18,11 +18,10 @@ Paper procedure, per reasoning task:
    the visible validation split (the first 20% of each dataset), best accuracy
    first, then lower loss.
 
-The selected decomposition is written as a projection patch (the three shared
-factor matrices of the multi-head layout) to
-``outputs/submissions/tensorllm_roberta/<task>/``; the scorers recompute the
-core from the original weights (identical to the HOOI core), rebuild the
-weights and count the parameters (factors + core).
+The selected structure (layer, multi-head layout, ranks of the three shared
+modes) is written to ``outputs/submissions/tensorllm_roberta/<task>/patch.json``;
+the scorers run the same HOOI on the original weights, rebuild the layer and
+count the parameters (shared factors + core).
 """
 
 from __future__ import annotations
@@ -167,18 +166,16 @@ def decompose_layer(model: Roberta, layer: int, ranks, n_iter_max: int, tol: flo
     return core, factors, info
 
 
-def patch_for(layer: int, factors, prefix: str = ""):
-    """Submission block: the multi-head layout of Q, K, V, O^T with the three shared factor matrices.
+def patch_for(layer: int, ranks) -> dict:
+    """Submission block: multi-head layout of Q, K, V, O^T, shared factors on modes 0-2.
 
-    The head mode carries no factor (uncompressed, Eq. 10).  The scorers rebuild
-    G_all = W_all x_1 U1^T x_2 U2^T x_3 U3^T (the HOOI core, since the factors are
-    orthonormal) and W_all' = G_all x_1 U1 x_2 U2 x_3 U3.
+    The head mode (3) gets no rank, i.e. it stays uncompressed (Eq. 10).  The
+    scorers run the same HOOI on the original weights and rebuild
+    W_all' = G_all x_1 U1 x_2 U2 x_3 U3.
     """
-    names = [f"{prefix}U_model", f"{prefix}U_head", f"{prefix}U_type"]
-    tensors = dict(zip(names, factors))
-    block = {"layer": int(layer), "targets": list(MATRICES), "layout": "heads",
-             "factors": {"0": names[0], "1": names[1], "2": names[2]}}
-    return block, tensors
+    r1, r2, r3 = (int(r) for r in ranks)
+    return {"layer": int(layer), "targets": list(MATRICES), "layout": "heads",
+            "ranks": {"0": r1, "1": r2, "2": r3}}
 
 
 # --------------------------------------------------------------------------
@@ -277,8 +274,7 @@ def main() -> None:
     for name in names:
         best = select(log, name, allowed)
         layer, ranks = best["layer"], tuple(best["ranks"])
-        _, factors, info = decompose_layer(model, layer, ranks, args.n_iter_max, args.tol)
-        block, tensors = patch_for(layer, factors)
+        info = {"hooi_iterations": best["hooi_iterations"], "relative_error": best["relative_error"]}
         notes = {
             "method": "TensorLLM shared-factor Tucker (HOOI) on one layer's multi-head attention",
             "layer": layer,
@@ -286,7 +282,7 @@ def main() -> None:
             "validation": best[name],
             **info,
         }
-        write_patch(out_dir / name, [block], tensors, notes)
+        write_patch(out_dir / name, [patch_for(layer, ranks)], notes)
         selection[name] = {"layer": layer, "ranks": list(ranks), "compression_ratio": compression_ratio(ranks),
                            "validation": best[name], **info}
         print(f"selected {name}: layer {layer} ranks {ranks} CR={compression_ratio(ranks):.2f} "

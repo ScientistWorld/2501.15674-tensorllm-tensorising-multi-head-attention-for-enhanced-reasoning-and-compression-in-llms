@@ -7,16 +7,16 @@ metrics, gate and failure rules, applied to the public validation split in
 
 Every method is a directory ``outputs/submissions/<method>/`` holding, per
 experiment, a structured low-rank replacement of attention projection matrices
-(``<experiment>/patch.json`` + ``<experiment>/tensors.safetensors``; format in
-``briefing/evaluation.md``): which layers and matrices, how they are arranged
-into a tensor, and one factor matrix per compressed tensor mode.  This scorer
-trusts nothing a method writes except those factor matrices:
+(``<experiment>/patch.json``; format in ``briefing/evaluation.md``): which
+layers and matrices, how they are arranged into a tensor, and the multilinear
+rank of each compressed tensor mode.  The submission is structure only:
 
 * it verifies the fixed pretrained model files against pinned SHA-256 hashes;
-* it computes every replaced matrix itself, as the orthogonal projection of
-  the ORIGINAL pretrained weights onto the subspaces spanned by the submitted
-  factors (core = weights x_n Q_n^T, rebuilt = core x_n Q_n), and counts the
-  stored parameters (factors + core + matrices of a modified layer left dense);
+* it computes every replaced matrix itself: a Tucker/HOOI approximation
+  (HOSVD start, <= 100 sweeps, tolerance 1e-8) of the ORIGINAL pretrained
+  weights with the declared layout and ranks, and counts the parameters of
+  that representation (factor matrices + core + matrices of a modified layer
+  left dense);
 * it runs the fixed model with the rebuilt weights on the public validation
   prompts in ``data/tasks/`` and computes accuracy, gold-token
   negative log-likelihood and the compression ratio of the modified layers;
@@ -85,11 +85,8 @@ MATRICES = ("query", "key", "value", "output")
 PAD_ID, MASK_ID = 1, 50264
 LN_EPS = 1e-5
 
-PATCH_FORMAT = "mha-projection-patch-v2"
+PATCH_FORMAT = "mha-structure-patch-v3"
 MAX_BLOCKS = 4 * N_LAYERS
-MAX_TENSORS = 512
-MAX_TENSOR_FILE_BYTES = 256 * 1024 * 1024
-RANK_TOL = 1e-6  # a factor must have full column rank (sigma_min > RANK_TOL * sigma_max)
 
 
 class PatchError(Exception):
@@ -116,8 +113,13 @@ def verify_model_files() -> list[str]:
 
 
 # --------------------------------------------------------------------------
-# Patch materialisation: every replaced weight is computed here, as an
-# orthogonal multilinear projection of the ORIGINAL pretrained weights.
+# Patch materialisation: a submission declares structure only (layer, target
+# matrices, tensor layout, multilinear ranks).  The evaluator computes the
+# decomposition itself -- HOOI (HOSVD initialisation, at most 100 sweeps,
+# tolerance 1e-8 on the change of relative error, as TensorLy's
+# partial_tucker) of the ORIGINAL pretrained weights on the declared modes --
+# rebuilds the weights from it and counts the parameters (factors + core +
+# matrices of a modified layer left dense).
 # --------------------------------------------------------------------------
 
 LAYOUT_SHAPES = {
@@ -126,6 +128,8 @@ LAYOUT_SHAPES = {
     # multi-head arrangement: d_model x d_v x n_targets x h
     "heads": lambda n: (D_MODEL, HEAD_DIM, n, N_HEADS),
 }
+HOOI_MAX_ITER = 100
+HOOI_TOL = 1e-8
 
 
 def to_layout(mats, layout: str):
@@ -142,6 +146,10 @@ def from_layout(tensor, layout: str, n: int):
     return tensor.permute(2, 0, 3, 1).reshape(n, D_MODEL, N_HEADS * HEAD_DIM)
 
 
+def unfold(tensor, mode: int):
+    return tensor.movedim(mode, 0).reshape(tensor.shape[mode], -1)
+
+
 def mode_dot(tensor, matrix, mode: int):
     """tensor x_mode matrix, matrix of shape [J, I_mode]."""
     moved = tensor.movedim(mode, 0)
@@ -150,12 +158,46 @@ def mode_dot(tensor, matrix, mode: int):
     return out.reshape((matrix.shape[0],) + tuple(shape[1:])).movedim(0, mode)
 
 
+def leading_left_singular_vectors(matrix, rank: int):
+    import torch
+
+    _, vectors = torch.linalg.eigh(matrix @ matrix.T)
+    return vectors[:, -rank:].flip(-1).contiguous()
+
+
+def hooi_reconstruction(tensor, ranks: dict[int, int]):
+    """Partial-Tucker HOOI of ``tensor`` (float64) on the modes in ``ranks``; returns the rebuilt tensor."""
+    modes = sorted(ranks)
+    norm_sq = float((tensor * tensor).sum())
+    factors = {m: leading_left_singular_vectors(unfold(tensor, m), ranks[m]) for m in modes}
+    errors: list[float] = []
+    for iteration in range(HOOI_MAX_ITER):
+        for mode in modes:
+            projected = tensor
+            for other in modes:
+                if other != mode:
+                    projected = mode_dot(projected, factors[other].T, other)
+            factors[mode] = leading_left_singular_vectors(unfold(projected, mode), ranks[mode])
+        core = tensor
+        for mode in modes:
+            core = mode_dot(core, factors[mode].T, mode)
+        errors.append(math.sqrt(abs(norm_sq - float((core * core).sum()))) / math.sqrt(norm_sq))
+        if iteration > 1 and abs(errors[-2] - errors[-1]) < HOOI_TOL:
+            break
+    core = tensor
+    for mode in modes:
+        core = mode_dot(core, factors[mode].T, mode)
+    rebuilt = core
+    for mode in modes:
+        rebuilt = mode_dot(rebuilt, factors[mode], mode)
+    return rebuilt, errors[-1]
+
+
 def materialize_patch(patch_dir: Path, model):
     """Validate a patch and compute its replaced matrices; raise PatchError if invalid."""
     import torch
 
     spec_path = patch_dir / "patch.json"
-    tensor_path = patch_dir / "tensors.safetensors"
     if not spec_path.is_file():
         raise PatchError("patch.json not found")
     try:
@@ -168,33 +210,10 @@ def materialize_patch(patch_dir: Path, model):
     if not isinstance(blocks, list) or len(blocks) > MAX_BLOCKS:
         raise PatchError(f"'blocks' must be a list with at most {MAX_BLOCKS} entries")
 
-    tensors: dict[str, "torch.Tensor"] = {}
-    if tensor_path.is_file():
-        if tensor_path.stat().st_size > MAX_TENSOR_FILE_BYTES:
-            raise PatchError("tensors.safetensors is too large")
-        from safetensors.torch import load_file
-
-        try:
-            raw = load_file(str(tensor_path), device="cpu")
-        except Exception as exc:  # noqa: BLE001
-            raise PatchError(f"tensors.safetensors unreadable: {exc}") from exc
-        if len(raw) > MAX_TENSORS:
-            raise PatchError("too many tensors")
-        for name, value in raw.items():
-            if value.is_complex() or not value.is_floating_point():
-                raise PatchError(f"tensor {name} must be real floating point")
-            value = value.to(torch.float32)
-            if not bool(torch.isfinite(value).all()):
-                raise PatchError(f"tensor {name} contains non-finite values")
-            tensors[name] = value
-    elif blocks:
-        raise PatchError("tensors.safetensors not found")
-    # Every stored tensor counts towards the representation, used or not.
-    stored_params = int(sum(value.numel() for value in tensors.values()))
-
     overrides: dict[tuple[int, str], "torch.Tensor"] = {}
     touched: set[int] = set()
-    core_params = 0
+    stored_params = 0
+    errors = []
     for index, block in enumerate(blocks):
         if not isinstance(block, dict):
             raise PatchError(f"block {index} is not an object")
@@ -209,54 +228,45 @@ def materialize_patch(patch_dir: Path, model):
             or len(set(targets)) != len(targets)
         ):
             raise PatchError(f"block {index}: targets must be distinct names from {MATRICES}")
+        for target in targets:
+            if (layer, target) in overrides:
+                raise PatchError(f"block {index}: layer {layer} {target} is replaced twice")
         layout = block.get("layout")
         if layout not in LAYOUT_SHAPES:
             raise PatchError(f"block {index}: layout must be one of {sorted(LAYOUT_SHAPES)}")
         shape = LAYOUT_SHAPES[layout](len(targets))
-        factors = block.get("factors")
-        if not isinstance(factors, dict) or not factors:
-            raise PatchError(f"block {index}: 'factors' must map at least one mode index to a stored tensor")
-        bases = {}
-        for mode_key, name in factors.items():
+        raw_ranks = block.get("ranks")
+        if not isinstance(raw_ranks, dict) or not raw_ranks:
+            raise PatchError(f"block {index}: 'ranks' must map at least one mode index to a rank")
+        ranks: dict[int, int] = {}
+        for mode_key, rank in raw_ranks.items():
             if not (isinstance(mode_key, str) and mode_key.isascii() and mode_key.isdigit()
                     and int(mode_key) < len(shape)):
-                raise PatchError(f"block {index}: factor keys must be mode indices 0..{len(shape) - 1}")
+                raise PatchError(f"block {index}: rank keys must be mode indices 0..{len(shape) - 1}")
             mode = int(mode_key)
-            if not isinstance(name, str) or name not in tensors:
-                raise PatchError(f"block {index}: factor for mode {mode} must name a stored tensor")
-            factor = tensors[name]
-            if factor.dim() != 2 or factor.shape[0] != shape[mode] or not 1 <= factor.shape[1] <= shape[mode]:
-                raise PatchError(
-                    f"block {index}: factor {name} must have shape ({shape[mode]}, R) with 1 <= R <= {shape[mode]}"
-                )
-            basis = factor.to(model.device, torch.float64)
-            singular = torch.linalg.svdvals(basis)
-            if not bool(singular[-1] > RANK_TOL * singular[0]):
-                raise PatchError(f"block {index}: factor {name} does not have full column rank")
-            bases[mode] = torch.linalg.qr(basis)[0]
-        core_params += math.prod(bases[m].shape[1] if m in bases else shape[m] for m in range(len(shape)))
+            if isinstance(rank, bool) or not isinstance(rank, int) or not 1 <= rank <= shape[mode]:
+                raise PatchError(f"block {index}: rank of mode {mode} must be an integer in [1, {shape[mode]}]")
+            ranks[mode] = rank
+        kept = [ranks.get(m, shape[m]) for m in range(len(shape))]
+        for mode, rank in ranks.items():
+            if rank > math.prod(kept[m] for m in range(len(shape)) if m != mode):
+                raise PatchError(f"block {index}: rank {rank} of mode {mode} exceeds the product of the other ranks")
+        stored_params += sum(shape[m] * r for m, r in ranks.items()) + math.prod(kept)
         original = torch.stack([model.canonical_matrix(layer, target) for target in targets]).double()
-        core = to_layout(original, layout)
-        for mode, basis in bases.items():
-            core = mode_dot(core, basis.T, mode)
-        rebuilt = core
-        for mode, basis in bases.items():
-            rebuilt = mode_dot(rebuilt, basis, mode)
+        rebuilt, rel_error = hooi_reconstruction(to_layout(original, layout).contiguous(), ranks)
+        errors.append(rel_error)
         mats = from_layout(rebuilt, layout, len(targets)).to(torch.float32)
         if not bool(torch.isfinite(mats).all()):
             raise PatchError(f"block {index}: rebuilt weights are non-finite")
         for position, target in enumerate(targets):
-            key = (layer, target)
-            if key in overrides:
-                raise PatchError(f"block {index}: layer {layer} {target} is replaced twice")
-            overrides[key] = mats[position].contiguous()
+            overrides[(layer, target)] = mats[position].contiguous()
         touched.add(layer)
 
     original_params = 4 * D_MODEL * D_MODEL * len(touched)
     kept_dense = D_MODEL * D_MODEL * sum(
         1 for layer in touched for matrix in MATRICES if (layer, matrix) not in overrides
     )
-    represented = stored_params + core_params + kept_dense
+    represented = stored_params + kept_dense
     if touched:
         if represented >= original_params:
             raise PatchError(
@@ -268,10 +278,10 @@ def materialize_patch(patch_dir: Path, model):
         ratio = 1.0
     info = {
         "compression_ratio": float(ratio),
-        "stored_params": stored_params,
-        "core_params": int(core_params),
+        "stored_params": int(stored_params),
         "represented_params": int(represented),
         "original_params": int(original_params),
+        "relative_errors": errors,
         "touched_layers": sorted(touched),
         "replaced": sorted(f"{layer}.{matrix}" for layer, matrix in overrides),
     }

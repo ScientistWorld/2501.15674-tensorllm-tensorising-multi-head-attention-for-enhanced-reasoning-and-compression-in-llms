@@ -8,11 +8,10 @@ This module is method-agnostic infrastructure for producing submissions:
   overrides and cached hidden states below the first modified layer, so that
   layer-wise searches are cheap;
 * the canonical attention-matrix layout used by the submission format and a
-  writer for ``patch.json`` + ``tensors.safetensors``.  A patch names, per
-  block, a layer, its target matrices, a tensor ``layout`` (``stack`` or
-  ``heads``) and one factor matrix per compressed mode; the scorers rebuild
-  the weights as the orthogonal projection of the original weights onto the
-  factor subspaces (see briefing/evaluation.md).
+  writer for ``patch.json``.  A patch names, per block, a layer, its target
+  matrices, a tensor ``layout`` (``stack`` or ``heads``) and the multilinear
+  rank of each compressed mode; the scorers compute the Tucker/HOOI
+  approximation of the original weights themselves (see briefing/evaluation.md).
 
 It does not import anything from ``eval/``.
 """
@@ -31,7 +30,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MODEL_DIR = ROOT / "data" / "downloads" / "roberta-base"
 TASK_DIR = ROOT / "data" / "tasks"
 SUBMISSIONS_DIR = ROOT / "outputs" / "submissions"
-PATCH_FORMAT = "mha-projection-patch-v2"
+PATCH_FORMAT = "mha-structure-patch-v3"
 
 N_LAYERS, D_MODEL, N_HEADS, HEAD_DIM = 12, 768, 12, 64
 MATRICES = ("query", "key", "value", "output")
@@ -254,17 +253,13 @@ class Task:
 # --------------------------------------------------------------------------
 
 
-def write_patch(out_dir: Path, blocks: list[dict], tensors: dict[str, torch.Tensor], notes: dict | None = None) -> None:
-    """Write ``patch.json`` and ``tensors.safetensors`` (factor matrices) for one experiment."""
-    from safetensors.torch import save_file
-
+def write_patch(out_dir: Path, blocks: list[dict], notes: dict | None = None) -> None:
+    """Write ``patch.json`` (structure only) for one experiment."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     spec = {"format": PATCH_FORMAT, "blocks": blocks}
     if notes:
         spec["notes"] = notes  # free-form; never read by the evaluator
-    save_file({k: v.detach().to("cpu", torch.float32).contiguous() for k, v in tensors.items()},
-              str(out_dir / "tensors.safetensors"))
     (out_dir / "patch.json").write_text(json.dumps(spec, indent=2) + "\n")
 
 

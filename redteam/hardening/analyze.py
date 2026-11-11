@@ -24,7 +24,7 @@ OUT = ROOT / "outputs" / "hardening"
 REFERENCE = "tensorllm_roberta"
 BASELINE = "roberta_original"
 HONEST = ["roberta_original", "tensorllm_roberta", "previous_reference", "weaker_low_rank",
-          "weaker_laser_mha", "better_greedy_layers"]
+          "weaker_laser_mha", "better_greedy_layers", "greedy_layers_nomargin"]
 
 
 def load(path: Path):
