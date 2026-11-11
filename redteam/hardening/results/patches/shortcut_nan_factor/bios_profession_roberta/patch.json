@@ -1,5 +1,5 @@
 {
-  "format": "mha-factor-patch-v1",
+  "format": "mha-projection-patch-v2",
   "blocks": [
     {
       "layer": 7,
@@ -9,13 +9,12 @@
         "value",
         "output"
       ],
-      "equation": "abch,ma,db,tc->tmhd",
-      "operands": [
-        "core",
-        "U_model",
-        "U_head",
-        "U_type"
-      ]
+      "layout": "heads",
+      "factors": {
+        "0": "U_model",
+        "1": "U_head",
+        "2": "U_type"
+      }
     }
   ]
 }

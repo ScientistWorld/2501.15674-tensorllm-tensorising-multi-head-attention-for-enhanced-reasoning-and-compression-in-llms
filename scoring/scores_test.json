@@ -5,7 +5,7 @@
     "device": "cuda",
     "fixed_model_verified": true,
     "debug_limit": null,
-    "seconds": 26.4,
+    "seconds": 27.2,
     "gates": {
       "bios_profession_roberta": {
         "baseline_accuracy": 64.79313036690085,
@@ -48,23 +48,23 @@
           "status": "ok",
           "reasoning_gate_passed": true,
           "raw_accuracy": 73.64038511579496,
-          "raw_loss": 5.303011923834522,
+          "raw_loss": 5.303011971550809,
           "raw_compression_ratio": 11.81443794567743,
           "touched_layers": [
             7
           ],
-          "stored_params": 199696
+          "stored_params": 52240
         },
         "fever_roberta_binary": {
           "status": "ok",
           "reasoning_gate_passed": true,
           "raw_accuracy": 53.58880778588808,
-          "raw_loss": 1.1475734696417612,
+          "raw_loss": 1.1475734298464155,
           "raw_compression_ratio": 7.314013615564897,
           "touched_layers": [
             0
           ],
-          "stored_params": 322572
+          "stored_params": 101388
         }
       }
     }
@@ -79,7 +79,7 @@
         },
         "tensorllm_roberta": {
           "accuracy": 73.64038511579496,
-          "loss": 5.303011923834522,
+          "loss": 5.303011971550809,
           "mha_compression_ratio": 11.81443794567743
         }
       }
@@ -93,7 +93,7 @@
         },
         "tensorllm_roberta": {
           "accuracy": 53.58880778588808,
-          "loss": 1.1475734696417612,
+          "loss": 1.1475734298464155,
           "mha_compression_ratio": 7.314013615564897
         }
       }

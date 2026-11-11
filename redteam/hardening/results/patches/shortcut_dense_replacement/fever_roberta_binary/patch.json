@@ -1,5 +1,5 @@
 {
-  "format": "mha-factor-patch-v1",
+  "format": "mha-projection-patch-v2",
   "blocks": [
     {
       "layer": 0,
@@ -9,10 +9,12 @@
         "value",
         "output"
       ],
-      "equation": "tmn->tmn",
-      "operands": [
-        "W"
-      ]
+      "layout": "heads",
+      "factors": {
+        "0": "I_model",
+        "1": "I_head",
+        "2": "I_type"
+      }
     }
   ]
 }

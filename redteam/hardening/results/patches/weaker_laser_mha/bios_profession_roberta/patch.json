@@ -1,16 +1,15 @@
 {
-  "format": "mha-factor-patch-v1",
+  "format": "mha-projection-patch-v2",
   "blocks": [
     {
       "layer": 4,
       "targets": [
         "key"
       ],
-      "equation": "ar,rb->ab",
-      "operands": [
-        "US",
-        "Vt"
-      ]
+      "layout": "stack",
+      "factors": {
+        "0": "U"
+      }
     }
   ],
   "notes": {

@@ -5,4 +5,4 @@ action: submit
 gpus: 1
 test: false
 milestone: core_claim
-notes: "Resume hardening job (data/reference/scores done): greedy multi-layer variant (bug fixed), supervised-FT and artifact shortcuts, score everything through train+hidden test scorers, tamper check, paired-noise analysis."
+notes: "Hardening job, v2 projection patch format (scorer computes cores from original weights; no temp files). Smoke, rewrite reference patches from cached search, official scores, all variants/shortcuts (incl. supervised subspace attack), scoring, tamper check, paired-noise analysis."
