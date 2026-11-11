@@ -1,29 +1,11 @@
 #!/bin/bash
-# Run a baseline method from the paper.
+# Baseline: the unmodified pretrained roberta-base ("roberta_original").
 #
-# Baselines are simple reference methods the paper compares against. 
-# Implement this only if applicable, i.e. the paper has baselines.
-# You do not need to implement all baselines to begin — 
-# just enough to validate that the evaluation pipeline works 
-# and provide a reference point. You can decide to expand more baselines later.
-# Each baseline must be actually run and scored through evaluate.sh
-# so the numbers are verified, not self-reported.
-# You can decide what this baseline script should do yourself.
-#
-# Usage:
-#   bash scripts/baseline.sh <name>
+# It needs no artifacts: both evaluators run the fixed model themselves and
+# report it next to every submitted method, so scoring is the whole baseline run.
 
 set -e
 
 cd "$(dirname "$0")/.."
 
-python method/tensorllm_roberta.py \
-  --model-path data/downloads/roberta-base \
-  --data data/fever_binary_dev.jsonl \
-  --output-dir outputs/tensorllm_fever_baseline \
-  --limit "${TENSORLLM_LIMIT:-160}" \
-  --batch-size "${TENSORLLM_BATCH_SIZE:-8}" \
-  --layers "" \
-  --ranks 384,32,3
-
-bash scripts/evaluate.sh outputs/tensorllm_fever_baseline/manifest.json
+bash scripts/evaluate_train.sh

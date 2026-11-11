@@ -9,15 +9,21 @@ those tensors:
 
 * it verifies the fixed pretrained model files against pinned SHA-256 hashes;
 * it rebuilds every replaced matrix from the stored factors (in an isolated
-  subprocess) and counts the parameters itself;
+  subprocess) and counts the stored parameters itself;
 * it runs the fixed model with the rebuilt weights on held-out prompts that
   exist only under ``eval/test/data/`` and computes accuracy, gold-token
   negative log-likelihood and the compression ratio of the modified layers;
 * the unmodified pretrained model (``roberta_original``) is always scored by
-  the evaluator itself;
+  the evaluator itself and fixes the reasoning gate: loss and compression are
+  only credited when accuracy beats both the unmodified model and the
+  majority-class rate of the split;
+* every method directory on disk is scored, and so is every method key that
+  appears in ``scoring/scores.json`` or ``scoring/scores_train.json`` -- a key
+  without a valid patch is scored as failed;
 * anything invalid (missing/unsafe patch, non-finite values, a representation
-  larger than the dense original, non-finite model outputs) scores the method
-  as failed: the worst value in every metric of that experiment.
+  that is not smaller than the dense original, non-finite model outputs, a
+  crash) scores the method as failed: the worst value in every metric of that
+  experiment.
 
 Usage: ``python eval/test/evaluate.py`` (no arguments needed).
 """
@@ -34,6 +40,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -43,6 +50,7 @@ DATA_MANIFEST = DATA_DIR / "MANIFEST.json"
 MODEL_DIR = ROOT / "data" / "downloads" / "roberta-base"
 DEFAULT_SUBMISSIONS = ROOT / "outputs" / "submissions"
 DEFAULT_OUTPUT = ROOT / "scoring" / "scores_test.json"
+DEFAULT_KEY_SOURCES = [ROOT / "scoring" / "scores.json", ROOT / "scoring" / "scores_train.json"]
 
 BASELINE_KEY = "roberta_original"
 RESERVED_KEYS = {BASELINE_KEY}
@@ -65,6 +73,7 @@ EXPERIMENTS = {
 
 METRICS = ("accuracy", "loss", "mha_compression_ratio")
 LOSS_CAP = 30.0  # nats; per-example gold NLL is clipped here, failed runs get this mean
+CR_CAP = 64.0  # compression credit is capped here
 WORST = {"accuracy": 0.0, "loss": LOSS_CAP, "mha_compression_ratio": 1.0}
 
 N_LAYERS, D_MODEL, N_HEADS, HEAD_DIM = 12, 768, 12, 64
@@ -77,8 +86,8 @@ MAX_BLOCKS = 4 * N_LAYERS
 MAX_TENSORS = 512
 MAX_TENSOR_FILE_BYTES = 512 * 1024 * 1024
 MAX_EQUATION_CHARS = 256
+MAX_OPERAND_NUMEL = 64 * 1024 * 1024
 EQUATION_RE = re.compile(r"^[A-Za-z]+(,[A-Za-z]+)*->[A-Za-z]*$")
-METHOD_NAME_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$")
 
 
 class PatchError(Exception):
@@ -127,9 +136,7 @@ def materialize_patch(patch_dir: Path):
         raise PatchError(f"'blocks' must be a list with at most {MAX_BLOCKS} entries")
 
     tensors: dict[str, "torch.Tensor"] = {}
-    if blocks:
-        if not tensor_path.is_file():
-            raise PatchError("tensors.safetensors not found")
+    if tensor_path.is_file():
         if tensor_path.stat().st_size > MAX_TENSOR_FILE_BYTES:
             raise PatchError("tensors.safetensors is too large")
         from safetensors.torch import load_file
@@ -141,12 +148,17 @@ def materialize_patch(patch_dir: Path):
         if len(raw) > MAX_TENSORS:
             raise PatchError("too many tensors")
         for name, value in raw.items():
-            if value.is_complex():
-                raise PatchError(f"tensor {name} is complex")
+            if value.is_complex() or not value.is_floating_point():
+                raise PatchError(f"tensor {name} must be real floating point")
+            if value.numel() > MAX_OPERAND_NUMEL:
+                raise PatchError(f"tensor {name} is too large")
             value = value.to(torch.float32)
             if not bool(torch.isfinite(value).all()):
                 raise PatchError(f"tensor {name} contains non-finite values")
             tensors[name] = value
+    elif blocks:
+        raise PatchError("tensors.safetensors not found")
+    # Every stored tensor counts towards the representation, used or not.
     stored_params = int(sum(value.numel() for value in tensors.values()))
 
     overrides: dict[tuple[int, str], "torch.Tensor"] = {}
@@ -172,21 +184,33 @@ def materialize_patch(patch_dir: Path):
         if not EQUATION_RE.match(equation):
             raise PatchError(f"block {index}: equation must look like 'ab,bc->ac' (explicit output, no ellipsis)")
         operands = block.get("operands")
-        n_terms = len(equation.split("->")[0].split(","))
-        if not isinstance(operands, list) or len(operands) != n_terms:
+        inputs, output = equation.split("->")
+        terms = inputs.split(",")
+        if not isinstance(operands, list) or len(operands) != len(terms):
             raise PatchError(f"block {index}: need one operand name per equation input")
         if any(not isinstance(name, str) or name not in tensors for name in operands):
             raise PatchError(f"block {index}: operands must name tensors stored in tensors.safetensors")
+        sizes: dict[str, int] = {}
+        for term, name in zip(terms, operands):
+            shape = tuple(tensors[name].shape)
+            if len(term) != len(shape):
+                raise PatchError(f"block {index}: operand {name} has {len(shape)} dims, equation term {term!r}")
+            for letter, size in zip(term, shape):
+                if sizes.setdefault(letter, size) != size:
+                    raise PatchError(f"block {index}: index {letter!r} has inconsistent sizes")
+        if len(set(output)) != len(output) or any(letter not in sizes for letter in output):
+            raise PatchError(f"block {index}: invalid output indices")
+        out_numel = math.prod(sizes[letter] for letter in output) if output else 1
+        if out_numel != len(targets) * D_MODEL * D_MODEL:
+            raise PatchError(
+                f"block {index}: contraction has {out_numel} entries, expected "
+                f"{len(targets)} x {D_MODEL} x {D_MODEL}"
+            )
         try:
             with torch.no_grad():
                 value = torch.einsum(equation, *[tensors[name].double() for name in operands])
         except Exception as exc:  # noqa: BLE001
             raise PatchError(f"block {index}: contraction failed: {exc}") from exc
-        if value.numel() != len(targets) * D_MODEL * D_MODEL:
-            raise PatchError(
-                f"block {index}: contraction has {value.numel()} entries, expected "
-                f"{len(targets)} x {D_MODEL} x {D_MODEL}"
-            )
         value = value.reshape(len(targets), D_MODEL, D_MODEL).to(torch.float32)
         if not bool(torch.isfinite(value).all()):
             raise PatchError(f"block {index}: rebuilt weights are non-finite")
@@ -205,10 +229,10 @@ def materialize_patch(patch_dir: Path):
         represented = stored_params + kept_dense
         if represented <= 0:
             raise PatchError("empty representation")
-        if represented > original_params:
+        if represented >= original_params:
             raise PatchError(
                 f"constraint violated: modified layers need {represented} parameters, "
-                f"more than their dense original ({original_params})"
+                f"not fewer than their dense original ({original_params})"
             )
         ratio = original_params / represented
     else:
@@ -226,7 +250,6 @@ def materialize_patch(patch_dir: Path):
 
 
 def materialize_main(patch_dir: Path, out_prefix: Path) -> int:
-    import torch  # noqa: F401
     from safetensors.torch import save_file
 
     try:
@@ -234,8 +257,9 @@ def materialize_main(patch_dir: Path, out_prefix: Path) -> int:
     except PatchError as exc:
         out_prefix.with_suffix(".json").write_text(json.dumps({"ok": False, "reason": str(exc)}))
         return 0
-    save_file({f"{layer}.{matrix}": value for (layer, matrix), value in overrides.items()},
-              str(out_prefix.with_suffix(".safetensors")))
+    if overrides:
+        save_file({f"{layer}.{matrix}": value for (layer, matrix), value in overrides.items()},
+                  str(out_prefix.with_suffix(".safetensors")))
     out_prefix.with_suffix(".json").write_text(json.dumps({"ok": True, **info}))
     return 0
 
@@ -398,8 +422,7 @@ def tokenize(examples, device, token_budget: int):
         batches = []
         start = 0
         while start < len(order):
-            longest = len(encoded[order[start]])
-            size = max(1, token_budget // max(longest, 1))
+            size = max(1, token_budget // max(len(encoded[order[start]]), 1))
             chunk = order[start : start + size]
             longest = max(len(encoded[i]) for i in chunk)
             ids = torch.full((len(chunk), longest), PAD_ID, dtype=torch.long)
@@ -417,11 +440,14 @@ def tokenize(examples, device, token_budget: int):
                 }
             )
             start += size
+        labels = [int(row["label"]) for row in rows]
+        counts = [labels.count(c) for c in range(len(candidates))]
         prepared[name] = {
             "batches": batches,
             "candidates": torch.tensor(candidates, device=device),
-            "labels": [int(row["label"]) for row in rows],
+            "labels": labels,
             "ids": [row["id"] for row in rows],
+            "majority_accuracy": 100.0 * max(counts) / len(labels),
         }
     return prepared
 
@@ -466,17 +492,10 @@ def score_experiment(model, prepared, methods):
     return out
 
 
-def summarize(record, labels):
-    n = len(labels)
+def summarize(record):
+    n = len(record["correct"])
     nll = [min(value, LOSS_CAP) if math.isfinite(value) else LOSS_CAP for value in record["nll"]]
-    recalls = []
-    for label in sorted(set(labels)):
-        members = [i for i in range(n) if labels[i] == label]
-        recalls.append(sum(record["correct"][i] for i in members) / len(members))
-    return {
-        "accuracy": 100.0 * sum(record["correct"]) / n,
-        "loss": sum(nll) / n,
-    }, {"balanced_accuracy": 100.0 * sum(recalls) / len(recalls), "n_examples": n}
+    return {"accuracy": 100.0 * sum(record["correct"]) / n, "loss": sum(nll) / n}
 
 
 # --------------------------------------------------------------------------
@@ -484,25 +503,53 @@ def summarize(record, labels):
 # --------------------------------------------------------------------------
 
 
-def discover_methods(root: Path) -> tuple[list[str], list[str]]:
-    found, skipped = [], []
+def discover_methods(root: Path, key_sources: list[Path]) -> tuple[list[str], dict[str, str]]:
+    """Every method directory on disk plus every key named in the score files."""
+    found: dict[str, str] = {}
     if root.is_dir():
         for entry in sorted(root.iterdir()):
-            if entry.name.startswith((".", "_")):
+            if entry.name.startswith((".", "_")) or not entry.is_dir() or entry.name in RESERVED_KEYS:
                 continue
-            if not entry.is_dir():
-                continue
-            if entry.name in RESERVED_KEYS or not METHOD_NAME_RE.match(entry.name):
-                skipped.append(entry.name)
-                continue
-            found.append(entry.name)
-    return found, skipped
+            found[entry.name] = "directory"
+    for source in key_sources:
+        try:
+            data = json.loads(Path(source).read_text())
+            experiments = data.get("experiments", data)
+            for name in EXPERIMENTS:
+                results = experiments.get(name, {})
+                results = results.get("results", results) if isinstance(results, dict) else {}
+                for key in results:
+                    if isinstance(key, str) and not key.startswith("_") and key not in RESERVED_KEYS:
+                        found.setdefault(key, f"listed in {Path(source).name}")
+        except (OSError, ValueError, AttributeError):
+            continue
+    return sorted(found), found
+
+
+def configure_torch():
+    import torch
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    try:
+        torch.set_num_threads(max(1, len(os.sched_getaffinity(0))))
+    except AttributeError:
+        pass
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+    if device.type == "cuda":
+        # Plain fp32 attention kernel: no reduced-precision or fused shortcuts.
+        torch.backends.cuda.enable_flash_sdp(False)
+        torch.backends.cuda.enable_mem_efficient_sdp(False)
+        torch.backends.cuda.enable_math_sdp(True)
+    return device
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--submissions", default=str(DEFAULT_SUBMISSIONS))
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
+    parser.add_argument("--key-sources", nargs="*", default=[str(p) for p in DEFAULT_KEY_SOURCES],
+                        help="score files whose method keys must also be scored")
     parser.add_argument("--dump-dir", default=None, help="optional per-example outputs for analysis")
     parser.add_argument("--debug-limit", type=int, default=None, help="debug only: score a prefix of each split")
     parser.add_argument("--patch-timeout", type=float, default=900.0)
@@ -513,37 +560,39 @@ def main() -> int:
     if args.materialize:
         return materialize_main(Path(args.materialize), Path(args.out))
 
-    import torch
-
     started = time.time()
+    submissions = Path(args.submissions)
+    methods, origins = discover_methods(submissions, [Path(p) for p in args.key_sources])
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     if output.exists():
-        output.unlink()
+        output.unlink()  # a stale score file never survives a run
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    try:
-        torch.set_num_threads(max(1, len(os.sched_getaffinity(0))))
-    except AttributeError:
-        pass
-    torch.backends.cuda.matmul.allow_tf32 = False
-    torch.backends.cudnn.allow_tf32 = False
-
-    methods, skipped = discover_methods(Path(args.submissions))
+    device = configure_torch()
     keys = [BASELINE_KEY] + methods
     status = {key: {} for key in keys}
     results = {name: {} for name in EXPERIMENTS}
+    gates = {}
 
-    model_problems = verify_model_files()
-    if model_problems:
+    def fail_all(reason: str) -> None:
         for name in EXPERIMENTS:
             for key in keys:
                 results[name][key] = dict(WORST)
-                status[key][name] = {"status": "failed", "reason": "fixed model altered: " + "; ".join(model_problems)}
+                status[key][name] = {"status": "failed", "reason": reason}
+
+    problems = verify_model_files()
+    prepared = None
+    if problems:
+        fail_all("fixed model altered: " + "; ".join(problems))
     else:
-        examples = load_examples(args.debug_limit)
-        budget = 16384 if device.type == "cuda" else 4096
-        prepared = tokenize(examples, device, budget)
+        try:
+            examples = load_examples(args.debug_limit)
+            budget = 32768 if device.type == "cuda" else 4096
+            prepared = tokenize(examples, device, budget)
+        except Exception as exc:  # noqa: BLE001
+            problems = [f"evaluation data unusable: {exc}"]
+            fail_all(problems[0])
+    if prepared is not None:
         model = FixedRoberta(device)
         with tempfile.TemporaryDirectory(prefix="mha_eval_") as tmp:
             work = Path(tmp)
@@ -551,33 +600,77 @@ def main() -> int:
                 runnable = {BASELINE_KEY: {}}
                 info_by_key = {BASELINE_KEY: {"compression_ratio": 1.0, "touched_layers": [], "stored_params": 0}}
                 for key in methods:
-                    patch_dir = Path(args.submissions) / key / name
+                    patch_dir = submissions / key / name
                     try:
                         if not patch_dir.is_dir():
-                            raise PatchError(f"no patch for experiment {name}")
-                        overrides, info = run_materialize(patch_dir, work, f"{key}__{name}", args.patch_timeout)
+                            raise PatchError(f"no patch for experiment {name} ({origins[key]})")
+                        overrides, info = run_materialize(patch_dir, work, f"m{methods.index(key)}__{name}",
+                                                          args.patch_timeout)
                     except PatchError as exc:
                         results[name][key] = dict(WORST)
                         status[key][name] = {"status": "failed", "reason": str(exc)}
+                        continue
+                    except Exception as exc:  # noqa: BLE001
+                        results[name][key] = dict(WORST)
+                        status[key][name] = {"status": "failed", "reason": f"evaluator error: {exc!r}"}
                         continue
                     by_layer: dict[int, dict] = {}
                     for (layer, matrix), value in overrides.items():
                         by_layer.setdefault(layer, {})[matrix] = canonical_to_module(matrix, value).to(device)
                     runnable[key] = by_layer
                     info_by_key[key] = info
-                records = score_experiment(model, prepared[name], runnable)
+                try:
+                    records = score_experiment(model, prepared[name], runnable)
+                except Exception:  # noqa: BLE001  (one bad method must not sink the others)
+                    print(traceback.format_exc(), file=sys.stderr)
+                    records = {}
+                    for key in runnable:
+                        try:
+                            records.update(score_experiment(model, prepared[name], {key: runnable[key]}))
+                        except Exception as exc:  # noqa: BLE001
+                            records[key] = {"error": repr(exc)}
+                base = records.get(BASELINE_KEY, {})
+                if "error" in base or not base.get("finite", False):
+                    for key in keys:
+                        results[name][key] = dict(WORST)
+                        status[key][name] = {"status": "failed", "reason": "the unmodified model could not be scored"}
+                    runnable.clear()
+                    continue
+                base_metrics = summarize(base)
+                threshold = max(base_metrics["accuracy"], prepared[name]["majority_accuracy"])
+                gates[name] = {
+                    "baseline_accuracy": base_metrics["accuracy"],
+                    "baseline_loss": base_metrics["loss"],
+                    "majority_class_accuracy": prepared[name]["majority_accuracy"],
+                    "accuracy_threshold": threshold,
+                    "n_examples": len(prepared[name]["labels"]),
+                }
                 for key, record in records.items():
                     info = info_by_key[key]
-                    if not record["finite"]:
+                    if "error" in record or not record["finite"]:
                         results[name][key] = dict(WORST)
-                        status[key][name] = {"status": "failed", "reason": "model outputs became non-finite"}
+                        reason = record.get("error", "model outputs became non-finite")
+                        status[key][name] = {"status": "failed", "reason": reason}
                         continue
-                    metrics, extra = summarize(record, prepared[name]["labels"])
-                    metrics["mha_compression_ratio"] = float(info["compression_ratio"])
-                    results[name][key] = metrics
+                    raw = summarize(record)
+                    raw_ratio = float(info["compression_ratio"])
+                    if key == BASELINE_KEY:
+                        scored = {**raw, "mha_compression_ratio": 1.0}
+                        passed = None
+                    else:
+                        passed = raw["accuracy"] > threshold + 1e-9
+                        scored = {
+                            "accuracy": raw["accuracy"],
+                            "loss": raw["loss"] if passed else max(raw["loss"], base_metrics["loss"]),
+                            "mha_compression_ratio": min(raw_ratio, CR_CAP) if passed else 1.0,
+                        }
+                    results[name][key] = scored
                     status[key][name] = {
                         "status": "ok",
-                        **extra,
+                        "reasoning_gate_passed": passed,
+                        "raw_accuracy": raw["accuracy"],
+                        "raw_loss": raw["loss"],
+                        "raw_compression_ratio": raw_ratio,
                         "touched_layers": info.get("touched_layers", []),
                         "stored_params": info.get("stored_params", 0),
                     }
@@ -587,18 +680,17 @@ def main() -> int:
                         (dump / f"{key}.json").write_text(
                             json.dumps({"correct": record["correct"], "nll": record["nll"], "pred": record["pred"]})
                         )
-                for key in runnable:
-                    runnable[key] = None
+                runnable.clear()
 
     scores = {
         "metadata": {
             "slice": SLICE,
-            "submissions": str(Path(args.submissions)),
+            "submissions": str(submissions),
             "device": str(device),
-            "fixed_model_verified": not model_problems,
-            "skipped_directories": skipped,
+            "fixed_model_verified": not problems,
             "debug_limit": args.debug_limit,
             "seconds": round(time.time() - started, 1),
+            "gates": gates,
             "methods": status,
         },
         "experiments": {name: {"results": results[name]} for name in EXPERIMENTS},

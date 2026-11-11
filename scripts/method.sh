@@ -1,22 +1,11 @@
 #!/bin/bash
-# Run the paper's proposed method.
-#
-# This script trains/runs the paper's method using code in method/.
-#
-# Usage:
-#   bash scripts/method.sh
+# Run the paper's method (TensorLLM) on every task: search layer and Tucker
+# ranks on the visible validation split, then write the selected factor
+# patches to outputs/submissions/tensorllm_roberta/.  Needs a GPU for the full
+# search (about one hour); extra arguments are passed through.
 
 set -e
 
 cd "$(dirname "$0")/.."
 
-python method/tensorllm_roberta.py \
-  --model-path data/downloads/roberta-base \
-  --data data/fever_binary_dev.jsonl \
-  --output-dir "${TENSORLLM_OUTPUT_DIR:-outputs/tensorllm_fever}" \
-  --limit "${TENSORLLM_LIMIT:-160}" \
-  --batch-size "${TENSORLLM_BATCH_SIZE:-8}" \
-  --layers "${TENSORLLM_LAYERS:-0,3,6,9,11}" \
-  --ranks ${TENSORLLM_RANKS:-384,32,3 256,32,3 192,24,3}
-
-bash scripts/evaluate.sh "${TENSORLLM_OUTPUT_DIR:-outputs/tensorllm_fever}/manifest.json"
+python method/tensorllm_roberta.py "$@"

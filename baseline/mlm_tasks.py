@@ -44,6 +44,11 @@ def pick_device() -> torch.device:
         pass
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
+    if device.type == "cuda":
+        # Same plain fp32 attention kernel the scorers use.
+        torch.backends.cuda.enable_flash_sdp(False)
+        torch.backends.cuda.enable_mem_efficient_sdp(False)
+        torch.backends.cuda.enable_math_sdp(True)
     return device
 
 
@@ -176,7 +181,7 @@ class Task:
         self.labels = [int(row["label"]) for row in rows]
         self.candidates = torch.tensor(cands, device=device)
         encoded = [tokenizer.encode(row["prompt"]).ids for row in rows]
-        budget = token_budget or (16384 if device.type == "cuda" else 4096)
+        budget = token_budget or (32768 if device.type == "cuda" else 4096)
         order = sorted(range(len(rows)), key=lambda i: (len(encoded[i]), i))
         self.batches = []
         start = 0

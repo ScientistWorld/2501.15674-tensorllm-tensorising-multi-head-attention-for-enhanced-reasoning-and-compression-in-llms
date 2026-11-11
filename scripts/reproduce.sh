@@ -1,27 +1,20 @@
 #!/bin/bash
-# Reproduce the paper's results end-to-end.
+# Reproduce the reference end to end (inside the compute container, GPU).
 #
-# This script runs inside the compute container and should call
-# scripts/baseline.sh and scripts/method.sh to run baselines and
-# the paper's method, each of which calls scripts/evaluate.sh.
-#
-# Assumes:
-#   - Container is built (environment/container.sif)
-#   - Data and models were downloaded on an internet-enabled node via
-#     scripts/download.sh before job submission
-#   - Run from any checkout path
-#
-# This is the "gold standard" reproduction — 
-# You do not need to run this, but keep this in good shape
-# so other agents can easily run a full loop of reproduction and get the paper's numbers.
+# Assumes scripts/download.sh ran on an internet-enabled node.  Runs the
+# paper's method, then scores it (and the evaluator-owned unmodified model) on
+# the visible split and on the held-out test split.
 
 set -e
 
 cd "$(dirname "$0")/.."
 
-if [ ! -e data/downloads/roberta-base/model.safetensors ] || [ ! -e data/fever_binary_dev.jsonl ]; then
-  echo "Missing downloaded data/model artifacts. Run scripts/download.sh on an internet-enabled node before submitting compute jobs." >&2
+if [ ! -e data/downloads/roberta-base/model.safetensors ] || [ ! -e data/tasks/tasks.json ]; then
+  echo "Missing model or task data. Run scripts/download.sh on an internet-enabled node first." >&2
   exit 1
 fi
 
 bash scripts/method.sh
+bash scripts/evaluate_train.sh
+bash scripts/evaluate.sh
+bash scripts/evaluate_test.sh

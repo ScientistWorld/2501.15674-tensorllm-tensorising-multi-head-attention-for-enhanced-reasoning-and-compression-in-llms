@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
-"""Build the hidden held-out evaluation splits (last 20% of each ordered dataset).
+"""Build the hidden held-out evaluation splits.  Lives only in ``eval/test/``.
 
-This file lives only in ``eval/test/``.  It mirrors the LASER-style
-preprocessing used for the public validation split, but keeps the *last* 20%
-of each ordered dataset (the paper evaluates test accuracy on the last 20% of
-data).  The output files under ``eval/test/data/`` are committed; this script is
-only needed to rebuild them from the raw public files.
+Same LASER-style preprocessing as the public validation split
+(``data/prepare_tasks.py``), applied to data that is never shipped outside
+``eval/test/``:
 
-    python eval/test/prepare_test.py --raw-dir <dir with raw files>
+* ``fever_roberta_binary`` -- every consistent support/refute claim of FEVER
+  v1.0 ``paper_test`` (the second half of the paper's ordered 13,086-claim
+  dataset; it contains the paper's "last 20%" test portion and is used whole
+  to shrink the test noise).
+* ``bios_profession_roberta`` -- the last 20% of the filtered Bias in Bios
+  ``dev`` split (the paper's test portion).
+
+The output files under ``eval/test/data/`` are committed and hash-pinned in
+``MANIFEST.json``; the evaluator refuses altered files.  This script is only
+needed to rebuild them.  Raw files are read from ``--raw-dir`` (default
+``eval/test/raw/``, git-ignored) and fetched there if missing:
+
+    python eval/test/prepare_test.py [--raw-dir eval/test/raw]
 """
 
 from __future__ import annotations
@@ -15,13 +25,29 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = ROOT / "eval" / "test" / "data"
+RAW_DIR = ROOT / "eval" / "test" / "raw"
 MODEL_DIR = ROOT / "data" / "downloads" / "roberta-base"
 VISIBLE_DIR = ROOT / "data" / "tasks"
-TEST_FRACTION_DENOM = 5  # last N // 5 examples (20%)
+
+RAW_FILES = {
+    "fever/paper_dev.jsonl": (
+        "https://fever.ai/download/fever/paper_dev.jsonl",
+        "41158707810008747946bf23471e82df53e77a513524b9e3ec1c2e674ef5ef8c",
+    ),
+    "fever/paper_test.jsonl": (
+        "https://fever.ai/download/fever/paper_test.jsonl",
+        "fb7b0280a0adc2302bbb29bfb7af37274fa585de3171bcf908f180642d11d88e",
+    ),
+    "bias_in_bios/dev.parquet": (
+        "https://huggingface.co/datasets/LabHC/bias_in_bios/resolve/main/data/dev-00000-of-00001-e6551072fff26949.parquet",
+        "4c3461a19cf437f89fcfea5abbaea43baeb972f706662b3a3811eedce334e3b2",
+    ),
+}
 
 BIOS_OCCUPATIONS = ["journalist", "poet", "composer", "model", "teacher", "architect", "painter", "professor"]
 BIOS_PROFESSION_IDS = {
@@ -39,46 +65,62 @@ TASKS = {
 }
 
 
-def fever_rows(raw_dir: Path) -> list[dict]:
-    rows: list[dict] = []
-    for split in ("paper_dev", "paper_test"):
-        labels: dict[str, set[str]] = {}
-        first_id: dict[str, int] = {}
-        with (raw_dir / "fever" / f"{split}.jsonl").open("r", encoding="utf-8") as handle:
-            for line in handle:
-                item = json.loads(line)
-                label = item.get("label", "")
-                if label not in ("REFUTES", "SUPPORTS"):
-                    continue
-                claim = item["claim"]
-                labels.setdefault(claim, set()).add(label)
-                first_id.setdefault(claim, int(item["id"]))
-        for claim, claim_labels in labels.items():
-            if len(claim_labels) != 1:
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def fetch_raw(raw_dir: Path) -> None:
+    for rel, (url, digest) in RAW_FILES.items():
+        path = raw_dir / rel
+        if not path.exists():
+            path.parent.mkdir(parents=True, exist_ok=True)
+            print(f"fetching {url}")
+            urllib.request.urlretrieve(url, path)
+        if sha256(path) != digest:
+            raise RuntimeError(f"{path} does not match the pinned sha256")
+
+
+def fever_prompt(claim: str) -> str:
+    question = claim.strip()
+    if question.endswith(".") or question.endswith("?"):
+        return "Consider the following claim: " + question + " Is this claim true or false. The claim is <mask>"
+    return "Consider the following claim: " + question + ". Is this claim true or false. The claim is <mask>"
+
+
+def fever_rows(path: Path, split: str) -> list[dict]:
+    labels: dict[str, set[str]] = {}
+    first_id: dict[str, int] = {}
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            item = json.loads(line)
+            label = item.get("label", "")
+            if label not in ("REFUTES", "SUPPORTS"):
                 continue
-            label = next(iter(claim_labels))
-            question = claim.strip()
-            if question.endswith(".") or question.endswith("?"):
-                prompt = "Consider the following claim: " + question + " Is this claim true or false. The claim is <mask>"
-            else:
-                prompt = "Consider the following claim: " + question + ". Is this claim true or false. The claim is <mask>"
-            rows.append(
-                {
-                    "id": f"fever-{split}-{first_id[claim]}",
-                    "prompt": prompt,
-                    "label": 1 if label == "SUPPORTS" else 0,
-                    "answer": "true" if label == "SUPPORTS" else "false",
-                }
-            )
+            claim = item["claim"]
+            labels.setdefault(claim, set()).add(label)
+            first_id.setdefault(claim, int(item["id"]))
+    rows = []
+    for claim, claim_labels in labels.items():
+        if len(claim_labels) != 1:
+            continue
+        label = next(iter(claim_labels))
+        rows.append(
+            {
+                "id": f"fever-{split}-{first_id[claim]}",
+                "prompt": fever_prompt(claim),
+                "label": 1 if label == "SUPPORTS" else 0,
+                "answer": "true" if label == "SUPPORTS" else "false",
+            }
+        )
     return rows
 
 
-def bios_rows(raw_dir: Path) -> list[dict]:
+def bios_rows(parquet: Path) -> list[dict]:
     import pyarrow.parquet as pq
     from transformers import AutoTokenizer
 
     tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR), local_files_only=True)
-    table = pq.read_table(raw_dir / "bias_in_bios" / "dev.parquet", columns=["hard_text", "profession"])
+    table = pq.read_table(parquet, columns=["hard_text", "profession"])
     texts = table.column("hard_text").to_pylist()
     professions = table.column("profession").to_pylist()
     rows: list[dict] = []
@@ -111,23 +153,40 @@ def bios_rows(raw_dir: Path) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--raw-dir", default=str(ROOT / "data" / "downloads" / "raw"))
+    parser.add_argument("--raw-dir", default=str(RAW_DIR))
     parser.add_argument("--out-dir", default=str(OUT_DIR))
     args = parser.parse_args()
     raw_dir = Path(args.raw_dir)
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    fetch_raw(raw_dir)
 
-    builders = {"bios_profession_roberta": bios_rows, "fever_roberta_binary": fever_rows}
-    manifest = {"split": "test (last 20% of each ordered dataset)", "tasks": {}}
+    fever_dev = fever_rows(raw_dir / "fever" / "paper_dev.jsonl", "paper_dev")
+    fever_test = fever_rows(raw_dir / "fever" / "paper_test.jsonl", "paper_test")
+    n_fever = len(fever_dev) + len(fever_test)
+    bios_all = bios_rows(raw_dir / "bias_in_bios" / "dev.parquet")
+    n_bios_test = len(bios_all) // 5
+    splits = {
+        "fever_roberta_binary": (
+            fever_test,
+            n_fever,
+            "FEVER paper_test portion: positions %d..%d of the ordered dataset" % (len(fever_dev), n_fever - 1),
+        ),
+        "bios_profession_roberta": (
+            bios_all[len(bios_all) - n_bios_test:],
+            len(bios_all),
+            "last 20%%: positions %d..%d of the ordered dataset" % (len(bios_all) - n_bios_test, len(bios_all) - 1),
+        ),
+    }
+
+    manifest = {"split": "held-out test", "tasks": {}}
     for name, spec in TASKS.items():
-        rows = builders[name](raw_dir)
-        n_test = len(rows) // TEST_FRACTION_DENOM
-        test = rows[len(rows) - n_test:]
+        test, n_full, description = splits[name]
         visible_path = VISIBLE_DIR / spec["visible"]
         if visible_path.exists():
-            visible_ids = {json.loads(line)["id"] for line in visible_path.open("r", encoding="utf-8")}
-            visible_prompts = {json.loads(line)["prompt"] for line in visible_path.open("r", encoding="utf-8")}
+            visible = [json.loads(line) for line in visible_path.open("r", encoding="utf-8")]
+            visible_ids = {row["id"] for row in visible}
+            visible_prompts = {row["prompt"] for row in visible}
             overlap = [row["id"] for row in test if row["id"] in visible_ids or row["prompt"] in visible_prompts]
             if overlap:
                 raise RuntimeError(f"{name}: {len(overlap)} test rows overlap the visible split, e.g. {overlap[:3]}")
@@ -140,9 +199,10 @@ def main() -> None:
             counts[row["answer"]] = counts.get(row["answer"], 0) + 1
         manifest["tasks"][name] = {
             "file": spec["file"],
-            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "sha256": sha256(path),
             "n_examples": len(test),
-            "n_full_dataset": len(rows),
+            "n_full_dataset": n_full,
+            "portion": description,
             "label_counts": counts,
         }
         print(f"{name}: wrote {len(test)} held-out rows {counts}")
