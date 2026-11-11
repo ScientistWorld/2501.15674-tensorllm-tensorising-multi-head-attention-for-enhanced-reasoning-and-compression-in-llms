@@ -18,9 +18,11 @@ Paper procedure, per reasoning task:
    the visible validation split (the first 20% of each dataset), best accuracy
    first, then lower loss.
 
-The selected decomposition is written as a factor patch (core + three shared
-factor matrices) to ``outputs/submissions/tensorllm_roberta/<task>/``; the
-scorers rebuild the weights from those factors and count the parameters.
+The selected decomposition is written as a projection patch (the three shared
+factor matrices of the multi-head layout) to
+``outputs/submissions/tensorllm_roberta/<task>/``; the scorers recompute the
+core from the original weights (identical to the HOOI core), rebuild the
+weights and count the parameters (factors + core).
 """
 
 from __future__ import annotations
@@ -165,10 +167,17 @@ def decompose_layer(model: Roberta, layer: int, ranks, n_iter_max: int, tol: flo
     return core, factors, info
 
 
-def patch_for(layer: int, core: torch.Tensor, factors, prefix: str = ""):
-    names = [f"{prefix}core", f"{prefix}U_model", f"{prefix}U_head", f"{prefix}U_type"]
-    tensors = dict(zip(names, [core, *factors]))
-    block = {"layer": int(layer), "targets": list(MATRICES), "equation": TUCKER_EQUATION, "operands": names}
+def patch_for(layer: int, factors, prefix: str = ""):
+    """Submission block: the multi-head layout of Q, K, V, O^T with the three shared factor matrices.
+
+    The head mode carries no factor (uncompressed, Eq. 10).  The scorers rebuild
+    G_all = W_all x_1 U1^T x_2 U2^T x_3 U3^T (the HOOI core, since the factors are
+    orthonormal) and W_all' = G_all x_1 U1 x_2 U2 x_3 U3.
+    """
+    names = [f"{prefix}U_model", f"{prefix}U_head", f"{prefix}U_type"]
+    tensors = dict(zip(names, factors))
+    block = {"layer": int(layer), "targets": list(MATRICES), "layout": "heads",
+             "factors": {"0": names[0], "1": names[1], "2": names[2]}}
     return block, tensors
 
 
@@ -268,8 +277,8 @@ def main() -> None:
     for name in names:
         best = select(log, name, allowed)
         layer, ranks = best["layer"], tuple(best["ranks"])
-        core, factors, info = decompose_layer(model, layer, ranks, args.n_iter_max, args.tol)
-        block, tensors = patch_for(layer, core, factors)
+        _, factors, info = decompose_layer(model, layer, ranks, args.n_iter_max, args.tol)
+        block, tensors = patch_for(layer, factors)
         notes = {
             "method": "TensorLLM shared-factor Tucker (HOOI) on one layer's multi-head attention",
             "layer": layer,

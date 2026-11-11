@@ -2,14 +2,17 @@
 """Held-out scorer for post-training attention-weight modifications of RoBERTa.
 
 Every method is a directory ``outputs/submissions/<method>/`` holding, per
-experiment, a factorized replacement of attention projection matrices
+experiment, a structured low-rank replacement of attention projection matrices
 (``<experiment>/patch.json`` + ``<experiment>/tensors.safetensors``; format in
-``briefing/evaluation.md``).  This scorer trusts nothing a method writes except
-those tensors:
+``briefing/evaluation.md``): which layers and matrices, how they are arranged
+into a tensor, and one factor matrix per compressed tensor mode.  This scorer
+trusts nothing a method writes except those factor matrices:
 
 * it verifies the fixed pretrained model files against pinned SHA-256 hashes;
-* it rebuilds every replaced matrix from the stored factors (in an isolated
-  subprocess) and counts the stored parameters itself;
+* it computes every replaced matrix itself, as the orthogonal projection of
+  the ORIGINAL pretrained weights onto the subspaces spanned by the submitted
+  factors (core = weights x_n Q_n^T, rebuilt = core x_n Q_n), and counts the
+  stored parameters (factors + core + matrices of a modified layer left dense);
 * it runs the fixed model with the rebuilt weights on held-out prompts that
   exist only under ``eval/test/data/`` and computes accuracy, gold-token
   negative log-likelihood and the compression ratio of the modified layers;
@@ -35,10 +38,7 @@ import hashlib
 import json
 import math
 import os
-import re
-import subprocess
 import sys
-import tempfile
 import time
 import traceback
 from pathlib import Path
@@ -81,13 +81,11 @@ MATRICES = ("query", "key", "value", "output")
 PAD_ID, MASK_ID = 1, 50264
 LN_EPS = 1e-5
 
-PATCH_FORMAT = "mha-factor-patch-v1"
+PATCH_FORMAT = "mha-projection-patch-v2"
 MAX_BLOCKS = 4 * N_LAYERS
 MAX_TENSORS = 512
-MAX_TENSOR_FILE_BYTES = 512 * 1024 * 1024
-MAX_EQUATION_CHARS = 256
-MAX_OPERAND_NUMEL = 64 * 1024 * 1024
-EQUATION_RE = re.compile(r"^[A-Za-z]+(,[A-Za-z]+)*->[A-Za-z]*$")
+MAX_TENSOR_FILE_BYTES = 256 * 1024 * 1024
+RANK_TOL = 1e-6  # a factor must have full column rank (sigma_min > RANK_TOL * sigma_max)
 
 
 class PatchError(Exception):
@@ -114,11 +112,42 @@ def verify_model_files() -> list[str]:
 
 
 # --------------------------------------------------------------------------
-# Patch materialisation (runs in a separate process for isolation)
+# Patch materialisation: every replaced weight is computed here, as an
+# orthogonal multilinear projection of the ORIGINAL pretrained weights.
 # --------------------------------------------------------------------------
 
+LAYOUT_SHAPES = {
+    # targets stacked as a d_model x (h * d_v) x n_targets tensor
+    "stack": lambda n: (D_MODEL, N_HEADS * HEAD_DIM, n),
+    # multi-head arrangement: d_model x d_v x n_targets x h
+    "heads": lambda n: (D_MODEL, HEAD_DIM, n, N_HEADS),
+}
 
-def materialize_patch(patch_dir: Path):
+
+def to_layout(mats, layout: str):
+    """[n, d_model, h*d_v] canonical matrices -> layout tensor."""
+    n = mats.shape[0]
+    if layout == "stack":
+        return mats.permute(1, 2, 0)
+    return mats.reshape(n, D_MODEL, N_HEADS, HEAD_DIM).permute(1, 3, 0, 2)
+
+
+def from_layout(tensor, layout: str, n: int):
+    if layout == "stack":
+        return tensor.permute(2, 0, 1)
+    return tensor.permute(2, 0, 3, 1).reshape(n, D_MODEL, N_HEADS * HEAD_DIM)
+
+
+def mode_dot(tensor, matrix, mode: int):
+    """tensor x_mode matrix, matrix of shape [J, I_mode]."""
+    moved = tensor.movedim(mode, 0)
+    shape = moved.shape
+    out = matrix @ moved.reshape(shape[0], -1)
+    return out.reshape((matrix.shape[0],) + tuple(shape[1:])).movedim(0, mode)
+
+
+def materialize_patch(patch_dir: Path, model):
+    """Validate a patch and compute its replaced matrices; raise PatchError if invalid."""
     import torch
 
     spec_path = patch_dir / "patch.json"
@@ -150,8 +179,6 @@ def materialize_patch(patch_dir: Path):
         for name, value in raw.items():
             if value.is_complex() or not value.is_floating_point():
                 raise PatchError(f"tensor {name} must be real floating point")
-            if value.numel() > MAX_OPERAND_NUMEL:
-                raise PatchError(f"tensor {name} is too large")
             value = value.to(torch.float32)
             if not bool(torch.isfinite(value).all()):
                 raise PatchError(f"tensor {name} contains non-finite values")
@@ -163,6 +190,7 @@ def materialize_patch(patch_dir: Path):
 
     overrides: dict[tuple[int, str], "torch.Tensor"] = {}
     touched: set[int] = set()
+    core_params = 0
     for index, block in enumerate(blocks):
         if not isinstance(block, dict):
             raise PatchError(f"block {index} is not an object")
@@ -177,58 +205,55 @@ def materialize_patch(patch_dir: Path):
             or len(set(targets)) != len(targets)
         ):
             raise PatchError(f"block {index}: targets must be distinct names from {MATRICES}")
-        equation = block.get("equation")
-        if not isinstance(equation, str) or len(equation) > MAX_EQUATION_CHARS:
-            raise PatchError(f"block {index}: equation must be a short string")
-        equation = equation.replace(" ", "")
-        if not EQUATION_RE.match(equation):
-            raise PatchError(f"block {index}: equation must look like 'ab,bc->ac' (explicit output, no ellipsis)")
-        operands = block.get("operands")
-        inputs, output = equation.split("->")
-        terms = inputs.split(",")
-        if not isinstance(operands, list) or len(operands) != len(terms):
-            raise PatchError(f"block {index}: need one operand name per equation input")
-        if any(not isinstance(name, str) or name not in tensors for name in operands):
-            raise PatchError(f"block {index}: operands must name tensors stored in tensors.safetensors")
-        sizes: dict[str, int] = {}
-        for term, name in zip(terms, operands):
-            shape = tuple(tensors[name].shape)
-            if len(term) != len(shape):
-                raise PatchError(f"block {index}: operand {name} has {len(shape)} dims, equation term {term!r}")
-            for letter, size in zip(term, shape):
-                if sizes.setdefault(letter, size) != size:
-                    raise PatchError(f"block {index}: index {letter!r} has inconsistent sizes")
-        if len(set(output)) != len(output) or any(letter not in sizes for letter in output):
-            raise PatchError(f"block {index}: invalid output indices")
-        out_numel = math.prod(sizes[letter] for letter in output) if output else 1
-        if out_numel != len(targets) * D_MODEL * D_MODEL:
-            raise PatchError(
-                f"block {index}: contraction has {out_numel} entries, expected "
-                f"{len(targets)} x {D_MODEL} x {D_MODEL}"
-            )
-        try:
-            with torch.no_grad():
-                value = torch.einsum(equation, *[tensors[name].double() for name in operands])
-        except Exception as exc:  # noqa: BLE001
-            raise PatchError(f"block {index}: contraction failed: {exc}") from exc
-        value = value.reshape(len(targets), D_MODEL, D_MODEL).to(torch.float32)
-        if not bool(torch.isfinite(value).all()):
+        layout = block.get("layout")
+        if layout not in LAYOUT_SHAPES:
+            raise PatchError(f"block {index}: layout must be one of {sorted(LAYOUT_SHAPES)}")
+        shape = LAYOUT_SHAPES[layout](len(targets))
+        factors = block.get("factors")
+        if not isinstance(factors, dict) or not factors:
+            raise PatchError(f"block {index}: 'factors' must map at least one mode index to a stored tensor")
+        bases = {}
+        for mode_key, name in factors.items():
+            if not (isinstance(mode_key, str) and mode_key.isascii() and mode_key.isdigit()
+                    and int(mode_key) < len(shape)):
+                raise PatchError(f"block {index}: factor keys must be mode indices 0..{len(shape) - 1}")
+            mode = int(mode_key)
+            if not isinstance(name, str) or name not in tensors:
+                raise PatchError(f"block {index}: factor for mode {mode} must name a stored tensor")
+            factor = tensors[name]
+            if factor.dim() != 2 or factor.shape[0] != shape[mode] or not 1 <= factor.shape[1] <= shape[mode]:
+                raise PatchError(
+                    f"block {index}: factor {name} must have shape ({shape[mode]}, R) with 1 <= R <= {shape[mode]}"
+                )
+            basis = factor.to(model.device, torch.float64)
+            singular = torch.linalg.svdvals(basis)
+            if not bool(singular[-1] > RANK_TOL * singular[0]):
+                raise PatchError(f"block {index}: factor {name} does not have full column rank")
+            bases[mode] = torch.linalg.qr(basis)[0]
+        core_params += math.prod(bases[m].shape[1] if m in bases else shape[m] for m in range(len(shape)))
+        original = torch.stack([model.canonical_matrix(layer, target) for target in targets]).double()
+        core = to_layout(original, layout)
+        for mode, basis in bases.items():
+            core = mode_dot(core, basis.T, mode)
+        rebuilt = core
+        for mode, basis in bases.items():
+            rebuilt = mode_dot(rebuilt, basis, mode)
+        mats = from_layout(rebuilt, layout, len(targets)).to(torch.float32)
+        if not bool(torch.isfinite(mats).all()):
             raise PatchError(f"block {index}: rebuilt weights are non-finite")
         for position, target in enumerate(targets):
             key = (layer, target)
             if key in overrides:
                 raise PatchError(f"block {index}: layer {layer} {target} is replaced twice")
-            overrides[key] = value[position].contiguous()
+            overrides[key] = mats[position].contiguous()
         touched.add(layer)
 
     original_params = 4 * D_MODEL * D_MODEL * len(touched)
     kept_dense = D_MODEL * D_MODEL * sum(
         1 for layer in touched for matrix in MATRICES if (layer, matrix) not in overrides
     )
+    represented = stored_params + core_params + kept_dense
     if touched:
-        represented = stored_params + kept_dense
-        if represented <= 0:
-            raise PatchError("empty representation")
         if represented >= original_params:
             raise PatchError(
                 f"constraint violated: modified layers need {represented} parameters, "
@@ -236,58 +261,17 @@ def materialize_patch(patch_dir: Path):
             )
         ratio = original_params / represented
     else:
-        represented = 0
         ratio = 1.0
     info = {
         "compression_ratio": float(ratio),
         "stored_params": stored_params,
+        "core_params": int(core_params),
         "represented_params": int(represented),
         "original_params": int(original_params),
         "touched_layers": sorted(touched),
         "replaced": sorted(f"{layer}.{matrix}" for layer, matrix in overrides),
     }
     return overrides, info
-
-
-def materialize_main(patch_dir: Path, out_prefix: Path) -> int:
-    from safetensors.torch import save_file
-
-    try:
-        overrides, info = materialize_patch(patch_dir)
-    except PatchError as exc:
-        out_prefix.with_suffix(".json").write_text(json.dumps({"ok": False, "reason": str(exc)}))
-        return 0
-    if overrides:
-        save_file({f"{layer}.{matrix}": value for (layer, matrix), value in overrides.items()},
-                  str(out_prefix.with_suffix(".safetensors")))
-    out_prefix.with_suffix(".json").write_text(json.dumps({"ok": True, **info}))
-    return 0
-
-
-def run_materialize(patch_dir: Path, work: Path, tag: str, timeout: float):
-    """Rebuild a patch in a subprocess; return (overrides, info) or raise PatchError."""
-    from safetensors.torch import load_file
-
-    prefix = work / tag
-    command = [sys.executable, str(Path(__file__).resolve()), "--materialize", str(patch_dir), "--out", str(prefix)]
-    try:
-        proc = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
-    except subprocess.TimeoutExpired as exc:
-        raise PatchError("rebuilding the patch timed out") from exc
-    meta_path = prefix.with_suffix(".json")
-    if proc.returncode != 0 or not meta_path.is_file():
-        tail = (proc.stderr or "").strip().splitlines()[-1:] or ["no output"]
-        raise PatchError(f"rebuilding the patch crashed: {tail[0][:300]}")
-    meta = json.loads(meta_path.read_text())
-    if not meta.get("ok"):
-        raise PatchError(meta.get("reason", "invalid patch"))
-    tensors = load_file(str(prefix.with_suffix(".safetensors"))) if meta["replaced"] else {}
-    overrides = {}
-    for key, value in tensors.items():
-        layer, matrix = key.split(".")
-        overrides[(int(layer), matrix)] = value
-    meta.pop("ok", None)
-    return overrides, meta
 
 
 # --------------------------------------------------------------------------
@@ -333,6 +317,11 @@ class FixedRoberta:
         self.head_dense = (get("lm_head.dense.weight"), get("lm_head.dense.bias"))
         self.head_ln = (get("lm_head.layer_norm.weight"), get("lm_head.layer_norm.bias"))
         self.head_bias = get("lm_head.bias")
+
+    def canonical_matrix(self, layer: int, matrix: str):
+        """Pretrained weight in the canonical (d_model) x (head-major h*d_v) layout."""
+        weight = self.layers[layer][matrix]
+        return weight if matrix == "output" else weight.t()
 
     def embed(self, input_ids):
         import torch
@@ -552,13 +541,7 @@ def main() -> int:
                         help="score files whose method keys must also be scored")
     parser.add_argument("--dump-dir", default=None, help="optional per-example outputs for analysis")
     parser.add_argument("--debug-limit", type=int, default=None, help="debug only: score a prefix of each split")
-    parser.add_argument("--patch-timeout", type=float, default=900.0)
-    parser.add_argument("--materialize", default=None, help=argparse.SUPPRESS)
-    parser.add_argument("--out", default=None, help=argparse.SUPPRESS)
     args = parser.parse_args()
-
-    if args.materialize:
-        return materialize_main(Path(args.materialize), Path(args.out))
 
     started = time.time()
     submissions = Path(args.submissions)
@@ -594,93 +577,90 @@ def main() -> int:
             fail_all(problems[0])
     if prepared is not None:
         model = FixedRoberta(device)
-        with tempfile.TemporaryDirectory(prefix="mha_eval_") as tmp:
-            work = Path(tmp)
-            for name in EXPERIMENTS:
-                runnable = {BASELINE_KEY: {}}
-                info_by_key = {BASELINE_KEY: {"compression_ratio": 1.0, "touched_layers": [], "stored_params": 0}}
-                for key in methods:
-                    patch_dir = submissions / key / name
-                    try:
-                        if not patch_dir.is_dir():
-                            raise PatchError(f"no patch for experiment {name} ({origins[key]})")
-                        overrides, info = run_materialize(patch_dir, work, f"m{methods.index(key)}__{name}",
-                                                          args.patch_timeout)
-                    except PatchError as exc:
-                        results[name][key] = dict(WORST)
-                        status[key][name] = {"status": "failed", "reason": str(exc)}
-                        continue
-                    except Exception as exc:  # noqa: BLE001
-                        results[name][key] = dict(WORST)
-                        status[key][name] = {"status": "failed", "reason": f"evaluator error: {exc!r}"}
-                        continue
-                    by_layer: dict[int, dict] = {}
-                    for (layer, matrix), value in overrides.items():
-                        by_layer.setdefault(layer, {})[matrix] = canonical_to_module(matrix, value).to(device)
-                    runnable[key] = by_layer
-                    info_by_key[key] = info
+        for name in EXPERIMENTS:
+            runnable = {BASELINE_KEY: {}}
+            info_by_key = {BASELINE_KEY: {"compression_ratio": 1.0, "touched_layers": [], "stored_params": 0}}
+            for key in methods:
+                patch_dir = submissions / key / name
                 try:
-                    records = score_experiment(model, prepared[name], runnable)
-                except Exception:  # noqa: BLE001  (one bad method must not sink the others)
-                    print(traceback.format_exc(), file=sys.stderr)
-                    records = {}
-                    for key in runnable:
-                        try:
-                            records.update(score_experiment(model, prepared[name], {key: runnable[key]}))
-                        except Exception as exc:  # noqa: BLE001
-                            records[key] = {"error": repr(exc)}
-                base = records.get(BASELINE_KEY, {})
-                if "error" in base or not base.get("finite", False):
-                    for key in keys:
-                        results[name][key] = dict(WORST)
-                        status[key][name] = {"status": "failed", "reason": "the unmodified model could not be scored"}
-                    runnable.clear()
+                    if not patch_dir.is_dir():
+                        raise PatchError(f"no patch for experiment {name} ({origins[key]})")
+                    overrides, info = materialize_patch(patch_dir, model)
+                except PatchError as exc:
+                    results[name][key] = dict(WORST)
+                    status[key][name] = {"status": "failed", "reason": str(exc)}
                     continue
-                base_metrics = summarize(base)
-                threshold = max(base_metrics["accuracy"], prepared[name]["majority_accuracy"])
-                gates[name] = {
-                    "baseline_accuracy": base_metrics["accuracy"],
-                    "baseline_loss": base_metrics["loss"],
-                    "majority_class_accuracy": prepared[name]["majority_accuracy"],
-                    "accuracy_threshold": threshold,
-                    "n_examples": len(prepared[name]["labels"]),
-                }
-                for key, record in records.items():
-                    info = info_by_key[key]
-                    if "error" in record or not record["finite"]:
-                        results[name][key] = dict(WORST)
-                        reason = record.get("error", "model outputs became non-finite")
-                        status[key][name] = {"status": "failed", "reason": reason}
-                        continue
-                    raw = summarize(record)
-                    raw_ratio = float(info["compression_ratio"])
-                    if key == BASELINE_KEY:
-                        scored = {**raw, "mha_compression_ratio": 1.0}
-                        passed = None
-                    else:
-                        passed = raw["accuracy"] > threshold + 1e-9
-                        scored = {
-                            "accuracy": raw["accuracy"],
-                            "loss": raw["loss"] if passed else max(raw["loss"], base_metrics["loss"]),
-                            "mha_compression_ratio": min(raw_ratio, CR_CAP) if passed else 1.0,
-                        }
-                    results[name][key] = scored
-                    status[key][name] = {
-                        "status": "ok",
-                        "reasoning_gate_passed": passed,
-                        "raw_accuracy": raw["accuracy"],
-                        "raw_loss": raw["loss"],
-                        "raw_compression_ratio": raw_ratio,
-                        "touched_layers": info.get("touched_layers", []),
-                        "stored_params": info.get("stored_params", 0),
-                    }
-                    if args.dump_dir:
-                        dump = Path(args.dump_dir) / name
-                        dump.mkdir(parents=True, exist_ok=True)
-                        (dump / f"{key}.json").write_text(
-                            json.dumps({"correct": record["correct"], "nll": record["nll"], "pred": record["pred"]})
-                        )
+                except Exception as exc:  # noqa: BLE001
+                    results[name][key] = dict(WORST)
+                    status[key][name] = {"status": "failed", "reason": f"evaluator error: {exc!r}"}
+                    continue
+                by_layer: dict[int, dict] = {}
+                for (layer, matrix), value in overrides.items():
+                    by_layer.setdefault(layer, {})[matrix] = canonical_to_module(matrix, value).to(device)
+                runnable[key] = by_layer
+                info_by_key[key] = info
+            try:
+                records = score_experiment(model, prepared[name], runnable)
+            except Exception:  # noqa: BLE001  (one bad method must not sink the others)
+                print(traceback.format_exc(), file=sys.stderr)
+                records = {}
+                for key in runnable:
+                    try:
+                        records.update(score_experiment(model, prepared[name], {key: runnable[key]}))
+                    except Exception as exc:  # noqa: BLE001
+                        records[key] = {"error": repr(exc)}
+            base = records.get(BASELINE_KEY, {})
+            if "error" in base or not base.get("finite", False):
+                for key in keys:
+                    results[name][key] = dict(WORST)
+                    status[key][name] = {"status": "failed", "reason": "the unmodified model could not be scored"}
                 runnable.clear()
+                continue
+            base_metrics = summarize(base)
+            threshold = max(base_metrics["accuracy"], prepared[name]["majority_accuracy"])
+            gates[name] = {
+                "baseline_accuracy": base_metrics["accuracy"],
+                "baseline_loss": base_metrics["loss"],
+                "majority_class_accuracy": prepared[name]["majority_accuracy"],
+                "accuracy_threshold": threshold,
+                "n_examples": len(prepared[name]["labels"]),
+            }
+            for key, record in records.items():
+                info = info_by_key[key]
+                if "error" in record or not record["finite"]:
+                    results[name][key] = dict(WORST)
+                    reason = record.get("error", "model outputs became non-finite")
+                    status[key][name] = {"status": "failed", "reason": reason}
+                    continue
+                raw = summarize(record)
+                raw_ratio = float(info["compression_ratio"])
+                if key == BASELINE_KEY:
+                    scored = {**raw, "mha_compression_ratio": 1.0}
+                    passed = None
+                else:
+                    passed = raw["accuracy"] > threshold + 1e-9
+                    scored = {
+                        "accuracy": raw["accuracy"],
+                        "loss": raw["loss"] if passed else max(raw["loss"], base_metrics["loss"]),
+                        "mha_compression_ratio": min(raw_ratio, CR_CAP) if passed else 1.0,
+                    }
+                results[name][key] = scored
+                status[key][name] = {
+                    "status": "ok",
+                    "reasoning_gate_passed": passed,
+                    "raw_accuracy": raw["accuracy"],
+                    "raw_loss": raw["loss"],
+                    "raw_compression_ratio": raw_ratio,
+                    "touched_layers": info.get("touched_layers", []),
+                    "stored_params": info.get("stored_params", 0),
+                }
+                if args.dump_dir:
+                    dump = Path(args.dump_dir) / name
+                    dump.mkdir(parents=True, exist_ok=True)
+                    (dump / f"{key}.json").write_text(
+                        json.dumps({"correct": record["correct"], "nll": record["nll"], "pred": record["pred"]})
+                    )
+            runnable.clear()
 
     scores = {
         "metadata": {

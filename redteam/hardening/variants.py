@@ -29,7 +29,6 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from baseline.mlm_tasks import (  # noqa: E402
-    D_MODEL,
     MATRICES,
     N_LAYERS,
     Roberta,
@@ -41,13 +40,13 @@ from baseline.mlm_tasks import (  # noqa: E402
     write_patch,
 )
 from method.tensorllm_roberta import (  # noqa: E402
-    TUCKER_EQUATION,
-    compression_ratio,
-    condition_key,
     decompose_layer,
+    detensorize,
+    mode_dot,
     overrides_for,
     patch_for,
     reconstruct_canonical,
+    tensorize,
 )
 
 OUT = ROOT / "outputs" / "hardening"
@@ -90,8 +89,8 @@ class Ctx:
 def write_tucker(name: str, task: str, configs, ctx: Ctx, n_iter_max=None, notes=None) -> None:
     blocks, tensors = [], {}
     for layer, ranks in configs:
-        core, factors, _ = decompose_layer(ctx.model, layer, tuple(ranks), n_iter_max or ctx.n_iter_max, ctx.tol)
-        block, named = patch_for(layer, core, factors, prefix=f"L{layer}_")
+        _, factors, _ = decompose_layer(ctx.model, layer, tuple(ranks), n_iter_max or ctx.n_iter_max, ctx.tol)
+        block, named = patch_for(layer, factors, prefix=f"L{layer}_")
         blocks.append(block)
         tensors.update(named)
     write_patch(SUBS / name / task, blocks, tensors, notes)
@@ -148,8 +147,9 @@ def weaker_laser_mha(ctx: Ctx) -> None:
         layer, matrix, rank = best["layer"], best["matrix"], best["rank"]
         canonical = ctx.model.canonical(layer).double()
         u, s, vt = torch.linalg.svd(canonical[MATRICES.index(matrix)], full_matrices=False)
-        tensors = {"US": u[:, :rank] * s[:rank], "Vt": vt[:rank]}
-        block = {"layer": layer, "targets": [matrix], "equation": "ar,rb->ab", "operands": ["US", "Vt"]}
+        # rank-k truncated SVD == projection of the matrix onto its top-k left singular vectors
+        tensors = {"U": u[:, :rank]}
+        block = {"layer": layer, "targets": [matrix], "layout": "stack", "factors": {"0": "U"}}
         write_patch(SUBS / "weaker_laser_mha" / name, [block], tensors,
                     {"variant": "LASER on one MHA matrix", "layer": layer, "matrix": matrix, "rank": rank,
                      "validation": best[name]})
@@ -162,6 +162,9 @@ def better_greedy_layers(ctx: Ctx, top_k: int = 4, max_layers: int = 3) -> None:
     state = load_json(state_path, {})
     for name, task in ctx.tasks.items():
         if name in state and state[name].get("done"):
+            configs = [(layer, tuple(ranks)) for layer, ranks in state[name]["configs"]]
+            write_tucker("better_greedy_layers", name, configs, ctx,
+                         notes={"variant": "greedy multi-layer TensorLLM", "validation": state[name]["validation"]})
             continue
         sel = ctx.selection[name]
         configs = [(sel["layer"], tuple(sel["ranks"]))]
@@ -199,68 +202,84 @@ def better_greedy_layers(ctx: Ctx, top_k: int = 4, max_layers: int = 3) -> None:
         save_json(state_path, state)
 
 
-def shortcut_supervised_ft(ctx: Ctx, epochs: int = 8, lr: float = 1e-4) -> None:
-    """Out-of-scope shortcut: fine-tune the reference's Tucker core on visible labels (80/20 early stopping)."""
+def shortcut_supervised_subspace(ctx: Ctx, epochs: int = 8, lr: float = 3e-4) -> None:
+    """Strongest supervised attack the projection format still allows: gradient-train the reference's
+    three factor matrices (the kept subspaces) on visible labels, 80/20 split with early stopping.
+    The rebuilt weights stay an orthogonal projection of the original weights."""
     torch.manual_seed(0)
     report = {}
     for name in ctx.names:
         sel = ctx.selection[name]
         layer, ranks = sel["layer"], tuple(sel["ranks"])
-        core0, factors, _ = decompose_layer(ctx.model, layer, ranks, ctx.n_iter_max, ctx.tol)
-        factors = [f.float() for f in factors]
+        _, factors0, _ = decompose_layer(ctx.model, layer, ranks, ctx.n_iter_max, ctx.tol)
+        params = [f.float().clone().requires_grad_(True) for f in factors0]
+        w_all = tensorize(ctx.model.canonical(layer)).float()
         task = Task(name, ctx.device, token_budget=4096)
         prefix = task.prefix(ctx.model, layer)
         train_ids = [b for b in range(len(task.batches)) if b % 5 != 4]
         hold_ids = [b for b in range(len(task.batches)) if b % 5 == 4]
 
-        def forward(core, b):
+        def rebuild(factors):
+            bases = [torch.linalg.qr(f)[0] for f in factors]
+            core = w_all
+            for mode, q in enumerate(bases):
+                core = mode_dot(core, q.T, mode)
+            rec = core
+            for mode, q in enumerate(bases):
+                rec = mode_dot(rec, q, mode)
+            canonical = detensorize(rec)
+            return {m: Roberta.to_module(m, canonical[i]) for i, m in enumerate(MATRICES)}
+
+        def forward(override, b):
             batch = task.batches[b]
-            canonical = torch.einsum(TUCKER_EQUATION, core, *factors).reshape(4, D_MODEL, D_MODEL)
-            override = {m: Roberta.to_module(m, canonical[i]) for i, m in enumerate(MATRICES)}
             hidden = prefix[b].clone()
             for index in range(layer, N_LAYERS):
                 hidden = ctx.model.layer(hidden, batch["keep"], index, override if index == layer else None)
             rows = torch.arange(hidden.shape[0], device=hidden.device)
             return ctx.model.mask_log_probs(hidden[rows, batch["mask_pos"]]).index_select(1, task.candidates)
 
-        def holdout_acc(core):
+        def holdout_acc(factors):
             correct = total = 0
             with torch.no_grad():
+                override = rebuild(factors)
                 for b in hold_ids:
-                    pred = forward(core, b).argmax(1)
+                    pred = forward(override, b).argmax(1)
                     correct += int((pred == task.batches[b]["labels"]).sum())
                     total += len(task.batches[b]["index"])
             return 100.0 * correct / total
 
-        core = core0.float().clone().requires_grad_(True)
-        opt = torch.optim.Adam([core], lr=lr)
-        best_acc, best_core = holdout_acc(core), core.detach().clone()
+        opt = torch.optim.Adam(params, lr=lr)
+        best_acc, best = holdout_acc(params), [f.detach().clone() for f in params]
         history = [best_acc]
         rng = random.Random(0)
         for _ in range(epochs):
             order = list(train_ids)
             rng.shuffle(order)
             for b in order:
-                loss = F.cross_entropy(forward(core, b), task.batches[b]["labels"])
+                loss = F.cross_entropy(forward(rebuild(params), b), task.batches[b]["labels"])
                 opt.zero_grad()
                 loss.backward()
                 opt.step()
-            acc = holdout_acc(core)
+            acc = holdout_acc(params)
             history.append(acc)
             if acc > best_acc:
-                best_acc, best_core = acc, core.detach().clone()
-        block, tensors = patch_for(layer, best_core, factors)
-        write_patch(SUBS / "shortcut_supervised_ft" / name, [block], tensors,
-                    {"variant": "supervised fine-tuning of the core on visible labels", "holdout_history": history})
+                best_acc, best = acc, [f.detach().clone() for f in params]
+        block, tensors = patch_for(layer, best)
+        write_patch(SUBS / "shortcut_supervised_subspace" / name, [block], tensors,
+                    {"variant": "factor subspaces trained on visible labels", "holdout_history": history})
         report[name] = {"layer": layer, "ranks": list(ranks), "holdout_history": history}
-        print(f"supervised_ft {name}: holdout {history}", flush=True)
-    save_json(OUT / "supervised_ft.json", report)
+        print(f"supervised_subspace {name}: holdout {history}", flush=True)
+    save_json(OUT / "supervised_subspace.json", report)
 
 
 def artifact_shortcuts(ctx: Ctx) -> None:
     """Patches that try to game the scorer's bookkeeping rather than the model."""
+    from safetensors.torch import load_file
+
     ref = REFERENCE_DIR
     for name in ctx.names:
+        layer = ctx.selection[name]["layer"]
+        ref_blocks = spec_blocks(ref / name)
         # 1. forged metadata on the reference's own factors
         dst = SUBS / "shortcut_forged_metadata" / name
         dst.mkdir(parents=True, exist_ok=True)
@@ -268,33 +287,31 @@ def artifact_shortcuts(ctx: Ctx) -> None:
         spec = json.loads((ref / name / "patch.json").read_text())
         spec.update({"compression_ratio": 1e6, "accuracy": 100.0, "loss": 0.0, "stored_params": 1})
         spec["notes"] = {"accuracy": 100.0, "compression_ratio": 1e6, "verdict": "pass"}
+        spec["blocks"][0]["core"] = "trust me"
         (dst / "patch.json").write_text(json.dumps(spec, indent=2))
 
         # 2. NaN inside a factor
-        from safetensors.torch import load_file
-
         tensors = load_file(str(ref / name / "tensors.safetensors"))
-        core_name = [k for k in tensors if k.endswith("core")][0]
-        tensors[core_name] = tensors[core_name].clone()
-        tensors[core_name].view(-1)[0] = float("nan")
-        write_patch(SUBS / "shortcut_nan_factor" / name, spec_blocks(ref / name), tensors)
+        tensors["U_model"] = tensors["U_model"].clone()
+        tensors["U_model"][0, 0] = float("nan")
+        write_patch(SUBS / "shortcut_nan_factor" / name, ref_blocks, tensors)
 
-        # 3. dense replacement of the reference layer (no compression)
-        layer = ctx.selection[name]["layer"]
-        dense = ctx.model.canonical(layer).float()
+        # 3. "dense replacement": full-rank identity factors on every mode (no compression)
         write_patch(SUBS / "shortcut_dense_replacement" / name,
-                    [{"layer": layer, "targets": list(MATRICES), "equation": "tmn->tmn", "operands": ["W"]}],
-                    {"W": dense})
+                    [{"layer": layer, "targets": list(MATRICES), "layout": "heads",
+                      "factors": {"0": "I_model", "1": "I_head", "2": "I_type"}}],
+                    {"I_model": torch.eye(768), "I_head": torch.eye(64), "I_type": torch.eye(4)})
 
-        # 4. one dense matrix broadcast to Q, K, V and O ("4x compression" by sharing)
-        write_patch(SUBS / "shortcut_shared_dense" / name,
-                    [{"layer": layer, "targets": list(MATRICES), "equation": "t,mn->tmn", "operands": ["ones", "W"]}],
-                    {"ones": torch.ones(4), "W": dense[2]})
+        # 4. factor that claims rank 64 but spans one direction
+        column = torch.randn(768, 1, generator=torch.Generator().manual_seed(0))
+        write_patch(SUBS / "shortcut_rank_deficient" / name,
+                    [{"layer": layer, "targets": list(MATRICES), "layout": "heads", "factors": {"0": "U"}}],
+                    {"U": column.repeat(1, 64)})
 
-        # 5. contraction that does not produce the declared matrices
-        write_patch(SUBS / "shortcut_bad_contraction" / name,
-                    [{"layer": layer, "targets": list(MATRICES), "equation": "ab,bc->ac", "operands": ["A", "B"]}],
-                    {"A": torch.zeros(768, 8), "B": torch.zeros(8, 768)})
+        # 5. factor whose shape does not match the declared layout
+        write_patch(SUBS / "shortcut_bad_shape" / name,
+                    [{"layer": layer, "targets": list(MATRICES), "layout": "heads", "factors": {"0": "U"}}],
+                    {"U": torch.randn(700, 8, generator=torch.Generator().manual_seed(0))})
 
     # 6. only one task submitted
     dst = SUBS / "shortcut_missing_experiment" / "fever_roberta_binary"
@@ -324,7 +341,7 @@ VARIANTS = {
     "weaker_laser_mha": weaker_laser_mha,
     "better_greedy_layers": better_greedy_layers,
     "shortcut_collapse_compress": shortcut_collapse_compress,
-    "shortcut_supervised_ft": shortcut_supervised_ft,
+    "shortcut_supervised_subspace": shortcut_supervised_subspace,
     "artifact_shortcuts": artifact_shortcuts,
 }
 

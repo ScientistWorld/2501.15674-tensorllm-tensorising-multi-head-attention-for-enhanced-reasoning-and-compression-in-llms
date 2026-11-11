@@ -97,7 +97,7 @@ python redteam/hardening/analyze.py
 R=redteam/hardening/results
 mkdir -p "$R"
 cp "$H/analysis.json" "$H/scores_test_all.json" "$H/scores_train_all.json" "$H/scores_test_tampered.json" "$R/"
-cp "$H/greedy_layers.json" "$H/supervised_ft.json" "$H/laser_mha_log.json" "$H/variants_done.json" "$R/" || true
+cp "$H/greedy_layers.json" "$H/supervised_subspace.json" "$H/laser_mha_log.json" "$H/variants_done.json" "$R/" || true
 cp outputs/tensorllm_search/search_log.json "$R/reference_search_log.json"
 cp outputs/submissions/tensorllm_roberta/selection.json "$R/reference_selection.json"
 for d in "$H"/submissions/*/; do
