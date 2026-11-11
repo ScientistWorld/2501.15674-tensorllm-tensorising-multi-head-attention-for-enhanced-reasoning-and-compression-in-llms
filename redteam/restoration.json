@@ -1,0 +1,22 @@
+{
+  "start_commit": "e35b7b1f65dd14a167687a2491627f915e339e53",
+  "mutable_gym_files_restored": true,
+  "preexisting_platform_worktree_differences": [
+    "README.md",
+    "manifest.json",
+    "trajectory/turn_0001_raw.jsonl",
+    "trajectory/turn_0002_raw.jsonl",
+    "trajectory/turn_0003_raw.jsonl",
+    "trajectory/turn_0004_raw.jsonl"
+  ],
+  "platform_restrictions": {
+    "README.md": "mounted null device; unlink reports Device or resource busy",
+    "manifest.json": "mounted null device; unlink reports Device or resource busy",
+    "trajectory/": "read-only mount; git cannot recreate original tracked files"
+  },
+  "staged_non_audit_changes_relative_to_start": [
+    "action.yaml"
+  ],
+  "fixed_model_config_restored_byte_for_byte": true,
+  "completion_signal_exception": "action.yaml will contain action: done as required"
+}

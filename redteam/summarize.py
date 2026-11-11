@@ -39,10 +39,17 @@ def rank_cohort(names):
                 continue
             direction = 1 if definition['higher_is_better'] else -1
             contributions[metric] = abs(definition['coefficient'])*direction*(value-REFERENCE[metric])/scales[metric]
-        ranks[name] = {'delta_rank': sum(contributions.values()), 'contributions': contributions,
-                       'missing_or_nonfinite': [m for m in METRICS if not finite(row['metrics'].get(m))]}
+        nonfinite = [m for m in METRICS if m in row['metrics'] and not finite(row['metrics'][m])]
+        valid = row['outcome']['test_exit_code'] == 0 and not nonfinite
+        # A nonzero evaluator exit is not a successful scored attempt. The
+        # ranking specification says to skip MISSING values, not NaN. Do not
+        # invent either controller behavior in the audit's reported ranks.
+        ranks[name] = {'delta_rank': sum(contributions.values()) if valid else None,
+                       'contributions': contributions, 'rank_valid': valid,
+                       'missing': [m for m in METRICS if m not in row['metrics']],
+                       'nonfinite': nonfinite}
     return {'metric_scales': scales, 'ranks': ranks, 'cohort': names,
-            'normalization': 'population standard deviation, weight=1, absolute coefficient; missing/nonfinite skipped'}
+            'normalization': 'population standard deviation, weight=1, absolute coefficient; missing skipped; failed/nonfinite runs have no assigned rank'}
 
 finite_names = [name for name, row in scenarios.items() if row['outcome']['test_exit_code'] == 0
                 and all(finite(row['metrics'].get(m)) for m in METRICS)]
