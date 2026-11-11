@@ -1,2 +1,8 @@
-action: done
-notes: "Audit complete: 24 hidden-test runs, 17 shortcut attempts, zero reference seed spread; major scoring shortcuts confirmed and mutable gym files restored. See REDTEAM.md."
+# Once you set action to 'submit' or 'done', STOP immediately.
+# Do NOT sleep, poll, or wait for jobs. The system reads this file
+# only after your turn ends.
+action: pending
+gpus: 0
+test: false
+milestone: core_claim
+notes: ""
