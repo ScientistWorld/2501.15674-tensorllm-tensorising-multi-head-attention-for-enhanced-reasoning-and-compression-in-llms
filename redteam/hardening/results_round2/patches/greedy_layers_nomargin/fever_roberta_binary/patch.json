@@ -1,0 +1,57 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 0,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 128,
+        "1": 48,
+        "2": 3
+      }
+    },
+    {
+      "layer": 6,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 512,
+        "1": 16,
+        "2": 4
+      }
+    },
+    {
+      "layer": 7,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 128,
+        "1": 64,
+        "2": 4
+      }
+    }
+  ],
+  "notes": {
+    "variant": "greedy multi-layer TensorLLM, any gain",
+    "validation": {
+      "accuracy": 54.52808559419182,
+      "loss": 4.522573442189439
+    }
+  }
+}

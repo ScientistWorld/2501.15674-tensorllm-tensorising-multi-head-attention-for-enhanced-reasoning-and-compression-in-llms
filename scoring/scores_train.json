@@ -5,21 +5,21 @@
     "device": "cuda",
     "fixed_model_verified": true,
     "debug_limit": null,
-    "seconds": 28.5,
+    "seconds": 35.2,
     "gates": {
       "bios_profession_roberta": {
         "baseline_accuracy": 64.95837669094693,
         "baseline_loss": 4.853128171879623,
         "majority_class_accuracy": 62.48699271592091,
-        "accuracy_threshold": 64.95837669094693,
-        "n_examples": 3844
+        "n_examples": 3844,
+        "rule": "paired McNemar z vs the unmodified model >= 1.645 and binomial z vs the majority-class rate >= 1.645; otherwise loss = 30.0, compression = 1"
       },
       "fever_roberta_binary": {
         "baseline_accuracy": 49.78983568972105,
         "baseline_loss": 2.499201423619875,
         "majority_class_accuracy": 50.21016431027895,
-        "accuracy_threshold": 50.21016431027895,
-        "n_examples": 2617
+        "n_examples": 2617,
+        "rule": "paired McNemar z vs the unmodified model >= 1.645 and binomial z vs the majority-class rate >= 1.645; otherwise loss = 30.0, compression = 1"
       }
     },
     "methods": {
@@ -27,6 +27,8 @@
         "bios_profession_roberta": {
           "status": "ok",
           "reasoning_gate_passed": null,
+          "gate_z_vs_unmodified": null,
+          "gate_z_vs_majority": null,
           "raw_accuracy": 64.95837669094693,
           "raw_loss": 4.853128171879623,
           "raw_compression_ratio": 1.0,
@@ -36,6 +38,8 @@
         "fever_roberta_binary": {
           "status": "ok",
           "reasoning_gate_passed": null,
+          "gate_z_vs_unmodified": null,
+          "gate_z_vs_majority": null,
           "raw_accuracy": 49.78983568972105,
           "raw_loss": 2.499201423619875,
           "raw_compression_ratio": 1.0,
@@ -47,6 +51,8 @@
         "bios_profession_roberta": {
           "status": "ok",
           "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.1473,
+          "gate_z_vs_majority": 15.291,
           "raw_accuracy": 74.4276795005203,
           "raw_loss": 5.238237024516518,
           "raw_compression_ratio": 11.81443794567743,
@@ -58,6 +64,8 @@
         "fever_roberta_binary": {
           "status": "ok",
           "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.3169,
+          "gate_z_vs_majority": 3.245,
           "raw_accuracy": 53.38173481085212,
           "raw_loss": 1.1379046288664485,
           "raw_compression_ratio": 7.314013615564897,

@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "slice": "test",
+    "submissions": "/home/user/outputs/hardening/submissions_ref_only",
+    "device": "cuda",
+    "fixed_model_verified": false,
+    "debug_limit": null,
+    "seconds": 5.7,
+    "gates": {},
+    "methods": {
+      "roberta_original": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        }
+      },
+      "tensorllm_roberta": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        }
+      }
+    }
+  },
+  "experiments": {
+    "bios_profession_roberta": {
+      "results": {
+        "roberta_original": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    },
+    "fever_roberta_binary": {
+      "results": {
+        "roberta_original": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    }
+  }
+}
