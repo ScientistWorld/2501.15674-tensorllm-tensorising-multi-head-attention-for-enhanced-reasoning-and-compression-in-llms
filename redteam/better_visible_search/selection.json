@@ -1,0 +1,24 @@
+{
+  "rule": "max even-row accuracy; tie break even-row NLL",
+  "trials": 72,
+  "chosen": {
+    "name": "layer6_r416-48-4",
+    "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r416-48-4.jsonl",
+    "accuracy": 0.528125,
+    "loss": 0.7098817940801382,
+    "layer": 6,
+    "ranks": [
+      416,
+      48,
+      4
+    ],
+    "original_mha_params": 2359296,
+    "compressed_mha_params": 1281040,
+    "compression_ratio": 1.8417036158121527,
+    "relative_reconstruction_error": 0.5625364780426025
+  },
+  "best_visible": [
+    0.53125,
+    -0.7088716868311167
+  ]
+}

@@ -1,0 +1,320 @@
+{"id": 137334, "label": "true", "prediction": "false", "correct": false, "nll": 1.6235809326171875, "claim": "Fox 2000 Pictures released the film Soul Food."}
+{"id": 111897, "label": "false", "prediction": "false", "correct": true, "nll": 0.11988072097301483, "claim": "Telemundo is a English-language television network."}
+{"id": 89891, "label": "false", "prediction": "false", "correct": true, "nll": 0.18706479668617249, "claim": "Damon Albarn's debut album was released in 2011."}
+{"id": 181634, "label": "true", "prediction": "false", "correct": false, "nll": 1.4050358533859253, "claim": "There is a capital called Mogadishu."}
+{"id": 219028, "label": "false", "prediction": "false", "correct": true, "nll": 0.16099140048027039, "claim": "Savages was exclusively a German film."}
+{"id": 108281, "label": "false", "prediction": "false", "correct": true, "nll": 0.17090798914432526, "claim": "Andrew Kevin Walker is only Chinese."}
+{"id": 204361, "label": "true", "prediction": "false", "correct": false, "nll": 1.3099464178085327, "claim": "The Cretaceous ended."}
+{"id": 54168, "label": "false", "prediction": "false", "correct": true, "nll": 0.2093774527311325, "claim": "Murda Beatz's real name is Marshall Mathers."}
+{"id": 105095, "label": "true", "prediction": "false", "correct": false, "nll": 1.4816431999206543, "claim": "Nicholas Brody is a character on Homeland."}
+{"id": 18708, "label": "false", "prediction": "false", "correct": true, "nll": 0.2398863583803177, "claim": "Charles Manson has been proven innocent of all crimes."}
+{"id": 90809, "label": "false", "prediction": "false", "correct": true, "nll": 0.13192787766456604, "claim": "Sean Penn is only ever a stage actor."}
+{"id": 204443, "label": "false", "prediction": "false", "correct": true, "nll": 0.2838186025619507, "claim": "Brad Wilk helped co-found Rage in 1962."}
+{"id": 192714, "label": "true", "prediction": "false", "correct": false, "nll": 1.731321096420288, "claim": "CBS is the network that aired The Millers."}
+{"id": 159706, "label": "true", "prediction": "false", "correct": false, "nll": 1.660801649093628, "claim": "Edgar Wright is a person."}
+{"id": 107786, "label": "true", "prediction": "false", "correct": false, "nll": 1.991196870803833, "claim": "Ann Richards was professionally involved in politics."}
+{"id": 166846, "label": "true", "prediction": "false", "correct": false, "nll": 1.302850365638733, "claim": "Drake Bell put out an EP."}
+{"id": 140764, "label": "false", "prediction": "false", "correct": true, "nll": 0.2643960416316986, "claim": "Janet Leigh was incapable of writing."}
+{"id": 197381, "label": "false", "prediction": "false", "correct": true, "nll": 0.1080479547381401, "claim": "Sim\u00f3n Bol\u00edvar is only known as Sim\u00f3n Bol\u00edvar."}
+{"id": 187000, "label": "false", "prediction": "false", "correct": true, "nll": 0.244610995054245, "claim": "Bermuda Triangle is in the western part of the Himalayas."}
+{"id": 142454, "label": "false", "prediction": "false", "correct": true, "nll": 0.15659873187541962, "claim": "Advertising is a personal message."}
+{"id": 147411, "label": "false", "prediction": "false", "correct": true, "nll": 0.040886957198381424, "claim": "Hot Right Now is mistakenly attributed to DJ Fresh."}
+{"id": 227362, "label": "false", "prediction": "false", "correct": true, "nll": 0.16597506403923035, "claim": "Giada at Home was only available on DVD."}
+{"id": 145512, "label": "false", "prediction": "false", "correct": true, "nll": 0.13615956902503967, "claim": "Harold Macmillan was born on February 20, 1894."}
+{"id": 64721, "label": "true", "prediction": "false", "correct": false, "nll": 1.235325574874878, "claim": "Aristotle spent time in Athens."}
+{"id": 124667, "label": "false", "prediction": "false", "correct": true, "nll": 0.1660527139902115, "claim": "David Packouz refused to be an entrepreneur."}
+{"id": 52175, "label": "false", "prediction": "false", "correct": true, "nll": 0.13488559424877167, "claim": "Magic Johnson did not play for the Lakers."}
+{"id": 104386, "label": "false", "prediction": "false", "correct": true, "nll": 0.20185357332229614, "claim": "Tenacious D started in 1997."}
+{"id": 55658, "label": "true", "prediction": "false", "correct": false, "nll": 1.7434372901916504, "claim": "James VI and I was a major advocate of a single parliament for Scotland and England."}
+{"id": 201090, "label": "true", "prediction": "false", "correct": false, "nll": 1.6668227910995483, "claim": "Marcus Bentley is a broadcaster."}
+{"id": 129441, "label": "false", "prediction": "false", "correct": true, "nll": 0.417481005191803, "claim": "Saxony is in Ireland."}
+{"id": 207543, "label": "true", "prediction": "false", "correct": false, "nll": 1.7277296781539917, "claim": "Mel B released a song on Virgin Records in 2007."}
+{"id": 132134, "label": "false", "prediction": "false", "correct": true, "nll": 0.29307299852371216, "claim": "Noah Cyrus is a younger sister of Macy Grey."}
+{"id": 128123, "label": "false", "prediction": "false", "correct": true, "nll": 0.42898932099342346, "claim": "Mohra is a truck."}
+{"id": 86175, "label": "false", "prediction": "false", "correct": true, "nll": 0.13999150693416595, "claim": "Hourglass is performed by a Russian singer-songwriter."}
+{"id": 31963, "label": "true", "prediction": "false", "correct": false, "nll": 1.645179033279419, "claim": "Shane Black was born in 1961."}
+{"id": 41665, "label": "false", "prediction": "false", "correct": true, "nll": 0.13101789355278015, "claim": "There are not rumors that Augustus' wife, Livia, poisoned him."}
+{"id": 71959, "label": "true", "prediction": "false", "correct": false, "nll": 1.4509212970733643, "claim": "Jennifer Lopez made a single."}
+{"id": 21775, "label": "false", "prediction": "false", "correct": true, "nll": 0.21239839494228363, "claim": "Vedam was written and directed by Christopher Nolan."}
+{"id": 173496, "label": "true", "prediction": "false", "correct": false, "nll": 1.3418606519699097, "claim": "Sancho Panza is a character in Don Quixote."}
+{"id": 43608, "label": "false", "prediction": "false", "correct": true, "nll": 0.24459810554981232, "claim": "Magic Johnson was a tap dancer."}
+{"id": 66638, "label": "false", "prediction": "false", "correct": true, "nll": 0.2654378414154053, "claim": "The Adventures of Pluto Nash was reviewed by Ron Underwood."}
+{"id": 26839, "label": "false", "prediction": "false", "correct": true, "nll": 0.19466178119182587, "claim": "Hedda Gabler's world premiere took place at the Battle of Hastings."}
+{"id": 40351, "label": "true", "prediction": "false", "correct": false, "nll": 1.7002671957015991, "claim": "Brazzers is a company."}
+{"id": 15307, "label": "true", "prediction": "false", "correct": false, "nll": 1.3838002681732178, "claim": "Tim Roth is an English actor."}
+{"id": 146231, "label": "false", "prediction": "false", "correct": true, "nll": 0.2110067903995514, "claim": "Juventus F.C. rejected their traditional black-and-white-striped home uniform in 1903."}
+{"id": 184083, "label": "true", "prediction": "false", "correct": false, "nll": 1.7959145307540894, "claim": "Ernest Medina participated in the My Lai Massacre."}
+{"id": 226877, "label": "true", "prediction": "false", "correct": false, "nll": 1.9525727033615112, "claim": "Jenna Jameson worked as a glamor model and a stripper."}
+{"id": 227130, "label": "false", "prediction": "false", "correct": true, "nll": 0.2268865704536438, "claim": "New Orleans Pelicans compete in the National Football Association."}
+{"id": 134710, "label": "false", "prediction": "false", "correct": true, "nll": 0.15735659003257751, "claim": "Starrcade was an annual professional wrestling event that began in 1988."}
+{"id": 105310, "label": "true", "prediction": "false", "correct": false, "nll": 1.9918292760849, "claim": "Jack Falahee is a person who acts."}
+{"id": 114567, "label": "false", "prediction": "false", "correct": true, "nll": 0.2836569547653198, "claim": "Seohyun is a dog."}
+{"id": 71986, "label": "false", "prediction": "false", "correct": true, "nll": 0.16369834542274475, "claim": "Steve Wozniak was born after the Apple II came out."}
+{"id": 221085, "label": "true", "prediction": "false", "correct": false, "nll": 2.131892442703247, "claim": "A&E is a cable and satellite television network."}
+{"id": 71853, "label": "true", "prediction": "false", "correct": false, "nll": 1.6175553798675537, "claim": "L.A. Reid has served as the president of a record label."}
+{"id": 163980, "label": "false", "prediction": "false", "correct": true, "nll": 0.08629758656024933, "claim": "Veeram is something other than an Indian Tamil film."}
+{"id": 185193, "label": "true", "prediction": "false", "correct": false, "nll": 1.9447283744812012, "claim": "Home for the Holidays stars an American actress."}
+{"id": 39437, "label": "true", "prediction": "false", "correct": false, "nll": 1.7278441190719604, "claim": "Taran Killam is an American writer."}
+{"id": 34412, "label": "false", "prediction": "false", "correct": true, "nll": 0.20128633081912994, "claim": "Jayasudha is an actor that stars in Daag."}
+{"id": 150217, "label": "false", "prediction": "false", "correct": true, "nll": 0.12101595103740692, "claim": "John Dolmayan was born on July 15, 1873."}
+{"id": 202783, "label": "false", "prediction": "false", "correct": true, "nll": 0.3682721257209778, "claim": "Despicable Me 2 was directed by a lake."}
+{"id": 159944, "label": "true", "prediction": "false", "correct": false, "nll": 1.9980452060699463, "claim": "Christa McAuliffe taught social studies at Concord High School."}
+{"id": 80205, "label": "false", "prediction": "false", "correct": true, "nll": 0.2501717507839203, "claim": "Reign Over Me was released in 2017."}
+{"id": 43776, "label": "false", "prediction": "false", "correct": true, "nll": 0.4580356776714325, "claim": "Colin Kaepernick is a poker player."}
+{"id": 79538, "label": "false", "prediction": "false", "correct": true, "nll": 0.1937013864517212, "claim": "Sheryl Lee has yet to appear in a film as of 2016."}
+{"id": 172478, "label": "false", "prediction": "false", "correct": true, "nll": 0.16510425508022308, "claim": "Matteo Renzi is German."}
+{"id": 60977, "label": "false", "prediction": "false", "correct": true, "nll": 0.5416241884231567, "claim": "The highest point of the Hindu Kush is Everest."}
+{"id": 100584, "label": "false", "prediction": "false", "correct": true, "nll": 0.14820373058319092, "claim": "Same Old Love is disassociated from Selena Gomez."}
+{"id": 32820, "label": "false", "prediction": "false", "correct": true, "nll": 0.15106220543384552, "claim": "The heart beats at a resting rate close to 22 beats per minute."}
+{"id": 215500, "label": "false", "prediction": "false", "correct": true, "nll": 0.20849816501140594, "claim": "Weekly Idol is hosted by Yoo Jae Suk."}
+{"id": 26300, "label": "true", "prediction": "false", "correct": false, "nll": 2.041877269744873, "claim": "Heavy Metal music was developed in the early 1970's."}
+{"id": 186996, "label": "true", "prediction": "false", "correct": false, "nll": 1.8757803440093994, "claim": "Bermuda Triangle is also known by another name."}
+{"id": 145446, "label": "true", "prediction": "false", "correct": false, "nll": 2.087770462036133, "claim": "Topman has clothing outlets in six Irish cities and towns."}
+{"id": 68084, "label": "true", "prediction": "false", "correct": false, "nll": 1.7726149559020996, "claim": "Wales' population changed."}
+{"id": 4713, "label": "false", "prediction": "false", "correct": true, "nll": 0.351617693901062, "claim": "Tool has won three Oscars."}
+{"id": 105419, "label": "false", "prediction": "false", "correct": true, "nll": 0.18246275186538696, "claim": "Youtube is not a website."}
+{"id": 10328, "label": "false", "prediction": "false", "correct": true, "nll": 0.20766864717006683, "claim": "Sidse Babett Knudsen graduated on November 22nd, 1968."}
+{"id": 194904, "label": "true", "prediction": "false", "correct": false, "nll": 1.5233237743377686, "claim": "Stripes had Conrad Dunn featured in it."}
+{"id": 223343, "label": "true", "prediction": "false", "correct": false, "nll": 1.66898775100708, "claim": "2015 was the year when the principal photography of The Disaster Aritst (film) started."}
+{"id": 186590, "label": "true", "prediction": "false", "correct": false, "nll": 1.7097951173782349, "claim": "In 1971 Asylum Records the American record label was founded by David Geffen and his partner Elliot Roberts."}
+{"id": 60685, "label": "true", "prediction": "false", "correct": false, "nll": 2.0841121673583984, "claim": "Trollhunters was produced by an animation company."}
+{"id": 38125, "label": "true", "prediction": "false", "correct": false, "nll": 2.1694915294647217, "claim": "The Armenian Genocide was the killing of Armenians who were mostly Ottoman natives."}
+{"id": 201095, "label": "true", "prediction": "false", "correct": false, "nll": 1.2021815776824951, "claim": "There is a British actor name Marcus Bentley."}
+{"id": 11432, "label": "false", "prediction": "false", "correct": true, "nll": 0.2009197622537613, "claim": "The first inauguration of Bill Clinton made him the 50th President of the United States."}
+{"id": 172771, "label": "true", "prediction": "false", "correct": false, "nll": 1.7901051044464111, "claim": "The Beach's director was Danny Boyle."}
+{"id": 125513, "label": "false", "prediction": "false", "correct": true, "nll": 0.19035404920578003, "claim": "The dress did not inspire hashtags."}
+{"id": 130920, "label": "false", "prediction": "false", "correct": true, "nll": 0.1230698749423027, "claim": "Bruce Shand was born on September 22nd, 1917."}
+{"id": 128229, "label": "true", "prediction": "false", "correct": false, "nll": 2.2333099842071533, "claim": "Advertising is an sound-based manner of marketing communication."}
+{"id": 108950, "label": "false", "prediction": "false", "correct": true, "nll": 0.23782163858413696, "claim": "Alexandra Daddario is Canadian."}
+{"id": 121189, "label": "false", "prediction": "false", "correct": true, "nll": 0.22884075343608856, "claim": "The Others (2001 film) lost Best Film."}
+{"id": 166848, "label": "true", "prediction": "false", "correct": false, "nll": 1.4945743083953857, "claim": "Drake Bell put out an extended play in 2011."}
+{"id": 121119, "label": "false", "prediction": "false", "correct": true, "nll": 0.2536601126194, "claim": "The 14th Dalai Lama lives in Japan exclusively."}
+{"id": 141072, "label": "false", "prediction": "false", "correct": true, "nll": 0.2116112858057022, "claim": "Telemundo is owned by ESPN."}
+{"id": 212194, "label": "false", "prediction": "false", "correct": true, "nll": 0.20277376472949982, "claim": "Miracle at St. Anna only tells the story of four cats."}
+{"id": 63038, "label": "true", "prediction": "false", "correct": false, "nll": 1.980482816696167, "claim": "Caroline Kennedy is American."}
+{"id": 185206, "label": "false", "prediction": "false", "correct": true, "nll": 0.26920458674430847, "claim": "Home for the Holidays stars the fourth stepchild of Charlie Chaplin"}
+{"id": 166647, "label": "false", "prediction": "false", "correct": true, "nll": 0.12136032432317734, "claim": "Anne Rice was born in Fort Lauderdale."}
+{"id": 51098, "label": "false", "prediction": "false", "correct": true, "nll": 0.19078756868839264, "claim": "Stephen Hillenburg was fascinated with politics as a student."}
+{"id": 217212, "label": "false", "prediction": "false", "correct": true, "nll": 0.20715849101543427, "claim": "A monk only avoids practicing religious asceticism."}
+{"id": 47911, "label": "true", "prediction": "false", "correct": false, "nll": 1.5442572832107544, "claim": "The Mod Squad is a series that fits into the genre of crime drama."}
+{"id": 130717, "label": "true", "prediction": "false", "correct": false, "nll": 1.7870172262191772, "claim": "The Dark Tower is a fantasy film."}
+{"id": 24684, "label": "true", "prediction": "false", "correct": false, "nll": 1.1646676063537598, "claim": "Arizona is a state in the United States."}
+{"id": 170949, "label": "true", "prediction": "false", "correct": false, "nll": 1.4815607070922852, "claim": "Smriti Mandhana is an Indian cricketer born in July."}
+{"id": 44327, "label": "true", "prediction": "false", "correct": false, "nll": 2.077683925628662, "claim": "Emma Watson was born."}
+{"id": 179042, "label": "true", "prediction": "false", "correct": false, "nll": 1.6040529012680054, "claim": "Congressional Space Medal of Honor is the highest award given only to astronauts by NASA."}
+{"id": 31418, "label": "false", "prediction": "false", "correct": true, "nll": 0.1511673629283905, "claim": "The Saw franchise grossed under $873 million."}
+{"id": 123452, "label": "false", "prediction": "false", "correct": true, "nll": 0.13180866837501526, "claim": "The Faroe Islands are no longer part of the Kingdom of Mercia."}
+{"id": 204033, "label": "true", "prediction": "false", "correct": false, "nll": 1.5281702280044556, "claim": "Down With Love is a 2003 comedy film."}
+{"id": 93412, "label": "true", "prediction": "false", "correct": false, "nll": 1.788741946220398, "claim": "Paul Nicholls played Sam Casey in Law & Order: UK."}
+{"id": 7208, "label": "true", "prediction": "false", "correct": false, "nll": 1.5077203512191772, "claim": "Colombiana is a French film."}
+{"id": 168529, "label": "true", "prediction": "false", "correct": false, "nll": 1.769547462463379, "claim": "Rick Yune was on a series that cancelled on December 12."}
+{"id": 199410, "label": "true", "prediction": "false", "correct": false, "nll": 1.5251842737197876, "claim": "Boyhood is about Mason Evans, Jr's childhood."}
+{"id": 10278, "label": "false", "prediction": "false", "correct": true, "nll": 0.09536698460578918, "claim": "Hush (2016 film) was produced by children."}
+{"id": 227080, "label": "true", "prediction": "false", "correct": false, "nll": 1.0226713418960571, "claim": "Roar (song) is on the 2013 Katy Perry album Prism."}
+{"id": 182276, "label": "false", "prediction": "false", "correct": true, "nll": 0.2288118302822113, "claim": "Saturn Corporation is also known as Toyota LLC."}
+{"id": 67212, "label": "false", "prediction": "false", "correct": true, "nll": 0.17812328040599823, "claim": "John Dolmayan is Armenian-American and Indian."}
+{"id": 129752, "label": "true", "prediction": "false", "correct": false, "nll": 1.1482350826263428, "claim": "The human brain contains a hypothalamus."}
+{"id": 123051, "label": "false", "prediction": "false", "correct": true, "nll": 0.22118689119815826, "claim": "T2 Trainspotting is a 2004 British comedy drama film."}
+{"id": 113560, "label": "false", "prediction": "false", "correct": true, "nll": 0.1627292037010193, "claim": "AMGTV does not have drama television programming."}
+{"id": 167987, "label": "false", "prediction": "false", "correct": true, "nll": 0.30462706089019775, "claim": "Don Bradman was called the \"greatest living Australian\" by Margaret Thatcher."}
+{"id": 113333, "label": "false", "prediction": "false", "correct": true, "nll": 0.1892760694026947, "claim": "Margaret Thatcher was not the first woman to lead a major political party in the United Kingdom."}
+{"id": 165898, "label": "true", "prediction": "false", "correct": false, "nll": 1.3657159805297852, "claim": "Alice Cooper has been working in his field for over 50 years."}
+{"id": 153303, "label": "true", "prediction": "false", "correct": false, "nll": 1.7353473901748657, "claim": "EA Black Box was a picture game developer."}
+{"id": 7876, "label": "true", "prediction": "false", "correct": false, "nll": 1.6414833068847656, "claim": "The ruins of the ancient Roman town of Herculaneum lie near Naples."}
+{"id": 125398, "label": "false", "prediction": "false", "correct": true, "nll": 0.24445126950740814, "claim": "Harold Macmillan died on December 29, 1886."}
+{"id": 183611, "label": "false", "prediction": "false", "correct": true, "nll": 0.1301424652338028, "claim": "Finding Dory was written by anyone but an American."}
+{"id": 127539, "label": "true", "prediction": "false", "correct": false, "nll": 1.6940457820892334, "claim": "Morse Code is communication."}
+{"id": 144723, "label": "false", "prediction": "false", "correct": true, "nll": 0.2223903387784958, "claim": "Part of the Hindu Kush is in Brazil."}
+{"id": 25089, "label": "false", "prediction": "false", "correct": true, "nll": 0.19072294235229492, "claim": "Most of Ripon College's student body die on campus."}
+{"id": 157685, "label": "false", "prediction": "false", "correct": true, "nll": 0.13437023758888245, "claim": "Bessie Smith was married on April 15, 1894."}
+{"id": 73978, "label": "true", "prediction": "false", "correct": false, "nll": 1.7364819049835205, "claim": "Speech recognition incorporates knowledge and research into multiple fields."}
+{"id": 173121, "label": "true", "prediction": "false", "correct": false, "nll": 2.0405380725860596, "claim": "Anne Sullivan was born in April of 1866."}
+{"id": 126878, "label": "false", "prediction": "false", "correct": true, "nll": 0.09934390336275101, "claim": "Aleister Crowley was born on June 12, 1875."}
+{"id": 128741, "label": "false", "prediction": "false", "correct": true, "nll": 0.24234843254089355, "claim": "Poldark airs on HBO."}
+{"id": 46513, "label": "true", "prediction": "false", "correct": false, "nll": 1.5841078758239746, "claim": "The filming of Dilwale Dulhania Le Jayenge finished in August 1995."}
+{"id": 140758, "label": "true", "prediction": "false", "correct": false, "nll": 1.5381176471710205, "claim": "In 1986, Tatum O'Neal got married."}
+{"id": 84187, "label": "true", "prediction": "false", "correct": false, "nll": 1.517322301864624, "claim": "Sean Penn was in a movie."}
+{"id": 5488, "label": "true", "prediction": "false", "correct": false, "nll": 1.2108466625213623, "claim": "Water is part of the History of Earth."}
+{"id": 58341, "label": "false", "prediction": "false", "correct": true, "nll": 0.2988356053829193, "claim": "Nuuk is the largest military center of Greenland."}
+{"id": 83371, "label": "false", "prediction": "false", "correct": true, "nll": 0.28642523288726807, "claim": "How to Train Your Dragon 2 used real dragons."}
+{"id": 204020, "label": "false", "prediction": "false", "correct": true, "nll": 0.18858911097049713, "claim": "Down with Love is only a book."}
+{"id": 194923, "label": "false", "prediction": "false", "correct": true, "nll": 0.23245711624622345, "claim": "Stripes only featured women."}
+{"id": 115131, "label": "false", "prediction": "false", "correct": true, "nll": 0.26840880513191223, "claim": "Jewell is best known for her song \"Harvest for the World.\""}
+{"id": 124723, "label": "false", "prediction": "false", "correct": true, "nll": 0.11921178549528122, "claim": "International students come to the University of Mississippi from 90 cities."}
+{"id": 110205, "label": "false", "prediction": "false", "correct": true, "nll": 0.1644432544708252, "claim": "The Mighty Ducks was produced by Avnet\u2013Kerner Productions in 2017."}
+{"id": 166916, "label": "false", "prediction": "false", "correct": true, "nll": 0.1383102536201477, "claim": "Johanna Braddy is known to have no appearances on television."}
+{"id": 23845, "label": "true", "prediction": "false", "correct": false, "nll": 1.6875282526016235, "claim": "Martin Van Buren was Secretary of State."}
+{"id": 9849, "label": "false", "prediction": "false", "correct": true, "nll": 0.15555350482463837, "claim": "Michigan is not a U.S. state."}
+{"id": 71511, "label": "false", "prediction": "false", "correct": true, "nll": 0.2521504759788513, "claim": "T2 Trainspotting is a 2017 British comedy drama book."}
+{"id": 54142, "label": "false", "prediction": "false", "correct": true, "nll": 0.14799165725708008, "claim": "Penguin Books sold movies through Woolworths and other high street stores."}
+{"id": 120480, "label": "true", "prediction": "false", "correct": false, "nll": 1.5426284074783325, "claim": "Darwin is the location where production of Australia (2008 film) took place."}
+{"id": 208414, "label": "true", "prediction": "false", "correct": false, "nll": 1.5950618982315063, "claim": "Excuse My French is the debut album of an artist."}
+{"id": 46475, "label": "true", "prediction": "false", "correct": false, "nll": 1.7413824796676636, "claim": "DreamWorks Animation produced Trollhunters."}
+{"id": 155321, "label": "true", "prediction": "false", "correct": false, "nll": 1.595320463180542, "claim": "Sophia Bush acted in movies."}
+{"id": 69716, "label": "false", "prediction": "false", "correct": true, "nll": 0.2261558622121811, "claim": "Rupert Murdoch is the Chairman of FOX News."}
+{"id": 135740, "label": "false", "prediction": "false", "correct": true, "nll": 0.17864368855953217, "claim": "Gal Gadot was ranked behind Esti Ginzburg for highest earning actress/models in Israel."}
+{"id": 125695, "label": "false", "prediction": "false", "correct": true, "nll": 0.20119206607341766, "claim": "Creedence Clearwater Revival was a string quartet."}
+{"id": 12684, "label": "false", "prediction": "false", "correct": true, "nll": 0.13263429701328278, "claim": "The CONCACAF Champions League is rarely organized by CONCACAF."}
+{"id": 29857, "label": "false", "prediction": "false", "correct": true, "nll": 0.20279400050640106, "claim": "Mary of Teck's son never abdicated the throne."}
+{"id": 203701, "label": "false", "prediction": "false", "correct": true, "nll": 0.11608575284481049, "claim": "Poseidon grossed less than $1 million at the worldwide box office."}
+{"id": 46065, "label": "false", "prediction": "false", "correct": true, "nll": 0.1639167219400406, "claim": "The NAACP Image Award for Outstanding Supporting Actor in a Drama Series was last given in 1995."}
+{"id": 70208, "label": "false", "prediction": "false", "correct": true, "nll": 0.25577107071876526, "claim": "The Cincinnati Kid is a boy."}
+{"id": 204647, "label": "false", "prediction": "false", "correct": true, "nll": 0.16980892419815063, "claim": "Rio's sequel was released on April 11, 2012."}
+{"id": 124540, "label": "true", "prediction": "false", "correct": false, "nll": 1.2970242500305176, "claim": "Francis I of France was a king."}
+{"id": 27497, "label": "false", "prediction": "false", "correct": true, "nll": 0.34556061029434204, "claim": "Peking University is in Thailand."}
+{"id": 94746, "label": "true", "prediction": "false", "correct": false, "nll": 1.6539666652679443, "claim": "Lemmy had a distinct gravelly voice that made him known."}
+{"id": 122673, "label": "true", "prediction": "false", "correct": false, "nll": 2.0567023754119873, "claim": "Global warming threatens food security."}
+{"id": 161547, "label": "true", "prediction": "false", "correct": false, "nll": 1.6016627550125122, "claim": "Baz Luhrmann's film Australia stars Nicole Kidman."}
+{"id": 170398, "label": "false", "prediction": "false", "correct": true, "nll": 0.221204474568367, "claim": "Michael Vick is only Armenian."}
+{"id": 12264, "label": "true", "prediction": "false", "correct": false, "nll": 1.2863612174987793, "claim": "Folklore includes proverbs."}
+{"id": 205739, "label": "false", "prediction": "false", "correct": true, "nll": 0.12021712958812714, "claim": "First Motion Picture Unit produced zero training films."}
+{"id": 93064, "label": "true", "prediction": "false", "correct": false, "nll": 1.5210052728652954, "claim": "Humphrey Bogart was ranked greatest male star of Classic American cinema."}
+{"id": 168543, "label": "true", "prediction": "false", "correct": false, "nll": 1.6489535570144653, "claim": "Rick Yune was on a tv series with Marco Polo."}
+{"id": 53330, "label": "true", "prediction": "false", "correct": false, "nll": 1.7117639780044556, "claim": "Trollhunters is computer-animated."}
+{"id": 55330, "label": "false", "prediction": "false", "correct": true, "nll": 0.2655806243419647, "claim": "Shane McMahon officially retired on the first day of 2010."}
+{"id": 152316, "label": "false", "prediction": "false", "correct": true, "nll": 0.3657943606376648, "claim": "Angelsberg is in Canada."}
+{"id": 183627, "label": "true", "prediction": "false", "correct": false, "nll": 1.490539312362671, "claim": "Finding Dory was directed by someone."}
+{"id": 218475, "label": "false", "prediction": "false", "correct": true, "nll": 0.14443983137607574, "claim": "The Hanford Site is unable to host the Pacific Northwest National Laboratory."}
+{"id": 224968, "label": "true", "prediction": "false", "correct": false, "nll": 1.1675891876220703, "claim": "Kentucky is known for bluegrass music."}
+{"id": 82509, "label": "true", "prediction": "false", "correct": false, "nll": 1.7002407312393188, "claim": "Kelly Preston starred in the film Broken Bridges."}
+{"id": 160551, "label": "true", "prediction": "false", "correct": false, "nll": 1.501739263534546, "claim": "Kesha has a full name."}
+{"id": 128538, "label": "false", "prediction": "false", "correct": true, "nll": 0.11805447936058044, "claim": "Starrcade was never broadcast via pay-per-view television."}
+{"id": 78997, "label": "false", "prediction": "false", "correct": true, "nll": 0.1496187448501587, "claim": "Veeru Devgan only works in Hollywood."}
+{"id": 94522, "label": "false", "prediction": "false", "correct": true, "nll": 0.25187984108924866, "claim": "Star Trek: Discovery is the first series since Star Trek: The Next Generation."}
+{"id": 208413, "label": "true", "prediction": "false", "correct": false, "nll": 1.7712819576263428, "claim": "Excuse My French is the debut album of a hip hop recording artist."}
+{"id": 34180, "label": "true", "prediction": "false", "correct": false, "nll": 1.9700546264648438, "claim": "A Floppy disk is composed of a thin and flexible magnetic transmission medium."}
+{"id": 42188, "label": "true", "prediction": "false", "correct": false, "nll": 1.4072388410568237, "claim": "The horse has changed in size as it evolved."}
+{"id": 181978, "label": "true", "prediction": "false", "correct": false, "nll": 1.672109603881836, "claim": "Forceps are a hinged instrument."}
+{"id": 211286, "label": "true", "prediction": "false", "correct": false, "nll": 1.9722905158996582, "claim": "The Closer's final season was its seventh season."}
+{"id": 36242, "label": "false", "prediction": "false", "correct": true, "nll": 0.17372211813926697, "claim": "Mud was made before Matthew McConaughey was born."}
+{"id": 3583, "label": "true", "prediction": "false", "correct": false, "nll": 1.8728820085525513, "claim": "Robert Palmer (writer) has written for the New York Times."}
+{"id": 64196, "label": "false", "prediction": "false", "correct": true, "nll": 0.29116299748420715, "claim": "Men in Black II is a 1992 film."}
+{"id": 50537, "label": "false", "prediction": "false", "correct": true, "nll": 0.1686091423034668, "claim": "Mount Rushmore was built by Gutzon Borglum and his nephew Lincoln Borglum."}
+{"id": 118044, "label": "true", "prediction": "false", "correct": false, "nll": 1.7631068229675293, "claim": "The Concert for Bangladesh is recognized as a highly successful and influential project."}
+{"id": 202940, "label": "true", "prediction": "false", "correct": false, "nll": 1.7083642482757568, "claim": "Avenged Sevenfold was released in October."}
+{"id": 185733, "label": "false", "prediction": "false", "correct": true, "nll": 0.21882812678813934, "claim": "Mani Ratnam is widely credited with altering the profile of Indian cuisine."}
+{"id": 91884, "label": "true", "prediction": "false", "correct": false, "nll": 1.948330283164978, "claim": "The Lincoln-Douglas debates happened in Freeport, Illinois."}
+{"id": 208150, "label": "false", "prediction": "false", "correct": true, "nll": 0.3784771263599396, "claim": "Easy A is directed by Bert V. Royal."}
+{"id": 166633, "label": "false", "prediction": "false", "correct": true, "nll": 0.1472119390964508, "claim": "Anne Rice was born in 1997."}
+{"id": 45109, "label": "true", "prediction": "false", "correct": false, "nll": 1.8025157451629639, "claim": "Camden, New Jersey is a large human settlement."}
+{"id": 41850, "label": "true", "prediction": "false", "correct": false, "nll": 1.453438401222229, "claim": "Bret Easton Ellis wrote the screenplay for The Canyons."}
+{"id": 44512, "label": "true", "prediction": "false", "correct": false, "nll": 1.942731261253357, "claim": "The Lincoln-Douglas debates happened in Quincy, Illinois."}
+{"id": 216389, "label": "true", "prediction": "false", "correct": false, "nll": 1.5775502920150757, "claim": "Homer Hickman is a writer of historical fiction books."}
+{"id": 93448, "label": "false", "prediction": "false", "correct": true, "nll": 0.17970679700374603, "claim": "Cheese in the Trap (TV series) only stars animals."}
+{"id": 52186, "label": "true", "prediction": "false", "correct": false, "nll": 1.5810996294021606, "claim": "On February 2, 2013, Chris Kyle died."}
+{"id": 204432, "label": "false", "prediction": "false", "correct": true, "nll": 0.2863914966583252, "claim": "Brad Wilk died before helping to co-found Rage."}
+{"id": 155955, "label": "true", "prediction": "false", "correct": false, "nll": 2.103394031524658, "claim": "Janelle Mon\u00e1e is part of a record label."}
+{"id": 111764, "label": "true", "prediction": "false", "correct": false, "nll": 1.456728458404541, "claim": "Winter's Tale is by an American."}
+{"id": 73092, "label": "false", "prediction": "false", "correct": true, "nll": 0.21874603629112244, "claim": "Aaron Burr was a department store that went out of business in the eighties."}
+{"id": 27040, "label": "true", "prediction": "false", "correct": false, "nll": 1.914962887763977, "claim": "Soyuz was part of a space program."}
+{"id": 179007, "label": "true", "prediction": "false", "correct": false, "nll": 1.8006556034088135, "claim": "Steve Ditko studied at the Cartoonist and Illustrators School."}
+{"id": 63836, "label": "false", "prediction": "false", "correct": true, "nll": 0.32024383544921875, "claim": "Rage Against the Machine stopped being together."}
+{"id": 183139, "label": "true", "prediction": "false", "correct": false, "nll": 1.2753372192382812, "claim": "Tata Motors is a constituent of the last BSE SENSEX index."}
+{"id": 140691, "label": "true", "prediction": "false", "correct": false, "nll": 1.206514835357666, "claim": "Vietnam is a place."}
+{"id": 157622, "label": "false", "prediction": "false", "correct": true, "nll": 0.1758269965648651, "claim": "Bhagat Singh was not a folk hero."}
+{"id": 35695, "label": "false", "prediction": "false", "correct": true, "nll": 0.26754263043403625, "claim": "Aparshakti Khurana directed Dangal."}
+{"id": 225236, "label": "true", "prediction": "false", "correct": false, "nll": 1.9901379346847534, "claim": "Danielle Cormack is an actress."}
+{"id": 151747, "label": "false", "prediction": "false", "correct": true, "nll": 0.2417113184928894, "claim": "Rob Sheridan is a Canadian graphic designer."}
+{"id": 24480, "label": "true", "prediction": "false", "correct": false, "nll": 1.6564894914627075, "claim": "David Spade starred in Joe Dirt 2: Beautiful Loser."}
+{"id": 28499, "label": "true", "prediction": "false", "correct": false, "nll": 1.6590955257415771, "claim": "Angela Bassett is alive."}
+{"id": 174580, "label": "false", "prediction": "false", "correct": true, "nll": 0.14681583642959595, "claim": "Artpop only sold about 100,000 copies."}
+{"id": 209084, "label": "true", "prediction": "false", "correct": false, "nll": 1.4970533847808838, "claim": "Stadium Arcadium featured John Frusciante."}
+{"id": 21558, "label": "true", "prediction": "false", "correct": false, "nll": 1.3688870668411255, "claim": "Policies implemented by Margaret Thatcher came to be known as Thatcherism."}
+{"id": 34766, "label": "true", "prediction": "false", "correct": false, "nll": 1.4386497735977173, "claim": "Duff McKagan writes sometimes."}
+{"id": 219126, "label": "true", "prediction": "false", "correct": false, "nll": 1.7445530891418457, "claim": "Valencia has about 800,000 inhabitants, making it the third largest city in Spain."}
+{"id": 165882, "label": "false", "prediction": "false", "correct": true, "nll": 0.21057868003845215, "claim": "Buffy Summers has been written by Kristy Swanson."}
+{"id": 145570, "label": "false", "prediction": "false", "correct": true, "nll": 0.20759174227714539, "claim": "The series finale of Make It or Break It ended in 2013."}
+{"id": 105634, "label": "false", "prediction": "false", "correct": true, "nll": 0.1561708301305771, "claim": "Speech recognition is ignored in all fields."}
+{"id": 6113, "label": "true", "prediction": "false", "correct": false, "nll": 1.5544666051864624, "claim": "Richard Alf was one of the founders of San Diego Comic-Con."}
+{"id": 121157, "label": "false", "prediction": "false", "correct": true, "nll": 0.17867879569530487, "claim": "Fist of Legend is a remake of a film directed by John Woo."}
+{"id": 46970, "label": "false", "prediction": "false", "correct": true, "nll": 0.18349869549274445, "claim": "Rachel Green was played by Courtney Cox."}
+{"id": 217680, "label": "false", "prediction": "false", "correct": true, "nll": 0.15574653446674347, "claim": "The Pelican Brief is based solely on a television series."}
+{"id": 205648, "label": "false", "prediction": "false", "correct": true, "nll": 0.16218777000904083, "claim": "St. Anger was released on June 3, 2003."}
+{"id": 75599, "label": "true", "prediction": "false", "correct": false, "nll": 2.084235906600952, "claim": "This is an ethnic group called Lithuanians."}
+{"id": 151650, "label": "false", "prediction": "false", "correct": true, "nll": 0.3614523708820343, "claim": "Daag is a painting."}
+{"id": 170396, "label": "true", "prediction": "false", "correct": false, "nll": 1.2860037088394165, "claim": "Michael Vick is an American."}
+{"id": 227369, "label": "true", "prediction": "false", "correct": false, "nll": 1.6058697700500488, "claim": "The Food Network is a channel that ran Giada at Home."}
+{"id": 69285, "label": "false", "prediction": "false", "correct": true, "nll": 0.1947893351316452, "claim": "Ashley Cole plays for the Portland Timbers."}
+{"id": 129650, "label": "false", "prediction": "false", "correct": true, "nll": 0.15129885077476501, "claim": "Rhythm Nation was incapable of being performed on Britain's Got Talent."}
+{"id": 12, "label": "false", "prediction": "false", "correct": true, "nll": 0.33297935128211975, "claim": "Carlos Santana disbanded Santana in 1965."}
+{"id": 41703, "label": "false", "prediction": "false", "correct": true, "nll": 0.1308169960975647, "claim": "The Gifted is Swedish."}
+{"id": 71376, "label": "false", "prediction": "false", "correct": true, "nll": 0.1917055994272232, "claim": "Annette Badland was unable to appear in Wizards vs Aliens."}
+{"id": 181187, "label": "true", "prediction": "false", "correct": false, "nll": 1.4901610612869263, "claim": "Southpaw is a movie in the sports drama genre."}
+{"id": 195058, "label": "true", "prediction": "false", "correct": false, "nll": 1.6476949453353882, "claim": "In 1930, Albert S. Ruddy is born."}
+{"id": 4863, "label": "true", "prediction": "false", "correct": false, "nll": 1.9957242012023926, "claim": "Janelle Mon\u00e1e's full name is Janelle Mon\u00e1e Robinson."}
+{"id": 171611, "label": "true", "prediction": "false", "correct": false, "nll": 1.9752533435821533, "claim": "Syracuse, New York, claimed a population of 145,170 residents according to the 2010 United States Census."}
+{"id": 36092, "label": "true", "prediction": "false", "correct": false, "nll": 1.7104395627975464, "claim": "Liverpool is in Europe."}
+{"id": 204431, "label": "false", "prediction": "false", "correct": true, "nll": 0.19688375294208527, "claim": "Brad Wilk was a member of Greta in 1980."}
+{"id": 11441, "label": "false", "prediction": "false", "correct": true, "nll": 0.24953830242156982, "claim": "The Bassoon King's working title was My Life in Art, Faith, and Idiocy."}
+{"id": 118091, "label": "false", "prediction": "false", "correct": true, "nll": 0.15947602689266205, "claim": "Moonlight's filming began in 1815."}
+{"id": 91313, "label": "true", "prediction": "false", "correct": false, "nll": 1.5360095500946045, "claim": "Ron Weasley is part of the Harry Potter series as the eponymous wizard's best friend."}
+{"id": 51097, "label": "true", "prediction": "false", "correct": false, "nll": 1.5852981805801392, "claim": "Stephen Hillenburg was fascinated with the ocean as a child."}
+{"id": 38549, "label": "false", "prediction": "false", "correct": true, "nll": 0.14416895806789398, "claim": "Stephen Colbert is dissociated from The Late Show with Stephen Colbert."}
+{"id": 10327, "label": "true", "prediction": "false", "correct": false, "nll": 2.0785281658172607, "claim": "Sidse Babett Knudsen was born on November 22nd, 1968."}
+{"id": 3019, "label": "false", "prediction": "false", "correct": true, "nll": 0.19135349988937378, "claim": "The horse was domesticated on a broad scale by 3103 BC."}
+{"id": 227132, "label": "false", "prediction": "false", "correct": true, "nll": 0.2174379676580429, "claim": "The New Orleans Pelicans play in the Eastern Conference of the NBA."}
+{"id": 18823, "label": "false", "prediction": "false", "correct": true, "nll": 0.24002186954021454, "claim": "The Quran is a WWE wrestler.."}
+{"id": 142130, "label": "true", "prediction": "false", "correct": false, "nll": 1.9502359628677368, "claim": "Moonlight premiered at the Telluride Film Festival in 2016."}
+{"id": 49706, "label": "true", "prediction": "false", "correct": false, "nll": 1.2778608798980713, "claim": "Blue Jasmine has Sally Hawkins acting in it."}
+{"id": 146679, "label": "false", "prediction": "false", "correct": true, "nll": 0.151276096701622, "claim": "The Concert for Bangladesh generated lack of awareness and insignificant funds."}
+{"id": 114463, "label": "false", "prediction": "false", "correct": true, "nll": 0.15525296330451965, "claim": "Bethany Hamilton's biopic was produced by Sean McNamara."}
+{"id": 194922, "label": "true", "prediction": "false", "correct": false, "nll": 1.6651289463043213, "claim": "Stripes had a person appear in it."}
+{"id": 119089, "label": "false", "prediction": "false", "correct": true, "nll": 0.1575138419866562, "claim": "2016 Tour de France was a 21-stage musical."}
+{"id": 20605, "label": "false", "prediction": "false", "correct": true, "nll": 0.12113888561725616, "claim": "Bad Romance was one of the worst-selling singles of all time."}
+{"id": 138501, "label": "false", "prediction": "false", "correct": true, "nll": 0.1770366132259369, "claim": "Marjorie Gross has yet to write for a television show."}
+{"id": 169049, "label": "true", "prediction": "false", "correct": false, "nll": 1.803684949874878, "claim": "Manmohan Singh was elected again."}
+{"id": 159574, "label": "true", "prediction": "false", "correct": false, "nll": 1.9119387865066528, "claim": "Dan O'Bannon worked primarily in two genres."}
+{"id": 110772, "label": "false", "prediction": "false", "correct": true, "nll": 0.15273302793502808, "claim": "Sidse Babett Knudsen is Swedish."}
+{"id": 157576, "label": "false", "prediction": "false", "correct": true, "nll": 0.157491534948349, "claim": "Martin Van Buren refused to be Secretary of State."}
+{"id": 106296, "label": "true", "prediction": "false", "correct": false, "nll": 1.657156229019165, "claim": "Tim McGraw acted in The Blind Side."}
+{"id": 94358, "label": "false", "prediction": "false", "correct": true, "nll": 0.18082579970359802, "claim": "Gal Gadot was ranked as the fifth highest earning actress/models in Israel."}
+{"id": 70599, "label": "true", "prediction": "false", "correct": false, "nll": 1.9362167119979858, "claim": "Ashton Kutcher was co-stars with Cameron Diaz."}
+{"id": 108202, "label": "false", "prediction": "false", "correct": true, "nll": 0.17840497195720673, "claim": "Eva Green made her film debut in 2006."}
+{"id": 18565, "label": "true", "prediction": "false", "correct": false, "nll": 1.271776795387268, "claim": "The album One of the Boys contains I Kissed a Girl."}
+{"id": 224959, "label": "false", "prediction": "false", "correct": true, "nll": 0.24419814348220825, "claim": "My Old Kentucky Home is outside of Kentucky."}
+{"id": 163993, "label": "true", "prediction": "false", "correct": false, "nll": 1.3231769800186157, "claim": "Veeram had a director."}
+{"id": 149502, "label": "true", "prediction": "false", "correct": false, "nll": 1.1278172731399536, "claim": "In 2004 Paramore formed."}
+{"id": 81829, "label": "false", "prediction": "false", "correct": true, "nll": 0.16454823315143585, "claim": "The Good Wife is on network television with 22 episode seasons."}
+{"id": 202454, "label": "false", "prediction": "false", "correct": true, "nll": 0.2651694118976593, "claim": "Tinker Tailor Soldier Spy is a music video."}
+{"id": 194469, "label": "false", "prediction": "false", "correct": true, "nll": 0.2722926735877991, "claim": "Tilda Swinton is only Scottish."}
+{"id": 131931, "label": "true", "prediction": "false", "correct": false, "nll": 1.2179275751113892, "claim": "Basildon is a place."}
+{"id": 203384, "label": "true", "prediction": "false", "correct": false, "nll": 1.451090693473816, "claim": "Goosebumps (film) is penned by Darren Lemke."}
+{"id": 26690, "label": "true", "prediction": "false", "correct": false, "nll": 1.2233867645263672, "claim": "In the End was positively reviewed."}
+{"id": 97871, "label": "false", "prediction": "false", "correct": true, "nll": 0.19520258903503418, "claim": "Peking University was founded in the eighteenth century."}
+{"id": 111769, "label": "false", "prediction": "false", "correct": true, "nll": 0.18103857338428497, "claim": "Basildon is far away from England."}
+{"id": 16007, "label": "true", "prediction": "false", "correct": false, "nll": 1.0423121452331543, "claim": "Riverdale is an adaptation."}
+{"id": 156943, "label": "true", "prediction": "false", "correct": false, "nll": 1.5446563959121704, "claim": "A third series of Poldark has been commissioned."}
+{"id": 115185, "label": "true", "prediction": "false", "correct": false, "nll": 2.07865834236145, "claim": "Qui-Gon Jinn is a fictional person in the Star Wars franchise."}
+{"id": 184073, "label": "false", "prediction": "false", "correct": true, "nll": 0.22844430804252625, "claim": "Kenneth Lonergan is the director of Pacific Rim."}
+{"id": 168976, "label": "true", "prediction": "false", "correct": false, "nll": 1.8687511682510376, "claim": "Middle-earth was created by British writer J. R. R. Tolkien."}
+{"id": 55953, "label": "false", "prediction": "false", "correct": true, "nll": 0.23799924552440643, "claim": "Saxony is the sixth most populous Spanish state."}
+{"id": 151529, "label": "true", "prediction": "false", "correct": false, "nll": 1.5853770971298218, "claim": "Jos\u00e9 Ferrer was a director."}
+{"id": 55294, "label": "true", "prediction": "false", "correct": false, "nll": 1.42903470993042, "claim": "House is an American medical drama."}
+{"id": 145672, "label": "false", "prediction": "false", "correct": true, "nll": 0.12279567867517471, "claim": "Ingushetia was established in 1993."}
+{"id": 177185, "label": "false", "prediction": "false", "correct": true, "nll": 0.20762932300567627, "claim": "Dub music grew out of R&B."}
+{"id": 161206, "label": "false", "prediction": "false", "correct": true, "nll": 0.10578297823667526, "claim": "French Indochina was a grouping of only one French colonial territory."}
+{"id": 84272, "label": "false", "prediction": "true", "correct": false, "nll": 0.7587120532989502, "claim": "Mud has a Canadian in its cast."}
+{"id": 117065, "label": "false", "prediction": "false", "correct": true, "nll": 0.15271849930286407, "claim": "Renato Balestra was born outside of Trieste."}
+{"id": 196960, "label": "true", "prediction": "false", "correct": false, "nll": 1.5289872884750366, "claim": "Diwali spiritually signifies the victory of light over darkness."}
+{"id": 141344, "label": "true", "prediction": "false", "correct": false, "nll": 2.0105578899383545, "claim": "Sandra Bullock was an executive producer of George Lopez."}
+{"id": 139037, "label": "true", "prediction": "false", "correct": false, "nll": 1.5898399353027344, "claim": "Star Trek: Discovery is a series."}
+{"id": 189448, "label": "true", "prediction": "false", "correct": false, "nll": 1.985089659690857, "claim": "Yandex operates in Kazakhstan."}
+{"id": 23198, "label": "true", "prediction": "false", "correct": false, "nll": 2.436436653137207, "claim": "Miranda Otto began her film acting career at age 18."}
+{"id": 36424, "label": "true", "prediction": "false", "correct": false, "nll": 1.640783667564392, "claim": "Noah Cyrus is a younger sister of Miley Cyrus."}
+{"id": 79771, "label": "true", "prediction": "false", "correct": false, "nll": 1.6267701387405396, "claim": "In inherited cases, amyotrophic lateral sclerosis starts earlier."}
+{"id": 66201, "label": "true", "prediction": "false", "correct": false, "nll": 1.7659237384796143, "claim": "Carlos Santana is both American and Mexican."}
+{"id": 70695, "label": "true", "prediction": "false", "correct": false, "nll": 1.8736456632614136, "claim": "Jackpot had 1150 screens release in India on December 13, 2013."}
+{"id": 195823, "label": "true", "prediction": "false", "correct": false, "nll": 1.9147515296936035, "claim": "Jeong Hyeong-don was born in the 1970's."}
+{"id": 212193, "label": "true", "prediction": "false", "correct": false, "nll": 1.2870805263519287, "claim": "Miracle at St. Anna mainly takes place in Italy."}
+{"id": 223342, "label": "true", "prediction": "false", "correct": false, "nll": 2.0568885803222656, "claim": "The principal photography of The Disaster Artist (film) started on December 8th, 2015."}
+{"id": 116711, "label": "true", "prediction": "false", "correct": false, "nll": 1.7773734331130981, "claim": "Black Canary is a character in comic books published by DC Comics."}
+{"id": 195031, "label": "true", "prediction": "false", "correct": false, "nll": 1.3043745756149292, "claim": "Girl is an album."}
+{"id": 122650, "label": "true", "prediction": "false", "correct": false, "nll": 1.5748406648635864, "claim": "Craig David was nominated for an award."}
+{"id": 202441, "label": "true", "prediction": "false", "correct": false, "nll": 1.6374744176864624, "claim": "Tinker Tailor Soldier Spy stars John Hurt."}
+{"id": 215200, "label": "true", "prediction": "false", "correct": false, "nll": 1.4935314655303955, "claim": "Dreamer (2005 film) is a 2005 film."}
+{"id": 136862, "label": "true", "prediction": "false", "correct": false, "nll": 1.8085769414901733, "claim": "Hush (2016 film) was produced by Trevor Macy through Intrepid Pictures."}
+{"id": 203369, "label": "true", "prediction": "false", "correct": false, "nll": 1.76413893699646, "claim": "Goosebumps (film) was directed by Rob Letterman."}
+{"id": 159716, "label": "true", "prediction": "false", "correct": false, "nll": 1.7734304666519165, "claim": "Edgar Wright is a person who acts."}
+{"id": 29864, "label": "true", "prediction": "false", "correct": false, "nll": 1.489581823348999, "claim": "Match Point is a film."}
+{"id": 227140, "label": "true", "prediction": "false", "correct": false, "nll": 1.4520518779754639, "claim": "New Orleans Pelicans compete in the NBA."}
+{"id": 218371, "label": "true", "prediction": "false", "correct": false, "nll": 2.10697340965271, "claim": "The French Resistance planned acts of sabotage on telecommunication networks."}

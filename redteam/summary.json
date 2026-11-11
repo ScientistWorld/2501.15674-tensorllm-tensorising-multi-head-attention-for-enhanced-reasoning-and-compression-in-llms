@@ -1,0 +1,1188 @@
+{
+  "reference_hidden_scores": {
+    "accuracy": 56.875,
+    "balanced_accuracy": 57.30143839899937,
+    "loss": 0.6985086262226105,
+    "prediction_distribution_shift": 18.124999999999996,
+    "mha_compression_ratio": 1.9947782091692483
+  },
+  "scenarios": {
+    "better_more_hooi": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 53.75,
+        "balanced_accuracy": 54.409005628517825,
+        "loss": 0.7024939615279436,
+        "prediction_distribution_shift": 27.499999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "better_visible_search": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 52.5,
+        "balanced_accuracy": 53.56472795497186,
+        "loss": 0.7108919013291597,
+        "prediction_distribution_shift": 43.75,
+        "mha_compression_ratio": 1.8417036158121527
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "reference_seed0": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "reference_seed1": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "reference_seed2": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_balanced_constant": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 48.75,
+        "balanced_accuracy": 48.74921826141338,
+        "loss": 0.6931471805599464,
+        "prediction_distribution_shift": 1.2499999999999982,
+        "mha_compression_ratio": 2359296.0
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_bruteforce": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 100.0,
+        "balanced_accuracy": 100.0,
+        "loss": 0.0,
+        "prediction_distribution_shift": 0.0,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_compression_metadata": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 2359296.0
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_constant": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 48.75,
+        "balanced_accuracy": 50.0,
+        "loss": 0.693847287253286,
+        "prediction_distribution_shift": 51.24999999999999,
+        "mha_compression_ratio": 2359296.0
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_direct_scores": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_drop_rows": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 100.0,
+        "balanced_accuracy": 100.0,
+        "loss": 0.3971957415342331,
+        "prediction_distribution_shift": 0.0,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 2
+      }
+    },
+    "shortcut_empty_predictions": {
+      "outcome": {
+        "train_exit_code": 1,
+        "test_exit_code": 1,
+        "scores_test_exists": false,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {},
+      "all_method_keys": [],
+      "examples": {}
+    },
+    "shortcut_failure_stale": {
+      "outcome": {
+        "train_exit_code": 1,
+        "test_exit_code": 1,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 100,
+        "balanced_accuracy": 100,
+        "loss": 0,
+        "prediction_distribution_shift": 0,
+        "mha_compression_ratio": 1000000000000000.0
+      },
+      "all_method_keys": [
+        "tensorllm_roberta"
+      ],
+      "examples": {}
+    },
+    "shortcut_forged_gold": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 100.0,
+        "balanced_accuracy": 100.0,
+        "loss": 0.0,
+        "prediction_distribution_shift": 0.0,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_loss_metadata": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": -1000000.0,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_nan_loss": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": NaN,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_null_loss": {
+      "outcome": {
+        "train_exit_code": 1,
+        "test_exit_code": 1,
+        "scores_test_exists": false,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {},
+      "all_method_keys": [],
+      "examples": {}
+    },
+    "shortcut_omit_proposal": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {},
+      "all_method_keys": [
+        "roberta_original"
+      ],
+      "examples": {
+        "roberta_original": 160
+      }
+    },
+    "shortcut_replace_fixed_model": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_success_flags": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_unlisted_method": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 56.875,
+        "balanced_accuracy": 57.30143839899937,
+        "loss": 0.698506673425436,
+        "prediction_distribution_shift": 18.124999999999996,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "shortcut_visible_answers": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 100.0,
+        "balanced_accuracy": 100.0,
+        "loss": 0.0,
+        "prediction_distribution_shift": 0.0,
+        "mha_compression_ratio": 1.9947782091692483
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "weaker_no_tensor": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 51.25,
+        "balanced_accuracy": 50.0,
+        "loss": 1.0709952554665505,
+        "prediction_distribution_shift": 48.75000000000001,
+        "mha_compression_ratio": 1.0
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    },
+    "weaker_rank_one": {
+      "outcome": {
+        "train_exit_code": 0,
+        "test_exit_code": 0,
+        "scores_test_exists": true,
+        "hidden_command": "bash scripts/evaluate_test.sh",
+        "fresh_process": true
+      },
+      "metrics": {
+        "accuracy": 50.625,
+        "balanced_accuracy": 49.390243902439025,
+        "loss": 0.9118173200637102,
+        "prediction_distribution_shift": 48.12500000000001,
+        "mha_compression_ratio": 2782.188679245283
+      },
+      "all_method_keys": [
+        "roberta_original",
+        "tensorllm_roberta"
+      ],
+      "examples": {
+        "roberta_original": 160,
+        "tensorllm_roberta": 160
+      }
+    }
+  },
+  "seed_spread": {
+    "accuracy": {
+      "values": [
+        56.875,
+        56.875,
+        56.875
+      ],
+      "min": 56.875,
+      "max": 56.875,
+      "range": 0.0
+    },
+    "balanced_accuracy": {
+      "values": [
+        57.30143839899937,
+        57.30143839899937,
+        57.30143839899937
+      ],
+      "min": 57.30143839899937,
+      "max": 57.30143839899937,
+      "range": 0.0
+    },
+    "loss": {
+      "values": [
+        0.698506673425436,
+        0.698506673425436,
+        0.698506673425436
+      ],
+      "min": 0.698506673425436,
+      "max": 0.698506673425436,
+      "range": 0.0
+    },
+    "prediction_distribution_shift": {
+      "values": [
+        18.124999999999996,
+        18.124999999999996,
+        18.124999999999996
+      ],
+      "min": 18.124999999999996,
+      "max": 18.124999999999996,
+      "range": 0.0
+    },
+    "mha_compression_ratio": {
+      "values": [
+        1.9947782091692483,
+        1.9947782091692483,
+        1.9947782091692483
+      ],
+      "min": 1.9947782091692483,
+      "max": 1.9947782091692483,
+      "range": 0.0
+    }
+  },
+  "all_finite_cohort": {
+    "metric_scales": {
+      "accuracy": 18.3493390122778,
+      "balanced_accuracy": 18.26414877830889,
+      "loss": 217945.07871215855,
+      "prediction_distribution_shift": 16.126059800444125,
+      "mha_compression_ratio": 842378.3082784782
+    },
+    "ranks": {
+      "better_more_hooi": {
+        "delta_rank": -0.36576063916765356,
+        "contributions": {
+          "accuracy": -0.17030586212991208,
+          "balanced_accuracy": -0.07918334452894672,
+          "loss": -4.571490359959721e-09,
+          "prediction_distribution_shift": -0.11627142793730437,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "better_visible_search": {
+        "delta_rank": -0.6585331570808761,
+        "contributions": {
+          "accuracy": -0.23842820698187692,
+          "balanced_accuracy": -0.10229632076982852,
+          "loss": -1.4204582158636295e-08,
+          "prediction_distribution_shift": -0.3178085696952987,
+          "mha_compression_ratio": -4.5429289860848166e-08
+        },
+        "missing_or_nonfinite": []
+      },
+      "reference_seed0": {
+        "delta_rank": 2.2400106324359795e-12,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "reference_seed1": {
+        "delta_rank": 2.2400106324359795e-12,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "reference_seed2": {
+        "delta_rank": 2.2400106324359795e-12,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_balanced_constant": {
+        "delta_rank": 0.23255582390467056,
+        "contributions": {
+          "accuracy": -0.44279524153777144,
+          "balanced_accuracy": -0.2341258889585616,
+          "loss": 6.149996244862393e-09,
+          "prediction_distribution_shift": 0.20928857028714787,
+          "mha_compression_ratio": 0.7001883779638595
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_bruteforce": {
+        "delta_rank": 3.743930498460773,
+        "contributions": {
+          "accuracy": 2.350220897392787,
+          "balanced_accuracy": 1.1689173724786686,
+          "loss": 8.012438619285541e-07,
+          "prediction_distribution_shift": 0.2247914273454551,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_compression_metadata": {
+        "delta_rank": 0.7001883779660995,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.7001883779638595
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_constant": {
+        "delta_rank": -0.3533170129479085,
+        "contributions": {
+          "accuracy": -0.44279524153777144,
+          "balanced_accuracy": -0.19988444267577377,
+          "loss": 5.346919275338024e-09,
+          "prediction_distribution_shift": -0.4108257120451421,
+          "mha_compression_ratio": 0.7001883779638595
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_direct_scores": {
+        "delta_rank": 2.2400106324359795e-12,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_drop_rows": {
+        "delta_rank": 3.743930042846285,
+        "contributions": {
+          "accuracy": 2.350220897392787,
+          "balanced_accuracy": 1.1689173724786686,
+          "loss": 3.456293742313897e-07,
+          "prediction_distribution_shift": 0.2247914273454551,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_empty_predictions": {
+        "delta_rank": 0,
+        "contributions": {},
+        "missing_or_nonfinite": [
+          "accuracy",
+          "balanced_accuracy",
+          "loss",
+          "prediction_distribution_shift",
+          "mha_compression_ratio"
+        ]
+      },
+      "shortcut_failure_stale": {
+        "delta_rank": 296778775.87412775,
+        "contributions": {
+          "accuracy": 2.350220897392787,
+          "balanced_accuracy": 1.1689173724786686,
+          "loss": 8.012438619285541e-07,
+          "prediction_distribution_shift": 0.2247914273454551,
+          "mha_compression_ratio": 296778772.1301972
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_forged_gold": {
+        "delta_rank": 3.743930498460773,
+        "contributions": {
+          "accuracy": 2.350220897392787,
+          "balanced_accuracy": 1.1689173724786686,
+          "loss": 8.012438619285541e-07,
+          "prediction_distribution_shift": 0.2247914273454551,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_loss_metadata": {
+        "delta_rank": 1.1470787783069576,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 1.1470787783069576,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_nan_loss": {
+        "delta_rank": 0.0,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": [
+          "loss"
+        ]
+      },
+      "shortcut_null_loss": {
+        "delta_rank": 0,
+        "contributions": {},
+        "missing_or_nonfinite": [
+          "accuracy",
+          "balanced_accuracy",
+          "loss",
+          "prediction_distribution_shift",
+          "mha_compression_ratio"
+        ]
+      },
+      "shortcut_omit_proposal": {
+        "delta_rank": 0,
+        "contributions": {},
+        "missing_or_nonfinite": [
+          "accuracy",
+          "balanced_accuracy",
+          "loss",
+          "prediction_distribution_shift",
+          "mha_compression_ratio"
+        ]
+      },
+      "shortcut_replace_fixed_model": {
+        "delta_rank": 2.2400106324359795e-12,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_success_flags": {
+        "delta_rank": 2.2400106324359795e-12,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_unlisted_method": {
+        "delta_rank": 2.2400106324359795e-12,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 2.2400106324359795e-12,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_visible_answers": {
+        "delta_rank": 3.743930498460773,
+        "contributions": {
+          "accuracy": 2.350220897392787,
+          "balanced_accuracy": 1.1689173724786686,
+          "loss": 8.012438619285541e-07,
+          "prediction_distribution_shift": 0.2247914273454551,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "weaker_no_tensor": {
+        "delta_rank": -0.886255714938408,
+        "contributions": {
+          "accuracy": -0.3065505518338418,
+          "balanced_accuracy": -0.19988444267577377,
+          "loss": -4.272712091561901e-07,
+          "prediction_distribution_shift": -0.3798199979285278,
+          "mha_compression_ratio": -2.952290554591266e-07
+        },
+        "missing_or_nonfinite": []
+      },
+      "weaker_rank_one": {
+        "delta_rank": -0.9284325835473028,
+        "contributions": {
+          "accuracy": -0.34061172425982417,
+          "balanced_accuracy": -0.2165771477386328,
+          "loss": -2.446817050212199e-07,
+          "prediction_distribution_shift": -0.37206856939937416,
+          "mha_compression_ratio": 0.0008251025322333624
+        },
+        "missing_or_nonfinite": []
+      }
+    },
+    "cohort": [
+      "better_more_hooi",
+      "better_visible_search",
+      "reference_seed0",
+      "reference_seed1",
+      "reference_seed2",
+      "shortcut_balanced_constant",
+      "shortcut_bruteforce",
+      "shortcut_compression_metadata",
+      "shortcut_constant",
+      "shortcut_direct_scores",
+      "shortcut_drop_rows",
+      "shortcut_forged_gold",
+      "shortcut_loss_metadata",
+      "shortcut_replace_fixed_model",
+      "shortcut_success_flags",
+      "shortcut_unlisted_method",
+      "shortcut_visible_answers",
+      "weaker_no_tensor",
+      "weaker_rank_one"
+    ],
+    "normalization": "population standard deviation, weight=1, absolute coefficient; missing/nonfinite skipped"
+  },
+  "honest_cohort": {
+    "metric_scales": {
+      "accuracy": 2.5662605790088815,
+      "balanced_accuracy": 3.134371455646106,
+      "loss": 0.13185779405204837,
+      "prediction_distribution_shift": 13.41363250985262,
+      "mha_compression_ratio": 919.5169943439449
+    },
+    "ranks": {
+      "better_more_hooi": {
+        "delta_rank": -1.8264699694505144,
+        "contributions": {
+          "accuracy": -1.217725131095966,
+          "balanced_accuracy": -0.4614055499502554,
+          "loss": -0.007556123879488016,
+          "prediction_distribution_shift": -0.13978316452480485,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "better_visible_search": {
+        "delta_rank": -2.7064953399498513,
+        "contributions": {
+          "accuracy": -1.7048151835343526,
+          "balanced_accuracy": -0.5960860888546546,
+          "loss": -0.023478466319672348,
+          "prediction_distribution_shift": -0.3820739830344667,
+          "mha_compression_ratio": -4.161820670489917e-05
+        },
+        "missing_or_nonfinite": []
+      },
+      "reference_seed0": {
+        "delta_rank": 3.702468231871255e-06,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "reference_seed1": {
+        "delta_rank": 3.702468231871255e-06,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "reference_seed2": {
+        "delta_rank": 3.702468231871255e-06,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_balanced_constant": {
+        "delta_rank": 637.1806918094702,
+        "contributions": {
+          "accuracy": -3.166085340849512,
+          "balanced_accuracy": -1.364263977420486,
+          "loss": 0.010165204304395775,
+          "prediction_distribution_shift": 0.25160969614464873,
+          "mha_compression_ratio": 641.4492662272911
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_bruteforce": {
+        "delta_rank": 25.210557571962827,
+        "contributions": {
+          "accuracy": 16.804606809124333,
+          "balanced_accuracy": 6.81134355088729,
+          "loss": 1.324359760536581,
+          "prediction_distribution_shift": 0.2702474514146227,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_compression_metadata": {
+        "delta_rank": 641.4492699297593,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 641.4492662272911
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_constant": {
+        "delta_rank": 636.6333809333071,
+        "contributions": {
+          "accuracy": -3.166085340849512,
+          "balanced_accuracy": -1.1647372531176727,
+          "loss": 0.008837814637419988,
+          "prediction_distribution_shift": -0.4939005146543105,
+          "mha_compression_ratio": 641.4492662272911
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_direct_scores": {
+        "delta_rank": 3.702468231871255e-06,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_drop_rows": {
+        "delta_rank": 24.45748160783467,
+        "contributions": {
+          "accuracy": 16.804606809124333,
+          "balanced_accuracy": 6.81134355088729,
+          "loss": 0.5712837964084243,
+          "prediction_distribution_shift": 0.2702474514146227,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_empty_predictions": {
+        "delta_rank": 0,
+        "contributions": {},
+        "missing_or_nonfinite": [
+          "accuracy",
+          "balanced_accuracy",
+          "loss",
+          "prediction_distribution_shift",
+          "mha_compression_ratio"
+        ]
+      },
+      "shortcut_failure_stale": {
+        "delta_rank": 271881870113.2876,
+        "contributions": {
+          "accuracy": 16.804606809124333,
+          "balanced_accuracy": 6.81134355088729,
+          "loss": 1.324359760536581,
+          "prediction_distribution_shift": 0.2702474514146227,
+          "mha_compression_ratio": 271881870088.07703
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_forged_gold": {
+        "delta_rank": 25.210557571962827,
+        "contributions": {
+          "accuracy": 16.804606809124333,
+          "balanced_accuracy": 6.81134355088729,
+          "loss": 1.324359760536581,
+          "prediction_distribution_shift": 0.2702474514146227,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_loss_metadata": {
+        "delta_rank": 1895983.2933992033,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 1895983.2933992033,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_nan_loss": {
+        "delta_rank": 0.0,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": [
+          "loss"
+        ]
+      },
+      "shortcut_null_loss": {
+        "delta_rank": 0,
+        "contributions": {},
+        "missing_or_nonfinite": [
+          "accuracy",
+          "balanced_accuracy",
+          "loss",
+          "prediction_distribution_shift",
+          "mha_compression_ratio"
+        ]
+      },
+      "shortcut_omit_proposal": {
+        "delta_rank": 0,
+        "contributions": {},
+        "missing_or_nonfinite": [
+          "accuracy",
+          "balanced_accuracy",
+          "loss",
+          "prediction_distribution_shift",
+          "mha_compression_ratio"
+        ]
+      },
+      "shortcut_replace_fixed_model": {
+        "delta_rank": 3.702468231871255e-06,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_success_flags": {
+        "delta_rank": 3.702468231871255e-06,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_unlisted_method": {
+        "delta_rank": 3.702468231871255e-06,
+        "contributions": {
+          "accuracy": 0.0,
+          "balanced_accuracy": 0.0,
+          "loss": 3.702468231871255e-06,
+          "prediction_distribution_shift": -0.0,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "shortcut_visible_answers": {
+        "delta_rank": 25.210557571962827,
+        "contributions": {
+          "accuracy": 16.804606809124333,
+          "balanced_accuracy": 6.81134355088729,
+          "loss": 1.324359760536581,
+          "prediction_distribution_shift": 0.2702474514146227,
+          "mha_compression_ratio": 0.0
+        },
+        "missing_or_nonfinite": []
+      },
+      "weaker_no_tensor": {
+        "delta_rank": -4.519765888119396,
+        "contributions": {
+          "accuracy": -2.191905235972739,
+          "balanced_accuracy": -1.1647372531176727,
+          "loss": -0.7062279327547903,
+          "prediction_distribution_shift": -0.45662500411436274,
+          "mha_compression_ratio": -0.00027046215983180406
+        },
+        "missing_or_nonfinite": []
+      },
+      "weaker_rank_one": {
+        "delta_rank": -3.7933080402275157,
+        "contributions": {
+          "accuracy": -2.435450262191932,
+          "balanced_accuracy": -1.2620065312152942,
+          "loss": -0.40442943736208,
+          "prediction_distribution_shift": -0.44730612647937573,
+          "mha_compression_ratio": 0.7558843170211662
+        },
+        "missing_or_nonfinite": []
+      }
+    },
+    "cohort": [
+      "better_more_hooi",
+      "better_visible_search",
+      "reference_seed0",
+      "reference_seed1",
+      "reference_seed2",
+      "weaker_no_tensor",
+      "weaker_rank_one"
+    ],
+    "normalization": "population standard deviation, weight=1, absolute coefficient; missing/nonfinite skipped"
+  },
+  "caveat": "Future ranked attempts and their metric standard deviations are unknown. These are audit-cohort scores; componentwise dominance is independent of positive finite scales."
+}

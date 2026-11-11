@@ -1,0 +1,5 @@
+{
+  "candidates_per_case": 2,
+  "candidate_tests": 640,
+  "oracle": "public labels; shortcut, not model reasoning"
+}

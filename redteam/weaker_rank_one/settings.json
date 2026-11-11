@@ -1,0 +1,25 @@
+{
+  "seed": 0,
+  "hooi_iters": 5,
+  "limit": 320,
+  "batch_size": 8,
+  "device": "cpu",
+  "torch_version": "2.12.0+cpu",
+  "selected": {
+    "name": "rank_one",
+    "predictions": "redteam/weaker_rank_one/tensorllm_roberta.jsonl",
+    "accuracy": 0.496875,
+    "loss": 0.9329820689628832,
+    "layer": 6,
+    "ranks": [
+      1,
+      1,
+      1
+    ],
+    "original_mha_params": 2359296,
+    "compressed_mha_params": 848,
+    "compression_ratio": 2782.188679245283,
+    "relative_reconstruction_error": 0.9992138743400574,
+    "score_key": "tensorllm_roberta"
+  }
+}
