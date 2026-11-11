@@ -1,0 +1,131 @@
+{
+  "format": "mha-factor-patch-v1",
+  "blocks": [
+    {
+      "layer": 0,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "L0_core",
+        "L0_U_model",
+        "L0_U_head",
+        "L0_U_type"
+      ]
+    },
+    {
+      "layer": 6,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "L6_core",
+        "L6_U_model",
+        "L6_U_head",
+        "L6_U_type"
+      ]
+    },
+    {
+      "layer": 7,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "L7_core",
+        "L7_U_model",
+        "L7_U_head",
+        "L7_U_type"
+      ]
+    }
+  ],
+  "notes": {
+    "variant": "greedy multi-layer TensorLLM",
+    "history": [
+      {
+        "configs": [
+          [
+            0,
+            [
+              128,
+              48,
+              3
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379046288664485,
+          "finite": true
+        }
+      },
+      {
+        "configs": [
+          [
+            0,
+            [
+              128,
+              48,
+              3
+            ]
+          ],
+          [
+            6,
+            [
+              512,
+              16,
+              4
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 54.18418035918991,
+          "loss": 1.2650745657048792
+        }
+      },
+      {
+        "configs": [
+          [
+            0,
+            [
+              128,
+              48,
+              3
+            ]
+          ],
+          [
+            6,
+            [
+              512,
+              16,
+              4
+            ]
+          ],
+          [
+            7,
+            [
+              128,
+              64,
+              4
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 54.52808559419182,
+          "loss": 4.522573442189439
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "format": "mha-factor-patch-v1",
+  "blocks": [
+    {
+      "layer": 7,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "L7_core",
+        "L7_U_model",
+        "L7_U_head",
+        "L7_U_type"
+      ]
+    },
+    {
+      "layer": 1,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "L1_core",
+        "L1_U_model",
+        "L1_U_head",
+        "L1_U_type"
+      ]
+    }
+  ],
+  "notes": {
+    "variant": "greedy multi-layer TensorLLM",
+    "history": [
+      {
+        "configs": [
+          [
+            7,
+            [
+              64,
+              48,
+              4
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237024516518,
+          "finite": true
+        }
+      },
+      {
+        "configs": [
+          [
+            7,
+            [
+              64,
+              48,
+              4
+            ]
+          ],
+          [
+            1,
+            [
+              64,
+              64,
+              4
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580715284573
+        }
+      }
+    ]
+  }
+}

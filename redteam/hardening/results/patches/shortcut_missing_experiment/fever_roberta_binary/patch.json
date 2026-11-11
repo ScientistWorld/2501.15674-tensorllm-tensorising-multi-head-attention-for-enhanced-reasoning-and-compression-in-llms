@@ -1,0 +1,37 @@
+{
+  "format": "mha-factor-patch-v1",
+  "blocks": [
+    {
+      "layer": 0,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "core",
+        "U_model",
+        "U_head",
+        "U_type"
+      ]
+    }
+  ],
+  "notes": {
+    "method": "TensorLLM shared-factor Tucker (HOOI) on one layer's multi-head attention",
+    "layer": 0,
+    "ranks": [
+      128,
+      48,
+      3
+    ],
+    "validation": {
+      "accuracy": 53.38173481085212,
+      "loss": 1.1379046288664485,
+      "finite": true
+    },
+    "hooi_iterations": 100,
+    "relative_error": 0.7617101589749358
+  }
+}

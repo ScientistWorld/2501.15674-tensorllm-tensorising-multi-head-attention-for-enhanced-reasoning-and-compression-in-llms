@@ -1,0 +1,21 @@
+{
+  "format": "mha-factor-patch-v1",
+  "blocks": [
+    {
+      "layer": 11,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "L11_core",
+        "L11_U_model",
+        "L11_U_head",
+        "L11_U_type"
+      ]
+    }
+  ]
+}

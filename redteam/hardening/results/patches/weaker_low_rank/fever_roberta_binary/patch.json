@@ -1,0 +1,24 @@
+{
+  "format": "mha-factor-patch-v1",
+  "blocks": [
+    {
+      "layer": 0,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "abch,ma,db,tc->tmhd",
+      "operands": [
+        "L0_core",
+        "L0_U_model",
+        "L0_U_head",
+        "L0_U_type"
+      ]
+    }
+  ],
+  "notes": {
+    "variant": "low ranks"
+  }
+}

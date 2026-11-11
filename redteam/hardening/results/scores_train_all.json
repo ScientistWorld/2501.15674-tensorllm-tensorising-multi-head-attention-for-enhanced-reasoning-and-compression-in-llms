@@ -1,0 +1,411 @@
+{
+  "metadata": {
+    "slice": "train",
+    "submissions": "outputs/hardening/submissions",
+    "device": "cuda",
+    "fixed_model_verified": true,
+    "debug_limit": null,
+    "seconds": 148.8,
+    "gates": {
+      "bios_profession_roberta": {
+        "baseline_accuracy": 64.95837669094693,
+        "baseline_loss": 4.853128171879623,
+        "majority_class_accuracy": 62.48699271592091,
+        "accuracy_threshold": 64.95837669094693,
+        "n_examples": 3844
+      },
+      "fever_roberta_binary": {
+        "baseline_accuracy": 49.78983568972105,
+        "baseline_loss": 2.499201423619875,
+        "majority_class_accuracy": 50.21016431027895,
+        "accuracy_threshold": 50.21016431027895,
+        "n_examples": 2617
+      }
+    },
+    "methods": {
+      "roberta_original": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": null,
+          "raw_accuracy": 64.95837669094693,
+          "raw_loss": 4.853128171879623,
+          "raw_compression_ratio": 1.0,
+          "touched_layers": [],
+          "stored_params": 0
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": null,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.499201423619875,
+          "raw_compression_ratio": 1.0,
+          "touched_layers": [],
+          "stored_params": 0
+        }
+      },
+      "better_greedy_layers": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "raw_accuracy": 77.05515088449532,
+          "raw_loss": 4.181580678085941,
+          "raw_compression_ratio": 10.49583600256246,
+          "touched_layers": [
+            1,
+            7
+          ],
+          "stored_params": 449568
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "previous_reference": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "raw_accuracy": 57.38813735691988,
+          "raw_loss": 7.364756792163502,
+          "raw_compression_ratio": 1.9947782091692483,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 1182736
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "shortcut_bad_contraction": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "block 0: contraction has 589824 entries, expected 4 x 768 x 768"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "block 0: contraction has 589824 entries, expected 4 x 768 x 768"
+        }
+      },
+      "shortcut_collapse_compress": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "raw_accuracy": 57.75234131113424,
+          "raw_loss": 4.659392395086827,
+          "raw_compression_ratio": 2782.188679245283,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 848
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "shortcut_dense_replacement": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 2359296 parameters, not fewer than their dense original (2359296)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 2359296 parameters, not fewer than their dense original (2359296)"
+        }
+      },
+      "shortcut_empty": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment bios_profession_roberta (directory)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "no patch for experiment fever_roberta_binary (directory)"
+        }
+      },
+      "shortcut_forged_metadata": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "raw_accuracy": 74.4276795005203,
+          "raw_loss": 5.238237001730612,
+          "raw_compression_ratio": 11.81443794567743,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 199696
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "shortcut_missing_experiment": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment bios_profession_roberta (directory)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "shortcut_nan_factor": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "tensor core contains non-finite values"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "tensor core contains non-finite values"
+        }
+      },
+      "shortcut_omitted_method": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment bios_profession_roberta (listed in fake_scores_train.json)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "no patch for experiment fever_roberta_binary (listed in fake_scores_train.json)"
+        }
+      },
+      "shortcut_shared_dense": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "raw_accuracy": 62.61706555671176,
+          "raw_loss": 4.695508437423069,
+          "raw_compression_ratio": 3.999972873447853,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 589828
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "shortcut_supervised_ft": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "raw_accuracy": 84.31321540062434,
+          "raw_loss": 3.0141166502088463,
+          "raw_compression_ratio": 11.81443794567743,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 199696
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "tensorllm_roberta": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "weaker_laser_mha": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      },
+      "weaker_low_rank": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "rebuilding the patch crashed: safetensors._safetensors_rust.SafetensorError: Error while serializing: I/O error: No space left on device (os error 28)"
+        }
+      }
+    }
+  },
+  "experiments": {
+    "bios_profession_roberta": {
+      "results": {
+        "shortcut_bad_contraction": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_nan_factor": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_laser_mha": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 64.95837669094693,
+          "loss": 4.853128171879623,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580678085941,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "previous_reference": {
+          "accuracy": 57.38813735691988,
+          "loss": 7.364756792163502,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 57.75234131113424,
+          "loss": 4.853128171879623,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237001730612,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "shortcut_shared_dense": {
+          "accuracy": 62.61706555671176,
+          "loss": 4.853128171879623,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_supervised_ft": {
+          "accuracy": 84.31321540062434,
+          "loss": 3.0141166502088463,
+          "mha_compression_ratio": 11.81443794567743
+        }
+      }
+    },
+    "fever_roberta_binary": {
+      "results": {
+        "better_greedy_layers": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "previous_reference": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_contraction": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_nan_factor": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_shared_dense": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_supervised_ft": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_laser_mha": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 49.78983568972105,
+          "loss": 2.499201423619875,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    }
+  }
+}

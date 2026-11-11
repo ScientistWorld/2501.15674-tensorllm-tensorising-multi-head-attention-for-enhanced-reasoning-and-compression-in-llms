@@ -1,0 +1,9 @@
+{
+  "previous_reference": 0.3,
+  "weaker_low_rank": 2.2,
+  "weaker_laser_mha": 722.4,
+  "better_greedy_layers": 787.5,
+  "shortcut_collapse_compress": 0.7,
+  "shortcut_supervised_ft": 93.6,
+  "artifact_shortcuts": 0.7
+}

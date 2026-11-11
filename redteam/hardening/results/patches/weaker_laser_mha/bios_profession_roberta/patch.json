@@ -1,0 +1,27 @@
+{
+  "format": "mha-factor-patch-v1",
+  "blocks": [
+    {
+      "layer": 4,
+      "targets": [
+        "key"
+      ],
+      "equation": "ar,rb->ab",
+      "operands": [
+        "US",
+        "Vt"
+      ]
+    }
+  ],
+  "notes": {
+    "variant": "LASER on one MHA matrix",
+    "layer": 4,
+    "matrix": "key",
+    "rank": 8,
+    "validation": {
+      "accuracy": 71.98231009365244,
+      "loss": 6.453505678647018,
+      "finite": true
+    }
+  }
+}

@@ -5,4 +5,4 @@ action: submit
 gpus: 1
 test: false
 milestone: core_claim
-notes: "Rerun hardening job after data-builder fix (duplicate bios prompt dropped from held-out split, LASER decode cleanup). Builds splits, reproduces TensorLLM reference on visible split, scores with evaluator-run patch scorers, builds+scores variants and shortcuts through hidden test."
+notes: "Resume hardening job (data/reference/scores done): greedy multi-layer variant (bug fixed), supervised-FT and artifact shortcuts, score everything through train+hidden test scorers, tamper check, paired-noise analysis."
