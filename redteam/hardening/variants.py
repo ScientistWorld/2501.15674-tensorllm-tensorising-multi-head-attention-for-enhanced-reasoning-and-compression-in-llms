@@ -170,7 +170,7 @@ def better_greedy_layers(ctx: Ctx, top_k: int = 4, max_layers: int = 3) -> None:
         for key, entry in ctx.log["conditions"].items():
             if name in entry and entry[name]["finite"]:
                 per_layer.setdefault(entry["layer"], []).append(entry)
-        history = [{"configs": [list(map(list, c)) for c in configs], "validation": current}]
+        history = [{"configs": [[c[0], list(c[1])] for c in configs], "validation": current}]
         while len(configs) < max_layers:
             used = {layer for layer, _ in configs}
             base = merge(*[overrides_for(layer, ctx.recon(layer, ranks)) for layer, ranks in configs])
