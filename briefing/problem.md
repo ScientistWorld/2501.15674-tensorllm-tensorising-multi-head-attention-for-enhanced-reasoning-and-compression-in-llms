@@ -2,12 +2,19 @@
 
 ## Research Question
 
-Can a fixed pretrained language model be post-processed so that its reasoning-task accuracy improves while the changed part of the model is represented with fewer parameters, without using additional training data or fine-tuning?
+Can the attention weights of a fixed pretrained language model be replaced, after training and without any further training or fine-tuning, by a smaller structured representation of themselves such that the model reasons better on a task?
+
+## Setting
+
+- Model: `roberta-base` (12 layers, 12 attention heads of size 64, model width 768), answering at a masked position.
+- What may change: the query, key, value and output projection matrices of any attention layers. Everything else (embeddings, biases, layer norms, feed-forward blocks, the prediction head) stays fixed.
+- Tasks: FEVER claim verification (true/false) and Bias in Bios profession prediction (8 professions), both as single-token answers at the masked position.
+- Data available to a method: the visible split of each task (`data/tasks/`, with labels) and the pretrained model. Held-out examples are never available.
 
 ## Why It Matters
 
-Large language models contain many redundant or noisy parameters. A good post-training procedure would make existing models smaller and, ideally, more accurate on reasoning tasks, without the cost and risk of retraining.
+Large language models are heavily over-parameterised. A post-training procedure that makes part of a model smaller and at the same time improves its accuracy, using no extra data, training or fine-tuning, would make existing models cheaper and better at once.
 
 ## Success Criteria
 
-A successful solution should improve task accuracy over the original pretrained model on a fixed reasoning benchmark, avoid a large increase in prediction loss, and reduce the parameter count needed to represent the modified model component.
+A successful solution raises held-out accuracy over the unmodified model on each task, while the modified attention layers are represented with fewer parameters than their dense originals. Lower answer loss and stronger compression are secondary gains. Both count only once accuracy beats the unmodified model.

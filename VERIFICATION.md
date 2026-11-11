@@ -1,3 +1,5 @@
+> **Superseded** by the iteration 11 hardening (`HARDENING.md`): the artifact-based evaluator described below was replaced by evaluator-run structure patches on hidden LASER-protocol splits.
+
 # Verification Report
 
 ## Initial Assessment

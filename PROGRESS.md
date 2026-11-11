@@ -39,3 +39,9 @@ The same audit made the evaluator score baseline-only manifests, added standard 
 The paper evaluates the full FEVER processed split and several large models. This reproduction starts with a deterministic balanced FEVER subset and RoBERTa-base to keep the first offline job lightweight. The algorithmic procedure is unchanged: post-training multi-head tensorisation with shared Tucker factors on an MHA layer.
 
 The implementation reconstructs dense RoBERTa weights for ordinary Transformer inference after computing the shared Tucker representation. The reported MHA compression ratio therefore measures the factorized representation implied by the decomposition, not reduced in-memory parameters of the PyTorch module during inference.
+
+## 2026-11-11 hardening (iteration 11)
+- New evaluator-run structure-patch scorers (`eval/train`, `eval/test`).
+- LASER-protocol FEVER and Bias in Bios splits; the held-out split is only under `eval/test/`.
+- Paper-setting TensorLLM reference; variants and shortcuts audited through the hidden test.
+- Full report in `HARDENING.md`.

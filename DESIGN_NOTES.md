@@ -1,24 +1,15 @@
 # Train/Test Evaluation Design Notes
 
-## Checked
+Current design, from the iteration 11 hardening (details and evidence in `HARDENING.md`):
 
-- Reviewed `scripts/evaluate_train.sh` and `scripts/evaluate_test.sh` side by side. The train wrapper calls `eval/train/evaluate.py` and writes `scoring/scores_train.json`; the test wrapper calls `eval/test/evaluate.py` and writes `scoring/scores_test.json`.
-- Checked for hardcoded method names in the split wrappers. Both wrappers take a manifest path and the evaluators enumerate manifest conditions; they do not lock scoring to a single method default.
-- Checked train/test leakage. The slice evaluators duplicate logic and do not import from each other. The test evaluator optionally reads `scoring/scores_train.json` only to keep the scored method keys aligned with the train slice.
-- Checked that the split evaluators are attached to method outputs. They read prediction JSONL artifacts and compression metadata from the submitted manifest rather than regenerating predictions or importing `method/`.
-- Checked for early score stubs. `scoring/scores_train.json` and `scoring/scores_test.json` were absent.
-- Ran `bash -n` on both split wrapper scripts.
-
-## Changed
-
-- Added `balanced_accuracy` to both train and test evaluators. This makes one-class or majority-class shortcuts visible even when plain accuracy looks acceptable.
-- Added `prediction_distribution_shift` to both train and test evaluators. This penalizes predicted label distributions that drift from the gold-label distribution on the scored slice, catching degenerate label-collapse shortcuts.
-- Added required `description` fields to every nonzero metric in `scoring/reference.json`.
-- Added the two new anti-shortcut metrics to `scoring/reference.json` and slightly increased the compression coefficient so the score still reflects the paper's accuracy-with-compression claim.
-
-## Runtime Concerns For Runner Iteration
-
-- The split is still a deterministic 50/50 row-index partition of the same prediction artifacts. This is lightweight and matched between train and test, but it is not an OOD split; it mainly detects methods that overfit the visible slice or optimize a degenerate metric.
-- Prediction artifacts include labels and NLL values. The evaluator can check accuracy from labels and predictions, but it cannot independently verify that reported NLL values came from the model without rerunning inference.
-- `balanced_accuracy` and `prediction_distribution_shift` assume the FEVER binary subset remains label-balanced enough for class-collapse detection to be meaningful. The runner should watch for saturation or tiny class counts in either slice.
-- `scoring/reference.json` now contains split-harness metrics that the train/test evaluators emit. The legacy unsplit `scripts/evaluate.sh` path was intentionally left untouched in this design-only iteration.
+- **Submission.** `outputs/submissions/<method>/<experiment>/patch.json` declares structure only: layer, target attention matrices, layout (`stack` | `heads`), and ranks per compressed mode.
+- **Scorers.** `eval/train/evaluate.py` (visible split, `data/tasks/`) and `eval/test/evaluate.py` (held-out split, `eval/test/data/`) are independent copies of the same logic. Each:
+  - checks the pinned roberta-base hashes;
+  - runs HOOI (TensorLy defaults) on the original weights for every declared block;
+  - runs the model;
+  - computes accuracy, gold-token NLL (full vocabulary) and the compression ratio.
+- **Baseline and gate.** Both scorers own the unmodified-model baseline and the reasoning gate. Loss and compression count only when accuracy beats both the unmodified model and the majority-class rate. Compression is capped at 64x.
+- **Failure.** Invalid or missing submissions get worst values (0 / 30 / 1).
+- **Method discovery.** Every directory under `outputs/submissions/` is scored, plus every key listed in `scoring/scores.json` / `scoring/scores_train.json`.
+- **Splits.** Visible: the first 20% of each LASER-ordered dataset. Held-out: the FEVER paper_test half (6,576 claims) and the last 20% of Bias in Bios (3,843 biographies).
+- **History.** Earlier designs scored method-written prediction artifacts. Iteration 11 then tried two factor formats (v1 einsum factors, v2 projection factors) before settling on structure-only. Both factor formats were replaced because label-trained factors paid +8 to +11 points.

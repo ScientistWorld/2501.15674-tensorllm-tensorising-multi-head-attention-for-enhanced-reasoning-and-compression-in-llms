@@ -2,7 +2,7 @@
   "experiments": {
     "fever_roberta_binary": {
       "description": "FEVER claim verification (true/false at the masked answer position) with the fixed pretrained roberta-base after a post-training modification of its attention weights. Held-out: all 6,576 consistent support/refute claims of FEVER paper_test (the second half of the paper's ordered 13,086-claim dataset, which contains the paper's last-20% test portion).",
-      "notes": "results: Table II of the paper (RoBERTa, FEVER, Original vs. Ours; the paper's test is the last 20% of the same LASER-preprocessed dataset, the gym's held-out split is the larger paper_test portion that contains it). Loss and compression are credited only when held-out accuracy beats both the unmodified model and the majority-class rate (otherwise loss is floored at the unmodified model's loss and compression is reported as 1); compression credit is capped at 64; failed or invalid submissions get accuracy 0, loss 30, compression 1.",
+      "notes": "results: Table II of the paper (RoBERTa, FEVER, Original vs. Ours). Same LASER preprocessing (13,086 consistent claims, first 20% = visible split); the paper's test is the last 20%, the gym's held-out split is the larger paper_test half that contains it (paired noise of the reference-vs-original gap: +3.7 +- 1.0 points on 6,576 claims vs +2.6 +- 1.5 on the last 20% alone). The decomposition of every submitted structure is computed by the evaluator (HOOI, TensorLy defaults). Failed or invalid submissions get accuracy 0, loss 30, compression 1.",
       "weight": 0.5,
       "primary_metric": "accuracy",
       "metrics": {
@@ -14,12 +14,12 @@
         "loss": {
           "higher_is_better": false,
           "coefficient": 0.1,
-          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold answer token at the masked position."
+          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold answer token at the masked position. Lower is better; when held-out accuracy does not beat the unmodified model and the majority-class rate it is floored at the unmodified model's loss."
         },
         "mha_compression_ratio": {
           "higher_is_better": true,
           "coefficient": 0.25,
-          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters the submission stores for them (all stored tensors plus any matrix of a modified layer it leaves dense), counted by the evaluator."
+          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus any matrix of a modified layer left dense), counted by the evaluator. Credited only when held-out accuracy beats the unmodified model and the majority-class rate (otherwise 1); capped at 64."
         }
       },
       "results": {
@@ -39,7 +39,7 @@
     },
     "bios_profession_roberta": {
       "description": "Bias in Bios profession prediction among eight single-token professions at the masked answer position, with the fixed pretrained roberta-base after a post-training modification of its attention weights. Held-out: the last 20% of the paper's LASER-preprocessed Bias in Bios dev split.",
-      "notes": "results: Table II of the paper (RoBERTa, Bios Profession, Original vs. Ours). Same gate, cap and failure values as fever_roberta_binary.",
+      "notes": "results: Table II of the paper (RoBERTa, Bios Profession, Original vs. Ours), same LASER preprocessing and split rule (first 20% visible, last 20% held out). The paper's loss also rises with its method here. Same gate, cap and failure values as fever_roberta_binary.",
       "weight": 0.5,
       "primary_metric": "accuracy",
       "metrics": {
@@ -51,12 +51,12 @@
         "loss": {
           "higher_is_better": false,
           "coefficient": 0.1,
-          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold profession token at the masked position."
+          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold profession token at the masked position. Lower is better; when held-out accuracy does not beat the unmodified model and the majority-class rate it is floored at the unmodified model's loss."
         },
         "mha_compression_ratio": {
           "higher_is_better": true,
           "coefficient": 0.25,
-          "description": "Dense parameter count of the attention projections of every modified layer divided by the parameters the submission stores for them, counted by the evaluator."
+          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus any matrix of a modified layer left dense), counted by the evaluator. Credited only when held-out accuracy beats the unmodified model and the majority-class rate (otherwise 1); capped at 64."
         }
       },
       "results": {

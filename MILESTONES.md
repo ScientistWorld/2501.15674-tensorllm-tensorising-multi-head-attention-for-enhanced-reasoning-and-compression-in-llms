@@ -33,5 +33,12 @@
 - Final verifier checked folder separation, scoring files, train/test method-key consistency, artifact-only evaluation, and URL reachability.
 - `python validate.py --compare` passes, and the reproduced TensorLLM score remains above the original RoBERTa baseline while reporting the compression constraint.
 
+### [2026-11-11] - core_claim (hardening)
+- Rebuilt the gym so the evaluator owns data, labels, decomposition, forward pass and parameter counts. Submissions declare attention-weight structure only.
+- Reproduced TensorLLM at the paper's settings, selected on the visible split. Held-out results:
+  - FEVER: 49.86 → 53.59, compression 7.3x;
+  - Bias in Bios: 64.79 → 73.64, compression 11.8x (paper: 64.5 → 72.57, 8.78x).
+- Demonstrated headroom: greedy multi-layer variant +2.55 ± 0.55 on Bios. Closed the redteam shortcuts plus label-trained core/factor shortcuts; see HARDENING.md.
+
 ## Stop Justification
 - Completed at milestone `core_claim`.

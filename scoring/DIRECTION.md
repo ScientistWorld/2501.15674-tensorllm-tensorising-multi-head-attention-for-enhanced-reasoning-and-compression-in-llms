@@ -2,16 +2,32 @@
 
 ## Research Problem
 
-This benchmark studies post-training weight denoising and compression for pretrained language models. The scientific question is whether structure already present in model weights can be exploited to improve reasoning behavior without gradient training.
+This benchmark studies post-training structured denoising and compression of pretrained attention weights. The question is whether low-rank tensor structure that already exists in the weights of a fixed model can be exploited to improve its reasoning, without data beyond a small labelled validation split and without any training.
 
 ## Core Contribution
 
-Improvements should focus on structured transformations of pretrained weights. The goal is to improve or refine how a fixed model component is compressed, denoised, or reconstructed while keeping the model and task fixed.
+Progress means finding better structures in which to approximate the attention weights. That covers:
+- which layers to modify, and how many;
+- which projection matrices to group together;
+- how to arrange them into tensors;
+- which modes to compress, and to what ranks.
+
+It also covers better principled or data-free rules for making those choices. The evaluator computes the Frobenius-optimal Tucker approximation (HOOI) of whatever structure is declared and counts its parameters, so a submission is a structural hypothesis about the weights.
 
 ## Approach Scope
 
-In-bounds work may change the component-selection policy, compression search strategy, reconstruction objective, or structured parameterization. It may also add method-side validation logic, as long as final scores are produced from the same artifacts and evaluation pipeline.
+In bounds:
+- new arrangements of the attention matrices;
+- per-mode rank choices;
+- multi-layer combinations;
+- selection strategies that use the visible split, or no labels at all;
+- criteria that predict which layers or structures help.
 
 ## Out of Bounds
 
-Do not replace the task with supervised fine-tuning, prompt engineering alone, retrieval augmentation, ensembles, a larger model, or a new architecture. Those changes can improve FEVER accuracy but do not address the research question about post-training structured weight denoising and compression.
+- Supervised fine-tuning or any gradient training against labels.
+- External or held-out data.
+- Prompt changes, a different or larger model, retrieval or ensembles.
+- Changes to the feed-forward blocks or other non-attention parameters.
+
+These can raise accuracy but do not address the research question.

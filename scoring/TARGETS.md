@@ -1,29 +1,24 @@
 # Evaluation Targets
 
-## Primary: fever_roberta_binary
+Every metric below is computed by the scorers from the submitted structure. They rebuild the weights, run the fixed model and count the parameters.
 
-Tests whether a post-training modification improves binary fact-verification accuracy for a fixed pretrained language model.
+- Visible split: `bash scripts/evaluate_train.sh` (or `bash scripts/evaluate.sh`).
+- Held-out split: `bash scripts/evaluate_test.sh`.
+
+## Primary: fever_roberta_binary, bios_profession_roberta
+
+Tests whether a post-training change of attention weights raises held-out task accuracy over the unmodified pretrained model.
 
 - **Metric**: accuracy (higher is better)
-- **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`
 
-## Constraint: fever_roberta_binary
+## Constraint: fever_roberta_binary, bios_profession_roberta
 
-Tests whether the accuracy change is achieved while representing the modified model component with fewer parameters than its original dense form.
+Tests whether the modified attention layers are represented with fewer parameters than their dense originals. Submissions that are not smaller fail outright. Larger reductions are rewarded only together with an accuracy gain over the unmodified model and the majority-class rate, and are capped at 64x.
 
 - **Metric**: mha_compression_ratio (higher is better)
-- **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`
 
-## Secondary: fever_roberta_binary
+## Secondary: fever_roberta_binary, bios_profession_roberta
 
-Tracks uncertainty on the same binary fact-verification examples.
+Tracks the uncertainty of the gold answer on the same held-out examples. It is credited under the same accuracy gate.
 
 - **Metric**: loss (lower is better)
-- **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`
-
-## Robustness: fever_roberta_binary
-
-Tracks whether a candidate improves accuracy without collapsing to a single predicted label.
-
-- **Metrics**: balanced_accuracy (higher is better), prediction_distribution_shift (lower is better)
-- **Run**: `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json`
