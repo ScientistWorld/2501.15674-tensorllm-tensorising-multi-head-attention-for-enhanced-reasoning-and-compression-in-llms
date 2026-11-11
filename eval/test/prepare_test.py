@@ -115,6 +115,15 @@ def fever_rows(path: Path, split: str) -> list[dict]:
     return rows
 
 
+def laser_cleanup(text: str) -> str:
+    """transformers 4.x ``clean_up_tokenization`` (applied by LASER's decode; 5.x skips it for BPE)."""
+    return (
+        text.replace(" .", ".").replace(" ?", "?").replace(" !", "!").replace(" ,", ",")
+        .replace(" ' ", "'").replace(" n't", "n't").replace(" 'm", "'m").replace(" 's", "'s")
+        .replace(" 've", "'ve").replace(" 're", "'re")
+    )
+
+
 def bios_rows(parquet: Path) -> list[dict]:
     import pyarrow.parquet as pq
     from transformers import AutoTokenizer
@@ -129,10 +138,8 @@ def bios_rows(parquet: Path) -> list[dict]:
         if name not in BIOS_OCCUPATIONS:
             continue
         token_ids = tokenizer(text, add_special_tokens=False)["input_ids"][-BIOS_MAX_TOKENS:]
-        try:
-            question = tokenizer.decode(token_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True)
-        except TypeError:
-            question = tokenizer.decode(token_ids, skip_special_tokens=True)
+        question = laser_cleanup(tokenizer.decode(token_ids, skip_special_tokens=True,
+                                                  clean_up_tokenization_spaces=False))
         if question.strip().endswith(".") or question.strip().endswith("?"):
             prompt = "Consider the following text: " + question.strip()
         else:
@@ -183,13 +190,17 @@ def main() -> None:
     for name, spec in TASKS.items():
         test, n_full, description = splits[name]
         visible_path = VISIBLE_DIR / spec["visible"]
-        if visible_path.exists():
-            visible = [json.loads(line) for line in visible_path.open("r", encoding="utf-8")]
-            visible_ids = {row["id"] for row in visible}
-            visible_prompts = {row["prompt"] for row in visible}
-            overlap = [row["id"] for row in test if row["id"] in visible_ids or row["prompt"] in visible_prompts]
-            if overlap:
-                raise RuntimeError(f"{name}: {len(overlap)} test rows overlap the visible split, e.g. {overlap[:3]}")
+        if not visible_path.exists():
+            raise RuntimeError(f"build the visible split first ({visible_path})")
+        visible = [json.loads(line) for line in visible_path.open("r", encoding="utf-8")]
+        visible_ids = {row["id"] for row in visible}
+        visible_prompts = {row["prompt"] for row in visible}
+        if any(row["id"] in visible_ids for row in test):
+            raise RuntimeError(f"{name}: held-out ids overlap the visible split")
+        # The source data contains a few duplicated texts: a held-out prompt that
+        # is also visible (with its label) is dropped.
+        dropped = [row["id"] for row in test if row["prompt"] in visible_prompts]
+        test = [row for row in test if row["prompt"] not in visible_prompts]
         path = out_dir / spec["file"]
         with path.open("w", encoding="utf-8") as handle:
             for row in test:
@@ -203,6 +214,7 @@ def main() -> None:
             "n_examples": len(test),
             "n_full_dataset": n_full,
             "portion": description,
+            "dropped_duplicates_of_visible_prompts": dropped,
             "label_counts": counts,
         }
         print(f"{name}: wrote {len(test)} held-out rows {counts}")

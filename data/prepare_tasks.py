@@ -93,6 +93,15 @@ def fever_rows(path: Path, split: str) -> list[dict]:
     return rows
 
 
+def laser_cleanup(text: str) -> str:
+    """transformers 4.x ``clean_up_tokenization`` (applied by LASER's decode; 5.x skips it for BPE)."""
+    return (
+        text.replace(" .", ".").replace(" ?", "?").replace(" !", "!").replace(" ,", ",")
+        .replace(" ' ", "'").replace(" n't", "n't").replace(" 'm", "'m").replace(" 's", "'s")
+        .replace(" 've", "'ve").replace(" 're", "'re")
+    )
+
+
 def bios_rows(parquet: Path) -> list[dict]:
     import pyarrow.parquet as pq
     from transformers import AutoTokenizer
@@ -107,10 +116,8 @@ def bios_rows(parquet: Path) -> list[dict]:
         if name not in BIOS_OCCUPATIONS:
             continue
         token_ids = tokenizer(text, add_special_tokens=False)["input_ids"][-BIOS_MAX_TOKENS:]
-        try:
-            question = tokenizer.decode(token_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True)
-        except TypeError:
-            question = tokenizer.decode(token_ids, skip_special_tokens=True)
+        question = laser_cleanup(tokenizer.decode(token_ids, skip_special_tokens=True,
+                                                  clean_up_tokenization_spaces=False))
         if question.strip().endswith(".") or question.strip().endswith("?"):
             prompt = "Consider the following text: " + question.strip()
         else:
