@@ -17,4 +17,4 @@ Large language models are heavily over-parameterised. A post-training procedure 
 
 ## Success Criteria
 
-A successful solution raises held-out accuracy over the unmodified model on each task, while the modified attention layers are represented with fewer parameters than their dense originals. Lower answer loss and stronger compression are secondary gains. Both count only once accuracy beats the unmodified model.
+A successful solution raises held-out accuracy over the unmodified model on each task, while the modified attention layers are represented with fewer parameters than their dense originals. Lower answer loss and stronger compression are secondary gains. Both count only once the accuracy gain over the unmodified model (and over always answering the most frequent class) is statistically significant.

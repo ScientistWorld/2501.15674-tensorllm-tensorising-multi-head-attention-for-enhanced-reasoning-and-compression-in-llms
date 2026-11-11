@@ -35,8 +35,8 @@ BASE = "roberta_original"
 LOSS_CAP, CR_CAP = 30.0, 64.0
 METRICS = {"accuracy": True, "loss": False, "mha_compression_ratio": True}  # higher_is_better
 COEFS = {
-    "round1 (acc 1, loss 0.1, CR 0.25)": {"accuracy": 1.0, "loss": 0.1, "mha_compression_ratio": 0.25},
-    "round2 (acc 1, loss 0.1, CR 0.1)": {"accuracy": 1.0, "loss": 0.1, "mha_compression_ratio": 0.1},
+    "gym coefficients (acc 1, loss 0.1, CR 0.25)": {"accuracy": 1.0, "loss": 0.1, "mha_compression_ratio": 0.25},
+    "alternative checked (acc 1, loss 0.1, CR 0.1)": {"accuracy": 1.0, "loss": 0.1, "mha_compression_ratio": 0.1},
 }
 WEIGHTS = {"bios_profession_roberta": 0.5, "fever_roberta_binary": 0.5}
 

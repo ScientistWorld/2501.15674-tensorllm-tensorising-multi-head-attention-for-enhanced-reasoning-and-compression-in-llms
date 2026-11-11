@@ -45,3 +45,12 @@ The implementation reconstructs dense RoBERTa weights for ordinary Transformer i
 - LASER-protocol FEVER and Bias in Bios splits; the held-out split is only under `eval/test/`.
 - Paper-setting TensorLLM reference; variants and shortcuts audited through the hidden test.
 - Full report in `HARDENING.md`.
+
+## 2026-11-11 hardening round 2
+- Reasoning gate is now significance-based (paired McNemar and binomial vs majority, z >= 1.645). A gate failure gets loss 30 and compression 1.
+- Structure language widened: head subsets and any axis-group layout. The decomposition stays evaluator-run.
+- Job c2c99342-c59:
+  - self-test passed (round-1 patches bit-identical);
+  - reference reproduced exactly (FEVER 53.59, Bios 73.64);
+  - 13 compressors, 2 structural variants and 3 new shortcuts scored.
+- Details in `HARDENING.md`.

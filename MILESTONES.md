@@ -40,5 +40,9 @@
   - Bias in Bios: 64.79 → 73.64, compression 11.8x (paper: 64.5 → 72.57, 8.78x).
 - Demonstrated headroom: greedy multi-layer variant +2.55 ± 0.55 on Bios. Closed the redteam shortcuts plus label-trained core/factor shortcuts; see HARDENING.md.
 
+### [2026-11-11] - core_claim (hardening round 2)
+- Significance-based reasoning gate, with the worst loss on gate failure. Chance-level 64x compressors lost their credit (Bios 8/13 → 5/13 credited).
+- Wider structure language (head subsets, axis-group layouts). The reference is reproduced exactly from the final code.
+
 ## Stop Justification
 - Completed at milestone `core_claim`.

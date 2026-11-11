@@ -9,9 +9,12 @@ This module is method-agnostic infrastructure for producing submissions:
   layer-wise searches are cheap;
 * the canonical attention-matrix layout used by the submission format and a
   writer for ``patch.json``.  A patch names, per block, a layer, its target
-  matrices, a tensor ``layout`` (``stack`` or ``heads``) and the multilinear
-  rank of each compressed mode; the scorers compute the Tucker/HOOI
-  approximation of the original weights themselves (see briefing/evaluation.md).
+  matrices, optionally a subset of heads, a tensor ``layout`` (``stack``,
+  ``heads`` or any grouping of the axes t/m/h/d into modes) and the
+  multilinear rank of each compressed mode; the scorers compute the
+  Tucker/HOOI approximation of the original weights themselves (see
+  briefing/evaluation.md).  ``python eval/train/evaluate.py --submissions DIR``
+  scores any candidate patches on the visible split.
 
 It does not import anything from ``eval/``.
 """

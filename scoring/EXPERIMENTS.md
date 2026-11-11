@@ -3,7 +3,7 @@
 Both experiments ask the same question on a different reasoning task: after the attention projections of a fixed pretrained `roberta-base` are replaced by a smaller structured representation of themselves, does the model answer held-out questions better than the unmodified model? Each experiment reports:
 - held-out accuracy (the benefit);
 - the answer loss (a secondary uncertainty measure);
-- how many times smaller the modified attention layers became (the constraint, rewarded when it comes with a reasoning gain).
+- how many times smaller the modified attention layers became (the constraint, rewarded only when it comes with a reasoning gain that is distinguishable from noise on the held-out split).
 
 ## fever_roberta_binary
 

@@ -1,8 +1,9 @@
 #!/bin/bash
-# Job entry point for hardening round 2: self-test of the scorer changes, the
-# reference reproduced end to end from the final code (scripts/reproduce.sh,
-# layer x rank search cached in outputs/tensorllm_search/), round-2 variants and
-# shortcuts scored through the unchanged scorers, and the analysis.
+# Job entry point: reproduce the reference end to end (GPU recommended; the
+# layer x rank search takes about an hour on one A100 and is cached in
+# outputs/tensorllm_search/).  The hardening audits that score variants and
+# shortcuts through the same scorers are redteam/hardening/run.sh (round 1)
+# and redteam/hardening/run_round2.sh (round 2).
 set -e
 cd "$(dirname "$0")/.."
-bash redteam/hardening/run_round2.sh
+bash scripts/reproduce.sh

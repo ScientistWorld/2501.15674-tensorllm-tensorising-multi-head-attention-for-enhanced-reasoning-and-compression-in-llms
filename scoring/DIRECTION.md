@@ -8,8 +8,8 @@ This benchmark studies post-training structured denoising and compression of pre
 
 Progress means finding better structures in which to approximate the attention weights. That covers:
 - which layers to modify, and how many;
-- which projection matrices to group together;
-- how to arrange them into tensors;
+- which projection matrices, and which heads, to group together;
+- how to arrange them into tensors (any grouping of the matrix, model, head and within-head axes into tensor modes);
 - which modes to compress, and to what ranks.
 
 It also covers better principled or data-free rules for making those choices. The evaluator computes the Frobenius-optimal Tucker approximation (HOOI) of whatever structure is declared and counts its parameters, so a submission is a structural hypothesis about the weights.
@@ -18,6 +18,7 @@ It also covers better principled or data-free rules for making those choices. Th
 
 In bounds:
 - new arrangements of the attention matrices;
+- groupings of heads that share a subspace;
 - per-mode rank choices;
 - multi-layer combinations;
 - selection strategies that use the visible split, or no labels at all;

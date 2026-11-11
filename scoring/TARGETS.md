@@ -13,12 +13,12 @@ Tests whether a post-training change of attention weights raises held-out task a
 
 ## Constraint: fever_roberta_binary, bios_profession_roberta
 
-Tests whether the modified attention layers are represented with fewer parameters than their dense originals. Submissions that are not smaller fail outright. Larger reductions are rewarded only together with an accuracy gain over the unmodified model and the majority-class rate, and are capped at 64x.
+Tests whether the modified attention layers are represented with fewer parameters than their dense originals. Submissions that are not smaller fail outright. Larger reductions are rewarded only together with a statistically significant accuracy gain over the unmodified model (paired, same examples) and over the majority-class rate (one-sided z >= 1.645 for both), and are capped at 64x.
 
 - **Metric**: mha_compression_ratio (higher is better)
 
 ## Secondary: fever_roberta_binary, bios_profession_roberta
 
-Tracks the uncertainty of the gold answer on the same held-out examples. It is credited under the same accuracy gate.
+Tracks the uncertainty of the gold answer on the same held-out examples. It is credited under the same significance gate; a submission that fails the gate gets the worst loss (30).
 
 - **Metric**: loss (lower is better)

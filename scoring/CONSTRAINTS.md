@@ -10,7 +10,7 @@ Use only the visible splits in `data/tasks/` and the pretrained model. Do not fe
 
 ## Training
 
-The research question excludes training and fine-tuning: do not fit weights, factors or any other continuous parameters to labels. Using the visible split to choose among structures is allowed. That covers which layers, which matrices, which arrangement and which ranks, as the paper does with its validation split. The submission format only accepts structure; the decomposition itself is computed by the evaluator.
+The research question excludes training and fine-tuning: do not fit weights, factors or any other continuous parameters to labels. Using the visible split to choose among structures is allowed. That covers which layers, which matrices and heads, which arrangement and which ranks, as the paper does with its validation split. The submission format only accepts structure; the decomposition itself is computed by the evaluator.
 
 ## Evaluation
 

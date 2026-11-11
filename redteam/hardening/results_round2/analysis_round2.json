@@ -2202,7 +2202,7 @@
   }
  },
  "rank": {
-  "round1 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest": {
+  "round1 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest": {
    "roberta_original": -1.7946,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.1695,
@@ -2213,7 +2213,7 @@
    "variant_head_groups": -1.1098,
    "variant_qk_vo_split": -1.4762
   },
-  "round1 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest+compressors": {
+  "round1 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest+compressors": {
    "roberta_original": -2.3992,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.2435,
@@ -2237,7 +2237,7 @@
    "compress64_L11": -3.0064,
    "shortcut_max_compression": -1.8984
   },
-  "round1 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest+compressors+failed": {
+  "round1 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest+compressors+failed": {
    "roberta_original": -0.7697,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.058,
@@ -2264,7 +2264,7 @@
    "shortcut_trained_factors": -4.0556,
    "shortcut_omitted_method": -4.0556
   },
-  "round1 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest+failed": {
+  "round1 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest+failed": {
    "roberta_original": -0.7039,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.0275,
@@ -2278,7 +2278,7 @@
    "shortcut_trained_factors": -3.1304,
    "shortcut_omitted_method": -3.1304
   },
-  "round1 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest": {
+  "round1 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest": {
    "roberta_original": -1.5268,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.1807,
@@ -2289,7 +2289,7 @@
    "variant_head_groups": -1.0403,
    "variant_qk_vo_split": -1.2793
   },
-  "round1 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest+compressors": {
+  "round1 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest+compressors": {
    "roberta_original": -2.1402,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.2469,
@@ -2313,7 +2313,7 @@
    "compress64_L11": -2.7474,
    "shortcut_max_compression": -1.8057
   },
-  "round1 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest+compressors+failed": {
+  "round1 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest+compressors+failed": {
    "roberta_original": -0.4981,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.0615,
@@ -2340,7 +2340,7 @@
    "shortcut_trained_factors": -3.784,
    "shortcut_omitted_method": -3.784
   },
-  "round1 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest+failed": {
+  "round1 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest+failed": {
    "roberta_original": -0.4216,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.0391,
@@ -2354,7 +2354,7 @@
    "shortcut_trained_factors": -2.8481,
    "shortcut_omitted_method": -2.8481
   },
-  "round2 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest": {
+  "round2 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest": {
    "roberta_original": -1.7882,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.12,
@@ -2365,7 +2365,7 @@
    "variant_head_groups": -0.9819,
    "variant_qk_vo_split": -1.535
   },
-  "round2 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest+compressors": {
+  "round2 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest+compressors": {
    "roberta_original": -2.3861,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.1888,
@@ -2389,7 +2389,7 @@
    "compress64_L11": -3.1822,
    "shortcut_max_compression": -1.9848
   },
-  "round2 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest+compressors+failed": {
+  "round2 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest+compressors+failed": {
    "roberta_original": -0.7762,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.0548,
@@ -2416,7 +2416,7 @@
    "shortcut_trained_factors": -3.9802,
    "shortcut_omitted_method": -3.9802
   },
-  "round2 scoring | round1 (acc 1, loss 0.1, CR 0.25) | honest+failed": {
+  "round2 scoring | gym coefficients (acc 1, loss 0.1, CR 0.25) | honest+failed": {
    "roberta_original": -0.7035,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.0271,
@@ -2430,7 +2430,7 @@
    "shortcut_trained_factors": -3.1063,
    "shortcut_omitted_method": -3.1063
   },
-  "round2 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest": {
+  "round2 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest": {
    "roberta_original": -1.5204,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.1312,
@@ -2441,7 +2441,7 @@
    "variant_head_groups": -0.9123,
    "variant_qk_vo_split": -1.3381
   },
-  "round2 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest+compressors": {
+  "round2 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest+compressors": {
    "roberta_original": -2.1238,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.1927,
@@ -2465,7 +2465,7 @@
    "compress64_L11": -2.9199,
    "shortcut_max_compression": -1.9083
   },
-  "round2 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest+compressors+failed": {
+  "round2 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest+compressors+failed": {
    "roberta_original": -0.5005,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.0588,
@@ -2492,7 +2492,7 @@
    "shortcut_trained_factors": -3.7045,
    "shortcut_omitted_method": -3.7045
   },
-  "round2 scoring | round2 (acc 1, loss 0.1, CR 0.1) | honest+failed": {
+  "round2 scoring | alternative checked (acc 1, loss 0.1, CR 0.1) | honest+failed": {
    "roberta_original": -0.4211,
    "tensorllm_roberta": 0.0,
    "better_greedy_layers": 0.0387,

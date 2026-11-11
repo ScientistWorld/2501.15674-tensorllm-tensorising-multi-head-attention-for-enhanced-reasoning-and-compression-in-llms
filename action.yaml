@@ -1,8 +1,6 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: submit
-gpus: 1
-test: false
+action: done
 milestone: core_claim
-notes: "Hardening round 2: self-test of scorer changes (significance gate, worst loss on gate failure, axis-group layouts + head subsets), reference reproduced from final code, compressor/structure variants and shortcuts scored on both splits, analysis."
+notes: "Hardening round 2: significance-based reasoning gate with worst loss on gate failure (chance-level 64x compressors lose credit), wider evaluator-run structure language (head subsets, axis-group layouts); reference reproduced exactly (FEVER 53.59, Bios 73.64); greedy multi-layer variant still +2.55 +- 0.54 on Bios; see HARDENING.md."
