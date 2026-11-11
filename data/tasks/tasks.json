@@ -1,0 +1,47 @@
+{
+  "split": "validation (first 20% of each ordered dataset)",
+  "tasks": {
+    "bios_profession_roberta": {
+      "file": "bios_profession_val.jsonl",
+      "sha256": "8d38cc801f66fbd3154b9584f90d37c05eabb1aa2b3f3948e7e21eb3809f7bad",
+      "n_examples": 3844,
+      "n_full_dataset": 19223,
+      "candidates": [
+        " journalist",
+        " poet",
+        " composer",
+        " model",
+        " teacher",
+        " architect",
+        " painter",
+        " professor"
+      ],
+      "description": "Bias in Bios profession prediction (8 single-token professions).",
+      "label_counts": {
+        "professor": 2402,
+        "architect": 206,
+        "teacher": 287,
+        "journalist": 404,
+        "composer": 105,
+        "poet": 136,
+        "model": 154,
+        "painter": 150
+      }
+    },
+    "fever_roberta_binary": {
+      "file": "fever_val.jsonl",
+      "sha256": "af9979388e91f9cd3c99426e09d9b04ed45ef56dea1a3de860668772ab352d95",
+      "n_examples": 2617,
+      "n_full_dataset": 13086,
+      "candidates": [
+        " false",
+        " true"
+      ],
+      "description": "FEVER binary claim verification (true/false).",
+      "label_counts": {
+        "true": 1314,
+        "false": 1303
+      }
+    }
+  }
+}
