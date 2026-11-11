@@ -1,5 +1,5 @@
 {
-  "format": "mha-projection-patch-v2",
+  "format": "mha-structure-patch-v3",
   "blocks": [
     {
       "layer": 7,
@@ -10,10 +10,10 @@
         "output"
       ],
       "layout": "heads",
-      "factors": {
-        "0": "L7_U_model",
-        "1": "L7_U_head",
-        "2": "L7_U_type"
+      "ranks": {
+        "0": 64,
+        "1": 48,
+        "2": 4
       }
     },
     {
@@ -25,15 +25,15 @@
         "output"
       ],
       "layout": "heads",
-      "factors": {
-        "0": "L1_U_model",
-        "1": "L1_U_head",
-        "2": "L1_U_type"
+      "ranks": {
+        "0": 64,
+        "1": 64,
+        "2": 4
       }
     }
   ],
   "notes": {
-    "variant": "greedy multi-layer TensorLLM",
+    "variant": "greedy multi-layer TensorLLM, min gain 1.0",
     "validation": {
       "accuracy": 77.05515088449532,
       "loss": 4.181580715284573

@@ -1,5 +1,5 @@
 {
-  "format": "mha-projection-patch-v2",
+  "format": "mha-structure-patch-v3",
   "blocks": [
     {
       "layer": 0,
@@ -10,48 +10,19 @@
         "output"
       ],
       "layout": "heads",
-      "factors": {
-        "0": "L0_U_model",
-        "1": "L0_U_head",
-        "2": "L0_U_type"
-      }
-    },
-    {
-      "layer": 6,
-      "targets": [
-        "query",
-        "key",
-        "value",
-        "output"
-      ],
-      "layout": "heads",
-      "factors": {
-        "0": "L6_U_model",
-        "1": "L6_U_head",
-        "2": "L6_U_type"
-      }
-    },
-    {
-      "layer": 7,
-      "targets": [
-        "query",
-        "key",
-        "value",
-        "output"
-      ],
-      "layout": "heads",
-      "factors": {
-        "0": "L7_U_model",
-        "1": "L7_U_head",
-        "2": "L7_U_type"
+      "ranks": {
+        "0": 128,
+        "1": 48,
+        "2": 3
       }
     }
   ],
   "notes": {
-    "variant": "greedy multi-layer TensorLLM",
+    "variant": "greedy multi-layer TensorLLM, min gain 1.0",
     "validation": {
-      "accuracy": 54.52808559419182,
-      "loss": 4.522573442189439
+      "accuracy": 53.38173481085212,
+      "loss": 1.1379046288664485,
+      "finite": true
     }
   }
 }

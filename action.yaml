@@ -5,4 +5,4 @@ action: submit
 gpus: 1
 test: false
 milestone: core_claim
-notes: "Hardening job, v2 projection patch format (scorer computes cores from original weights; no temp files). Smoke, rewrite reference patches from cached search, official scores, all variants/shortcuts (incl. supervised subspace attack), scoring, tamper check, paired-noise analysis."
+notes: "Hardening job, v3 structure-only patches (scorer runs HOOI on original weights). Smoke, rewrite reference patches from cached search, official scores, variants (margin greedy, no-margin greedy, LASER-MHA, low rank, previous ref) and v3 shortcuts, scoring, tamper check, paired-noise analysis."

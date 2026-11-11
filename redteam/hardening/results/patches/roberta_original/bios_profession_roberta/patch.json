@@ -1,5 +1,5 @@
 {
-  "format": "mha-projection-patch-v2",
+  "format": "mha-structure-patch-v3",
   "blocks": [
     {
       "layer": 11,
@@ -10,10 +10,10 @@
         "output"
       ],
       "layout": "heads",
-      "factors": {
-        "0": "L11_U_model",
-        "1": "L11_U_head",
-        "2": "L11_U_type"
+      "ranks": {
+        "0": 1,
+        "1": 1,
+        "2": 1
       }
     }
   ]

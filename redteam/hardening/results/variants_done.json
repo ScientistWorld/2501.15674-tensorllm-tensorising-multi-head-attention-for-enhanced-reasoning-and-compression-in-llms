@@ -1,9 +1,9 @@
 {
-  "previous_reference": 0.6,
-  "weaker_low_rank": 6.4,
-  "weaker_laser_mha": 11.5,
-  "better_greedy_layers": 8.1,
-  "shortcut_collapse_compress": 0.6,
-  "shortcut_supervised_subspace": 97.5,
-  "artifact_shortcuts": 0.7
+  "previous_reference": 0.0,
+  "weaker_low_rank": 0.0,
+  "weaker_laser_mha": 10.9,
+  "better_greedy_layers": 706.2,
+  "greedy_layers_nomargin": 0.0,
+  "shortcut_collapse_compress": 0.0,
+  "artifact_shortcuts": 0.1
 }

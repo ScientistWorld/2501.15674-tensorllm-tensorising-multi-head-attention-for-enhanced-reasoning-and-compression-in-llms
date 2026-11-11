@@ -1,5 +1,5 @@
 {
-  "format": "mha-projection-patch-v2",
+  "format": "mha-structure-patch-v3",
   "blocks": [
     {
       "layer": 6,
@@ -7,16 +7,13 @@
         "query"
       ],
       "layout": "stack",
-      "factors": {
-        "0": "U"
+      "ranks": {
+        "0": 38
       }
     }
   ],
   "notes": {
     "variant": "LASER on one MHA matrix",
-    "layer": 6,
-    "matrix": "query",
-    "rank": 38,
     "validation": {
       "accuracy": 49.866259075277036,
       "loss": 4.448418779595462,
