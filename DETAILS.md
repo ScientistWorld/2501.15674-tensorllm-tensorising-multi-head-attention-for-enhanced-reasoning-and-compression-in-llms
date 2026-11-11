@@ -15,21 +15,38 @@ The paper argues that existing post-training rank-reduction methods mainly benef
 - GPT-J shows larger FEVER gains, from 50.2% to 58.94% accuracy with 14.69x MHA compression.
 - The largest reported MHA compression ratio is 247.3x on GPT-J HotPotQA.
 
+## This Gym
+
+- Fixed model: `roberta-base`.
+- Two scored experiments from the paper's Table II: FEVER claim verification and Bias in Bios profession prediction.
+- Splits follow LASER's preprocessing: the first 20% of each dataset is visible with labels, and the held-out split is hidden.
+- A submission declares which attention matrices to replace and the low-rank tensor structure to replace them with. The evaluator computes the decomposition of the original weights, runs the model on held-out prompts, and scores accuracy, answer loss and the compression of the modified layers (see `briefing/evaluation.md`).
+- Reproduced reference on the held-out split:
+  - FEVER: 49.86 → 53.59 accuracy, compression 7.3x;
+  - Bios: 64.79 → 73.64 accuracy, compression 11.8x.
+
 ---
 
 # Problem Definition
 
 ## Research Question
 
-Can a fixed pretrained language model be post-processed so that its reasoning-task accuracy improves while the changed part of the model is represented with fewer parameters, without using additional training data or fine-tuning?
+Can the attention weights of a fixed pretrained language model be replaced, after training and without any further training or fine-tuning, by a smaller structured representation of themselves such that the model reasons better on a task?
+
+## Setting
+
+- Model: `roberta-base` (12 layers, 12 attention heads of size 64, model width 768), answering at a masked position.
+- What may change: the query, key, value and output projection matrices of any attention layers. Everything else (embeddings, biases, layer norms, feed-forward blocks, the prediction head) stays fixed.
+- Tasks: FEVER claim verification (true/false) and Bias in Bios profession prediction (8 professions), both as single-token answers at the masked position.
+- Data available to a method: the visible split of each task (`data/tasks/`, with labels) and the pretrained model. Held-out examples are never available.
 
 ## Why It Matters
 
-Large language models contain many redundant or noisy parameters. A good post-training procedure would make existing models smaller and, ideally, more accurate on reasoning tasks, without the cost and risk of retraining.
+Large language models are heavily over-parameterised. A post-training procedure that makes part of a model smaller and at the same time improves its accuracy, using no extra data, training or fine-tuning, would make existing models cheaper and better at once.
 
 ## Success Criteria
 
-A successful solution should improve task accuracy over the original pretrained model on a fixed reasoning benchmark, avoid a large increase in prediction loss, and reduce the parameter count needed to represent the modified model component.
+A successful solution raises held-out accuracy over the unmodified model on each task, while the modified attention layers are represented with fewer parameters than their dense originals. Lower answer loss and stronger compression are secondary gains. Both count only once accuracy beats the unmodified model.
 
 ---
 
@@ -37,39 +54,97 @@ A successful solution should improve task accuracy over the original pretrained 
 
 ## Key Contribution
 
-TensorLLM is a post-training denoising and compression method for transformer multi-head attention weights. It targets the attention block rather than the feed-forward block and requires no extra data, training, or fine-tuning.
+TensorLLM is a post-training denoising and compression method for the multi-head attention (MHA) weights of a transformer. It targets the attention block rather than the feed-forward block. It needs no extra data, training or fine-tuning.
 
 ## Approach
 
-For one transformer layer, the method splits the query, key, value, and output projection matrices into per-head submatrices. For each attention head, the four submatrices are stacked into a 3D tensor. The per-head tensors are then stacked across heads into a 4D tensor.
+1. **Multi-head tensorisation.** Take one transformer layer. Split each of W^Q, W^K, W^V and (W^O)^T into its per-head sub-matrices (d_model x d_v each). Stack each head's four sub-matrices into a 3D tensor, then stack the heads into a 4D tensor of shape d_model x d_v x 4 x h.
+2. **Tucker decomposition with shared factor matrices.** Approximate the 4D tensor as G x_1 U1 x_2 U2 x_3 U3, leaving the head mode uncompressed. All heads therefore share the factor matrices for the model dimension, the head dimension and the Q/K/V/O mode, and each head keeps its own core slice. The paper uses TensorLy's HOOI.
+3. **Layer-selective application.** The reconstruction replaces the MHA weights of a single layer. The layer and the multilinear ranks are hyperparameters, chosen on a validation split (the first 20% of each dataset).
 
-The method applies Tucker decomposition to this 4D tensor while leaving the head mode uncompressed. All heads share the same factor matrices for the model dimension, head dimension, and Q/K/V/O matrix-type modes, while each head keeps its own core slice. The reconstructed low-rank tensor is written back into the original attention weights. The paper applies this layer-selectively and searches for layer/rank settings that improve validation performance.
+## Reproduction in this gym
+
+- `method/tensorllm_roberta.py` covers every task:
+  - it searches all 12 layers and 59 rank tuples, R1 in {64..512}, R2 in {16..64}, R3 in {2,3,4};
+  - it runs HOOI with TensorLy's defaults;
+  - it keeps the best visible-split accuracy, with lower loss breaking ties.
+- It writes the selected structure as `outputs/submissions/tensorllm_roberta/<task>/patch.json`. The scorers run the same HOOI themselves.
+- Selected structures:
+  - FEVER: layer 0, ranks (128, 48, 3), compression 7.3x.
+  - Bias in Bios: layer 7, ranks (64, 48, 4), compression 11.8x.
 
 ## Main Claims
 
-The primary claim is that enforcing a shared higher-dimensional low-rank structure across attention heads can improve reasoning accuracy while compressing the MHA weights of the modified layer.
+The primary claim is that enforcing a shared higher-dimensional low-rank structure across the attention heads of a layer improves reasoning accuracy while compressing that layer's MHA weights. On RoBERTa the paper reports:
 
-Secondary claims are that the method works across encoder-only and decoder-only LLMs, can be combined with FFN-focused denoising methods such as LASER, and outperforms ablations that compress query, key, value, or output matrices separately.
+- FEVER: 50.0 → 50.45 accuracy, 3.74x compression;
+- Bios: 64.5 → 72.57 accuracy, 8.78x compression.
+
+Secondary claims:
+
+- the method works on decoder-only models too (GPT-J, LLaMA2);
+- it combines with FFN-side LASER;
+- it beats compressing Q, K, V or O separately.
 
 ---
 
 # Evaluation
 
-## Metrics
+## What a method submits
 
-Accuracy is the primary reasoning metric and is reported as the percentage of examples with the correct answer. For FEVER binary verification, a claim is predicted as true or false and compared against the gold label.
+A method is a directory `outputs/submissions/<method>/` with one sub-directory per experiment (`fever_roberta_binary/`, `bios_profession_roberta/`), each holding a `patch.json`:
 
-Loss is the mean negative log-likelihood of the correct answer under the two candidate labels. Lower loss indicates a more confident and better-calibrated prediction.
+```json
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {"layer": 2, "targets": ["value"], "layout": "stack", "ranks": {"0": 96}},
+    {"layer": 10, "targets": ["query", "key"], "layout": "heads", "ranks": {"0": 256, "3": 6}}
+  ],
+  "notes": {"anything": "free-form, never read by the evaluator"}
+}
+```
 
-Compression ratio is the original parameter count of the modified model component divided by the size of its compressed representation. Higher is better, and values above 1 mean the reported modification uses fewer parameters than the original dense representation.
+A submission declares structure only. Each block names:
 
-## Baselines and Targets
+- `layer`: 0-11;
+- `targets`: distinct names among `query`, `key`, `value`, `output`;
+- `layout`: how the target matrices are arranged into a tensor. Each matrix `W` is used in the orientation model-dim x attention-dim, with the attention dim ordered head by head (`query/key/value`: the transpose of the PyTorch `weight`; `output`: the PyTorch `weight` itself).
+  - `"stack"`: a tensor of shape 768 x 768 x n_targets (modes 0, 1, 2).
+  - `"heads"`: a tensor of shape 768 x 64 x n_targets x 12, with modes (model dim, within-head dim, matrix, head).
+- `ranks`: a multilinear rank for each mode that is compressed (keys are mode indices). Modes without a rank are kept whole. Each rank must lie in [1, mode size] and must not exceed the product of the other modes' kept sizes.
 
-The main baseline is the original fixed pretrained masked language model with no post-training modification. The target is a small accuracy gain over the original model, lower loss, and a compression ratio above 1 for the modified component.
+The evaluator computes the representation itself. It runs a Tucker decomposition of the original pretrained tensor on the declared modes: HOOI starting from HOSVD, at most 100 sweeps, stopping when the relative error changes by less than 1e-8. It then writes the reconstruction back into the model. A matrix may be replaced by at most one block. Several blocks may target different layers, or different matrices of one layer.
 
-## Evaluation Protocol
+## Metrics (per experiment, on the held-out split)
 
-The reusable benchmark evaluates a deterministic balanced subset of FEVER support/refute claims. Each claim is formatted as a binary verification prompt and scored by comparing the language model probabilities assigned to true and false at a masked answer position. `scripts/evaluate.sh` reads prediction artifacts produced by a candidate method and writes `scoring/scores.json`; it does not import or rerun the paper method.
+- **accuracy** (primary): the percentage of examples whose gold answer token has the highest probability among the candidate tokens at the masked position.
+- **loss**: the mean negative log-likelihood (nats) of the gold answer token under the full-vocabulary softmax at the masked position. It is clipped at 30 per example; lower is better.
+- **mha_compression_ratio**: the dense parameter count of the 4 attention matrices of every modified layer, divided by the parameters of the submitted representation. For each block this is the factor matrices (mode size x rank per compressed mode) plus the core (the product of the kept sizes); any matrix of a modified layer that a block does not replace counts as dense. It is capped at 64.
+
+**Reasoning gate.** Loss and compression only count when held-out accuracy is strictly higher than both the unmodified model's accuracy and the majority-class rate of that split. Otherwise compression is reported as 1, and loss is floored at the unmodified model's loss.
+
+**Failure.** A missing, unreadable or invalid patch scores accuracy 0, loss 30 and compression 1 in that experiment. So does a representation that is not smaller than the dense layers, non-finite outputs, an altered pretrained model or an evaluator crash.
+
+## Baseline
+
+`roberta_original`, the unmodified model, is always scored by the evaluator itself. A submission directory with that name is ignored.
+
+## Protocol and splits
+
+- Prompts follow LASER's preprocessing.
+  - FEVER: "Consider the following claim: <claim>. Is this claim true or false. The claim is <mask>", with candidates ` true` and ` false`.
+  - Bias in Bios: the last 50 tokens of a biography, followed by "The profession of the person in the text is called <mask>.", with 8 single-token profession candidates.
+- Visible split (`data/tasks/`, labels included): the first 20% of each ordered dataset. That is 2,617 FEVER claims and 3,844 biographies.
+- Held-out split, hidden: 6,576 FEVER claims and 3,843 biographies drawn from later parts of the same datasets.
+
+## Commands
+
+- `bash scripts/evaluate_train.sh` scores every method directory on disk, plus every method key listed in `scoring/scores.json` or `scoring/scores_train.json`, on the visible split. It writes `scoring/scores_train.json`.
+- `bash scripts/evaluate.sh` does the same and writes `scoring/scores.json`.
+- `bash scripts/evaluate_test.sh` runs the same scoring on the held-out split and writes `scoring/scores_test.json`. It takes no arguments.
+
+The scorers verify the pretrained model files against pinned hashes. They need nothing from a method except `patch.json`.
 
 ---
 
@@ -405,6 +480,52 @@ The reusable benchmark evaluates a deterministic balanced subset of FEVER suppor
 ### [2026-06-07 11:13] - core_claim
 - Final verifier checked folder separation, scoring files, train/test method-key consistency, artifact-only evaluation, and URL reachability.
 - `python validate.py --compare` passes, and the reproduced TensorLLM score remains above the original RoBERTa baseline while reporting the compression constraint.
+
+</details>
+
+### Iteration 11: claude-opus-5-5 (hardener)
+- **Milestone**: `core_claim` | **Status**: done
+- **Working time**: 40m | **GPU**: 1.7h
+- **Jobs**: 9 total (7 completed, 2 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-07 10:13] - method_runs
+- Implemented the paper's multi-head tensorisation and shared-factor Tucker/HOOI reconstruction for RoBERTa MHA layers.
+- Completed an offline FEVER smoke run that generated original-model and TensorLLM prediction artifacts.
+
+### [2026-06-07 10:31] - core_claim
+- Completed a broader 320-example FEVER/RoBERTa search over layers and Tucker ranks.
+- Best TensorLLM condition improved accuracy from 50.00% to 54.69%, lowered loss from 1.097 to 0.696, and compressed the modified MHA layer by 1.99x.
+
+### [2026-06-07 10:45] - core_claim
+- Continuation audit confirmed the implementation is the paper's actual multi-head tensorisation plus shared Tucker/HOOI reconstruction, not a surrogate.
+- Reran `bash scripts/evaluate.sh outputs/tensorllm_fever/manifest.json` and `python validate.py --compare`; both passed with the same core-claim scores.
+
+### [2026-06-07 11:01] - core_claim
+- Repaired the official artifact evaluator so `scores.json` includes every declared metric: accuracy, balanced accuracy, loss, prediction-distribution shift, and MHA compression ratio.
+- Local artifact-only validation passed; submitting a CPU test job to verify the packaged scripts inside the managed environment.
+
+### [2026-06-07 11:05] - core_claim
+- Final verification confirmed the method, evaluator, train/test slices, and download script are usable as a research gym.
+- Cleaned method-agnostic documentation and scoring descriptions so from-scratch agents see the problem and constraints without implementation details.
+
+### [2026-06-07 11:10] - core_claim
+- Fixed the offline reproduction script so compute jobs do not attempt internet downloads.
+- Added a short managed-container smoke job that regenerates method artifacts in an isolated output directory, then restores and validates the established core-claim scores.
+- Repaired baseline-only scoring and added validation for invalid Tucker rank settings.
+
+### [2026-06-07 11:13] - core_claim
+- Final verifier checked folder separation, scoring files, train/test method-key consistency, artifact-only evaluation, and URL reachability.
+- `python validate.py --compare` passes, and the reproduced TensorLLM score remains above the original RoBERTa baseline while reporting the compression constraint.
+
+### [2026-11-11] - core_claim (hardening)
+- Rebuilt the gym so the evaluator owns data, labels, decomposition, forward pass and parameter counts. Submissions declare attention-weight structure only.
+- Reproduced TensorLLM at the paper's settings, selected on the visible split. Held-out results:
+  - FEVER: 49.86 → 53.59, compression 7.3x;
+  - Bias in Bios: 64.79 → 73.64, compression 11.8x (paper: 64.5 → 72.57, 8.78x).
+- Demonstrated headroom: greedy multi-layer variant +2.55 ± 0.55 on Bios. Closed the redteam shortcuts plus label-trained core/factor shortcuts; see HARDENING.md.
 
 </details>
 
