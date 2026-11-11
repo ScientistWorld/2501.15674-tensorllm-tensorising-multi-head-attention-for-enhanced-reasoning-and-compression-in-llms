@@ -1,6 +1,8 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: done
+action: submit
+gpus: 1
+test: false
 milestone: core_claim
-notes: "Hardened gym: structure-only submissions scored by evaluator-run HOOI on hidden LASER-protocol FEVER/Bios splits; reference reproduces paper direction (Bios 64.8->73.6, FEVER 49.9->53.6); better variant +2.55+-0.55 on Bios; redteam and label-training shortcuts closed (HARDENING.md)."
+notes: "Hardening round 2: self-test of scorer changes (significance gate, worst loss on gate failure, axis-group layouts + head subsets), reference reproduced from final code, compressor/structure variants and shortcuts scored on both splits, analysis."

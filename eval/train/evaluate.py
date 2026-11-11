@@ -22,8 +22,12 @@ rank of each compressed tensor mode.  The submission is structure only:
   negative log-likelihood and the compression ratio of the modified layers;
 * the unmodified pretrained model (``roberta_original``) is always scored by
   the evaluator itself and fixes the reasoning gate: loss and compression are
-  only credited when accuracy beats both the unmodified model and the
-  majority-class rate of the split;
+  only credited when the accuracy gain is statistically significant, both
+  against the unmodified model (paired, one-sided McNemar z >= 1.645 on the
+  same examples) and against the majority-class rate (one-sided binomial
+  z >= 1.645).  A method that fails the gate keeps its accuracy but gets the
+  worst loss (30) and compression 1, so it never outranks a method that passes
+  through its secondary metrics;
 * every method directory on disk is scored, and so is every method key that
   appears in ``scoring/scores.json`` or ``scoring/scores_train.json`` -- a key
   without a valid patch is scored as failed;
@@ -79,6 +83,7 @@ METRICS = ("accuracy", "loss", "mha_compression_ratio")
 LOSS_CAP = 30.0  # nats; per-example gold NLL is clipped here, failed runs get this mean
 CR_CAP = 64.0  # compression credit is capped here
 WORST = {"accuracy": 0.0, "loss": LOSS_CAP, "mha_compression_ratio": 1.0}
+GATE_Z = 1.645  # one-sided 5% significance for the reasoning gate
 
 N_LAYERS, D_MODEL, N_HEADS, HEAD_DIM = 12, 768, 12, 64
 MATRICES = ("query", "key", "value", "output")
@@ -86,7 +91,7 @@ PAD_ID, MASK_ID = 1, 50264
 LN_EPS = 1e-5
 
 PATCH_FORMAT = "mha-structure-patch-v3"
-MAX_BLOCKS = 4 * N_LAYERS
+MAX_BLOCKS = len(MATRICES) * N_LAYERS * N_HEADS  # one block per (layer, matrix, head) slice at most
 
 
 class PatchError(Exception):
@@ -114,7 +119,7 @@ def verify_model_files() -> list[str]:
 
 # --------------------------------------------------------------------------
 # Patch materialisation: a submission declares structure only (layer, target
-# matrices, tensor layout, multilinear ranks).  The evaluator computes the
+# matrices, optionally a subset of heads, tensor layout, multilinear ranks).  The evaluator computes the
 # decomposition itself -- HOOI (HOSVD initialisation, at most 100 sweeps,
 # tolerance 1e-8 on the change of relative error, as TensorLy's
 # partial_tucker) of the ORIGINAL pretrained weights on the declared modes --
@@ -122,28 +127,64 @@ def verify_model_files() -> list[str]:
 # matrices of a modified layer left dense).
 # --------------------------------------------------------------------------
 
-LAYOUT_SHAPES = {
+# Canonical axes of the matrices a block targets: t (target matrix, in the
+# order listed), m (model dimension, 768), h (attention head, the block's
+# heads in increasing order) and d (within-head dimension, 64).  A layout is an
+# ordered list of tensor modes; each mode merges a group of canonical axes (in
+# the order given, first axis slowest), and every axis is used exactly once.
+AXES = ("t", "m", "h", "d")
+NAMED_LAYOUTS = {
     # targets stacked as a d_model x (h * d_v) x n_targets tensor
-    "stack": lambda n: (D_MODEL, N_HEADS * HEAD_DIM, n),
+    "stack": [["m"], ["h", "d"], ["t"]],
     # multi-head arrangement: d_model x d_v x n_targets x h
-    "heads": lambda n: (D_MODEL, HEAD_DIM, n, N_HEADS),
+    "heads": [["m"], ["d"], ["t"], ["h"]],
 }
 HOOI_MAX_ITER = 100
 HOOI_TOL = 1e-8
+SLICE_PARAMS = D_MODEL * HEAD_DIM  # one head's columns of one matrix
 
 
-def to_layout(mats, layout: str):
-    """[n, d_model, h*d_v] canonical matrices -> layout tensor."""
-    n = mats.shape[0]
-    if layout == "stack":
-        return mats.permute(1, 2, 0)
-    return mats.reshape(n, D_MODEL, N_HEADS, HEAD_DIM).permute(1, 3, 0, 2)
+def parse_layout(layout, index: int) -> list[list[str]]:
+    if isinstance(layout, str):
+        if layout not in NAMED_LAYOUTS:
+            raise PatchError(f"block {index}: layout must be one of {sorted(NAMED_LAYOUTS)} or a list of axis groups")
+        return NAMED_LAYOUTS[layout]
+    if not isinstance(layout, list) or not layout:
+        raise PatchError(f"block {index}: layout must be one of {sorted(NAMED_LAYOUTS)} or a list of axis groups")
+    groups = []
+    for group in layout:
+        if not isinstance(group, list) or not group or not all(isinstance(axis, str) for axis in group):
+            raise PatchError(f"block {index}: every layout mode must be a non-empty list of axis names")
+        groups.append(list(group))
+    if sorted(axis for group in groups for axis in group) != sorted(AXES):
+        raise PatchError(f"block {index}: layout modes must use each of {AXES} exactly once")
+    return groups
 
 
-def from_layout(tensor, layout: str, n: int):
-    if layout == "stack":
-        return tensor.permute(2, 0, 1)
-    return tensor.permute(2, 0, 3, 1).reshape(n, D_MODEL, N_HEADS * HEAD_DIM)
+def parse_heads(heads, index: int) -> list[int]:
+    if heads is None:
+        return list(range(N_HEADS))
+    if (
+        not isinstance(heads, list)
+        or not heads
+        or any(isinstance(h, bool) or not isinstance(h, int) or not 0 <= h < N_HEADS for h in heads)
+        or len(set(heads)) != len(heads)
+    ):
+        raise PatchError(f"block {index}: heads must be a non-empty list of distinct integers in [0, {N_HEADS - 1}]")
+    return sorted(heads)
+
+
+def layout_tensor(canon, groups):
+    """canon [t, m, h, d] -> one tensor mode per axis group."""
+    order = [AXES.index(axis) for group in groups for axis in group]
+    sizes = [math.prod(canon.shape[AXES.index(axis)] for axis in group) for group in groups]
+    return canon.permute(order).reshape(sizes).contiguous()
+
+
+def canonical_from_layout(tensor, groups, canon_shape):
+    order = [AXES.index(axis) for group in groups for axis in group]
+    inverse = [order.index(axis) for axis in range(len(AXES))]
+    return tensor.reshape([canon_shape[axis] for axis in order]).permute(inverse)
 
 
 def unfold(tensor, mode: int):
@@ -210,7 +251,8 @@ def materialize_patch(patch_dir: Path, model):
     if not isinstance(blocks, list) or len(blocks) > MAX_BLOCKS:
         raise PatchError(f"'blocks' must be a list with at most {MAX_BLOCKS} entries")
 
-    overrides: dict[tuple[int, str], "torch.Tensor"] = {}
+    rebuilt_slices: dict[tuple[int, str], "torch.Tensor"] = {}  # canonical [d_model, h, d_v], float32
+    covered: set[tuple[int, str, int]] = set()
     touched: set[int] = set()
     stored_params = 0
     errors = []
@@ -228,13 +270,15 @@ def materialize_patch(patch_dir: Path, model):
             or len(set(targets)) != len(targets)
         ):
             raise PatchError(f"block {index}: targets must be distinct names from {MATRICES}")
+        heads = parse_heads(block.get("heads"), index)
         for target in targets:
-            if (layer, target) in overrides:
-                raise PatchError(f"block {index}: layer {layer} {target} is replaced twice")
-        layout = block.get("layout")
-        if layout not in LAYOUT_SHAPES:
-            raise PatchError(f"block {index}: layout must be one of {sorted(LAYOUT_SHAPES)}")
-        shape = LAYOUT_SHAPES[layout](len(targets))
+            for head in heads:
+                if (layer, target, head) in covered:
+                    raise PatchError(f"block {index}: layer {layer} {target} head {head} is replaced twice")
+        groups = parse_layout(block.get("layout"), index)
+        canon_shape = {"t": len(targets), "m": D_MODEL, "h": len(heads), "d": HEAD_DIM}
+        canon_shape = [canon_shape[axis] for axis in AXES]
+        shape = [math.prod(canon_shape[AXES.index(axis)] for axis in group) for group in groups]
         raw_ranks = block.get("ranks")
         if not isinstance(raw_ranks, dict) or not raw_ranks:
             raise PatchError(f"block {index}: 'ranks' must map at least one mode index to a rank")
@@ -252,20 +296,24 @@ def materialize_patch(patch_dir: Path, model):
             if rank > math.prod(kept[m] for m in range(len(shape)) if m != mode):
                 raise PatchError(f"block {index}: rank {rank} of mode {mode} exceeds the product of the other ranks")
         stored_params += sum(shape[m] * r for m, r in ranks.items()) + math.prod(kept)
-        original = torch.stack([model.canonical_matrix(layer, target) for target in targets]).double()
-        rebuilt, rel_error = hooi_reconstruction(to_layout(original, layout).contiguous(), ranks)
+        original = torch.stack([model.canonical_matrix(layer, target) for target in targets])
+        original = original.reshape(len(targets), D_MODEL, N_HEADS, HEAD_DIM)[:, :, heads, :].double()
+        rebuilt, rel_error = hooi_reconstruction(layout_tensor(original, groups), ranks)
         errors.append(rel_error)
-        mats = from_layout(rebuilt, layout, len(targets)).to(torch.float32)
+        mats = canonical_from_layout(rebuilt, groups, canon_shape).to(torch.float32)
         if not bool(torch.isfinite(mats).all()):
             raise PatchError(f"block {index}: rebuilt weights are non-finite")
         for position, target in enumerate(targets):
-            overrides[(layer, target)] = mats[position].contiguous()
+            key = (layer, target)
+            if key not in rebuilt_slices:
+                rebuilt_slices[key] = model.canonical_matrix(layer, target).reshape(D_MODEL, N_HEADS, HEAD_DIM).clone()
+            rebuilt_slices[key][:, heads, :] = mats[position].to(rebuilt_slices[key].device)
+            covered.update((layer, target, head) for head in heads)
         touched.add(layer)
 
-    original_params = 4 * D_MODEL * D_MODEL * len(touched)
-    kept_dense = D_MODEL * D_MODEL * sum(
-        1 for layer in touched for matrix in MATRICES if (layer, matrix) not in overrides
-    )
+    overrides = {key: value.reshape(D_MODEL, N_HEADS * HEAD_DIM).contiguous() for key, value in rebuilt_slices.items()}
+    original_params = len(MATRICES) * D_MODEL * D_MODEL * len(touched)
+    kept_dense = SLICE_PARAMS * (len(MATRICES) * N_HEADS * len(touched) - len(covered))
     represented = stored_params + kept_dense
     if touched:
         if represented >= original_params:
@@ -284,6 +332,7 @@ def materialize_patch(patch_dir: Path, model):
         "relative_errors": errors,
         "touched_layers": sorted(touched),
         "replaced": sorted(f"{layer}.{matrix}" for layer, matrix in overrides),
+        "replaced_head_slices": len(covered),
     }
     return overrides, info
 
@@ -501,6 +550,26 @@ def summarize(record):
     return {"accuracy": 100.0 * sum(record["correct"]) / n, "loss": sum(nll) / n}
 
 
+def gate_statistics(correct, base_correct, majority: float) -> tuple[float, float]:
+    """One-sided z statistics of the reasoning gate (finite; large negative when undefined).
+
+    * paired McNemar z against the unmodified model on the same examples:
+      (b - c) / sqrt(b + c), b = examples only the method gets right, c = only the unmodified model;
+    * binomial z of the accuracy against the majority-class rate p0: (p - p0) / sqrt(p0 (1 - p0) / n).
+    """
+    n = len(correct)
+    only_method = sum(1 for mine, theirs in zip(correct, base_correct) if mine and not theirs)
+    only_base = sum(1 for mine, theirs in zip(correct, base_correct) if theirs and not mine)
+    discordant = only_method + only_base
+    z_paired = (only_method - only_base) / math.sqrt(discordant) if discordant else 0.0
+    accuracy = sum(correct) / n
+    if 0.0 < majority < 1.0:
+        z_majority = (accuracy - majority) / math.sqrt(majority * (1.0 - majority) / n)
+    else:
+        z_majority = -1e9
+    return float(z_paired), float(z_majority)
+
+
 # --------------------------------------------------------------------------
 # Orchestration
 # --------------------------------------------------------------------------
@@ -631,13 +700,15 @@ def main() -> int:
                 runnable.clear()
                 continue
             base_metrics = summarize(base)
-            threshold = max(base_metrics["accuracy"], prepared[name]["majority_accuracy"])
+            n_examples = len(prepared[name]["labels"])
+            majority = prepared[name]["majority_accuracy"] / 100.0
             gates[name] = {
                 "baseline_accuracy": base_metrics["accuracy"],
                 "baseline_loss": base_metrics["loss"],
                 "majority_class_accuracy": prepared[name]["majority_accuracy"],
-                "accuracy_threshold": threshold,
-                "n_examples": len(prepared[name]["labels"]),
+                "n_examples": n_examples,
+                "rule": f"paired McNemar z vs the unmodified model >= {GATE_Z} and binomial z vs the "
+                        f"majority-class rate >= {GATE_Z}; otherwise loss = {LOSS_CAP}, compression = 1",
             }
             for key, record in records.items():
                 info = info_by_key[key]
@@ -648,20 +719,24 @@ def main() -> int:
                     continue
                 raw = summarize(record)
                 raw_ratio = float(info["compression_ratio"])
+                z_paired = z_majority = None
                 if key == BASELINE_KEY:
                     scored = {**raw, "mha_compression_ratio": 1.0}
                     passed = None
                 else:
-                    passed = raw["accuracy"] > threshold + 1e-9
+                    z_paired, z_majority = gate_statistics(record["correct"], base["correct"], majority)
+                    passed = z_paired >= GATE_Z and z_majority >= GATE_Z
                     scored = {
                         "accuracy": raw["accuracy"],
-                        "loss": raw["loss"] if passed else max(raw["loss"], base_metrics["loss"]),
+                        "loss": raw["loss"] if passed else LOSS_CAP,
                         "mha_compression_ratio": min(raw_ratio, CR_CAP) if passed else 1.0,
                     }
                 results[name][key] = scored
                 status[key][name] = {
                     "status": "ok",
                     "reasoning_gate_passed": passed,
+                    "gate_z_vs_unmodified": None if z_paired is None else round(z_paired, 4),
+                    "gate_z_vs_majority": None if z_majority is None else round(z_majority, 4),
                     "raw_accuracy": raw["accuracy"],
                     "raw_loss": raw["loss"],
                     "raw_compression_ratio": raw_ratio,
