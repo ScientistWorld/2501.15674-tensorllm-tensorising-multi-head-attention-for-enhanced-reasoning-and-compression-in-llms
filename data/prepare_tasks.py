@@ -14,9 +14,17 @@ selection; held-out evaluation uses later data that is NOT written here):
 * ``bios_profession_roberta`` -- Bias in Bios ``dev`` split restricted to the
   eight professions whose names are single RoBERTa tokens; each biography is
   cut to its last 50 tokens.  The first 20% of the filtered rows is written.
+* ``wikidata_qa_roberta`` -- BIG-bench ``qa_wikidata`` (tasksource/bigbench
+  parquet export, pinned revision): the ``validation`` rows followed by the
+  ``train`` rows, keeping the questions with exactly one target answer
+  (18,808).  The first 20% (3,761 questions) is written.  Rows are stored as
+  question / answer pairs; the evaluators build the prompts.
 
 Usage (needs ``pyarrow`` and the roberta-base tokenizer):
-    python data/prepare_tasks.py --fever-dev <paper_dev.jsonl> --bios-parquet <dev.parquet>
+    python data/prepare_tasks.py --fever-dev <paper_dev.jsonl> --bios-parquet <dev.parquet> \
+        --bbqa-validation <validation.parquet> --bbqa-train <train.parquet>
+    python data/prepare_tasks.py --only wikidata_qa_roberta --bbqa-validation ... --bbqa-train ...
+        (rebuilds one task and merges it into the existing tasks.json)
 """
 
 from __future__ import annotations
@@ -44,6 +52,11 @@ BIOS_PROFESSION_IDS = {
 }
 BIOS_MAX_TOKENS = 50
 
+# BIG-bench qa_wikidata: LASER keeps the single-target questions of the
+# validation split followed by the train split; the first 20% is validation.
+BBQA_SPLIT_ORDER = ("validation", "train")
+BBQA_N_MASKS = 5
+
 TASKS = {
     "bios_profession_roberta": {
         "candidates": [f" {name}" for name in BIOS_OCCUPATIONS],
@@ -54,6 +67,13 @@ TASKS = {
         "candidates": [" false", " true"],
         "file": "fever_val.jsonl",
         "description": "FEVER binary claim verification (true/false).",
+    },
+    "wikidata_qa_roberta": {
+        "type": "generation",
+        "n_masks": BBQA_N_MASKS,
+        "file": "wikidata_qa_val.jsonl",
+        "description": "BIG-bench WikidataQA open-ended factual completion (single-target questions); "
+                       "the answer is generated at five appended mask positions.",
     },
 }
 
@@ -136,6 +156,40 @@ def bios_rows(parquet: Path) -> list[dict]:
     return rows
 
 
+def wikidata_rows_from_records(records_by_split: dict) -> list[dict]:
+    """LASER ordering: validation then train, single-target questions only.
+
+    ``records_by_split[split]`` is the list of parquet records (``inputs``,
+    ``targets``) in file order; ids are ``bbqa-<split>-<position in split>``.
+    """
+    rows: list[dict] = []
+    for split in BBQA_SPLIT_ORDER:
+        for position, record in enumerate(records_by_split[split]):
+            targets = list(record["targets"])
+            if len(targets) != 1:
+                continue
+            question, answer = record["inputs"], targets[0]
+            if not isinstance(question, str) or not isinstance(answer, str) or not answer.strip():
+                raise RuntimeError(f"unexpected qa_wikidata record {split}/{position}")
+            rows.append({"id": f"bbqa-{split}-{position}", "question": question, "answer": answer})
+    if len({row["id"] for row in rows}) != len(rows):
+        raise RuntimeError("duplicate qa_wikidata ids")
+    return rows
+
+
+def wikidata_rows(validation_parquet: Path, train_parquet: Path) -> list[dict]:
+    import pyarrow.parquet as pq
+
+    records = {}
+    for split, path in (("validation", validation_parquet), ("train", train_parquet)):
+        table = pq.read_table(path, columns=["inputs", "targets"])
+        records[split] = [
+            {"inputs": inputs, "targets": targets}
+            for inputs, targets in zip(table.column("inputs").to_pylist(), table.column("targets").to_pylist())
+        ]
+    return wikidata_rows_from_records(records)
+
+
 def write_jsonl(path: Path, rows: list[dict]) -> str:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as handle:
@@ -146,38 +200,60 @@ def write_jsonl(path: Path, rows: list[dict]) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fever-dev", required=True, help="FEVER v1.0 paper_dev.jsonl")
-    parser.add_argument("--bios-parquet", required=True, help="LabHC/bias_in_bios dev parquet")
+    parser.add_argument("--fever-dev", help="FEVER v1.0 paper_dev.jsonl")
+    parser.add_argument("--bios-parquet", help="LabHC/bias_in_bios dev parquet")
+    parser.add_argument("--bbqa-validation", help="tasksource/bigbench qa_wikidata validation parquet")
+    parser.add_argument("--bbqa-train", help="tasksource/bigbench qa_wikidata train parquet")
+    parser.add_argument("--only", nargs="*", default=None, choices=sorted(TASKS),
+                        help="rebuild only these tasks and merge them into the existing tasks.json")
     parser.add_argument("--out-dir", default=str(OUT_DIR))
     args = parser.parse_args()
     out_dir = Path(args.out_dir)
+    names = args.only or list(TASKS)
 
-    fever_dev = fever_rows(Path(args.fever_dev), "paper_dev")
-    if len(fever_dev) < FEVER_N_VAL:
-        raise RuntimeError(f"paper_dev has only {len(fever_dev)} consistent claims")
-    bios_all = bios_rows(Path(args.bios_parquet))
-    splits = {
-        "fever_roberta_binary": (fever_dev[:FEVER_N_VAL], FEVER_TOTAL_CLAIMS),
-        "bios_profession_roberta": (bios_all[: len(bios_all) // 5], len(bios_all)),
-    }
-    manifest = {"split": "validation (first 20% of each ordered dataset)", "tasks": {}}
+    splits = {}
+    if "fever_roberta_binary" in names:
+        fever_dev = fever_rows(Path(args.fever_dev), "paper_dev")
+        if len(fever_dev) < FEVER_N_VAL:
+            raise RuntimeError(f"paper_dev has only {len(fever_dev)} consistent claims")
+        splits["fever_roberta_binary"] = (fever_dev[:FEVER_N_VAL], FEVER_TOTAL_CLAIMS)
+    if "bios_profession_roberta" in names:
+        bios_all = bios_rows(Path(args.bios_parquet))
+        splits["bios_profession_roberta"] = (bios_all[: len(bios_all) // 5], len(bios_all))
+    if "wikidata_qa_roberta" in names:
+        bbqa_all = wikidata_rows(Path(args.bbqa_validation), Path(args.bbqa_train))
+        # LASER: val_size = int(0.2 * len(dataset))
+        splits["wikidata_qa_roberta"] = (bbqa_all[: int(0.2 * len(bbqa_all))], len(bbqa_all))
+
+    manifest_path = out_dir / "tasks.json"
+    if args.only and manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text())
+    else:
+        manifest = {"split": "validation (first 20% of each ordered dataset)", "tasks": {}}
     for name, spec in TASKS.items():
+        if name not in splits:
+            continue
         rows, n_full = splits[name]
         digest = write_jsonl(out_dir / spec["file"], rows)
         counts: dict[str, int] = {}
         for row in rows:
             counts[row["answer"]] = counts.get(row["answer"], 0) + 1
-        manifest["tasks"][name] = {
+        entry = {
             "file": spec["file"],
             "sha256": digest,
             "n_examples": len(rows),
             "n_full_dataset": n_full,
-            "candidates": spec["candidates"],
-            "description": spec["description"],
-            "label_counts": counts,
         }
-        print(f"{name}: wrote {len(rows)} validation rows of {n_full} {counts}")
-    (out_dir / "tasks.json").write_text(json.dumps(manifest, indent=2) + "\n")
+        if spec.get("type") == "generation":
+            entry.update({"type": "generation", "n_masks": spec["n_masks"], "description": spec["description"],
+                          "most_common_answers": dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:20])})
+        else:
+            entry.update({"candidates": spec["candidates"], "description": spec["description"],
+                          "label_counts": counts})
+        manifest["tasks"][name] = entry
+        print(f"{name}: wrote {len(rows)} validation rows of {n_full}")
+    manifest["tasks"] = {name: manifest["tasks"][name] for name in TASKS if name in manifest["tasks"]}
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
 
 
 if __name__ == "__main__":

@@ -2,7 +2,10 @@
 
 This module is method-agnostic infrastructure for producing submissions:
 
-* loading the public validation splits in ``data/tasks/``;
+* loading the public validation splits in ``data/tasks/``: multiple-choice
+  tasks answered at one masked position, and open-ended tasks
+  (``"type": "generation"`` in ``tasks.json``) answered at appended mask
+  positions with the same accuracy / loss definitions as the scorers;
 * a direct forward pass of the fixed ``roberta-base`` masked LM (same maths as
   Hugging Face ``RobertaForMaskedLM``) with optional per-layer attention-weight
   overrides and cached hidden states below the first modified layer, so that
@@ -137,18 +140,25 @@ class Roberta:
         out = F.linear(inner, *params["ffn_out"])
         return F.layer_norm(out + hidden, (D_MODEL,), params["ln2"][0], params["ln2"][1], LN_EPS)
 
-    def mask_log_probs(self, hidden_at_mask):
+    def mask_logits(self, hidden_at_mask):
         z = F.gelu(F.linear(hidden_at_mask, *self.head_dense))
         z = F.layer_norm(z, (D_MODEL,), self.head_ln[0], self.head_ln[1], LN_EPS)
-        logits = F.linear(z, self.word, self.head_bias)
-        return F.log_softmax(logits.float(), dim=-1)
+        return F.linear(z, self.word, self.head_bias).float()
 
-    def run(self, batch, overrides=None, start_hidden=None, start_layer=0):
-        """Hidden state at the mask position after the encoder."""
+    def mask_log_probs(self, hidden_at_mask):
+        return F.log_softmax(self.mask_logits(hidden_at_mask), dim=-1)
+
+    def encode(self, batch, overrides=None, start_hidden=None, start_layer=0):
+        """Encoder output for every position."""
         overrides = overrides or {}
         hidden = self.embed(batch["ids"]) if start_hidden is None else start_hidden
         for layer in range(start_layer, N_LAYERS):
             hidden = self.layer(hidden, batch["keep"], layer, overrides.get(layer))
+        return hidden
+
+    def run(self, batch, overrides=None, start_hidden=None, start_layer=0):
+        """Hidden state at the mask position after the encoder."""
+        hidden = self.encode(batch, overrides, start_hidden, start_layer)
         rows = torch.arange(hidden.shape[0], device=hidden.device)
         return hidden[rows, batch["mask_pos"]]
 
@@ -168,7 +178,15 @@ def task_names() -> list[str]:
     return list(json.loads((TASK_DIR / "tasks.json").read_text())["tasks"])
 
 
-class Task:
+def Task(name: str, device: torch.device, limit: int | None = None, token_budget: int | None = None):
+    """The visible split of one task (multiple choice or open-ended generation)."""
+    meta = json.loads((TASK_DIR / "tasks.json").read_text())["tasks"][name]
+    if meta.get("type") == "generation":
+        return GenerationTask(name, device, limit=limit, token_budget=token_budget)
+    return ChoiceTask(name, device, limit=limit, token_budget=token_budget)
+
+
+class ChoiceTask:
     def __init__(self, name: str, device: torch.device, limit: int | None = None, token_budget: int | None = None):
         from tokenizers import Tokenizer
 
@@ -244,6 +262,155 @@ class Task:
                 for pos, example in enumerate(batch["index"]):
                     correct[example] = int(pred[pos] == labels[pos])
                     nll[example] = gold_nll[pos]
+        clipped = [min(v, LOSS_CAP) if math.isfinite(v) else LOSS_CAP for v in nll]
+        result = {"accuracy": 100.0 * sum(correct) / n, "loss": sum(clipped) / n, "finite": finite}
+        if per_example:
+            result["correct"] = correct
+        return result
+
+
+def laser_cleanup(text: str) -> str:
+    """transformers 4.x ``clean_up_tokenization`` (applied by LASER's ``tokenizer.decode``)."""
+    return (
+        text.replace(" .", ".").replace(" ?", "?").replace(" !", "!").replace(" ,", ",")
+        .replace(" ' ", "'").replace(" n't", "n't").replace(" 'm", "'m").replace(" 's", "'s")
+        .replace(" 've", "'ve").replace(" 're", "'re")
+    )
+
+
+def _pack(encoded, reads, budget: int, device, golds=None) -> list[dict]:
+    order = sorted(range(len(encoded)), key=lambda i: (len(encoded[i]), i))
+    batches = []
+    start = 0
+    while start < len(order):
+        size = max(1, budget // max(1, len(encoded[order[start]])))
+        chunk = order[start : start + size]
+        longest = max(len(encoded[i]) for i in chunk)
+        ids = torch.full((len(chunk), longest), PAD_ID, dtype=torch.long)
+        rows, positions, gold = [], [], []
+        for pos, example in enumerate(chunk):
+            ids[pos, : len(encoded[example])] = torch.tensor(encoded[example])
+            rows.extend([pos] * len(reads[example]))
+            positions.extend(reads[example])
+            if golds is not None:
+                gold.extend(golds[example])
+        batch = {
+            "index": chunk,
+            "ids": ids.to(device),
+            "keep": ids.ne(PAD_ID)[:, None, None, :].to(device),
+            "row": torch.tensor(rows, dtype=torch.long, device=device),
+            "pos": torch.tensor(positions, dtype=torch.long, device=device),
+            "count": torch.tensor([len(reads[i]) for i in chunk], dtype=torch.float64, device=device),
+        }
+        if golds is not None:
+            batch["gold"] = torch.tensor(gold, dtype=torch.long, device=device)
+        batches.append(batch)
+        start += size
+    return batches
+
+
+class GenerationTask:
+    """Open-ended answers generated at ``n_masks`` appended mask positions.
+
+    Same definitions as the scorers: the argmax token at every mask is decoded
+    and the example is correct when the (stripped, lower-cased) answer occurs
+    in the (stripped, lower-cased) decoded text; the loss is the mean negative
+    log-likelihood per answer token of "<question> <answer>" (no special
+    tokens) with every answer token masked, clipped at 30 nats.
+    """
+
+    def __init__(self, name: str, device: torch.device, limit: int | None = None, token_budget: int | None = None):
+        from tokenizers import Tokenizer
+
+        meta = json.loads((TASK_DIR / "tasks.json").read_text())["tasks"][name]
+        rows = [json.loads(line) for line in (TASK_DIR / meta["file"]).open("r", encoding="utf-8")]
+        if limit:
+            rows = rows[:limit]
+        self.name = name
+        self.rows = rows
+        self.n_masks = int(meta["n_masks"])
+        self.tokenizer = Tokenizer.from_file(str(MODEL_DIR / "tokenizer.json"))
+        self.answers = [row["answer"].strip().lower() for row in rows]
+        self.labels = self.answers
+        gen_encoded, gen_reads = [], []
+        loss_encoded, loss_reads, loss_golds = [], [], []
+        for row in rows:
+            ids = self.tokenizer.encode(row["question"] + " " + " ".join(["<mask>"] * self.n_masks)).ids
+            reads = [pos for pos, token in enumerate(ids) if token == MASK_ID]
+            assert len(reads) == self.n_masks, row["id"]
+            gen_encoded.append(ids)
+            gen_reads.append(reads)
+            claim = self.tokenizer.encode(row["question"] + " " + row["answer"], add_special_tokens=False).ids
+            k = self._answer_len(claim, row["answer"])
+            loss_golds.append(claim[len(claim) - k:])
+            loss_encoded.append(claim[: len(claim) - k] + [MASK_ID] * k)
+            loss_reads.append(list(range(len(claim) - k, len(claim))))
+        budget = token_budget or (32768 if device.type == "cuda" else 4096)
+        self.gen_batches = _pack(gen_encoded, gen_reads, budget, device)
+        self.loss_batches = _pack(loss_encoded, loss_reads, budget, device, golds=loss_golds)
+        self._texts: dict[tuple, str] = {}
+        self._cache_layer = None
+        self._cache = None
+
+    def _answer_len(self, ids, answer: str) -> int:
+        target = answer.strip()
+        for start in range(len(ids) - 1, -1, -1):
+            if self.tokenizer.decode(ids[start:], skip_special_tokens=False).strip() == target:
+                return len(ids) - start
+        raise AssertionError(f"answer {answer!r} not found")
+
+    def _decode(self, tokens) -> str:
+        tokens = tuple(tokens)
+        if tokens not in self._texts:
+            text = self.tokenizer.decode(list(tokens), skip_special_tokens=False)
+            self._texts[tokens] = laser_cleanup(text).strip().lower()
+        return self._texts[tokens]
+
+    def prefix(self, model: Roberta, layer: int):
+        """Hidden states entering ``layer`` for every generation and loss batch (cached)."""
+        if self._cache_layer != layer:
+            self._cache = None
+            with torch.inference_mode():
+                self._cache = (
+                    [model.hidden_before(batch, layer) for batch in self.gen_batches],
+                    [model.hidden_before(batch, layer) for batch in self.loss_batches],
+                )
+            self._cache_layer = layer
+        return self._cache
+
+    def evaluate(self, model: Roberta, overrides: dict | None = None, per_example: bool = False):
+        """Accuracy (%), mean per-token answer NLL (nats, clipped) on this split."""
+        overrides = overrides or {}
+        start = min(overrides) if overrides else N_LAYERS
+        gen_cache, loss_cache = self.prefix(model, start) if overrides else (None, None)
+        n = len(self.rows)
+        correct = [0] * n
+        nll = [0.0] * n
+        finite = True
+        with torch.inference_mode():
+            for b, batch in enumerate(self.gen_batches):
+                if overrides:
+                    hidden = model.encode(batch, overrides, start_hidden=gen_cache[b], start_layer=start)
+                else:
+                    hidden = model.encode(batch)
+                logits = model.mask_logits(hidden[batch["row"], batch["pos"]])
+                finite = finite and bool(torch.isfinite(logits).all())
+                tokens = logits.argmax(dim=1).view(-1, self.n_masks).tolist()
+                for pos, example in enumerate(batch["index"]):
+                    correct[example] = int(self.answers[example] in self._decode(tokens[pos]))
+            for b, batch in enumerate(self.loss_batches):
+                if overrides:
+                    hidden = model.encode(batch, overrides, start_hidden=loss_cache[b], start_layer=start)
+                else:
+                    hidden = model.encode(batch)
+                log_probs = model.mask_log_probs(hidden[batch["row"], batch["pos"]])
+                gold = log_probs.gather(1, batch["gold"][:, None])[:, 0].double()
+                finite = finite and bool(torch.isfinite(gold).all())
+                sums = torch.zeros(len(batch["index"]), dtype=torch.float64, device=gold.device)
+                sums.index_add_(0, batch["row"], -gold)
+                per_token = (sums / batch["count"]).tolist()
+                for pos, example in enumerate(batch["index"]):
+                    nll[example] = per_token[pos]
         clipped = [min(v, LOSS_CAP) if math.isfinite(v) else LOSS_CAP for v in nll]
         result = {"accuracy": 100.0 * sum(correct) / n, "loss": sum(clipped) / n, "finite": finite}
         if per_example:

@@ -19,7 +19,14 @@ rank of each compressed tensor mode.  The submission is structure only:
   left dense);
 * it runs the fixed model with the rebuilt weights on the public validation
   prompts in ``data/tasks/`` and computes accuracy, gold-token
-  negative log-likelihood and the compression ratio of the modified layers;
+  negative log-likelihood and the compression ratio of the modified layers.
+  Two experiments are multiple choice at one masked position; the third
+  (``wikidata_qa_roberta``, BIG-bench WikidataQA) is open-ended, scored as in
+  LASER: five masks are appended to the question, the argmax token at every
+  mask is decoded, and the answer counts as correct when it occurs in the
+  decoded text (case-insensitive); the loss is the mean negative
+  log-likelihood per answer token when all answer tokens of
+  "<question> <answer>" are masked;
 * the unmodified pretrained model (``roberta_original``) is always scored by
   the evaluator itself and fixes the reasoning gate: loss and compression are
   only credited when the accuracy gain is statistically significant, both
@@ -72,12 +79,18 @@ MODEL_SHA256 = {
     "vocab.json": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655",
 }
 
-EXPERIMENTS = {
+# Multiple choice at one masked position: candidate answer tokens.
+CHOICE_TASKS = {
     "bios_profession_roberta": [
         " journalist", " poet", " composer", " model", " teacher", " architect", " painter", " professor",
     ],
     "fever_roberta_binary": [" false", " true"],
 }
+# Open-ended answers generated at appended mask positions (LASER's RoBERTa protocol).
+GENERATION_TASKS = {
+    "wikidata_qa_roberta": {"n_masks": 5},
+}
+EXPERIMENTS = list(CHOICE_TASKS) + list(GENERATION_TASKS)
 
 METRICS = ("accuracy", "loss", "mha_compression_ratio")
 LOSS_CAP = 30.0  # nats; per-example gold NLL is clipped here, failed runs get this mean
@@ -415,13 +428,17 @@ class FixedRoberta:
         out = F.linear(inner, *params["ffn_out"])
         return F.layer_norm(out + hidden, (D_MODEL,), params["ln2"][0], params["ln2"][1], LN_EPS)
 
-    def mask_log_probs(self, hidden_at_mask):
+    def mask_logits(self, hidden_at_mask):
         import torch.nn.functional as F
 
         z = F.gelu(F.linear(hidden_at_mask, *self.head_dense))
         z = F.layer_norm(z, (D_MODEL,), self.head_ln[0], self.head_ln[1], LN_EPS)
-        logits = F.linear(z, self.word, self.head_bias)
-        return F.log_softmax(logits.float(), dim=-1)
+        return F.linear(z, self.word, self.head_bias).float()
+
+    def mask_log_probs(self, hidden_at_mask):
+        import torch.nn.functional as F
+
+        return F.log_softmax(self.mask_logits(hidden_at_mask), dim=-1)
 
 
 def canonical_to_module(matrix: str, value):
@@ -445,10 +462,117 @@ def load_examples(limit: int | None):
         rows = [json.loads(line) for line in path.open("r", encoding="utf-8")]
         if len(rows) != entry["n_examples"]:
             raise RuntimeError(f"{path} has {len(rows)} rows, expected {entry['n_examples']}")
+        if name in GENERATION_TASKS and not all(
+            isinstance(row.get("question"), str) and isinstance(row.get("answer"), str) and row["answer"].strip()
+            for row in rows
+        ):
+            raise RuntimeError(f"{path} rows need a question and a non-empty answer")
         if limit:
             rows = rows[:limit]
         examples[name] = rows
     return examples
+
+
+def laser_cleanup(text: str) -> str:
+    """transformers 4.x ``clean_up_tokenization`` (applied by LASER's ``tokenizer.decode``)."""
+    return (
+        text.replace(" .", ".").replace(" ?", "?").replace(" !", "!").replace(" ,", ",")
+        .replace(" ' ", "'").replace(" n't", "n't").replace(" 'm", "'m").replace(" 's", "'s")
+        .replace(" 've", "'ve").replace(" 're", "'re")
+    )
+
+
+def pack_batches(encoded, reads, token_budget: int, device, golds=None):
+    """Length-sorted, padded batches.
+
+    ``reads[i]`` lists the positions of example ``i`` whose output is read
+    (flattened into ``row`` / ``pos``); ``golds[i]`` the gold token at each.
+    """
+    import torch
+
+    order = sorted(range(len(encoded)), key=lambda i: (len(encoded[i]), i))
+    batches = []
+    start = 0
+    while start < len(order):
+        size = max(1, token_budget // max(len(encoded[order[start]]), 1))
+        chunk = order[start : start + size]
+        longest = max(len(encoded[i]) for i in chunk)
+        ids = torch.full((len(chunk), longest), PAD_ID, dtype=torch.long)
+        rows, positions, gold = [], [], []
+        for row_pos, example in enumerate(chunk):
+            ids[row_pos, : len(encoded[example])] = torch.tensor(encoded[example])
+            rows.extend([row_pos] * len(reads[example]))
+            positions.extend(reads[example])
+            if golds is not None:
+                gold.extend(golds[example])
+        batch = {
+            "index": chunk,
+            "ids": ids.to(device),
+            "keep": ids.ne(PAD_ID)[:, None, None, :].to(device),
+            "row": torch.tensor(rows, dtype=torch.long, device=device),
+            "pos": torch.tensor(positions, dtype=torch.long, device=device),
+            "count": torch.tensor([len(reads[i]) for i in chunk], dtype=torch.float64, device=device),
+        }
+        if golds is not None:
+            batch["gold"] = torch.tensor(gold, dtype=torch.long, device=device)
+        batches.append(batch)
+        start += size
+    return batches
+
+
+def answer_token_count(tokenizer, ids, answer: str) -> int:
+    """LASER's ``find_answer_len``: the shortest suffix of ``ids`` that decodes to the answer."""
+    target = answer.strip()
+    for start in range(len(ids) - 1, -1, -1):
+        if tokenizer.decode(ids[start:], skip_special_tokens=False).strip() == target:
+            return len(ids) - start
+    raise RuntimeError(f"answer {answer!r} not found at the end of its prompt")
+
+
+def tokenize_generation(name, rows, tokenizer, device, token_budget: int):
+    """WikidataQA as in LASER's RoBERTa script.
+
+    accuracy: "<s> {question} <mask> x n </s>"; the argmax token at every mask
+      is decoded (special tokens kept, transformers-4 cleanup) and the example
+      is correct when the stripped, lower-cased answer occurs in the stripped,
+      lower-cased decoded text;
+    loss: "{question} {answer}" without special tokens, every answer token
+      replaced by <mask>; mean negative log-likelihood of the answer tokens.
+    """
+    n_masks = GENERATION_TASKS[name]["n_masks"]
+    gen_encoded, gen_reads = [], []
+    loss_encoded, loss_reads, loss_golds = [], [], []
+    for row in rows:
+        prompt = row["question"] + " " + " ".join(["<mask>"] * n_masks)
+        ids = tokenizer.encode(prompt).ids
+        reads = [pos for pos, token in enumerate(ids) if token == MASK_ID]
+        if len(reads) != n_masks or PAD_ID in ids or len(ids) > 512:
+            raise RuntimeError(f"prompt {row['id']} must contain exactly {n_masks} masks and fit 512 tokens")
+        gen_encoded.append(ids)
+        gen_reads.append(reads)
+        claim = tokenizer.encode(row["question"] + " " + row["answer"], add_special_tokens=False).ids
+        if MASK_ID in claim or PAD_ID in claim or len(claim) > 512:
+            raise RuntimeError(f"answer prompt {row['id']} is malformed")
+        k = answer_token_count(tokenizer, claim, row["answer"])
+        loss_golds.append(claim[len(claim) - k:])
+        loss_encoded.append(claim[: len(claim) - k] + [MASK_ID] * k)
+        loss_reads.append(list(range(len(claim) - k, len(claim))))
+    answers = [row["answer"].strip().lower() for row in rows]
+    counts: dict[str, int] = {}
+    for answer in answers:
+        counts[answer] = counts.get(answer, 0) + 1
+    return {
+        "kind": "generation",
+        "n_masks": n_masks,
+        "gen_batches": pack_batches(gen_encoded, gen_reads, token_budget, device),
+        "loss_batches": pack_batches(loss_encoded, loss_reads, token_budget, device, golds=loss_golds),
+        "answers": answers,
+        "labels": answers,
+        "ids": [row["id"] for row in rows],
+        "tokenizer": tokenizer,
+        # the best constant answer's accuracy: the most frequent gold answer
+        "majority_accuracy": 100.0 * max(counts.values()) / len(answers),
+    }
 
 
 def tokenize(examples, device, token_budget: int):
@@ -458,8 +582,11 @@ def tokenize(examples, device, token_budget: int):
     tokenizer = Tokenizer.from_file(str(MODEL_DIR / "tokenizer.json"))
     prepared = {}
     for name, rows in examples.items():
+        if name in GENERATION_TASKS:
+            prepared[name] = tokenize_generation(name, rows, tokenizer, device, token_budget)
+            continue
         candidates = []
-        for word in EXPERIMENTS[name]:
+        for word in CHOICE_TASKS[name]:
             ids = tokenizer.encode(word, add_special_tokens=False).ids
             if len(ids) != 1:
                 raise RuntimeError(f"candidate {word!r} is not a single token")
@@ -495,6 +622,7 @@ def tokenize(examples, device, token_budget: int):
         labels = [int(row["label"]) for row in rows]
         counts = [labels.count(c) for c in range(len(candidates))]
         prepared[name] = {
+            "kind": "choice",
             "batches": batches,
             "candidates": torch.tensor(candidates, device=device),
             "labels": labels,
@@ -504,6 +632,71 @@ def tokenize(examples, device, token_budget: int):
     return prepared
 
 
+def final_hidden_states(model, batch, methods, starts):
+    """Encoder output of every method on one batch, sharing the unmodified layer prefix."""
+    hidden = model.embed(batch["ids"])
+    states = {}
+    for layer in range(N_LAYERS):
+        for key, start in starts.items():
+            if start == layer:
+                states[key] = hidden
+        for key in list(states):
+            states[key] = model.layer(states[key], batch["keep"], layer, methods[key].get(layer))
+        hidden = model.layer(hidden, batch["keep"], layer)
+    return {key: states.get(key, hidden) for key in methods}
+
+
+def score_generation(model, prepared, methods):
+    import torch
+
+    n = len(prepared["answers"])
+    n_masks = prepared["n_masks"]
+    tokenizer = prepared["tokenizer"]
+    answers = prepared["answers"]
+    out = {key: {"correct": [0] * n, "nll": [0.0] * n, "nll_laser": [0.0] * n, "pred": [""] * n, "finite": True}
+           for key in methods}
+    starts = {key: (min(layers) if layers else None) for key, layers in methods.items()}
+    texts: dict[tuple, str] = {}
+
+    def decode(tokens) -> str:
+        tokens = tuple(tokens)
+        if tokens not in texts:
+            texts[tokens] = laser_cleanup(tokenizer.decode(list(tokens), skip_special_tokens=False)).strip().lower()
+        return texts[tokens]
+
+    with torch.inference_mode():
+        for batch in prepared["gen_batches"]:
+            finals = final_hidden_states(model, batch, methods, starts)
+            for key in methods:
+                logits = model.mask_logits(finals[key][batch["row"], batch["pos"]])
+                if not bool(torch.isfinite(logits).all()):
+                    out[key]["finite"] = False
+                tokens = logits.argmax(dim=1).view(-1, n_masks).tolist()
+                record = out[key]
+                for pos, example in enumerate(batch["index"]):
+                    text = decode(tokens[pos])
+                    record["pred"][example] = text
+                    record["correct"][example] = int(answers[example] in text)
+            del finals
+        for batch in prepared["loss_batches"]:
+            finals = final_hidden_states(model, batch, methods, starts)
+            for key in methods:
+                log_probs = model.mask_log_probs(finals[key][batch["row"], batch["pos"]])
+                gold = log_probs.gather(1, batch["gold"][:, None])[:, 0].double()
+                if not bool(torch.isfinite(gold).all()):
+                    out[key]["finite"] = False
+                sums = torch.zeros(len(batch["index"]), dtype=torch.float64, device=gold.device)
+                sums.index_add_(0, batch["row"], -gold)
+                per_token = (sums / batch["count"]).tolist()
+                laser = (sums / (batch["count"] + 1.0)).tolist()  # LASER divides by (#answer tokens + 1)
+                record = out[key]
+                for pos, example in enumerate(batch["index"]):
+                    record["nll"][example] = float(per_token[pos])
+                    record["nll_laser"][example] = float(laser[pos])
+            del finals
+    return out
+
+
 def score_experiment(model, prepared, methods):
     """Run every method on one experiment, sharing the unmodified layer prefix.
 
@@ -511,24 +704,17 @@ def score_experiment(model, prepared, methods):
     """
     import torch
 
+    if prepared["kind"] == "generation":
+        return score_generation(model, prepared, methods)
     n = len(prepared["labels"])
     out = {key: {"correct": [0] * n, "nll": [0.0] * n, "pred": [0] * n, "finite": True} for key in methods}
     starts = {key: (min(layers) if layers else None) for key, layers in methods.items()}
     with torch.inference_mode():
         for batch in prepared["batches"]:
-            hidden = model.embed(batch["ids"])
-            states = {}
-            for layer in range(N_LAYERS):
-                for key, start in starts.items():
-                    if start == layer:
-                        states[key] = hidden
-                for key in list(states):
-                    states[key] = model.layer(states[key], batch["keep"], layer, methods[key].get(layer))
-                hidden = model.layer(hidden, batch["keep"], layer)
+            finals = final_hidden_states(model, batch, methods, starts)
             rows = torch.arange(batch["ids"].shape[0], device=batch["ids"].device)
             for key in methods:
-                final = states.get(key, hidden)
-                log_probs = model.mask_log_probs(final[rows, batch["mask_pos"]])
+                log_probs = model.mask_log_probs(finals[key][rows, batch["mask_pos"]])
                 cand = log_probs.index_select(1, prepared["candidates"])
                 gold = cand.gather(1, batch["labels"][:, None])[:, 0]
                 if not (bool(torch.isfinite(cand).all()) and bool(torch.isfinite(gold).all())):
@@ -541,12 +727,13 @@ def score_experiment(model, prepared, methods):
                     record["pred"][example] = int(pred[pos])
                     record["correct"][example] = int(pred[pos] == labels[pos])
                     record["nll"][example] = float(gold_nll[pos])
+            del finals
     return out
 
 
-def summarize(record):
+def summarize(record, field: str = "nll"):
     n = len(record["correct"])
-    nll = [min(value, LOSS_CAP) if math.isfinite(value) else LOSS_CAP for value in record["nll"]]
+    nll = [min(value, LOSS_CAP) if math.isfinite(value) else LOSS_CAP for value in record[field]]
     return {"accuracy": 100.0 * sum(record["correct"]) / n, "loss": sum(nll) / n}
 
 
@@ -710,6 +897,9 @@ def main() -> int:
                 "rule": f"paired McNemar z vs the unmodified model >= {GATE_Z} and binomial z vs the "
                         f"majority-class rate >= {GATE_Z}; otherwise loss = {LOSS_CAP}, compression = 1",
             }
+            if prepared[name]["kind"] == "generation":
+                gates[name]["majority_class_accuracy_meaning"] = "frequency of the most common gold answer"
+                gates[name]["baseline_loss_laser_convention"] = summarize(base, "nll_laser")["loss"]
             for key, record in records.items():
                 info = info_by_key[key]
                 if "error" in record or not record["finite"]:
@@ -743,6 +933,8 @@ def main() -> int:
                     "touched_layers": info.get("touched_layers", []),
                     "stored_params": info.get("stored_params", 0),
                 }
+                if "nll_laser" in record:
+                    status[key][name]["raw_loss_laser_convention"] = summarize(record, "nll_laser")["loss"]
                 if args.dump_dir:
                     dump = Path(args.dump_dir) / name
                     dump.mkdir(parents=True, exist_ok=True)

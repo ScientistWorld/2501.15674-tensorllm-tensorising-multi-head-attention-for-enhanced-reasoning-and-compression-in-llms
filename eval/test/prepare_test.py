@@ -11,13 +11,20 @@ Same LASER-style preprocessing as the public validation split
   to shrink the test noise).
 * ``bios_profession_roberta`` -- the last 20% of the filtered Bias in Bios
   ``dev`` split (the paper's test portion).
+* ``wikidata_qa_roberta`` -- BIG-bench ``qa_wikidata`` single-target
+  questions in LASER order (validation split, then train split): everything
+  after the first 20% (15,047 questions; LASER's test portion, which contains
+  the paper's last 20%).
 
 The output files under ``eval/test/data/`` are committed and hash-pinned in
 ``MANIFEST.json``; the evaluator refuses altered files.  This script is only
 needed to rebuild them.  Raw files are read from ``--raw-dir`` (default
 ``eval/test/raw/``, git-ignored) and fetched there if missing:
 
-    python eval/test/prepare_test.py [--raw-dir eval/test/raw]
+    python eval/test/prepare_test.py [--raw-dir eval/test/raw] [--only wikidata_qa_roberta]
+
+``--only`` rebuilds the named tasks and merges them into the existing
+``MANIFEST.json`` (the other held-out files stay byte-identical).
 """
 
 from __future__ import annotations
@@ -47,7 +54,23 @@ RAW_FILES = {
         "https://huggingface.co/datasets/LabHC/bias_in_bios/resolve/main/data/dev-00000-of-00001-e6551072fff26949.parquet",
         "4c3461a19cf437f89fcfea5abbaea43baeb972f706662b3a3811eedce334e3b2",
     ),
+    "bigbench_qa_wikidata/validation.parquet": (
+        "https://huggingface.co/datasets/tasksource/bigbench/resolve/b8ee34693560a13a9feac6aa5540449e18b7eddb/"
+        "qa_wikidata/validation-00000-of-00001.parquet",
+        "3c24b3030643bca480cf4e1f54a05cb45659bdf67f291b9bab8131affecca079",
+    ),
+    "bigbench_qa_wikidata/train.parquet": (
+        "https://huggingface.co/datasets/tasksource/bigbench/resolve/b8ee34693560a13a9feac6aa5540449e18b7eddb/"
+        "qa_wikidata/train-00000-of-00001.parquet",
+        "451d085a3b7c071a96b2a4ad3fae5675da67dc00cb335d04a012e7901922f7f9",
+    ),
 }
+TASK_RAW = {
+    "fever_roberta_binary": ("fever/paper_dev.jsonl", "fever/paper_test.jsonl"),
+    "bios_profession_roberta": ("bias_in_bios/dev.parquet",),
+    "wikidata_qa_roberta": ("bigbench_qa_wikidata/validation.parquet", "bigbench_qa_wikidata/train.parquet"),
+}
+BBQA_SPLIT_ORDER = ("validation", "train")
 
 BIOS_OCCUPATIONS = ["journalist", "poet", "composer", "model", "teacher", "architect", "painter", "professor"]
 BIOS_PROFESSION_IDS = {
@@ -62,6 +85,7 @@ BIOS_MAX_TOKENS = 50
 TASKS = {
     "bios_profession_roberta": {"file": "bios_profession_test.jsonl", "visible": "bios_profession_val.jsonl"},
     "fever_roberta_binary": {"file": "fever_test.jsonl", "visible": "fever_val.jsonl"},
+    "wikidata_qa_roberta": {"file": "wikidata_qa_test.jsonl", "visible": "wikidata_qa_val.jsonl"},
 }
 
 
@@ -69,8 +93,11 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def fetch_raw(raw_dir: Path) -> None:
+def fetch_raw(raw_dir: Path, names) -> None:
+    needed = {rel for name in names for rel in TASK_RAW[name]}
     for rel, (url, digest) in RAW_FILES.items():
+        if rel not in needed:
+            continue
         path = raw_dir / rel
         if not path.exists():
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -158,49 +185,90 @@ def bios_rows(parquet: Path) -> list[dict]:
     return rows
 
 
+def wikidata_rows(raw_dir: Path) -> list[dict]:
+    """Same rows as data/prepare_tasks.py: validation then train, single-target questions only."""
+    import pyarrow.parquet as pq
+
+    rows: list[dict] = []
+    for split in BBQA_SPLIT_ORDER:
+        table = pq.read_table(raw_dir / "bigbench_qa_wikidata" / f"{split}.parquet", columns=["inputs", "targets"])
+        records = zip(table.column("inputs").to_pylist(), table.column("targets").to_pylist())
+        for position, (question, targets) in enumerate(records):
+            targets = list(targets)
+            if len(targets) != 1:
+                continue
+            answer = targets[0]
+            if not isinstance(question, str) or not isinstance(answer, str) or not answer.strip():
+                raise RuntimeError(f"unexpected qa_wikidata record {split}/{position}")
+            rows.append({"id": f"bbqa-{split}-{position}", "question": question, "answer": answer})
+    if len({row["id"] for row in rows}) != len(rows):
+        raise RuntimeError("duplicate qa_wikidata ids")
+    return rows
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-dir", default=str(RAW_DIR))
     parser.add_argument("--out-dir", default=str(OUT_DIR))
+    parser.add_argument("--only", nargs="*", default=None, choices=sorted(TASKS),
+                        help="rebuild only these tasks and merge them into the existing MANIFEST.json")
     args = parser.parse_args()
     raw_dir = Path(args.raw_dir)
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    fetch_raw(raw_dir)
+    names = args.only or list(TASKS)
+    fetch_raw(raw_dir, names)
 
-    fever_dev = fever_rows(raw_dir / "fever" / "paper_dev.jsonl", "paper_dev")
-    fever_test = fever_rows(raw_dir / "fever" / "paper_test.jsonl", "paper_test")
-    n_fever = len(fever_dev) + len(fever_test)
-    bios_all = bios_rows(raw_dir / "bias_in_bios" / "dev.parquet")
-    n_bios_test = len(bios_all) // 5
-    splits = {
-        "fever_roberta_binary": (
+    splits = {}
+    if "fever_roberta_binary" in names:
+        fever_dev = fever_rows(raw_dir / "fever" / "paper_dev.jsonl", "paper_dev")
+        fever_test = fever_rows(raw_dir / "fever" / "paper_test.jsonl", "paper_test")
+        n_fever = len(fever_dev) + len(fever_test)
+        splits["fever_roberta_binary"] = (
             fever_test,
             n_fever,
             "FEVER paper_test portion: positions %d..%d of the ordered dataset" % (len(fever_dev), n_fever - 1),
-        ),
-        "bios_profession_roberta": (
+        )
+    if "bios_profession_roberta" in names:
+        bios_all = bios_rows(raw_dir / "bias_in_bios" / "dev.parquet")
+        n_bios_test = len(bios_all) // 5
+        splits["bios_profession_roberta"] = (
             bios_all[len(bios_all) - n_bios_test:],
             len(bios_all),
             "last 20%%: positions %d..%d of the ordered dataset" % (len(bios_all) - n_bios_test, len(bios_all) - 1),
-        ),
-    }
+        )
+    if "wikidata_qa_roberta" in names:
+        bbqa_all = wikidata_rows(raw_dir)
+        n_val = int(0.2 * len(bbqa_all))
+        splits["wikidata_qa_roberta"] = (
+            bbqa_all[n_val:],
+            len(bbqa_all),
+            "everything after the first 20%%: positions %d..%d of the ordered dataset "
+            "(LASER's test portion; contains the paper's last 20%%)" % (n_val, len(bbqa_all) - 1),
+        )
 
-    manifest = {"split": "held-out test", "tasks": {}}
+    manifest_path = out_dir / "MANIFEST.json"
+    if args.only and manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text())
+    else:
+        manifest = {"split": "held-out test", "tasks": {}}
     for name, spec in TASKS.items():
+        if name not in splits:
+            continue
         test, n_full, description = splits[name]
         visible_path = VISIBLE_DIR / spec["visible"]
         if not visible_path.exists():
             raise RuntimeError(f"build the visible split first ({visible_path})")
         visible = [json.loads(line) for line in visible_path.open("r", encoding="utf-8")]
         visible_ids = {row["id"] for row in visible}
-        visible_prompts = {row["prompt"] for row in visible}
+        prompt_key = "question" if name == "wikidata_qa_roberta" else "prompt"
+        visible_prompts = {row[prompt_key] for row in visible}
         if any(row["id"] in visible_ids for row in test):
             raise RuntimeError(f"{name}: held-out ids overlap the visible split")
         # The source data contains a few duplicated texts: a held-out prompt that
         # is also visible (with its label) is dropped.
-        dropped = [row["id"] for row in test if row["prompt"] in visible_prompts]
-        test = [row for row in test if row["prompt"] not in visible_prompts]
+        dropped = [row["id"] for row in test if row[prompt_key] in visible_prompts]
+        test = [row for row in test if row[prompt_key] not in visible_prompts]
         path = out_dir / spec["file"]
         with path.open("w", encoding="utf-8") as handle:
             for row in test:
@@ -208,17 +276,22 @@ def main() -> None:
         counts: dict[str, int] = {}
         for row in test:
             counts[row["answer"]] = counts.get(row["answer"], 0) + 1
-        manifest["tasks"][name] = {
+        entry = {
             "file": spec["file"],
             "sha256": sha256(path),
             "n_examples": len(test),
             "n_full_dataset": n_full,
             "portion": description,
             "dropped_duplicates_of_visible_prompts": dropped,
-            "label_counts": counts,
         }
-        print(f"{name}: wrote {len(test)} held-out rows {counts}")
-    (out_dir / "MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n")
+        if name == "wikidata_qa_roberta":
+            entry["most_common_answers"] = dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:20])
+        else:
+            entry["label_counts"] = counts
+        manifest["tasks"][name] = entry
+        print(f"{name}: wrote {len(test)} held-out rows")
+    manifest["tasks"] = {name: manifest["tasks"][name] for name in TASKS if name in manifest["tasks"]}
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
 
 
 if __name__ == "__main__":

@@ -1,9 +1,46 @@
 {
   "experiments": {
+    "bios_profession_roberta": {
+      "description": "Bias in Bios profession prediction among eight single-token professions at the masked answer position, with the fixed pretrained roberta-base after a post-training modification of its attention weights. Held-out: the last 20% of the paper's LASER-preprocessed Bias in Bios dev split.",
+      "notes": "results: Table II of the paper (RoBERTa, Bios Profession, Original vs. Ours), same LASER preprocessing and split rule (first 20% visible, last 20% held out). The paper's loss also rises with its method here. Same gate, cap and failure values as fever_roberta_binary. Weight 0.4 (round 3): the paper's largest RoBERTa gain, where a better multi-layer structure already beats the reference beyond noise.",
+      "weight": 0.4,
+      "primary_metric": "accuracy",
+      "metrics": {
+        "accuracy": {
+          "higher_is_better": true,
+          "coefficient": 1.0,
+          "description": "Held-out accuracy (%) of the modified model: the predicted profession is the candidate token with the highest probability at the masked position."
+        },
+        "loss": {
+          "higher_is_better": false,
+          "coefficient": 0.1,
+          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold profession token at the masked position. Lower is better. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645); a submission that fails the gate gets the worst loss, 30."
+        },
+        "mha_compression_ratio": {
+          "higher_is_better": true,
+          "coefficient": 0.25,
+          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus every head slice of a modified layer left dense), counted by the evaluator. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645) (otherwise 1); capped at 64."
+        }
+      },
+      "results": {
+        "roberta_original": {
+          "type": "baseline",
+          "accuracy": 64.5,
+          "loss": 4.91,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "type": "proposed",
+          "accuracy": 72.57,
+          "loss": 6.64,
+          "mha_compression_ratio": 8.78
+        }
+      }
+    },
     "fever_roberta_binary": {
       "description": "FEVER claim verification (true/false at the masked answer position) with the fixed pretrained roberta-base after a post-training modification of its attention weights. Held-out: all 6,576 consistent support/refute claims of FEVER paper_test (the second half of the paper's ordered 13,086-claim dataset, which contains the paper's last-20% test portion).",
-      "notes": "results: Table II of the paper (RoBERTa, FEVER, Original vs. Ours). Same LASER preprocessing (13,086 consistent claims, first 20% = visible split); the paper's test is the last 20%, the gym's held-out split is the larger paper_test half that contains it (paired noise of the reference-vs-original gap: +3.7 +- 1.0 points on 6,576 claims vs +2.6 +- 1.5 on the last 20% alone). The decomposition of every submitted structure is computed by the evaluator (HOOI, TensorLy defaults). Failed or invalid submissions get accuracy 0, loss 30, compression 1. Coefficients: accuracy is the paper's key metric (1.0); compression (0.25, a headline claim) and loss (0.1, 'included for completeness') are secondary and only credited through the significance gate.",
-      "weight": 0.5,
+      "notes": "results: Table II of the paper (RoBERTa, FEVER, Original vs. Ours). Same LASER preprocessing (13,086 consistent claims, first 20% = visible split); the paper's test is the last 20%, the gym's held-out split is the larger paper_test half that contains it (paired noise of the reference-vs-original gap: +3.7 +- 1.0 points on 6,576 claims vs +2.6 +- 1.5 on the last 20% alone). The decomposition of every submitted structure is computed by the evaluator (HOOI, TensorLy defaults). Failed or invalid submissions get accuracy 0, loss 30, compression 1. Weight 0.2 (lowered from 0.5 in hardening round 3): the paper's own RoBERTa result here is at chance (50.0 -> 50.45), and no structure variant tried so far beats the reference on this experiment beyond noise, so it mainly checks that a change does not destroy what the reference gains. Coefficients: accuracy is the paper's key metric (1.0); compression (0.25, a headline claim) and loss (0.1, 'included for completeness') are secondary and only credited through the significance gate.",
+      "weight": 0.2,
       "primary_metric": "accuracy",
       "metrics": {
         "accuracy": {
@@ -37,41 +74,44 @@
         }
       }
     },
-    "bios_profession_roberta": {
-      "description": "Bias in Bios profession prediction among eight single-token professions at the masked answer position, with the fixed pretrained roberta-base after a post-training modification of its attention weights. Held-out: the last 20% of the paper's LASER-preprocessed Bias in Bios dev split.",
-      "notes": "results: Table II of the paper (RoBERTa, Bios Profession, Original vs. Ours), same LASER preprocessing and split rule (first 20% visible, last 20% held out). The paper's loss also rises with its method here. Same gate, cap and failure values as fever_roberta_binary.",
-      "weight": 0.5,
+    "wikidata_qa_roberta": {
+      "description": "BIG-bench WikidataQA (qa_wikidata, questions with a single target answer): the fixed pretrained roberta-base completes a factual statement (e.g. 'The official language of Berlin is') at five appended mask positions, after a post-training modification of its attention weights. Held-out: the 15,047 questions after the first 20% of the LASER-ordered dataset (validation split, then train split; 18,808 questions), i.e. LASER's test portion, which contains the paper's last 20%.",
+      "notes": "results: Table II of the paper (RoBERTa, BigBench-WikidataQA, Original vs. Ours): accuracy 28.0 -> 32.72, compression 2.52. Same LASER preprocessing and prompt (five appended masks, substring match of the decoded masks), first 20% visible. The paper's losses (9.07 -> 8.72) follow LASER's code, which divides the summed answer-token NLL by (number of answer tokens + 1); the gym divides by the number of answer tokens, so they are kept under _paper_loss_laser_convention and the scorer metadata reports the LASER-convention value as raw_loss_laser_convention for comparison. Table III's 37.40 (the method on attention combined with LASER on the feed-forward block) needs feed-forward changes, which are outside this gym. Weight 0.4 (added in hardening round 3): Table II reports this dataset with the same standing as the others, the paper's RoBERTa gain here is large (+4.7 points), and the held-out split (15,047 questions) resolves differences of well under one point. Same gate, cap and failure values as the other experiments; the gate's 'majority' rate is the frequency of the most common gold answer.",
+      "weight": 0.4,
       "primary_metric": "accuracy",
       "metrics": {
         "accuracy": {
           "higher_is_better": true,
           "coefficient": 1.0,
-          "description": "Held-out accuracy (%) of the modified model: the predicted profession is the candidate token with the highest probability at the masked position."
+          "description": "Held-out accuracy (%) of the modified model: five mask tokens are appended to the question, the highest-probability token at each mask is decoded, and the question counts as answered when the gold answer occurs in the decoded text (case-insensitive substring match, as in LASER)."
         },
         "loss": {
           "higher_is_better": false,
           "coefficient": 0.1,
-          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold profession token at the masked position. Lower is better. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645); a submission that fails the gate gets the worst loss, 30."
+          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax) per gold answer token when every answer token of '<question> <answer>' is masked, averaged over questions (each question's value clipped at 30). Lower is better. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the rate of the most common gold answer (one-sided binomial z >= 1.645); a submission that fails the gate gets the worst loss, 30."
         },
         "mha_compression_ratio": {
           "higher_is_better": true,
           "coefficient": 0.25,
-          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus every head slice of a modified layer left dense), counted by the evaluator. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645) (otherwise 1); capped at 64."
+          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus every head slice of a modified layer left dense), counted by the evaluator. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the rate of the most common gold answer (one-sided binomial z >= 1.645) (otherwise 1); capped at 64."
         }
       },
       "results": {
         "roberta_original": {
           "type": "baseline",
-          "accuracy": 64.5,
-          "loss": 4.91,
+          "accuracy": 28.0,
           "mha_compression_ratio": 1.0
         },
         "tensorllm_roberta": {
           "type": "proposed",
-          "accuracy": 72.57,
-          "loss": 6.64,
-          "mha_compression_ratio": 8.78
+          "accuracy": 32.72,
+          "mha_compression_ratio": 2.52
         }
+      },
+      "_paper_loss_laser_convention": {
+        "roberta_original": 9.07,
+        "tensorllm_roberta": 8.72,
+        "note": "Table II losses: summed answer-token NLL divided by (answer tokens + 1), LASER's code; not on the gym's per-token scale."
       }
     }
   }
