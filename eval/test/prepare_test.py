@@ -2,7 +2,7 @@
 """Build the hidden held-out evaluation splits.  Lives only in ``eval/test/``.
 
 Same LASER-style preprocessing as the public validation split
-(``data/prepare_tasks.py``), applied to data that is never shipped outside
+(the tracked ``data/tasks/`` files), applied to data that is never shipped outside
 ``eval/test/``:
 
 * ``fever_roberta_binary`` -- every consistent support/refute claim of FEVER
@@ -13,7 +13,7 @@ Same LASER-style preprocessing as the public validation split
   ``dev`` split (the paper's test portion).
 * ``wikidata_qa_roberta`` -- BIG-bench ``qa_wikidata`` single-target
   questions in LASER order (validation split, then train split): everything
-  after the first 20% (15,047 questions; LASER's test portion, which contains
+  after the first 20% (15,050 questions; LASER's test portion, which contains
   the paper's last 20%).
 
 The output files under ``eval/test/data/`` are committed and hash-pinned in

@@ -233,3 +233,6 @@ core.[0-9]*
 
 # Raw public sources of the held-out split (rebuilt by eval/test/prepare_test.py)
 eval/test/raw/
+
+# Held-out raw predictions and procedure scratch/evidence
+eval/test/private/

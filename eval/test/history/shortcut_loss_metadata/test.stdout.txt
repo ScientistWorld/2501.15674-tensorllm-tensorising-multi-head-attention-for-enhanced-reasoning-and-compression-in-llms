@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "slice": "test",
+    "split": "prediction_row_index_mod_2",
+    "manifest": "outputs/tensorllm_fever/manifest.json",
+    "train_scores": "scoring/scores_train.json",
+    "benchmark_scores": "scoring/scores.json",
+    "examples_per_method": {
+      "roberta_original": 160,
+      "tensorllm_roberta": 160
+    }
+  },
+  "experiments": {
+    "fever_roberta_binary": {
+      "results": {
+        "roberta_original": {
+          "accuracy": 51.25,
+          "balanced_accuracy": 50.0,
+          "loss": 1.0709952554665505,
+          "prediction_distribution_shift": 48.75000000000001,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 56.875,
+          "balanced_accuracy": 57.30143839899937,
+          "loss": -1000000.0,
+          "prediction_distribution_shift": 18.124999999999996,
+          "mha_compression_ratio": 1.9947782091692483
+        }
+      }
+    }
+  }
+}

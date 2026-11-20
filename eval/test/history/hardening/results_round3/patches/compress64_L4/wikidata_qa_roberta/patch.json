@@ -1,0 +1,29 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 4,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 32,
+        "1": 8,
+        "2": 3
+      }
+    }
+  ],
+  "notes": {
+    "variant": "heavy compression of one layer (>= 64x), best visible accuracy",
+    "validation": {
+      "accuracy": 27.8575225943647,
+      "loss": 17.745954220765622,
+      "finite": true
+    },
+    "compression_ratio": 68.75206900571162
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "bios_profession_roberta": {
+    "done": true,
+    "configs": [
+      [
+        7,
+        [
+          64,
+          48,
+          4
+        ]
+      ],
+      [
+        1,
+        [
+          64,
+          64,
+          4
+        ]
+      ]
+    ],
+    "validation": {
+      "accuracy": 77.05515088449532,
+      "loss": 4.181580715284573
+    },
+    "history": [
+      {
+        "configs": [
+          [
+            7,
+            [
+              64,
+              48,
+              4
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237024516518,
+          "finite": true
+        }
+      },
+      {
+        "candidate": [
+          1,
+          [
+            64,
+            64,
+            4
+          ]
+        ],
+        "validation": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580715284573
+        }
+      },
+      {
+        "candidate": [
+          4,
+          [
+            512,
+            64,
+            4
+          ]
+        ],
+        "validation": {
+          "accuracy": 76.37877211238293,
+          "loss": 4.421901761307057
+        }
+      }
+    ]
+  },
+  "fever_roberta_binary": {
+    "done": true,
+    "configs": [
+      [
+        0,
+        [
+          128,
+          48,
+          3
+        ]
+      ]
+    ],
+    "validation": {
+      "accuracy": 53.38173481085212,
+      "loss": 1.1379046288664485,
+      "finite": true
+    },
+    "history": [
+      {
+        "configs": [
+          [
+            0,
+            [
+              128,
+              48,
+              3
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379046288664485,
+          "finite": true
+        }
+      },
+      {
+        "candidate": [
+          6,
+          [
+            512,
+            16,
+            4
+          ]
+        ],
+        "validation": {
+          "accuracy": 54.18418035918991,
+          "loss": 1.2650745657048792
+        }
+      }
+    ]
+  },
+  "wikidata_qa_roberta": {
+    "done": true,
+    "configs": [
+      [
+        4,
+        [
+          64,
+          64,
+          4
+        ]
+      ]
+    ],
+    "validation": {
+      "accuracy": 36.36363636363637,
+      "loss": 15.21014866071793,
+      "finite": true
+    },
+    "history": [
+      {
+        "configs": [
+          [
+            4,
+            [
+              64,
+              64,
+              4
+            ]
+          ]
+        ],
+        "validation": {
+          "accuracy": 36.36363636363637,
+          "loss": 15.21014866071793,
+          "finite": true
+        }
+      },
+      {
+        "candidate": [
+          2,
+          [
+            512,
+            64,
+            4
+          ]
+        ],
+        "validation": {
+          "accuracy": 36.94843168527379,
+          "loss": 15.478179580413682
+        }
+      }
+    ]
+  }
+}

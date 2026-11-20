@@ -12,7 +12,7 @@ Progress means finding better structures in which to approximate the attention w
 - how to arrange them into tensors (any grouping of the matrix, model, head and within-head axes into tensor modes);
 - which modes to compress, and to what ranks.
 
-It also covers better principled or data-free rules for making those choices. The evaluator computes the Frobenius-optimal Tucker approximation (HOOI) of whatever structure is declared and counts its parameters, so a submission is a structural hypothesis about the weights.
+It also covers better principled or data-free rules for making those choices. A method may supply its own data-free decomposition procedure and tensor network, as well as its structural choices. The evaluator reconstructs the weights and counts every returned parameter. The built-in approximation remains available for compatibility.
 
 ## Approach Scope
 
@@ -20,6 +20,7 @@ In bounds:
 - new arrangements of the attention matrices;
 - groupings of heads that share a subspace;
 - per-mode rank choices;
+- new data-free numerical decompositions and explicit tensor networks;
 - multi-layer combinations;
 - selection strategies that use the visible split, or no labels at all;
 - criteria that predict which layers or structures help.

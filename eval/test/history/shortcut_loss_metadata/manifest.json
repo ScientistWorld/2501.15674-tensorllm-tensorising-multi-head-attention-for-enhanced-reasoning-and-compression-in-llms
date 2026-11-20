@@ -1,0 +1,35 @@
+{
+  "task": "fever_binary_masked_lm",
+  "conditions": [
+    {
+      "name": "roberta_original",
+      "predictions": "redteam/reference_seed0/roberta_original.jsonl",
+      "accuracy": 0.5,
+      "loss": 1.097117320005782,
+      "layer": null,
+      "ranks": null,
+      "original_mha_params": null,
+      "compressed_mha_params": null,
+      "compression_ratio": 1.0,
+      "relative_reconstruction_error": 0.0,
+      "score_key": "roberta_original"
+    },
+    {
+      "name": "reference_layer6",
+      "predictions": "redteam/shortcut_loss_metadata/predictions.jsonl",
+      "accuracy": 0.546875,
+      "loss": 0.695939757488668,
+      "layer": 6,
+      "ranks": [
+        384,
+        48,
+        4
+      ],
+      "original_mha_params": 2359296,
+      "compressed_mha_params": 1182736,
+      "compression_ratio": 1.9947782091692483,
+      "relative_reconstruction_error": 0.578950822353363,
+      "score_key": "tensorllm_roberta"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 4,
+      "targets": [
+        "query"
+      ],
+      "layout": "stack",
+      "ranks": {
+        "0": 307
+      }
+    },
+    {
+      "layer": 4,
+      "targets": [
+        "key"
+      ],
+      "layout": "stack",
+      "ranks": {
+        "0": 307
+      }
+    },
+    {
+      "layer": 4,
+      "targets": [
+        "value"
+      ],
+      "layout": "stack",
+      "ranks": {
+        "0": 307
+      }
+    },
+    {
+      "layer": 4,
+      "targets": [
+        "output"
+      ],
+      "layout": "stack",
+      "ranks": {
+        "0": 307
+      }
+    }
+  ],
+  "notes": {
+    "variant": "LASER (truncated SVD) of all four attention matrices of one layer",
+    "validation": {
+      "accuracy": 33.4662413609782,
+      "loss": 15.622720523424954,
+      "finite": true
+    },
+    "layer": 4,
+    "rank": 307
+  }
+}

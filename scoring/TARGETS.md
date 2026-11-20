@@ -1,24 +1,16 @@
 # Evaluation Targets
 
-Every metric below is computed by the scorers from the submitted structure. They rebuild the weights, run the fixed model and count the parameters.
+All three experiments (`bios_profession_roberta`, `fever_roberta_binary`,
+`wikidata_qa_roberta`) measure:
 
-- Visible split: `bash scripts/evaluate_train.sh` (or `bash scripts/evaluate.sh`).
-- Held-out split: `bash scripts/evaluate_test.sh`.
+- **accuracy**, higher is better: the fraction of correct held-out answers;
+- **mha_compression_ratio**, higher is better: reduced attention storage,
+  counted from the actual representation with dense untouched slices included;
+- **loss**, lower is better: gold-answer uncertainty under the full vocabulary.
 
-## Primary: fever_roberta_binary, bios_profession_roberta
-
-Tests whether a post-training change of attention weights raises held-out task accuracy over the unmodified pretrained model.
-
-- **Metric**: accuracy (higher is better)
-
-## Constraint: fever_roberta_binary, bios_profession_roberta
-
-Tests whether the modified attention layers are represented with fewer parameters than their dense originals. Submissions that are not smaller fail outright. Larger reductions are rewarded only together with a statistically significant accuracy gain over the unmodified model (paired, same examples) and over the majority-class rate (one-sided z >= 1.645 for both), and are capped at 64x.
-
-- **Metric**: mha_compression_ratio (higher is better)
-
-## Secondary: fever_roberta_binary, bios_profession_roberta
-
-Tracks the uncertainty of the gold answer on the same held-out examples. It is credited under the same significance gate; a submission that fails the gate gets the worst loss (30).
-
-- **Metric**: loss (lower is better)
+The task must show a significant paired accuracy gain over the fixed original
+model and exceed the majority rate, while using fewer parameters. Failure gives
+0 accuracy, 30 loss and 1 compression on every experiment. Compression credit
+is capped at 64. Test sizes, comparators, thresholds and operating points are
+fixed by evaluation. The three score files have exactly these targets, with
+per-experiment `results` for each method.

@@ -6,11 +6,11 @@ Use the fixed `roberta-base` checkpoint in `data/downloads/roberta-base` (its fi
 
 ## Data
 
-Use only the visible splits in `data/tasks/` and the pretrained model. Do not fetch FEVER or Bias in Bios from elsewhere, and do not use any other labelled data. The held-out examples come from the same public datasets, so using outside copies would amount to selecting on test labels.
+Use only the visible splits in `data/tasks/` and the pretrained model. Do not fetch FEVER, Bias in Bios or WikidataQA from elsewhere, and do not use any other labelled data. The held-out examples come from the same public datasets, so using outside copies would amount to selecting on test labels.
 
 ## Training
 
-The research question excludes training and fine-tuning: do not fit weights, factors or any other continuous parameters to labels. Using the visible split to choose among structures is allowed. That covers which layers, which matrices and heads, which arrangement and which ranks, as the paper does with its validation split. The submission format only accepts structure; the decomposition itself is computed by the evaluator.
+The research question excludes training and fine-tuning: do not fit weights, factors or any other continuous parameters to labels. Using the visible split to choose among structures is allowed. That covers which layers, which matrices and heads, which arrangement and which ranks, as the paper does with its validation split. A submission may provide its own data-free numerical procedure. It receives only original weights in a confined process, and the evaluator independently reconstructs and counts its returned representation. Predeclared discrete hyperparameter selection on visible data is allowed; continuous label fitting and embedding fitted weights in source code are excluded.
 
 ## Evaluation
 

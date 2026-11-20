@@ -1,0 +1,1341 @@
+{
+  "test": {
+    "bios_profession_roberta": {
+      "results": {
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 64.79313036690085,
+          "loss": 4.879054361679515,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 76.19047619047619,
+          "loss": 4.239875577636414,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "greedy_layers_nomargin": {
+          "accuracy": 76.19047619047619,
+          "loss": 4.239875577636414,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "previous_reference": {
+          "accuracy": 42.492844132188395,
+          "loss": 7.263175051204711,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 56.6224303929222,
+          "loss": 4.879054361679515,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 73.64038511579496,
+          "loss": 5.303011891418778,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "tensorllm_roberta": {
+          "accuracy": 73.64038511579496,
+          "loss": 5.303011891418778,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "weaker_laser_mha": {
+          "accuracy": 71.2984647410877,
+          "loss": 6.536316605864978,
+          "mha_compression_ratio": 1.3241379310344827
+        },
+        "weaker_low_rank": {
+          "accuracy": 66.12021857923497,
+          "loss": 5.210356958600155,
+          "mha_compression_ratio": 31.558266452648475
+        }
+      }
+    },
+    "fever_roberta_binary": {
+      "results": {
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 49.863138686131386,
+          "loss": 2.4991525860090906,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 53.58880778588808,
+          "loss": 1.1475733374166155,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "greedy_layers_nomargin": {
+          "accuracy": 53.4823600973236,
+          "loss": 4.544643809506783,
+          "mha_compression_ratio": 4.408042469340017
+        },
+        "previous_reference": {
+          "accuracy": 47.11070559610705,
+          "loss": 3.000213422406909,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 49.83272506082725,
+          "loss": 3.598603873774228,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 53.58880778588808,
+          "loss": 1.1475733374166155,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 53.58880778588808,
+          "loss": 1.1475733374166155,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "tensorllm_roberta": {
+          "accuracy": 53.58880778588808,
+          "loss": 1.1475733374166155,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "weaker_laser_mha": {
+          "accuracy": 49.81751824817518,
+          "loss": 4.494675120606185,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 49.83272506082725,
+          "loss": 2.4991525860090906,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    }
+  },
+  "train": {
+    "bios_profession_roberta": {
+      "results": {
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 64.95837669094693,
+          "loss": 4.853128171879623,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580715284573,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "greedy_layers_nomargin": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580715284573,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "previous_reference": {
+          "accuracy": 43.26222684703434,
+          "loss": 7.203254615261949,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 57.75234131113424,
+          "loss": 4.853128171879623,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237024516518,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "tensorllm_roberta": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237024516518,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "weaker_laser_mha": {
+          "accuracy": 71.98231009365244,
+          "loss": 6.453505604776954,
+          "mha_compression_ratio": 1.3241379310344827
+        },
+        "weaker_low_rank": {
+          "accuracy": 65.76482830385015,
+          "loss": 5.173979011921524,
+          "mha_compression_ratio": 31.558266452648475
+        }
+      }
+    },
+    "fever_roberta_binary": {
+      "results": {
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 49.78983568972105,
+          "loss": 2.499201423619875,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379046288664485,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "greedy_layers_nomargin": {
+          "accuracy": 54.52808559419182,
+          "loss": 4.522573442189439,
+          "mha_compression_ratio": 4.408042469340017
+        },
+        "previous_reference": {
+          "accuracy": 46.38899503247994,
+          "loss": 2.9675038414781314,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 49.78983568972105,
+          "loss": 3.5906389174135214,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379046288664485,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379046288664485,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "tensorllm_roberta": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379046288664485,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "weaker_laser_mha": {
+          "accuracy": 49.866259075277036,
+          "loss": 4.4484187928966135,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 49.75162399694307,
+          "loss": 2.499201423619875,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    }
+  },
+  "gates_test": {
+    "bios_profession_roberta": {
+      "baseline_accuracy": 64.79313036690085,
+      "baseline_loss": 4.879054361679515,
+      "majority_class_accuracy": 61.17616445485298,
+      "accuracy_threshold": 64.79313036690085,
+      "n_examples": 3843
+    },
+    "fever_roberta_binary": {
+      "baseline_accuracy": 49.863138686131386,
+      "baseline_loss": 2.4991525860090906,
+      "majority_class_accuracy": 50.136861313868614,
+      "accuracy_threshold": 50.136861313868614,
+      "n_examples": 6576
+    }
+  },
+  "methods_test": {
+    "roberta_original": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": null,
+        "raw_accuracy": 64.79313036690085,
+        "raw_loss": 4.879054361679515,
+        "raw_compression_ratio": 1.0,
+        "touched_layers": [],
+        "stored_params": 0
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": null,
+        "raw_accuracy": 49.863138686131386,
+        "raw_loss": 2.4991525860090906,
+        "raw_compression_ratio": 1.0,
+        "touched_layers": [],
+        "stored_params": 0
+      }
+    },
+    "better_greedy_layers": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 76.19047619047619,
+        "raw_loss": 4.239875577636414,
+        "raw_compression_ratio": 10.49583600256246,
+        "touched_layers": [
+          1,
+          7
+        ],
+        "stored_params": 449568
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 53.58880778588808,
+        "raw_loss": 1.1475733374166155,
+        "raw_compression_ratio": 7.314013615564897,
+        "touched_layers": [
+          0
+        ],
+        "stored_params": 322572
+      }
+    },
+    "greedy_layers_nomargin": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 76.19047619047619,
+        "raw_loss": 4.239875577636414,
+        "raw_compression_ratio": 10.49583600256246,
+        "touched_layers": [
+          1,
+          7
+        ],
+        "stored_params": 449568
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 53.4823600973236,
+        "raw_loss": 4.544643809506783,
+        "raw_compression_ratio": 4.408042469340017,
+        "touched_layers": [
+          0,
+          6,
+          7
+        ],
+        "stored_params": 1605676
+      }
+    },
+    "previous_reference": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": false,
+        "raw_accuracy": 42.492844132188395,
+        "raw_loss": 7.263175051204711,
+        "raw_compression_ratio": 1.9947782091692483,
+        "touched_layers": [
+          6
+        ],
+        "stored_params": 1182736
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": false,
+        "raw_accuracy": 47.11070559610705,
+        "raw_loss": 3.000213422406909,
+        "raw_compression_ratio": 1.9947782091692483,
+        "touched_layers": [
+          6
+        ],
+        "stored_params": 1182736
+      }
+    },
+    "shortcut_bad_layout": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "block 0: layout must be one of ['heads', 'stack']"
+      },
+      "fever_roberta_binary": {
+        "status": "failed",
+        "reason": "block 0: layout must be one of ['heads', 'stack']"
+      }
+    },
+    "shortcut_collapse_compress": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": false,
+        "raw_accuracy": 56.6224303929222,
+        "raw_loss": 4.682899819898816,
+        "raw_compression_ratio": 2782.188679245283,
+        "touched_layers": [
+          11
+        ],
+        "stored_params": 848
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": false,
+        "raw_accuracy": 49.83272506082725,
+        "raw_loss": 3.598603873774228,
+        "raw_compression_ratio": 2782.188679245283,
+        "touched_layers": [
+          11
+        ],
+        "stored_params": 848
+      }
+    },
+    "shortcut_dense_replacement": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "constraint violated: modified layers need 2953232 parameters, not fewer than their dense original (2359296)"
+      },
+      "fever_roberta_binary": {
+        "status": "failed",
+        "reason": "constraint violated: modified layers need 2953232 parameters, not fewer than their dense original (2359296)"
+      }
+    },
+    "shortcut_empty": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "no patch for experiment bios_profession_roberta (directory)"
+      },
+      "fever_roberta_binary": {
+        "status": "failed",
+        "reason": "no patch for experiment fever_roberta_binary (directory)"
+      }
+    },
+    "shortcut_forged_metadata": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 73.64038511579496,
+        "raw_loss": 5.303011891418778,
+        "raw_compression_ratio": 11.81443794567743,
+        "touched_layers": [
+          7
+        ],
+        "stored_params": 199696
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 53.58880778588808,
+        "raw_loss": 1.1475733374166155,
+        "raw_compression_ratio": 7.314013615564897,
+        "touched_layers": [
+          0
+        ],
+        "stored_params": 322572
+      }
+    },
+    "shortcut_infeasible_ranks": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "block 0: rank 512 of mode 0 exceeds the product of the other ranks"
+      },
+      "fever_roberta_binary": {
+        "status": "failed",
+        "reason": "block 0: rank 512 of mode 0 exceeds the product of the other ranks"
+      }
+    },
+    "shortcut_invalid_rank": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "block 0: rank of mode 0 must be an integer in [1, 768]"
+      },
+      "fever_roberta_binary": {
+        "status": "failed",
+        "reason": "block 0: rank of mode 0 must be an integer in [1, 768]"
+      }
+    },
+    "shortcut_missing_experiment": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "no patch for experiment bios_profession_roberta (directory)"
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 53.58880778588808,
+        "raw_loss": 1.1475733374166155,
+        "raw_compression_ratio": 7.314013615564897,
+        "touched_layers": [
+          0
+        ],
+        "stored_params": 322572
+      }
+    },
+    "shortcut_omitted_method": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "no patch for experiment bios_profession_roberta (listed in fake_scores_train.json)"
+      },
+      "fever_roberta_binary": {
+        "status": "failed",
+        "reason": "no patch for experiment fever_roberta_binary (listed in fake_scores_train.json)"
+      }
+    },
+    "shortcut_trained_factors": {
+      "bios_profession_roberta": {
+        "status": "failed",
+        "reason": "patch.json must be an object with format='mha-structure-patch-v3'"
+      },
+      "fever_roberta_binary": {
+        "status": "failed",
+        "reason": "patch.json must be an object with format='mha-structure-patch-v3'"
+      }
+    },
+    "tensorllm_roberta": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 73.64038511579496,
+        "raw_loss": 5.303011891418778,
+        "raw_compression_ratio": 11.81443794567743,
+        "touched_layers": [
+          7
+        ],
+        "stored_params": 199696
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 53.58880778588808,
+        "raw_loss": 1.1475733374166155,
+        "raw_compression_ratio": 7.314013615564897,
+        "touched_layers": [
+          0
+        ],
+        "stored_params": 322572
+      }
+    },
+    "weaker_laser_mha": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 71.2984647410877,
+        "raw_loss": 6.536316605864978,
+        "raw_compression_ratio": 1.3241379310344827,
+        "touched_layers": [
+          4
+        ],
+        "stored_params": 12288
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": false,
+        "raw_accuracy": 49.81751824817518,
+        "raw_loss": 4.494675120606185,
+        "raw_compression_ratio": 1.2907563025210085,
+        "touched_layers": [
+          6
+        ],
+        "stored_params": 58368
+      }
+    },
+    "weaker_low_rank": {
+      "bios_profession_roberta": {
+        "status": "ok",
+        "reasoning_gate_passed": true,
+        "raw_accuracy": 66.12021857923497,
+        "raw_loss": 5.210356958600155,
+        "raw_compression_ratio": 31.558266452648475,
+        "touched_layers": [
+          7
+        ],
+        "stored_params": 74760
+      },
+      "fever_roberta_binary": {
+        "status": "ok",
+        "reasoning_gate_passed": false,
+        "raw_accuracy": 49.83272506082725,
+        "raw_loss": 1.8753591157640999,
+        "raw_compression_ratio": 31.558266452648475,
+        "touched_layers": [
+          0
+        ],
+        "stored_params": 74760
+      }
+    }
+  },
+  "paired_noise_test": {
+    "bios_profession_roberta": {
+      "better_greedy_layers_minus_reference": {
+        "diff_pp": 2.5500910746812386,
+        "se_pp": 0.5503920223989321,
+        "ci95_pp": [
+          1.483216237314598,
+          3.643637782982042
+        ],
+        "n": 3843,
+        "disagreements": 440
+      },
+      "greedy_layers_nomargin_minus_reference": {
+        "diff_pp": 2.5500910746812386,
+        "se_pp": 0.5503920223989321,
+        "ci95_pp": [
+          1.483216237314598,
+          3.643637782982042
+        ],
+        "n": 3843,
+        "disagreements": 440
+      },
+      "previous_reference_minus_reference": {
+        "diff_pp": -31.147540983606557,
+        "se_pp": 0.9049543979341316,
+        "ci95_pp": [
+          -32.89162112932605,
+          -29.430132708821233
+        ],
+        "n": 3843,
+        "disagreements": 1531
+      },
+      "roberta_original_minus_reference": {
+        "diff_pp": -8.847254748894093,
+        "se_pp": 0.669188841615341,
+        "ci95_pp": [
+          -10.14897215716888,
+          -7.572209211553474
+        ],
+        "n": 3843,
+        "disagreements": 688
+      },
+      "shortcut_collapse_compress_minus_reference": {
+        "diff_pp": -17.017954722872755,
+        "se_pp": 0.7697491296844178,
+        "ci95_pp": [
+          -18.501170960187356,
+          -15.50871714806141
+        ],
+        "n": 3843,
+        "disagreements": 1006
+      },
+      "shortcut_forged_metadata_minus_reference": {
+        "diff_pp": 0.0,
+        "se_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "n": 3843,
+        "disagreements": 0
+      },
+      "weaker_laser_mha_minus_reference": {
+        "diff_pp": -2.3419203747072603,
+        "se_pp": 0.55452195281551,
+        "ci95_pp": [
+          -3.409445745511319,
+          -1.249024199843872
+        ],
+        "n": 3843,
+        "disagreements": 450
+      },
+      "weaker_low_rank_minus_reference": {
+        "diff_pp": -7.520166536559978,
+        "se_pp": 0.6476009249331623,
+        "ci95_pp": [
+          -8.847254748894093,
+          -6.218449128285197
+        ],
+        "n": 3843,
+        "disagreements": 639
+      },
+      "reference_minus_baseline": {
+        "diff_pp": 8.847254748894093,
+        "se_pp": 0.669188841615341,
+        "ci95_pp": [
+          7.572209211553474,
+          10.148972157168876
+        ],
+        "n": 3843,
+        "disagreements": 688
+      }
+    },
+    "fever_roberta_binary": {
+      "better_greedy_layers_minus_reference": {
+        "diff_pp": 0.0,
+        "se_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "n": 6576,
+        "disagreements": 0
+      },
+      "greedy_layers_nomargin_minus_reference": {
+        "diff_pp": -0.10644768856447688,
+        "se_pp": 0.6830845020215928,
+        "ci95_pp": [
+          -1.460234184914842,
+          1.2169251824817497
+        ],
+        "n": 6576,
+        "disagreements": 2121
+      },
+      "previous_reference_minus_reference": {
+        "diff_pp": -6.478102189781023,
+        "se_pp": 0.875978744614361,
+        "ci95_pp": [
+          -8.211678832116789,
+          -4.698905109489051
+        ],
+        "n": 6576,
+        "disagreements": 3440
+      },
+      "roberta_original_minus_reference": {
+        "diff_pp": -3.7256690997566912,
+        "se_pp": 0.9896168619177808,
+        "ci95_pp": [
+          -5.641727493917275,
+          -1.809610705596107
+        ],
+        "n": 6576,
+        "disagreements": 4255
+      },
+      "shortcut_collapse_compress_minus_reference": {
+        "diff_pp": -3.7560827250608275,
+        "se_pp": 0.9899286882837441,
+        "ci95_pp": [
+          -5.672141119221411,
+          -1.809610705596107
+        ],
+        "n": 6576,
+        "disagreements": 4249
+      },
+      "shortcut_forged_metadata_minus_reference": {
+        "diff_pp": 0.0,
+        "se_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "n": 6576,
+        "disagreements": 0
+      },
+      "shortcut_missing_experiment_minus_reference": {
+        "diff_pp": 0.0,
+        "se_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "n": 6576,
+        "disagreements": 0
+      },
+      "weaker_laser_mha_minus_reference": {
+        "diff_pp": -3.7712895377128954,
+        "se_pp": 0.9866187131733832,
+        "ci95_pp": [
+          -5.672521289537713,
+          -1.8548509732360121
+        ],
+        "n": 6576,
+        "disagreements": 4242
+      },
+      "weaker_low_rank_minus_reference": {
+        "diff_pp": -3.7560827250608275,
+        "se_pp": 0.9896904090895576,
+        "ci95_pp": [
+          -5.656934306569343,
+          -1.840024330900243
+        ],
+        "n": 6576,
+        "disagreements": 4253
+      },
+      "reference_minus_baseline": {
+        "diff_pp": 3.7256690997566912,
+        "se_pp": 0.9896168619177808,
+        "ci95_pp": [
+          1.809610705596107,
+          5.641727493917275
+        ],
+        "n": 6576,
+        "disagreements": 4255
+      },
+      "reference_minus_baseline_paper_last20pct": {
+        "diff_pp": 2.6366068016813142,
+        "se_pp": 1.4975069068879543,
+        "ci95_pp": [
+          -0.22927015666794037,
+          5.503439052350014
+        ],
+        "n": 2617,
+        "disagreements": 1671
+      },
+      "better_greedy_layers_minus_reference_paper_last20pct": {
+        "diff_pp": 0.0,
+        "se_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "n": 2617,
+        "disagreements": 0
+      }
+    }
+  },
+  "rank_cohort": [
+    "roberta_original",
+    "tensorllm_roberta",
+    "previous_reference",
+    "weaker_low_rank",
+    "weaker_laser_mha",
+    "better_greedy_layers",
+    "greedy_layers_nomargin"
+  ],
+  "rank_test": {
+    "shortcut_bad_layout": {
+      "delta": -17.4678,
+      "parts": {
+        "fever_roberta_binary.accuracy": -11.3906,
+        "fever_roberta_binary.loss": -1.1213,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_dense_replacement": {
+      "delta": -17.4678,
+      "parts": {
+        "fever_roberta_binary.accuracy": -11.3906,
+        "fever_roberta_binary.loss": -1.1213,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_empty": {
+      "delta": -17.4678,
+      "parts": {
+        "fever_roberta_binary.accuracy": -11.3906,
+        "fever_roberta_binary.loss": -1.1213,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_infeasible_ranks": {
+      "delta": -17.4678,
+      "parts": {
+        "fever_roberta_binary.accuracy": -11.3906,
+        "fever_roberta_binary.loss": -1.1213,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_invalid_rank": {
+      "delta": -17.4678,
+      "parts": {
+        "fever_roberta_binary.accuracy": -11.3906,
+        "fever_roberta_binary.loss": -1.1213,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_omitted_method": {
+      "delta": -17.4678,
+      "parts": {
+        "fever_roberta_binary.accuracy": -11.3906,
+        "fever_roberta_binary.loss": -1.1213,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_trained_factors": {
+      "delta": -17.4678,
+      "parts": {
+        "fever_roberta_binary.accuracy": -11.3906,
+        "fever_roberta_binary.loss": -1.1213,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "roberta_original": {
+      "delta": -1.646,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.7919,
+        "fever_roberta_binary.loss": -0.0525,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.4045,
+        "bios_profession_roberta.loss": 0.0201,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "better_greedy_layers": {
+      "delta": 0.1506,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": 0.1166,
+        "bios_profession_roberta.loss": 0.0505,
+        "bios_profession_roberta.mha_compression_ratio": -0.0164
+      }
+    },
+    "greedy_layers_nomargin": {
+      "delta": -0.1341,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.0226,
+        "fever_roberta_binary.loss": -0.132,
+        "fever_roberta_binary.mha_compression_ratio": -0.13,
+        "bios_profession_roberta.accuracy": 0.1166,
+        "bios_profession_roberta.loss": 0.0505,
+        "bios_profession_roberta.mha_compression_ratio": -0.0164
+      }
+    },
+    "previous_reference": {
+      "delta": -3.3832,
+      "parts": {
+        "fever_roberta_binary.accuracy": -1.377,
+        "fever_roberta_binary.loss": -0.072,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -1.424,
+        "bios_profession_roberta.loss": -0.093,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_collapse_compress": {
+      "delta": -2.0688,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.7984,
+        "fever_roberta_binary.loss": -0.0953,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.778,
+        "bios_profession_roberta.loss": 0.0201,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_forged_metadata": {
+      "delta": 0.0,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": 0.0,
+        "bios_profession_roberta.loss": -0.0,
+        "bios_profession_roberta.mha_compression_ratio": 0.0
+      }
+    },
+    "shortcut_missing_experiment": {
+      "delta": -4.6734,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": -3.3666,
+        "bios_profession_roberta.loss": -1.1722,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "tensorllm_roberta": {
+      "delta": 0.0,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": 0.0,
+        "bios_profession_roberta.loss": -0.0,
+        "bios_profession_roberta.mha_compression_ratio": 0.0
+      }
+    },
+    "weaker_laser_mha": {
+      "delta": -1.5105,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.8016,
+        "fever_roberta_binary.loss": -0.1301,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.1071,
+        "bios_profession_roberta.loss": -0.0585,
+        "bios_profession_roberta.mha_compression_ratio": -0.1307
+      }
+    },
+    "weaker_low_rank": {
+      "delta": -1.227,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.7984,
+        "fever_roberta_binary.loss": -0.0525,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.3438,
+        "bios_profession_roberta.loss": 0.0044,
+        "bios_profession_roberta.mha_compression_ratio": 0.2459
+      }
+    }
+  },
+  "rank_train": {
+    "shortcut_bad_layout": {
+      "delta": -16.1653,
+      "parts": {
+        "fever_roberta_binary.accuracy": -10.0512,
+        "fever_roberta_binary.loss": -1.131,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_dense_replacement": {
+      "delta": -16.1653,
+      "parts": {
+        "fever_roberta_binary.accuracy": -10.0512,
+        "fever_roberta_binary.loss": -1.131,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_empty": {
+      "delta": -16.1653,
+      "parts": {
+        "fever_roberta_binary.accuracy": -10.0512,
+        "fever_roberta_binary.loss": -1.131,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_infeasible_ranks": {
+      "delta": -16.1653,
+      "parts": {
+        "fever_roberta_binary.accuracy": -10.0512,
+        "fever_roberta_binary.loss": -1.131,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_invalid_rank": {
+      "delta": -16.1653,
+      "parts": {
+        "fever_roberta_binary.accuracy": -10.0512,
+        "fever_roberta_binary.loss": -1.131,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_omitted_method": {
+      "delta": -16.1653,
+      "parts": {
+        "fever_roberta_binary.accuracy": -10.0512,
+        "fever_roberta_binary.loss": -1.131,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_trained_factors": {
+      "delta": -16.1653,
+      "parts": {
+        "fever_roberta_binary.accuracy": -10.0512,
+        "fever_roberta_binary.loss": -1.131,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "roberta_original": {
+      "delta": -1.5589,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.6763,
+        "fever_roberta_binary.loss": -0.0533,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.4304,
+        "bios_profession_roberta.loss": 0.0184,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "better_greedy_layers": {
+      "delta": 0.1535,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": 0.1194,
+        "bios_profession_roberta.loss": 0.0505,
+        "bios_profession_roberta.mha_compression_ratio": -0.0164
+      }
+    },
+    "greedy_layers_nomargin": {
+      "delta": 0.1066,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.2158,
+        "fever_roberta_binary.loss": -0.1326,
+        "fever_roberta_binary.mha_compression_ratio": -0.13,
+        "bios_profession_roberta.accuracy": 0.1194,
+        "bios_profession_roberta.loss": 0.0505,
+        "bios_profession_roberta.mha_compression_ratio": -0.0164
+      }
+    },
+    "previous_reference": {
+      "delta": -3.316,
+      "parts": {
+        "fever_roberta_binary.accuracy": -1.3167,
+        "fever_roberta_binary.loss": -0.0717,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -1.4166,
+        "bios_profession_roberta.loss": -0.0939,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_collapse_compress": {
+      "delta": -1.9292,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.6763,
+        "fever_roberta_binary.loss": -0.0961,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.7579,
+        "bios_profession_roberta.loss": 0.0184,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "shortcut_forged_metadata": {
+      "delta": 0.0,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": 0.0,
+        "bios_profession_roberta.loss": -0.0,
+        "bios_profession_roberta.mha_compression_ratio": 0.0
+      }
+    },
+    "shortcut_missing_experiment": {
+      "delta": -4.7005,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": -3.383,
+        "bios_profession_roberta.loss": -1.1828,
+        "bios_profession_roberta.mha_compression_ratio": -0.1347
+      }
+    },
+    "tensorllm_roberta": {
+      "delta": 0.0,
+      "parts": {
+        "fever_roberta_binary.accuracy": 0.0,
+        "fever_roberta_binary.loss": -0.0,
+        "fever_roberta_binary.mha_compression_ratio": 0.0,
+        "bios_profession_roberta.accuracy": 0.0,
+        "bios_profession_roberta.loss": -0.0,
+        "bios_profession_roberta.mha_compression_ratio": 0.0
+      }
+    },
+    "weaker_laser_mha": {
+      "delta": -1.3741,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.6619,
+        "fever_roberta_binary.loss": -0.1297,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.1111,
+        "bios_profession_roberta.loss": -0.0581,
+        "bios_profession_roberta.mha_compression_ratio": -0.1307
+      }
+    },
+    "weaker_low_rank": {
+      "delta": -1.1642,
+      "parts": {
+        "fever_roberta_binary.accuracy": -0.6835,
+        "fever_roberta_binary.loss": -0.0533,
+        "fever_roberta_binary.mha_compression_ratio": -0.2826,
+        "bios_profession_roberta.accuracy": -0.3938,
+        "bios_profession_roberta.loss": 0.0031,
+        "bios_profession_roberta.mha_compression_ratio": 0.2459
+      }
+    }
+  },
+  "scores_test_tampered.json": {
+    "experiments": {
+      "bios_profession_roberta": {
+        "results": {
+          "roberta_original": {
+            "accuracy": 0.0,
+            "loss": 30.0,
+            "mha_compression_ratio": 1.0
+          },
+          "tensorllm_roberta": {
+            "accuracy": 0.0,
+            "loss": 30.0,
+            "mha_compression_ratio": 1.0
+          }
+        }
+      },
+      "fever_roberta_binary": {
+        "results": {
+          "roberta_original": {
+            "accuracy": 0.0,
+            "loss": 30.0,
+            "mha_compression_ratio": 1.0
+          },
+          "tensorllm_roberta": {
+            "accuracy": 0.0,
+            "loss": 30.0,
+            "mha_compression_ratio": 1.0
+          }
+        }
+      }
+    },
+    "methods": {
+      "roberta_original": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        }
+      },
+      "tensorllm_roberta": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint"
+        }
+      }
+    },
+    "fixed_model_verified": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 4,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 0
+      }
+    }
+  ]
+}

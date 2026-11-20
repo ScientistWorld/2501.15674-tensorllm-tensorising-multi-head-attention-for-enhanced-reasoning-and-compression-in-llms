@@ -54,3 +54,12 @@ The implementation reconstructs dense RoBERTa weights for ordinary Transformer i
   - reference reproduced exactly (FEVER 53.59, Bios 73.64);
   - 13 compressors, 2 structural variants and 3 new shortcuts scored.
 - Details in `HARDENING.md`.
+
+## Final hardening (pending bundled job)
+
+Read the paper, REDTEAM and REVIEW. Opened the data-free decomposition interface,
+closed runtime label access and method-written metadata, enforced complete
+all-task worst scores on failure, moved hidden-answer artifacts behind the test
+boundary, and reconciled all three-task documentation and paper-number scaling.
+One bundled job will rerun reference/baselines/controls, test confinement and
+malformed submissions, and measure paired headroom for visible-only refinements.

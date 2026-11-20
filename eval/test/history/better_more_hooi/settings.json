@@ -1,0 +1,25 @@
+{
+  "seed": 0,
+  "hooi_iters": 20,
+  "limit": 320,
+  "batch_size": 8,
+  "device": "cpu",
+  "torch_version": "2.12.0+cpu",
+  "selected": {
+    "name": "more_hooi",
+    "predictions": "redteam/better_more_hooi/tensorllm_roberta.jsonl",
+    "accuracy": 0.528125,
+    "loss": 0.7004152182489634,
+    "layer": 6,
+    "ranks": [
+      384,
+      48,
+      4
+    ],
+    "original_mha_params": 2359296,
+    "compressed_mha_params": 1182736,
+    "compression_ratio": 1.9947782091692483,
+    "relative_reconstruction_error": 0.5787871479988098,
+    "score_key": "tensorllm_roberta"
+  }
+}

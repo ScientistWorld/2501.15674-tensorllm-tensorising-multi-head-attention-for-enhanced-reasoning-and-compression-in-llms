@@ -1,0 +1,2149 @@
+{
+  "metadata": {
+    "slice": "train",
+    "submissions": "outputs/hardening/submissions",
+    "device": "cuda",
+    "fixed_model_verified": true,
+    "debug_limit": null,
+    "seconds": 118.2,
+    "gates": {
+      "bios_profession_roberta": {
+        "baseline_accuracy": 64.95837669094693,
+        "baseline_loss": 4.853128207360979,
+        "majority_class_accuracy": 62.48699271592091,
+        "n_examples": 3844,
+        "rule": "paired McNemar z vs the unmodified model >= 1.645 and binomial z vs the majority-class rate >= 1.645; otherwise loss = 30.0, compression = 1"
+      },
+      "fever_roberta_binary": {
+        "baseline_accuracy": 49.78983568972105,
+        "baseline_loss": 2.4992014927220882,
+        "majority_class_accuracy": 50.21016431027895,
+        "n_examples": 2617,
+        "rule": "paired McNemar z vs the unmodified model >= 1.645 and binomial z vs the majority-class rate >= 1.645; otherwise loss = 30.0, compression = 1"
+      },
+      "wikidata_qa_roberta": {
+        "baseline_accuracy": 27.272727272727273,
+        "baseline_loss": 17.67685319868022,
+        "majority_class_accuracy": 9.22381711855396,
+        "n_examples": 3762,
+        "rule": "paired McNemar z vs the unmodified model >= 1.645 and binomial z vs the majority-class rate >= 1.645; otherwise loss = 30.0, compression = 1",
+        "majority_class_accuracy_meaning": "frequency of the most common gold answer",
+        "baseline_loss_laser_convention": 9.047941207516056
+      }
+    },
+    "methods": {
+      "roberta_original": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": null,
+          "gate_z_vs_unmodified": null,
+          "gate_z_vs_majority": null,
+          "raw_accuracy": 64.95837669094693,
+          "raw_loss": 4.853128207360979,
+          "raw_compression_ratio": 1.0,
+          "touched_layers": [],
+          "stored_params": 0
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": null,
+          "gate_z_vs_unmodified": null,
+          "gate_z_vs_majority": null,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.4992014927220882,
+          "raw_compression_ratio": 1.0,
+          "touched_layers": [],
+          "stored_params": 0
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": null,
+          "gate_z_vs_unmodified": null,
+          "gate_z_vs_majority": null,
+          "raw_accuracy": 27.272727272727273,
+          "raw_loss": 17.67685319868022,
+          "raw_compression_ratio": 1.0,
+          "touched_layers": [],
+          "stored_params": 0,
+          "raw_loss_laser_convention": 9.047941207516056
+        }
+      },
+      "ablation_single_key": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 8.6738,
+          "gate_z_vs_majority": 9.2945,
+          "raw_accuracy": 69.74505723204994,
+          "raw_loss": 6.113918565050868,
+          "raw_compression_ratio": 1.1417244796828543,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 296960
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 1.0,
+          "gate_z_vs_majority": -0.391,
+          "raw_accuracy": 49.828047382499044,
+          "raw_loss": 2.2748364555639853,
+          "raw_compression_ratio": 1.2294557097118464,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 149504
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 8.7662,
+          "gate_z_vs_majority": 47.4982,
+          "raw_accuracy": 31.632110579479,
+          "raw_loss": 16.102384019289882,
+          "raw_compression_ratio": 1.2694214876033059,
+          "touched_layers": [
+            2
+          ],
+          "stored_params": 89088,
+          "raw_loss_laser_convention": 8.248437285379215
+        }
+      },
+      "ablation_single_output": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 10.2838,
+          "gate_z_vs_majority": 8.9281,
+          "raw_accuracy": 69.4588969823101,
+          "raw_loss": 4.673610931675218,
+          "raw_compression_ratio": 1.1146589259796806,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 347136
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.3475,
+          "gate_z_vs_majority": -0.0391,
+          "raw_accuracy": 50.171952617500956,
+          "raw_loss": 4.804413292213939,
+          "raw_compression_ratio": 1.2785793562708103,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 75776
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 4.8089,
+          "gate_z_vs_majority": 43.4414,
+          "raw_accuracy": 29.718234981392875,
+          "raw_loss": 16.868912532252246,
+          "raw_compression_ratio": 1.2785793562708103,
+          "touched_layers": [
+            1
+          ],
+          "stored_params": 75776,
+          "raw_loss_laser_convention": 8.647094328112368
+        }
+      },
+      "ablation_single_query": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 7.6085,
+          "gate_z_vs_majority": 8.9281,
+          "raw_accuracy": 69.4588969823101,
+          "raw_loss": 6.303094177027151,
+          "raw_compression_ratio": 1.2785793562708103,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 75776
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 1.4142,
+          "gate_z_vs_majority": -0.2737,
+          "raw_accuracy": 49.94268246083301,
+          "raw_loss": 2.763837548513015,
+          "raw_compression_ratio": 1.2694214876033059,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 89088
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 7.8996,
+          "gate_z_vs_majority": 45.6388,
+          "raw_accuracy": 30.75491759702286,
+          "raw_loss": 16.707547401665753,
+          "raw_compression_ratio": 1.2694214876033059,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 89088,
+          "raw_loss_laser_convention": 8.552206077335102
+        }
+      },
+      "ablation_single_value": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 7.4521,
+          "gate_z_vs_majority": 7.1291,
+          "raw_accuracy": 68.05411030176899,
+          "raw_loss": 5.401046836994875,
+          "raw_compression_ratio": 1.2132701421800949,
+          "touched_layers": [
+            5
+          ],
+          "stored_params": 175104
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 1.802030921346776,
+          "raw_compression_ratio": 1.2785793562708103,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 75776
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 10.7356,
+          "gate_z_vs_majority": 50.0337,
+          "raw_accuracy": 32.82828282828283,
+          "raw_loss": 16.76906472447703,
+          "raw_compression_ratio": 1.2694214876033059,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 89088,
+          "raw_loss_laser_convention": 8.600740886127488
+        }
+      },
+      "baseline_laser_mha_all4": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 9.8416,
+          "gate_z_vs_majority": 8.9281,
+          "raw_accuracy": 69.4588969823101,
+          "raw_loss": 5.382423414508584,
+          "raw_compression_ratio": 48.0,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 49152
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 3.0509,
+          "gate_z_vs_majority": 0.8601,
+          "raw_accuracy": 51.050821551394726,
+          "raw_loss": 3.4386341271165404,
+          "raw_compression_ratio": 4.987012987012987,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 473088
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 12.1295,
+          "gate_z_vs_majority": 51.3859,
+          "raw_accuracy": 33.4662413609782,
+          "raw_loss": 15.622720397254913,
+          "raw_compression_ratio": 1.250814332247557,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 1886208,
+          "raw_loss_laser_convention": 8.01402167541199
+        }
+      },
+      "better_greedy_layers": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 15.5956,
+          "gate_z_vs_majority": 18.6557,
+          "raw_accuracy": 77.05515088449532,
+          "raw_loss": 4.181580681396449,
+          "raw_compression_ratio": 10.49583600256246,
+          "touched_layers": [
+            1,
+            7
+          ],
+          "stored_params": 449568
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.3169,
+          "gate_z_vs_majority": 3.245,
+          "raw_accuracy": 53.38173481085212,
+          "raw_loss": 1.1379045230721898,
+          "raw_compression_ratio": 7.314013615564897,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 322572
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.0799,
+          "gate_z_vs_majority": 57.5274,
+          "raw_accuracy": 36.36363636363637,
+          "raw_loss": 15.21014866071793,
+          "raw_compression_ratio": 9.44201831337645,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 249872,
+          "raw_loss_laser_convention": 7.80183074919412
+        }
+      },
+      "check_explicit_layout": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.1473,
+          "gate_z_vs_majority": 15.291,
+          "raw_accuracy": 74.4276795005203,
+          "raw_loss": 5.238237002211294,
+          "raw_compression_ratio": 11.81443794567743,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 199696
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.3169,
+          "gate_z_vs_majority": 3.245,
+          "raw_accuracy": 53.38173481085212,
+          "raw_loss": 1.1379045230721898,
+          "raw_compression_ratio": 7.314013615564897,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 322572
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.0799,
+          "gate_z_vs_majority": 57.5274,
+          "raw_accuracy": 36.36363636363637,
+          "raw_loss": 15.21014866071793,
+          "raw_compression_ratio": 9.44201831337645,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 249872,
+          "raw_loss_laser_convention": 7.80183074919412
+        }
+      },
+      "compress64_L0": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -1.141,
+          "gate_z_vs_majority": 1.9988,
+          "raw_accuracy": 64.04786680541103,
+          "raw_loss": 7.639007616117519,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 1.8804884848587378,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 25616
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -25.619,
+          "gate_z_vs_majority": -4.7329,
+          "raw_accuracy": 6.990962254120149,
+          "raw_loss": 16.09226557611891,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 34316,
+          "raw_loss_laser_convention": 8.24432159130949
+        }
+      },
+      "compress64_L1": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -3.0462,
+          "gate_z_vs_majority": 1.1327,
+          "raw_accuracy": 63.37148803329865,
+          "raw_loss": 5.190859706593633,
+          "raw_compression_ratio": 66.77504811502321,
+          "touched_layers": [
+            1
+          ],
+          "stored_params": 35332
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.3551891542911347,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            1
+          ],
+          "stored_params": 25616
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -1.9524,
+          "gate_z_vs_majority": 36.0603,
+          "raw_accuracy": 26.23604465709729,
+          "raw_loss": 15.824788093862647,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            1
+          ],
+          "stored_params": 25616,
+          "raw_loss_laser_convention": 8.126881382335053
+        }
+      },
+      "compress64_L10": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -2.3071,
+          "gate_z_vs_majority": 1.5991,
+          "raw_accuracy": 63.73569198751301,
+          "raw_loss": 4.945374727080519,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            10
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.7973928090767135,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            10
+          ],
+          "stored_params": 25616
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -9.8995,
+          "gate_z_vs_majority": 28.7919,
+          "raw_accuracy": 22.80701754385965,
+          "raw_loss": 18.21272923114894,
+          "raw_compression_ratio": 66.77504811502321,
+          "touched_layers": [
+            10
+          ],
+          "stored_params": 35332,
+          "raw_loss_laser_convention": 9.309808264856434
+        }
+      },
+      "compress64_L11": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -11.4884,
+          "gate_z_vs_majority": -5.097,
+          "raw_accuracy": 58.50676378772113,
+          "raw_loss": 4.539924173508301,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 3.590400229531661,
+          "raw_compression_ratio": 75.52163892445583,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 31240
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -10.322,
+          "gate_z_vs_majority": 27.4396,
+          "raw_accuracy": 22.169059011164276,
+          "raw_loss": 22.00451938856288,
+          "raw_compression_ratio": 102.36445678583826,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 23048,
+          "raw_loss_laser_convention": 11.257365217712186
+        }
+      },
+      "compress64_L2": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -0.6571,
+          "gate_z_vs_majority": 2.6984,
+          "raw_accuracy": 64.59417273673257,
+          "raw_loss": 6.169928260349148,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            2
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.3983960804203153,
+          "raw_compression_ratio": 74.313216580572,
+          "touched_layers": [
+            2
+          ],
+          "stored_params": 31748
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -4.8715,
+          "gate_z_vs_majority": 32.6796,
+          "raw_accuracy": 24.641148325358852,
+          "raw_loss": 16.191807211227033,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            2
+          ],
+          "stored_params": 25616,
+          "raw_loss_laser_convention": 8.302352627424133
+        }
+      },
+      "compress64_L3": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -1.0774,
+          "gate_z_vs_majority": 2.5318,
+          "raw_accuracy": 64.46409989594173,
+          "raw_loss": 4.694564025511851,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            3
+          ],
+          "stored_params": 34316
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.463539103765637,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            3
+          ],
+          "stored_params": 34316
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 6.784,
+          "gate_z_vs_majority": 45.4698,
+          "raw_accuracy": 30.67517278043594,
+          "raw_loss": 16.914707133892723,
+          "raw_compression_ratio": 148.57027707808564,
+          "touched_layers": [
+            3
+          ],
+          "stored_params": 15880,
+          "raw_loss_laser_convention": 8.677682443036423
+        }
+      },
+      "compress64_L4": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -6.6009,
+          "gate_z_vs_majority": -0.7995,
+          "raw_accuracy": 61.86264308012487,
+          "raw_loss": 5.703623231698088,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.34234215421079,
+          "raw_compression_ratio": 82.26276150627615,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 28680
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 1.0585,
+          "gate_z_vs_majority": 39.4973,
+          "raw_accuracy": 27.8575225943647,
+          "raw_loss": 17.745954220765622,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 34316,
+          "raw_loss_laser_convention": 9.094213656585936
+        }
+      },
+      "compress64_L5": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -2.3041,
+          "gate_z_vs_majority": 1.5657,
+          "raw_accuracy": 63.70967741935484,
+          "raw_loss": 6.5558824645554985,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            5
+          ],
+          "stored_params": 34316
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 3.002141099965522,
+          "raw_compression_ratio": 69.80165680473372,
+          "touched_layers": [
+            5
+          ],
+          "stored_params": 33800
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -4.7585,
+          "gate_z_vs_majority": 33.2994,
+          "raw_accuracy": 24.933545986177567,
+          "raw_loss": 16.455840021567255,
+          "raw_compression_ratio": 148.57027707808564,
+          "touched_layers": [
+            5
+          ],
+          "stored_params": 15880,
+          "raw_loss_laser_convention": 8.437855690600754
+        }
+      },
+      "compress64_L6": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.5123,
+          "gate_z_vs_majority": 4.9637,
+          "raw_accuracy": 66.36316337148803,
+          "raw_loss": 6.307715447493572,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 34316
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -0.5774,
+          "gate_z_vs_majority": -0.5082,
+          "raw_accuracy": 49.713412304165075,
+          "raw_loss": 3.0703477416277205,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 34316
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -12.6762,
+          "gate_z_vs_majority": 21.8616,
+          "raw_accuracy": 19.537480063795854,
+          "raw_loss": 16.817795003673066,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 25616,
+          "raw_loss_laser_convention": 8.611350114760633
+        }
+      },
+      "compress64_L7": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 5.1426,
+          "gate_z_vs_majority": 5.8299,
+          "raw_accuracy": 67.03954214360041,
+          "raw_loss": 5.327379349867244,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 4.162909862418461,
+          "raw_compression_ratio": 82.26276150627615,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 28680
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 4.4223,
+          "gate_z_vs_majority": 42.4272,
+          "raw_accuracy": 29.239766081871345,
+          "raw_loss": 17.615143767204685,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 25616,
+          "raw_loss_laser_convention": 9.012100635127226
+        }
+      },
+      "compress64_L8": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 1.594,
+          "gate_z_vs_majority": 4.1309,
+          "raw_accuracy": 65.71279916753382,
+          "raw_loss": 5.981609765250279,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            8
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 3.654571107384081,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            8
+          ],
+          "stored_params": 34316
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -16.2077,
+          "gate_z_vs_majority": 18.4809,
+          "raw_accuracy": 17.942583732057415,
+          "raw_loss": 16.90526752309894,
+          "raw_compression_ratio": 75.52163892445583,
+          "touched_layers": [
+            8
+          ],
+          "stored_params": 31240,
+          "raw_loss_laser_convention": 8.650391867911589
+        }
+      },
+      "compress64_L9": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 5.9451,
+          "gate_z_vs_majority": 6.2963,
+          "raw_accuracy": 67.40374609781477,
+          "raw_loss": 4.670419331310505,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            9
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.976186077468123,
+          "raw_compression_ratio": 82.26276150627615,
+          "touched_layers": [
+            9
+          ],
+          "stored_params": 28680
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -0.7529,
+          "gate_z_vs_majority": 37.5816,
+          "raw_accuracy": 26.953748006379584,
+          "raw_loss": 17.176723803671965,
+          "raw_compression_ratio": 68.75206900571162,
+          "touched_layers": [
+            9
+          ],
+          "stored_params": 34316,
+          "raw_loss_laser_convention": 8.784965482104212
+        }
+      },
+      "greedy_layers_m05": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 15.5956,
+          "gate_z_vs_majority": 18.6557,
+          "raw_accuracy": 77.05515088449532,
+          "raw_loss": 4.181580681396449,
+          "raw_compression_ratio": 10.49583600256246,
+          "touched_layers": [
+            1,
+            7
+          ],
+          "stored_params": 449568
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.6601,
+          "gate_z_vs_majority": 4.066,
+          "raw_accuracy": 54.18418035918991,
+          "raw_loss": 1.2650745084461565,
+          "raw_compression_ratio": 4.250815282997791,
+          "touched_layers": [
+            0,
+            6
+          ],
+          "stored_params": 1110044
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.4563,
+          "gate_z_vs_majority": 58.767,
+          "raw_accuracy": 36.94843168527379,
+          "raw_loss": 15.478179580413682,
+          "raw_compression_ratio": 2.125430618216412,
+          "touched_layers": [
+            2,
+            4
+          ],
+          "stored_params": 2220064,
+          "raw_loss_laser_convention": 7.942295382411172
+        }
+      },
+      "greedy_layers_nomargin": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 15.5956,
+          "gate_z_vs_majority": 18.6557,
+          "raw_accuracy": 77.05515088449532,
+          "raw_loss": 4.181580681396449,
+          "raw_compression_ratio": 10.49583600256246,
+          "touched_layers": [
+            1,
+            7
+          ],
+          "stored_params": 449568
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 3.0808,
+          "gate_z_vs_majority": 4.4178,
+          "raw_accuracy": 54.52808559419182,
+          "raw_loss": 4.5225733941777495,
+          "raw_compression_ratio": 4.408042469340017,
+          "touched_layers": [
+            0,
+            6,
+            7
+          ],
+          "stored_params": 1605676
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 13.8254,
+          "gate_z_vs_majority": 58.8234,
+          "raw_accuracy": 36.975013290802764,
+          "raw_loss": 11.559982882688837,
+          "raw_compression_ratio": 2.080018808040437,
+          "touched_layers": [
+            0,
+            2,
+            4
+          ],
+          "stored_params": 3402800,
+          "raw_loss_laser_convention": 5.965937875643378
+        }
+      },
+      "previous_reference": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -22.7831,
+          "gate_z_vs_majority": -24.6188,
+          "raw_accuracy": 43.26222684703434,
+          "raw_loss": 7.2032546277907095,
+          "raw_compression_ratio": 1.9947782091692483,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 1182736
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -2.692,
+          "gate_z_vs_majority": -3.9096,
+          "raw_accuracy": 46.38899503247994,
+          "raw_loss": 2.9675038390638813,
+          "raw_compression_ratio": 1.9947782091692483,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 1182736
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -28.7717,
+          "gate_z_vs_majority": -11.5506,
+          "raw_accuracy": 3.7745879851143007,
+          "raw_loss": 18.7255103243236,
+          "raw_compression_ratio": 1.9947782091692483,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 1182736,
+          "raw_loss_laser_convention": 9.57209385472646
+        }
+      },
+      "shortcut_bad_axes": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "block 0: layout modes must use each of ('t', 'm', 'h', 'd') exactly once"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "block 0: layout modes must use each of ('t', 'm', 'h', 'd') exactly once"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "block 0: layout modes must use each of ('t', 'm', 'h', 'd') exactly once"
+        }
+      },
+      "shortcut_bad_layout": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "block 0: layout must be one of ['heads', 'stack'] or a list of axis groups"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "block 0: layout must be one of ['heads', 'stack'] or a list of axis groups"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "block 0: layout must be one of ['heads', 'stack'] or a list of axis groups"
+        }
+      },
+      "shortcut_collapse_compress": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -12.5521,
+          "gate_z_vs_majority": -6.0631,
+          "raw_accuracy": 57.75234131113424,
+          "raw_loss": 4.659392337606489,
+          "raw_compression_ratio": 2782.188679245283,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 848
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 3.5906388176548876,
+          "raw_compression_ratio": 2782.188679245283,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 848
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -10.322,
+          "gate_z_vs_majority": 27.4396,
+          "raw_accuracy": 22.169059011164276,
+          "raw_loss": 22.006188461908568,
+          "raw_compression_ratio": 2782.188679245283,
+          "touched_layers": [
+            11
+          ],
+          "stored_params": 848,
+          "raw_loss_laser_convention": 11.258257096409968
+        }
+      },
+      "shortcut_dense_replacement": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 2953232 parameters, not fewer than their dense original (2359296)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 2953232 parameters, not fewer than their dense original (2359296)"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 2953232 parameters, not fewer than their dense original (2359296)"
+        }
+      },
+      "shortcut_empty": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment bios_profession_roberta (directory)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "no patch for experiment fever_roberta_binary (directory)"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment wikidata_qa_roberta (directory)"
+        }
+      },
+      "shortcut_forged_metadata": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.1473,
+          "gate_z_vs_majority": 15.291,
+          "raw_accuracy": 74.4276795005203,
+          "raw_loss": 5.238237002211294,
+          "raw_compression_ratio": 11.81443794567743,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 199696
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.3169,
+          "gate_z_vs_majority": 3.245,
+          "raw_accuracy": 53.38173481085212,
+          "raw_loss": 1.1379045230721898,
+          "raw_compression_ratio": 7.314013615564897,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 322572
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.0799,
+          "gate_z_vs_majority": 57.5274,
+          "raw_accuracy": 36.36363636363637,
+          "raw_loss": 15.21014866071793,
+          "raw_compression_ratio": 9.44201831337645,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 249872,
+          "raw_loss_laser_convention": 7.80183074919412
+        }
+      },
+      "shortcut_infeasible_ranks": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "block 0: rank 512 of mode 0 exceeds the product of the other ranks"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "block 0: rank 512 of mode 0 exceeds the product of the other ranks"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "block 0: rank 512 of mode 0 exceeds the product of the other ranks"
+        }
+      },
+      "shortcut_invalid_rank": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "block 0: rank of mode 0 must be an integer in [1, 768]"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "block 0: rank of mode 0 must be an integer in [1, 768]"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "block 0: rank of mode 0 must be an integer in [1, 768]"
+        }
+      },
+      "shortcut_max_compression": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 5.9451,
+          "gate_z_vs_majority": 6.2963,
+          "raw_accuracy": 67.40374609781477,
+          "raw_loss": 4.670419331310505,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            9
+          ],
+          "stored_params": 25616
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 1.8804884848587378,
+          "raw_compression_ratio": 92.10243597751405,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 25616
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 6.784,
+          "gate_z_vs_majority": 45.4698,
+          "raw_accuracy": 30.67517278043594,
+          "raw_loss": 16.914707133892723,
+          "raw_compression_ratio": 148.57027707808564,
+          "touched_layers": [
+            3
+          ],
+          "stored_params": 15880,
+          "raw_loss_laser_convention": 8.677682443036423
+        }
+      },
+      "shortcut_missing_experiment": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment bios_profession_roberta (directory)"
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.3169,
+          "gate_z_vs_majority": 3.245,
+          "raw_accuracy": 53.38173481085212,
+          "raw_loss": 1.1379045230721898,
+          "raw_compression_ratio": 7.314013615564897,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 322572
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment wikidata_qa_roberta (directory)"
+        }
+      },
+      "shortcut_omitted_method": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment bios_profession_roberta (listed in fake_scores_train.json)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "no patch for experiment fever_roberta_binary (listed in fake_scores_train.json)"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "no patch for experiment wikidata_qa_roberta (listed in fake_scores_train.json)"
+        }
+      },
+      "shortcut_overlapping_heads": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "block 1: layer 7 query head 0 is replaced twice"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "block 1: layer 0 query head 0 is replaced twice"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "block 1: layer 4 query head 0 is replaced twice"
+        }
+      },
+      "shortcut_slice_bloat": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 3145728 parameters, not fewer than their dense original (2359296)"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 3145728 parameters, not fewer than their dense original (2359296)"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "constraint violated: modified layers need 3145728 parameters, not fewer than their dense original (2359296)"
+        }
+      },
+      "shortcut_trained_factors": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "patch.json must be an object with format='mha-structure-patch-v3'"
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "patch.json must be an object with format='mha-structure-patch-v3'"
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "patch.json must be an object with format='mha-structure-patch-v3'"
+        }
+      },
+      "tensorllm_roberta": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.1473,
+          "gate_z_vs_majority": 15.291,
+          "raw_accuracy": 74.4276795005203,
+          "raw_loss": 5.238237002211294,
+          "raw_compression_ratio": 11.81443794567743,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 199696
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.3169,
+          "gate_z_vs_majority": 3.245,
+          "raw_accuracy": 53.38173481085212,
+          "raw_loss": 1.1379045230721898,
+          "raw_compression_ratio": 7.314013615564897,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 322572
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 14.0799,
+          "gate_z_vs_majority": 57.5274,
+          "raw_accuracy": 36.36363636363637,
+          "raw_loss": 15.21014866071793,
+          "raw_compression_ratio": 9.44201831337645,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 249872,
+          "raw_loss_laser_convention": 7.80183074919412
+        }
+      },
+      "variant_head_groups": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 4.9612,
+          "gate_z_vs_majority": 6.9626,
+          "raw_accuracy": 67.92403746097814,
+          "raw_loss": 4.922275425701496,
+          "raw_compression_ratio": 9.364664041661374,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 251936
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.35,
+          "gate_z_vs_majority": 1.6811,
+          "raw_accuracy": 51.85326709973252,
+          "raw_loss": 8.629989288943753,
+          "raw_compression_ratio": 5.564902349278234,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 423960
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -25.0487,
+          "gate_z_vs_majority": -2.8172,
+          "raw_accuracy": 7.894736842105263,
+          "raw_loss": 17.268841780163648,
+          "raw_compression_ratio": 7.782962102818537,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 303136,
+          "raw_loss_laser_convention": 8.86615211791936
+        }
+      },
+      "variant_qk_vo_split": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 9.406,
+          "gate_z_vs_majority": 9.9941,
+          "raw_accuracy": 70.29136316337149,
+          "raw_loss": 5.576939730967989,
+          "raw_compression_ratio": 9.365853658536585,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 251904
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.0,
+          "gate_z_vs_majority": -0.4301,
+          "raw_accuracy": 49.78983568972105,
+          "raw_loss": 2.6066505207694757,
+          "raw_compression_ratio": 4.7407407407407405,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 497664
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -0.4883,
+          "gate_z_vs_majority": 37.5816,
+          "raw_accuracy": 26.953748006379584,
+          "raw_loss": 15.9567208355905,
+          "raw_compression_ratio": 7.783783783783784,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 303104,
+          "raw_loss_laser_convention": 8.179158851689095
+        }
+      },
+      "weaker_laser_mha": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 11.1346,
+          "gate_z_vs_majority": 12.1595,
+          "raw_accuracy": 71.98231009365244,
+          "raw_loss": 6.453505621910963,
+          "raw_compression_ratio": 1.3241379310344827,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 12288
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 0.7071,
+          "gate_z_vs_majority": -0.3519,
+          "raw_accuracy": 49.866259075277036,
+          "raw_loss": 4.448418884638115,
+          "raw_compression_ratio": 1.2907563025210085,
+          "touched_layers": [
+            6
+          ],
+          "stored_params": 58368
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 11.0635,
+          "gate_z_vs_majority": 49.7519,
+          "raw_accuracy": 32.69537480063796,
+          "raw_loss": 16.127580958098868,
+          "raw_compression_ratio": 1.1761102603369067,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 236544,
+          "raw_loss_laser_convention": 8.26837021316285
+        }
+      },
+      "weaker_low_rank": {
+        "bios_profession_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": true,
+          "gate_z_vs_unmodified": 2.1651,
+          "gate_z_vs_majority": 4.1975,
+          "raw_accuracy": 65.76482830385015,
+          "raw_loss": 5.173979009196364,
+          "raw_compression_ratio": 31.558266452648475,
+          "touched_layers": [
+            7
+          ],
+          "stored_params": 74760
+        },
+        "fever_roberta_binary": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": -0.4472,
+          "gate_z_vs_majority": -0.4692,
+          "raw_accuracy": 49.75162399694307,
+          "raw_loss": 1.8663719246917705,
+          "raw_compression_ratio": 31.558266452648475,
+          "touched_layers": [
+            0
+          ],
+          "stored_params": 74760
+        },
+        "wikidata_qa_roberta": {
+          "status": "ok",
+          "reasoning_gate_passed": false,
+          "gate_z_vs_unmodified": 1.0092,
+          "gate_z_vs_majority": 39.4409,
+          "raw_accuracy": 27.830940988835724,
+          "raw_loss": 17.747777866193342,
+          "raw_compression_ratio": 31.558266452648475,
+          "touched_layers": [
+            4
+          ],
+          "stored_params": 74760,
+          "raw_loss_laser_convention": 9.09516750572874
+        }
+      }
+    }
+  },
+  "experiments": {
+    "bios_profession_roberta": {
+      "results": {
+        "shortcut_bad_axes": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_overlapping_heads": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_slice_bloat": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 64.95837669094693,
+          "loss": 4.853128207360979,
+          "mha_compression_ratio": 1.0
+        },
+        "ablation_single_key": {
+          "accuracy": 69.74505723204994,
+          "loss": 6.113918565050868,
+          "mha_compression_ratio": 1.1417244796828543
+        },
+        "ablation_single_output": {
+          "accuracy": 69.4588969823101,
+          "loss": 4.673610931675218,
+          "mha_compression_ratio": 1.1146589259796806
+        },
+        "ablation_single_query": {
+          "accuracy": 69.4588969823101,
+          "loss": 6.303094177027151,
+          "mha_compression_ratio": 1.2785793562708103
+        },
+        "ablation_single_value": {
+          "accuracy": 68.05411030176899,
+          "loss": 5.401046836994875,
+          "mha_compression_ratio": 1.2132701421800949
+        },
+        "baseline_laser_mha_all4": {
+          "accuracy": 69.4588969823101,
+          "loss": 5.382423414508584,
+          "mha_compression_ratio": 48.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580681396449,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "check_explicit_layout": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237002211294,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "compress64_L0": {
+          "accuracy": 64.04786680541103,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L1": {
+          "accuracy": 63.37148803329865,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L10": {
+          "accuracy": 63.73569198751301,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L11": {
+          "accuracy": 58.50676378772113,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L2": {
+          "accuracy": 64.59417273673257,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L3": {
+          "accuracy": 64.46409989594173,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L4": {
+          "accuracy": 61.86264308012487,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L5": {
+          "accuracy": 63.70967741935484,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L6": {
+          "accuracy": 66.36316337148803,
+          "loss": 6.307715447493572,
+          "mha_compression_ratio": 64.0
+        },
+        "compress64_L7": {
+          "accuracy": 67.03954214360041,
+          "loss": 5.327379349867244,
+          "mha_compression_ratio": 64.0
+        },
+        "compress64_L8": {
+          "accuracy": 65.71279916753382,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L9": {
+          "accuracy": 67.40374609781477,
+          "loss": 4.670419331310505,
+          "mha_compression_ratio": 64.0
+        },
+        "greedy_layers_m05": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580681396449,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "greedy_layers_nomargin": {
+          "accuracy": 77.05515088449532,
+          "loss": 4.181580681396449,
+          "mha_compression_ratio": 10.49583600256246
+        },
+        "previous_reference": {
+          "accuracy": 43.26222684703434,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 57.75234131113424,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237002211294,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "shortcut_max_compression": {
+          "accuracy": 67.40374609781477,
+          "loss": 4.670419331310505,
+          "mha_compression_ratio": 64.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 74.4276795005203,
+          "loss": 5.238237002211294,
+          "mha_compression_ratio": 11.81443794567743
+        },
+        "variant_head_groups": {
+          "accuracy": 67.92403746097814,
+          "loss": 4.922275425701496,
+          "mha_compression_ratio": 9.364664041661374
+        },
+        "variant_qk_vo_split": {
+          "accuracy": 70.29136316337149,
+          "loss": 5.576939730967989,
+          "mha_compression_ratio": 9.365853658536585
+        },
+        "weaker_laser_mha": {
+          "accuracy": 71.98231009365244,
+          "loss": 6.453505621910963,
+          "mha_compression_ratio": 1.3241379310344827
+        },
+        "weaker_low_rank": {
+          "accuracy": 65.76482830385015,
+          "loss": 5.173979009196364,
+          "mha_compression_ratio": 31.558266452648475
+        }
+      }
+    },
+    "fever_roberta_binary": {
+      "results": {
+        "shortcut_bad_axes": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_overlapping_heads": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_slice_bloat": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 49.78983568972105,
+          "loss": 2.4992014927220882,
+          "mha_compression_ratio": 1.0
+        },
+        "ablation_single_key": {
+          "accuracy": 49.828047382499044,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "ablation_single_output": {
+          "accuracy": 50.171952617500956,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "ablation_single_query": {
+          "accuracy": 49.94268246083301,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "ablation_single_value": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "baseline_laser_mha_all4": {
+          "accuracy": 51.050821551394726,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379045230721898,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "check_explicit_layout": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379045230721898,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "compress64_L0": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L1": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L10": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L11": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L2": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L3": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L4": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L5": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L6": {
+          "accuracy": 49.713412304165075,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L7": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L8": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L9": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "greedy_layers_m05": {
+          "accuracy": 54.18418035918991,
+          "loss": 1.2650745084461565,
+          "mha_compression_ratio": 4.250815282997791
+        },
+        "greedy_layers_nomargin": {
+          "accuracy": 54.52808559419182,
+          "loss": 4.5225733941777495,
+          "mha_compression_ratio": 4.408042469340017
+        },
+        "previous_reference": {
+          "accuracy": 46.38899503247994,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379045230721898,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "shortcut_max_compression": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379045230721898,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "tensorllm_roberta": {
+          "accuracy": 53.38173481085212,
+          "loss": 1.1379045230721898,
+          "mha_compression_ratio": 7.314013615564897
+        },
+        "variant_head_groups": {
+          "accuracy": 51.85326709973252,
+          "loss": 8.629989288943753,
+          "mha_compression_ratio": 5.564902349278234
+        },
+        "variant_qk_vo_split": {
+          "accuracy": 49.78983568972105,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_laser_mha": {
+          "accuracy": 49.866259075277036,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 49.75162399694307,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    },
+    "wikidata_qa_roberta": {
+      "results": {
+        "shortcut_bad_axes": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_empty": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_omitted_method": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_overlapping_heads": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_slice_bloat": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "roberta_original": {
+          "accuracy": 27.272727272727273,
+          "loss": 17.67685319868022,
+          "mha_compression_ratio": 1.0
+        },
+        "ablation_single_key": {
+          "accuracy": 31.632110579479,
+          "loss": 16.102384019289882,
+          "mha_compression_ratio": 1.2694214876033059
+        },
+        "ablation_single_output": {
+          "accuracy": 29.718234981392875,
+          "loss": 16.868912532252246,
+          "mha_compression_ratio": 1.2785793562708103
+        },
+        "ablation_single_query": {
+          "accuracy": 30.75491759702286,
+          "loss": 16.707547401665753,
+          "mha_compression_ratio": 1.2694214876033059
+        },
+        "ablation_single_value": {
+          "accuracy": 32.82828282828283,
+          "loss": 16.76906472447703,
+          "mha_compression_ratio": 1.2694214876033059
+        },
+        "baseline_laser_mha_all4": {
+          "accuracy": 33.4662413609782,
+          "loss": 15.622720397254913,
+          "mha_compression_ratio": 1.250814332247557
+        },
+        "better_greedy_layers": {
+          "accuracy": 36.36363636363637,
+          "loss": 15.21014866071793,
+          "mha_compression_ratio": 9.44201831337645
+        },
+        "check_explicit_layout": {
+          "accuracy": 36.36363636363637,
+          "loss": 15.21014866071793,
+          "mha_compression_ratio": 9.44201831337645
+        },
+        "compress64_L0": {
+          "accuracy": 6.990962254120149,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L1": {
+          "accuracy": 26.23604465709729,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L10": {
+          "accuracy": 22.80701754385965,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L11": {
+          "accuracy": 22.169059011164276,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L2": {
+          "accuracy": 24.641148325358852,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L3": {
+          "accuracy": 30.67517278043594,
+          "loss": 16.914707133892723,
+          "mha_compression_ratio": 64.0
+        },
+        "compress64_L4": {
+          "accuracy": 27.8575225943647,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L5": {
+          "accuracy": 24.933545986177567,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L6": {
+          "accuracy": 19.537480063795854,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L7": {
+          "accuracy": 29.239766081871345,
+          "loss": 17.615143767204685,
+          "mha_compression_ratio": 64.0
+        },
+        "compress64_L8": {
+          "accuracy": 17.942583732057415,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "compress64_L9": {
+          "accuracy": 26.953748006379584,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "greedy_layers_m05": {
+          "accuracy": 36.94843168527379,
+          "loss": 15.478179580413682,
+          "mha_compression_ratio": 2.125430618216412
+        },
+        "greedy_layers_nomargin": {
+          "accuracy": 36.975013290802764,
+          "loss": 11.559982882688837,
+          "mha_compression_ratio": 2.080018808040437
+        },
+        "previous_reference": {
+          "accuracy": 3.7745879851143007,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 22.169059011164276,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 36.36363636363637,
+          "loss": 15.21014866071793,
+          "mha_compression_ratio": 9.44201831337645
+        },
+        "shortcut_max_compression": {
+          "accuracy": 30.67517278043594,
+          "loss": 16.914707133892723,
+          "mha_compression_ratio": 64.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 36.36363636363637,
+          "loss": 15.21014866071793,
+          "mha_compression_ratio": 9.44201831337645
+        },
+        "variant_head_groups": {
+          "accuracy": 7.894736842105263,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "variant_qk_vo_split": {
+          "accuracy": 26.953748006379584,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_laser_mha": {
+          "accuracy": 32.69537480063796,
+          "loss": 16.127580958098868,
+          "mha_compression_ratio": 1.1761102603369067
+        },
+        "weaker_low_rank": {
+          "accuracy": 27.830940988835724,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    }
+  }
+}

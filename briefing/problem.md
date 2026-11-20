@@ -8,7 +8,7 @@ Can the attention weights of a fixed pretrained language model be replaced, afte
 
 - Model: `roberta-base` (12 layers, 12 attention heads of size 64, model width 768), answering at a masked position.
 - What may change: the query, key, value and output projection matrices of any attention layers. Everything else (embeddings, biases, layer norms, feed-forward blocks, the prediction head) stays fixed.
-- Tasks: FEVER claim verification (true/false) and Bias in Bios profession prediction (8 professions), both as single-token answers at the masked position.
+- Tasks: FEVER claim verification (true/false) Bias in Bios profession prediction (8 professions), and open-ended WikidataQA factual completion. The first two use a single masked answer; the third uses five appended masks.
 - Data available to a method: the visible split of each task (`data/tasks/`, with labels) and the pretrained model. Held-out examples are never available.
 
 ## Why It Matters
@@ -17,4 +17,4 @@ Large language models are heavily over-parameterised. A post-training procedure 
 
 ## Success Criteria
 
-A successful solution raises held-out accuracy over the unmodified model on each task, while the modified attention layers are represented with fewer parameters than their dense originals. Lower answer loss and stronger compression are secondary gains. Both count only once the accuracy gain over the unmodified model (and over always answering the most frequent class) is statistically significant.
+A successful solution raises held-out accuracy over the unmodified model on each task, while the modified attention layers are represented with fewer parameters than their dense originals. Lower answer loss and stronger compression are secondary gains. All tasks must pass before any result counts; secondary gains count only once the accuracy gain over the unmodified model (and over always answering the most frequent class) is statistically significant.

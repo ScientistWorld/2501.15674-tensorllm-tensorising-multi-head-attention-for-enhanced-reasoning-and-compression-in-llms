@@ -1,0 +1,19 @@
+{
+  "format": "mha-factor-patch-v1",
+  "blocks": [
+    {
+      "layer": 7,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "equation": "ab,bc->ac",
+      "operands": [
+        "A",
+        "B"
+      ]
+    }
+  ]
+}

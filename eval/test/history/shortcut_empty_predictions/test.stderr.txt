@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/user/eval/test/evaluate.py", line 190, in <module>
+    main()
+  File "/home/user/eval/test/evaluate.py", line 160, in main
+    metrics, count = score_predictions(resolve_prediction_path(condition["predictions"], manifest_path))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/eval/test/evaluate.py", line 55, in score_predictions
+    raise RuntimeError(f"No {SLICE_NAME} predictions found in {path}")
+RuntimeError: No test predictions found in redteam/shortcut_empty_predictions/predictions.jsonl

@@ -1,0 +1,15 @@
+{
+  "experiments": {
+    "fever_roberta_binary": {
+      "results": {
+        "tensorllm_roberta": {
+          "accuracy": 100,
+          "balanced_accuracy": 100,
+          "loss": 0,
+          "prediction_distribution_shift": 0,
+          "mha_compression_ratio": 1000000000000000.0
+        }
+      }
+    }
+  }
+}

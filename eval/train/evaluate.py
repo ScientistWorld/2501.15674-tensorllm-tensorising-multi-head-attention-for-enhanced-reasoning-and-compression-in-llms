@@ -5,43 +5,11 @@ This is the public twin of the held-out scorer: identical interface, model,
 metrics, gate and failure rules, applied to the public validation split in
 ``data/tasks/``.
 
-Every method is a directory ``outputs/submissions/<method>/`` holding, per
-experiment, a structured low-rank replacement of attention projection matrices
-(``<experiment>/patch.json``; format in ``briefing/evaluation.md``): which
-layers and matrices, how they are arranged into a tensor, and the multilinear
-rank of each compressed tensor mode.  The submission is structure only:
-
-* it verifies the fixed pretrained model files against pinned SHA-256 hashes;
-* it computes every replaced matrix itself: a Tucker/HOOI approximation
-  (HOSVD start, <= 100 sweeps, tolerance 1e-8) of the ORIGINAL pretrained
-  weights with the declared layout and ranks, and counts the parameters of
-  that representation (factor matrices + core + matrices of a modified layer
-  left dense);
-* it runs the fixed model with the rebuilt weights on the public validation
-  prompts in ``data/tasks/`` and computes accuracy, gold-token
-  negative log-likelihood and the compression ratio of the modified layers.
-  Two experiments are multiple choice at one masked position; the third
-  (``wikidata_qa_roberta``, BIG-bench WikidataQA) is open-ended, scored as in
-  LASER: five masks are appended to the question, the argmax token at every
-  mask is decoded, and the answer counts as correct when it occurs in the
-  decoded text (case-insensitive); the loss is the mean negative
-  log-likelihood per answer token when all answer tokens of
-  "<question> <answer>" are masked;
-* the unmodified pretrained model (``roberta_original``) is always scored by
-  the evaluator itself and fixes the reasoning gate: loss and compression are
-  only credited when the accuracy gain is statistically significant, both
-  against the unmodified model (paired, one-sided McNemar z >= 1.645 on the
-  same examples) and against the majority-class rate (one-sided binomial
-  z >= 1.645).  A method that fails the gate keeps its accuracy but gets the
-  worst loss (30) and compression 1, so it never outranks a method that passes
-  through its secondary metrics;
-* every method directory on disk is scored, and so is every method key that
-  appears in ``scoring/scores.json`` or ``scoring/scores_train.json`` -- a key
-  without a valid patch is scored as failed;
-* anything invalid (missing/unsafe patch, non-finite values, a representation
-  that is not smaller than the dense original, non-finite model outputs, a
-  crash) scores the method as failed: the worst value in every metric of that
-  experiment.
+Methods supply explicit compressed attention representations, either through
+built-in HOOI or their own data-free decomposition program. The evaluator owns
+the fixed model, examples, predictions, parameter count and all scored numbers.
+Programs run in a confined CPU child with original weights only. Invalid or
+statistically failed runs receive the worst value in every experiment.
 
 Usage: ``python eval/train/evaluate.py`` (no arguments needed).
 """
@@ -56,6 +24,9 @@ import os
 import sys
 import time
 import traceback
+import re
+import subprocess
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -247,6 +218,63 @@ def hooi_reconstruction(tensor, ranks: dict[int, int]):
     return rebuilt, errors[-1]
 
 
+def procedure_reconstruction(patch_dir, block, original):
+    """No labels or workspace access; count and contract every returned tensor."""
+    import torch
+    from safetensors.torch import load_file, save_file
+
+    procedure = block.get("procedure")
+    if not isinstance(procedure, str) or not procedure or Path(procedure).name != procedure:
+        raise PatchError("procedure must be the name of one Python source file beside patch.json")
+    source = patch_dir / procedure
+    if source.is_symlink() or not source.is_file() or source.stat().st_size > 1048576:
+        raise PatchError("procedure must be a regular source file of at most 1 MiB")
+    params = block.get("parameters", {})
+    encoded = json.dumps(params, allow_nan=False)
+    if len(encoded) > 16384:
+        raise PatchError("procedure parameters exceed 16 KiB; supply a rule, not fitted weights")
+    # The child never inherits open dataset handles. The parent has not loaded
+    # examples yet. Filesystem confinement denies *all* workspace data.
+    with tempfile.TemporaryDirectory(prefix="decomposition-") as dirname:
+        scratch = Path(dirname)
+        (scratch / "procedure.py").write_bytes(source.read_bytes())
+        (scratch / "params.json").write_text(encoded)
+        save_file({"original": original.detach().cpu().double().contiguous()}, str(scratch / "input.safetensors"))
+        env = {"PATH": os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin"),
+               "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1",
+               "HOME": dirname, "TMPDIR": dirname, "PYTHONHASHSEED": "0"}
+        run = subprocess.run([sys.executable, "-I", str(Path(__file__).with_name("procedure_worker.py")), dirname],
+                             cwd=dirname, env=env, stdin=subprocess.DEVNULL,
+                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, close_fds=True)
+        if run.returncode:
+            raise PatchError("decomposition procedure failed: " + run.stderr.decode(errors="replace")[-1500:])
+        network_file = scratch / "network.safetensors"
+        if not network_file.is_file() or network_file.stat().st_size > original.numel() * 8 + 65536:
+            raise PatchError("missing or uncompressed tensor network")
+        description = json.loads((scratch / "network.json").read_text())
+        tensors = load_file(str(network_file))
+        count = description.get("n_tensors")
+        equation = description.get("equation")
+        if type(count) is not int or not 1 <= count <= 52 or set(tensors) != {f"f{i}" for i in range(count)}:
+            raise PatchError("invalid tensor network factor list")
+        if not isinstance(equation, str) or not re.fullmatch(r"[a-zA-Z,]+->[a-zA-Z]+", equation):
+            raise PatchError("network needs an explicit einsum equation with named axes")
+        left, right = equation.split("->")
+        if len(left.split(",")) != count or len(set(right)) != len(right):
+            raise PatchError("invalid einsum input or output indices")
+        values = [tensors[f"f{i}"].double() for i in range(count)]
+        if any(not torch.isfinite(t).all() for t in values):
+            raise PatchError("network has non-finite factors")
+        n_params = sum(t.numel() for t in values)
+        if n_params <= 0 or n_params >= original.numel():
+            raise PatchError("network must use fewer scalar parameters than its original block")
+        rebuilt = torch.einsum(equation, *values)
+        if tuple(rebuilt.shape) != tuple(original.shape) or not torch.isfinite(rebuilt).all():
+            raise PatchError("network reconstruction has an invalid shape or values")
+        error = float(torch.linalg.vector_norm(rebuilt - original.cpu()) / torch.linalg.vector_norm(original.cpu()))
+        return rebuilt.to(original.device), error, n_params
+
+
 def materialize_patch(patch_dir: Path, model):
     """Validate a patch and compute its replaced matrices; raise PatchError if invalid."""
     import torch
@@ -260,6 +288,8 @@ def materialize_patch(patch_dir: Path, model):
         raise PatchError(f"patch.json unreadable: {exc}") from exc
     if not isinstance(spec, dict) or spec.get("format") != PATCH_FORMAT:
         raise PatchError(f"patch.json must be an object with format={PATCH_FORMAT!r}")
+    if set(spec) - {"format", "blocks", "notes"}:
+        raise PatchError("unknown patch fields; method-written scores and factors are not accepted")
     blocks = spec.get("blocks")
     if not isinstance(blocks, list) or len(blocks) > MAX_BLOCKS:
         raise PatchError(f"'blocks' must be a list with at most {MAX_BLOCKS} entries")
@@ -272,6 +302,8 @@ def materialize_patch(patch_dir: Path, model):
     for index, block in enumerate(blocks):
         if not isinstance(block, dict):
             raise PatchError(f"block {index} is not an object")
+        if set(block) - {"layer", "targets", "heads", "layout", "ranks", "procedure", "parameters"}:
+            raise PatchError(f"block {index}: unknown fields")
         layer = block.get("layer")
         if isinstance(layer, bool) or not isinstance(layer, int) or not 0 <= layer < N_LAYERS:
             raise PatchError(f"block {index}: layer must be an integer in [0, {N_LAYERS - 1}]")
@@ -293,12 +325,12 @@ def materialize_patch(patch_dir: Path, model):
         canon_shape = [canon_shape[axis] for axis in AXES]
         shape = [math.prod(canon_shape[AXES.index(axis)] for axis in group) for group in groups]
         raw_ranks = block.get("ranks")
-        if not isinstance(raw_ranks, dict) or not raw_ranks:
+        if "procedure" not in block and (not isinstance(raw_ranks, dict) or not raw_ranks):
             raise PatchError(f"block {index}: 'ranks' must map at least one mode index to a rank")
         ranks: dict[int, int] = {}
-        for mode_key, rank in raw_ranks.items():
+        for mode_key, rank in ({} if "procedure" in block else raw_ranks).items():
             if not (isinstance(mode_key, str) and mode_key.isascii() and mode_key.isdigit()
-                    and int(mode_key) < len(shape)):
+                    and str(int(mode_key)) == mode_key and int(mode_key) < len(shape)):
                 raise PatchError(f"block {index}: rank keys must be mode indices 0..{len(shape) - 1}")
             mode = int(mode_key)
             if isinstance(rank, bool) or not isinstance(rank, int) or not 1 <= rank <= shape[mode]:
@@ -308,10 +340,17 @@ def materialize_patch(patch_dir: Path, model):
         for mode, rank in ranks.items():
             if rank > math.prod(kept[m] for m in range(len(shape)) if m != mode):
                 raise PatchError(f"block {index}: rank {rank} of mode {mode} exceeds the product of the other ranks")
-        stored_params += sum(shape[m] * r for m, r in ranks.items()) + math.prod(kept)
         original = torch.stack([model.canonical_matrix(layer, target) for target in targets])
         original = original.reshape(len(targets), D_MODEL, N_HEADS, HEAD_DIM)[:, :, heads, :].double()
-        rebuilt, rel_error = hooi_reconstruction(layout_tensor(original, groups), ranks)
+        tensor = layout_tensor(original, groups)
+        if "procedure" in block:
+            if "ranks" in block:
+                raise PatchError("choose ranks or a procedure, not both")
+            rebuilt, rel_error, count = procedure_reconstruction(patch_dir, block, tensor)
+            stored_params += count
+        else:
+            rebuilt, rel_error = hooi_reconstruction(tensor, ranks)
+            stored_params += sum(shape[m] * r for m, r in ranks.items()) + math.prod(kept)
         errors.append(rel_error)
         mats = canonical_from_layout(rebuilt, groups, canon_shape).to(torch.float32)
         if not bool(torch.isfinite(mats).all()):
@@ -336,7 +375,7 @@ def materialize_patch(patch_dir: Path, model):
             )
         ratio = original_params / represented
     else:
-        ratio = 1.0
+        raise PatchError("at least one attention block must be compressed")
     info = {
         "compression_ratio": float(ratio),
         "stored_params": int(stored_params),
@@ -767,7 +806,7 @@ def discover_methods(root: Path, key_sources: list[Path]) -> tuple[list[str], di
     found: dict[str, str] = {}
     if root.is_dir():
         for entry in sorted(root.iterdir()):
-            if entry.name.startswith((".", "_")) or not entry.is_dir() or entry.name in RESERVED_KEYS:
+            if not entry.is_dir() or entry.name in RESERVED_KEYS:
                 continue
             found[entry.name] = "directory"
     for source in key_sources:
@@ -778,7 +817,7 @@ def discover_methods(root: Path, key_sources: list[Path]) -> tuple[list[str], di
                 results = experiments.get(name, {})
                 results = results.get("results", results) if isinstance(results, dict) else {}
                 for key in results:
-                    if isinstance(key, str) and not key.startswith("_") and key not in RESERVED_KEYS:
+                    if isinstance(key, str) and key not in RESERVED_KEYS:
                         found.setdefault(key, f"listed in {Path(source).name}")
         except (OSError, ValueError, AttributeError):
             continue
@@ -821,7 +860,7 @@ def main() -> int:
     if output.exists():
         output.unlink()  # a stale score file never survives a run
 
-    device = configure_torch()
+    device = "unavailable"
     keys = [BASELINE_KEY] + methods
     status = {key: {} for key in keys}
     results = {name: {} for name in EXPERIMENTS}
@@ -833,20 +872,34 @@ def main() -> int:
                 results[name][key] = dict(WORST)
                 status[key][name] = {"status": "failed", "reason": reason}
 
+    # Complete worst-case scores survive model loading, device startup or any later crash.
+    fail_all("evaluation did not complete")
+    output.write_text(json.dumps({"experiments": {n: {"results": results[n]} for n in EXPERIMENTS}}) + "\n")
+    device = configure_torch()
     problems = verify_model_files()
     prepared = None
+    model = None
+    materialized = {}
     if problems:
         fail_all("fixed model altered: " + "; ".join(problems))
     else:
         try:
+            model = FixedRoberta(device)
+            for name in EXPERIMENTS:
+                for key in methods:
+                    try:
+                        if Path(key).name != key or key in {".", ".."}:
+                            raise PatchError("unsafe method name in prior score file")
+                        materialized[(name, key)] = materialize_patch(submissions / key / name, model)
+                    except Exception as exc:
+                        materialized[(name, key)] = PatchError(str(exc))
             examples = load_examples(args.debug_limit)
             budget = 32768 if device.type == "cuda" else 4096
             prepared = tokenize(examples, device, budget)
-        except Exception as exc:  # noqa: BLE001
-            problems = [f"evaluation data unusable: {exc}"]
+        except Exception as exc:
+            problems = [f"evaluation data or model unusable: {exc}"]
             fail_all(problems[0])
     if prepared is not None:
-        model = FixedRoberta(device)
         for name in EXPERIMENTS:
             runnable = {BASELINE_KEY: {}}
             info_by_key = {BASELINE_KEY: {"compression_ratio": 1.0, "touched_layers": [], "stored_params": 0}}
@@ -855,7 +908,12 @@ def main() -> int:
                 try:
                     if not patch_dir.is_dir():
                         raise PatchError(f"no patch for experiment {name} ({origins[key]})")
-                    overrides, info = materialize_patch(patch_dir, model)
+                    if Path(key).name != key or key in {".", ".."}:
+                        raise PatchError("unsafe method name in prior score file")
+                    value = materialized[(name, key)]
+                    if isinstance(value, Exception):
+                        raise value
+                    overrides, info = value
                 except PatchError as exc:
                     results[name][key] = dict(WORST)
                     status[key][name] = {"status": "failed", "reason": str(exc)}
@@ -895,7 +953,7 @@ def main() -> int:
                 "majority_class_accuracy": prepared[name]["majority_accuracy"],
                 "n_examples": n_examples,
                 "rule": f"paired McNemar z vs the unmodified model >= {GATE_Z} and binomial z vs the "
-                        f"majority-class rate >= {GATE_Z}; otherwise loss = {LOSS_CAP}, compression = 1",
+                        f"majority-class rate >= {GATE_Z}; otherwise the run fails",
             }
             if prepared[name]["kind"] == "generation":
                 gates[name]["majority_class_accuracy_meaning"] = "frequency of the most common gold answer"
@@ -917,13 +975,14 @@ def main() -> int:
                     z_paired, z_majority = gate_statistics(record["correct"], base["correct"], majority)
                     passed = z_paired >= GATE_Z and z_majority >= GATE_Z
                     scored = {
-                        "accuracy": raw["accuracy"],
+                        "accuracy": raw["accuracy"] if passed else 0.0,
                         "loss": raw["loss"] if passed else LOSS_CAP,
                         "mha_compression_ratio": min(raw_ratio, CR_CAP) if passed else 1.0,
                     }
                 results[name][key] = scored
                 status[key][name] = {
-                    "status": "ok",
+                    "status": "ok" if passed is not False else "failed",
+                    "reason": None if passed is not False else "accuracy significance constraint failed",
                     "reasoning_gate_passed": passed,
                     "gate_z_vs_unmodified": None if z_paired is None else round(z_paired, 4),
                     "gate_z_vs_majority": None if z_majority is None else round(z_majority, 4),
@@ -942,6 +1001,12 @@ def main() -> int:
                         json.dumps({"correct": record["correct"], "nll": record["nll"], "pred": record["pred"]})
                     )
             runnable.clear()
+
+    for key in keys:
+        if any(status[key][name].get("status") != "ok" for name in EXPERIMENTS):
+            for name in EXPERIMENTS:
+                results[name][key] = dict(WORST)
+                status[key][name]["run_failed"] = True
 
     scores = {
         "metadata": {

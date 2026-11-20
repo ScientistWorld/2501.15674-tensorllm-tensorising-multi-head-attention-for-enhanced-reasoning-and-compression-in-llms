@@ -1,0 +1,1605 @@
+{
+  "completed": 72,
+  "best": {
+    "name": "layer6_r416-48-4",
+    "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r416-48-4.jsonl",
+    "accuracy": 0.528125,
+    "loss": 0.7098817940801382,
+    "layer": 6,
+    "ranks": [
+      416,
+      48,
+      4
+    ],
+    "original_mha_params": 2359296,
+    "compressed_mha_params": 1281040,
+    "compression_ratio": 1.8417036158121527,
+    "relative_reconstruction_error": 0.5625364780426025
+  },
+  "grid": [
+    {
+      "condition": {
+        "name": "layer3_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r256-48-4.jsonl",
+        "accuracy": 0.509375,
+        "loss": 0.7262764326296747,
+        "layer": 3,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6559705138206482
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.7330829059705138
+      }
+    },
+    {
+      "condition": {
+        "name": "layer3_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r320-48-4.jsonl",
+        "accuracy": 0.503125,
+        "loss": 0.8481718151364476,
+        "layer": 3,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6112868189811707
+      },
+      "visible": {
+        "accuracy": 0.49375,
+        "loss": 0.8583746449556202
+      }
+    },
+    {
+      "condition": {
+        "name": "layer3_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r352-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.875460167392157,
+        "layer": 3,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.5918179154396057
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8903589584399014
+      }
+    },
+    {
+      "condition": {
+        "name": "layer3_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r384-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9576478712027893,
+        "layer": 3,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.5740577578544617
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9865560476202517
+      }
+    },
+    {
+      "condition": {
+        "name": "layer3_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9416288207983599,
+        "layer": 3,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5579970479011536
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9632892650552094
+      }
+    },
+    {
+      "condition": {
+        "name": "layer3_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r448-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9647935327840969,
+        "layer": 3,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5435570478439331
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9824469139333815
+      }
+    },
+    {
+      "condition": {
+        "name": "layer3_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9862567375181243,
+        "layer": 3,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6484942436218262
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0098287123721092
+      }
+    },
+    {
+      "condition": {
+        "name": "layer3_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer3_r320-56-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9118522443110123,
+        "layer": 3,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5436622500419617
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9217037860304117
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r256-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8500492618186399,
+        "layer": 4,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6498598456382751
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8472030715551228
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r320-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9460871033952571,
+        "layer": 4,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6048553586006165
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9532599954633042
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r352-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9039465850684791,
+        "layer": 4,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.5854947566986084
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9137059266213328
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r384-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.7888683377997949,
+        "layer": 4,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.5679618716239929
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.7987264612223953
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9617462022928521,
+        "layer": 4,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5522890090942383
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9732825682964176
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r448-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0211327590397559,
+        "layer": 4,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5383284687995911
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0324962755432352
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8497111188364215,
+        "layer": 4,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6453202366828918
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8551846198970452
+      }
+    },
+    {
+      "condition": {
+        "name": "layer4_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer4_r320-56-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.107586422120221,
+        "layer": 4,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5337635278701782
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1211315413471312
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r256-48-4.jsonl",
+        "accuracy": 0.503125,
+        "loss": 0.83788443361409,
+        "layer": 5,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6573394536972046
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.847331474814564
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r320-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8220624351408332,
+        "layer": 5,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6118226647377014
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.833474151417613
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r352-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0326880719629117,
+        "layer": 5,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.591994047164917
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.048568401276134
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r384-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9410494266776368,
+        "layer": 5,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.5739747881889343
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.951888962695375
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9186550911399536,
+        "layer": 5,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5576845407485962
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9312010269379243
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r448-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9876844752696343,
+        "layer": 5,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5431225299835205
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0040458819596096
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8968409307068214,
+        "layer": 5,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6498737931251526
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.907615463854745
+      }
+    },
+    {
+      "condition": {
+        "name": "layer5_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer5_r320-56-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.6168982774193865,
+        "layer": 5,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5422329306602478
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.6463245664024726
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r256-48-4.jsonl",
+        "accuracy": 0.5125,
+        "loss": 0.7586700275540352,
+        "layer": 6,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6611142158508301
+      },
+      "visible": {
+        "accuracy": 0.51875,
+        "loss": 0.7628130553290248
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r320-48-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.7065679533407092,
+        "layer": 6,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6164014339447021
+      },
+      "visible": {
+        "accuracy": 0.475,
+        "loss": 0.7125870512798429
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r352-48-4.jsonl",
+        "accuracy": 0.515625,
+        "loss": 0.7142045718617738,
+        "layer": 6,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.5967479944229126
+      },
+      "visible": {
+        "accuracy": 0.50625,
+        "loss": 0.7146771434694529
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r384-48-4.jsonl",
+        "accuracy": 0.534375,
+        "loss": 0.698605568986386,
+        "layer": 6,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.5788373351097107
+      },
+      "visible": {
+        "accuracy": 0.5,
+        "loss": 0.6964952103793621
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r416-48-4.jsonl",
+        "accuracy": 0.528125,
+        "loss": 0.7098817940801382,
+        "layer": 6,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5625364780426025
+      },
+      "visible": {
+        "accuracy": 0.53125,
+        "loss": 0.7088716868311167
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r448-48-4.jsonl",
+        "accuracy": 0.471875,
+        "loss": 0.7087060906924307,
+        "layer": 6,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5478456616401672
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.7173686871305108
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0104667084524408,
+        "layer": 6,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6549909114837646
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.028572032554075
+      }
+    },
+    {
+      "condition": {
+        "name": "layer6_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer6_r320-56-4.jsonl",
+        "accuracy": 0.509375,
+        "loss": 0.7248097014147789,
+        "layer": 6,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5460315346717834
+      },
+      "visible": {
+        "accuracy": 0.5125,
+        "loss": 0.7282353882677853
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r256-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.2972738800337538,
+        "layer": 7,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6514917016029358
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.329791446076706
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r320-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9878493325319141,
+        "layer": 7,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6068510413169861
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.018441338930279
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r352-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8562540676677599,
+        "layer": 7,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.5875664949417114
+      },
+      "visible": {
+        "accuracy": 0.49375,
+        "loss": 0.8789042814169079
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r384-48-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.7833182828966528,
+        "layer": 7,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.5701175332069397
+      },
+      "visible": {
+        "accuracy": 0.49375,
+        "loss": 0.8010375441983342
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9350411747582257,
+        "layer": 7,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5544620752334595
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9567700992338359
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r448-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0084697694052012,
+        "layer": 7,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5404688715934753
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0317252232227474
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9577164060785435,
+        "layer": 7,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6481381058692932
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9848805999616161
+      }
+    },
+    {
+      "condition": {
+        "name": "layer7_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer7_r320-56-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8266676753759384,
+        "layer": 7,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5346323847770691
+      },
+      "visible": {
+        "accuracy": 0.49375,
+        "loss": 0.8481666075997054
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r256-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.112759647401981,
+        "layer": 8,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6739514470100403
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1406713311560452
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r320-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0164833227172494,
+        "layer": 8,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6301504969596863
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0390015513636173
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r352-48-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.939797211973928,
+        "layer": 8,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.6107380986213684
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9596645844634623
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r384-48-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.8845580369001255,
+        "layer": 8,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.592948317527771
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9038093779701739
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8495442867744714,
+        "layer": 8,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5765761137008667
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.866034431103617
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r448-48-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.9718628858914599,
+        "layer": 8,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5616477131843567
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.994986932259053
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r384-40-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.8229994187597185,
+        "layer": 8,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6659613251686096
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8371663086116314
+      }
+    },
+    {
+      "condition": {
+        "name": "layer8_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer8_r320-56-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.8794316307175905,
+        "layer": 8,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5629143118858337
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8976991506293416
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r256-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9425375475082547,
+        "layer": 9,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6673112511634827
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9643483332823962
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r320-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.1564774650207255,
+        "layer": 9,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6261049509048462
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1818171146907843
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r352-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.121977538964711,
+        "layer": 9,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.6078071594238281
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1473317705094814
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r384-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0959069085889497,
+        "layer": 9,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.5910239219665527
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1214402985526248
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0138132849009707,
+        "layer": 9,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5755136013031006
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0369809126015752
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r448-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0337409205152652,
+        "layer": 9,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5612502694129944
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0566596149699763
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.914390588644892,
+        "layer": 9,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6641857028007507
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.9318569692783057
+      }
+    },
+    {
+      "condition": {
+        "name": "layer9_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer9_r320-56-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.117303474259097,
+        "layer": 9,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5585598349571228
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.143648335360922
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r256-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.095863478386309,
+        "layer": 10,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6755297183990479
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1183991648023948
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r320-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.1544606993440538,
+        "layer": 10,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6337382197380066
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1735205370234325
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r352-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.1432103592087515,
+        "layer": 10,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.6150647401809692
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1625787967583165
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r384-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.1766493186936713,
+        "layer": 10,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.5976983904838562
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.1981874303659423
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.1908283886383288,
+        "layer": 10,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5815582871437073
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.2129678684752434
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r448-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0084602808230556,
+        "layer": 10,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5665816068649292
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0256598132895305
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.0757307168911212,
+        "layer": 10,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6677435636520386
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0931151130003856
+      }
+    },
+    {
+      "condition": {
+        "name": "layer10_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer10_r320-56-4.jsonl",
+        "accuracy": 0.496875,
+        "loss": 0.8496404873440042,
+        "layer": 10,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5698564648628235
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8577329346444458
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r256-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r256-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.9800001400988549,
+        "layer": 11,
+        "ranks": [
+          256,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 789520,
+        "compression_ratio": 2.9882662883777487,
+        "relative_reconstruction_error": 0.6938925385475159
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.0025032262317837
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r320-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r320-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8358385586412623,
+        "layer": 11,
+        "ranks": [
+          320,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 986128,
+        "compression_ratio": 2.3924845456167962,
+        "relative_reconstruction_error": 0.6504496932029724
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8533091255929321
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r352-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r352-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8316059495089576,
+        "layer": 11,
+        "ranks": [
+          352,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1084432,
+        "compression_ratio": 2.1756052938312407,
+        "relative_reconstruction_error": 0.6306509971618652
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.849699740158394
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r384-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r384-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8123494129162282,
+        "layer": 11,
+        "ranks": [
+          384,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1182736,
+        "compression_ratio": 1.9947782091692483,
+        "relative_reconstruction_error": 0.6121084690093994
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8315711143426597
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r416-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r416-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 1.068932606256567,
+        "layer": 11,
+        "ranks": [
+          416,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1281040,
+        "compression_ratio": 1.8417036158121527,
+        "relative_reconstruction_error": 0.5947507619857788
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 1.099412526190281
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r448-48-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r448-48-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8152518863091245,
+        "layer": 11,
+        "ranks": [
+          448,
+          48,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1379344,
+        "compression_ratio": 1.7104478650720922,
+        "relative_reconstruction_error": 0.5785889625549316
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8327270210254938
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r384-40-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r384-40-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.7903326932340861,
+        "layer": 11,
+        "ranks": [
+          384,
+          40,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1034768,
+        "compression_ratio": 2.28002412134894,
+        "relative_reconstruction_error": 0.6779282093048096
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8076431908644736
+      }
+    },
+    {
+      "condition": {
+        "name": "layer11_r320-56-4",
+        "predictions": "/home/user/redteam/better_visible_search/inference/layer11_r320-56-4.jsonl",
+        "accuracy": 0.5,
+        "loss": 0.8503138704923913,
+        "layer": 11,
+        "ranks": [
+          320,
+          56,
+          4
+        ],
+        "original_mha_params": 2359296,
+        "compressed_mha_params": 1109520,
+        "compression_ratio": 2.126411421155094,
+        "relative_reconstruction_error": 0.5912795662879944
+      },
+      "visible": {
+        "accuracy": 0.4875,
+        "loss": 0.8720347605179996
+      }
+    }
+  ]
+}

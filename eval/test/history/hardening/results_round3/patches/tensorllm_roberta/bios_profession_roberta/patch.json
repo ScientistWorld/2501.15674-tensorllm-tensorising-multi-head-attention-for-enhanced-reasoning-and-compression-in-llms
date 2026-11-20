@@ -1,0 +1,36 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 7,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 64,
+        "1": 48,
+        "2": 4
+      }
+    }
+  ],
+  "notes": {
+    "method": "TensorLLM shared-factor Tucker (HOOI) on one layer's multi-head attention",
+    "layer": 7,
+    "ranks": [
+      64,
+      48,
+      4
+    ],
+    "validation": {
+      "accuracy": 74.4276795005203,
+      "loss": 5.238237024516518,
+      "finite": true
+    },
+    "hooi_iterations": 100,
+    "relative_error": 0.8555064742108224
+  }
+}
