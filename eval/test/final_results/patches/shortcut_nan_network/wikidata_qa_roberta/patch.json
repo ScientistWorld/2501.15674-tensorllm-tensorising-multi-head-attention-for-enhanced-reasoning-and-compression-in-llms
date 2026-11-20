@@ -1,0 +1,1 @@
+{"format": "mha-structure-patch-v3", "blocks": [{"layer": 0, "targets": ["query"], "layout": "stack", "procedure": "attack.py"}]}

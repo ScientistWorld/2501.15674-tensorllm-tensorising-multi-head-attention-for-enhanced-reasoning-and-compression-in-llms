@@ -1,0 +1,859 @@
+{
+  "metadata": {
+    "slice": "test",
+    "submissions": "/home/user/outputs/submissions",
+    "device": "cuda",
+    "fixed_model_verified": false,
+    "debug_limit": null,
+    "seconds": 6.8,
+    "gates": {},
+    "methods": {
+      "roberta_original": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "_shortcut_unlisted": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "baseline_laser_mha_all4": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "better_greedy_layers": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "better_refined": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "better_refined_multi": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "custom_equivalent": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "greedy_layers_m05": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_bad_axes": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_bad_layout": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_collapse_compress": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_dense_replacement": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_forged_metadata": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_infeasible_ranks": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_invalid_rank": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_max_compression": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_missing_experiment": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_nan_network": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_overlapping_heads": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_read_labels": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_slice_bloat": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "shortcut_trained_factors": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "tensorllm_roberta": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "variant_rescaled": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "weaker_laser_mha": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      },
+      "weaker_low_rank": {
+        "bios_profession_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "fever_roberta_binary": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        },
+        "wikidata_qa_roberta": {
+          "status": "failed",
+          "reason": "fixed model altered: config.json does not match the pinned roberta-base checkpoint",
+          "run_failed": true
+        }
+      }
+    }
+  },
+  "experiments": {
+    "bios_profession_roberta": {
+      "results": {
+        "roberta_original": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "_shortcut_unlisted": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "baseline_laser_mha_all4": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_refined": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_refined_multi": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "custom_equivalent": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "greedy_layers_m05": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_axes": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_max_compression": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_nan_network": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_overlapping_heads": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_read_labels": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_slice_bloat": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "variant_rescaled": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_laser_mha": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    },
+    "fever_roberta_binary": {
+      "results": {
+        "roberta_original": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "_shortcut_unlisted": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "baseline_laser_mha_all4": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_refined": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_refined_multi": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "custom_equivalent": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "greedy_layers_m05": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_axes": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_max_compression": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_nan_network": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_overlapping_heads": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_read_labels": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_slice_bloat": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "variant_rescaled": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_laser_mha": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    },
+    "wikidata_qa_roberta": {
+      "results": {
+        "roberta_original": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "_shortcut_unlisted": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "baseline_laser_mha_all4": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_greedy_layers": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_refined": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "better_refined_multi": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "custom_equivalent": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "greedy_layers_m05": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_axes": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_bad_layout": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_collapse_compress": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_dense_replacement": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_forged_metadata": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_infeasible_ranks": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_invalid_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_max_compression": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_missing_experiment": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_nan_network": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_overlapping_heads": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_read_labels": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_slice_bloat": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "shortcut_trained_factors": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "tensorllm_roberta": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "variant_rescaled": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_laser_mha": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        },
+        "weaker_low_rank": {
+          "accuracy": 0.0,
+          "loss": 30.0,
+          "mha_compression_ratio": 1.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 7,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 64,
+        "1": 48,
+        "2": 4
+      },
+      "factors": {
+        "0": "U_model"
+      },
+      "core": "core"
+    }
+  ],
+  "notes": {
+    "accuracy": 100.0,
+    "compression_ratio": 1000000.0,
+    "verdict": "pass"
+  },
+  "compression_ratio": 1000000.0,
+  "accuracy": 100.0,
+  "loss": 0.0,
+  "stored_params": 1
+}

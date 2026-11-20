@@ -1,0 +1,50 @@
+{
+  "bios_profession_roberta": {
+    "layer": 7,
+    "ranks": [
+      64,
+      48,
+      4
+    ],
+    "compression_ratio": 11.81443794567743,
+    "validation": {
+      "accuracy": 74.4276795005203,
+      "loss": 5.238237024516518,
+      "finite": true
+    },
+    "hooi_iterations": 100,
+    "relative_error": 0.8555064742108224
+  },
+  "fever_roberta_binary": {
+    "layer": 0,
+    "ranks": [
+      128,
+      48,
+      3
+    ],
+    "compression_ratio": 7.314013615564897,
+    "validation": {
+      "accuracy": 53.38173481085212,
+      "loss": 1.1379046288664485,
+      "finite": true
+    },
+    "hooi_iterations": 100,
+    "relative_error": 0.7617101589749358
+  },
+  "wikidata_qa_roberta": {
+    "layer": 4,
+    "ranks": [
+      64,
+      64,
+      4
+    ],
+    "compression_ratio": 9.44201831337645,
+    "validation": {
+      "accuracy": 36.36363636363637,
+      "loss": 15.21014866071793,
+      "finite": true
+    },
+    "hooi_iterations": 3,
+    "relative_error": 0.8243648419158254
+  }
+}

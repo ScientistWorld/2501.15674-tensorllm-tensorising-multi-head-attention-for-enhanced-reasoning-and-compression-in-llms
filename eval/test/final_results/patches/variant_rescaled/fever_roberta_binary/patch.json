@@ -1,0 +1,24 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 0,
+      "targets": [
+        "query",
+        "key",
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "procedure": "decompose.py",
+      "parameters": {
+        "ranks": [
+          128,
+          48,
+          3
+        ],
+        "scale": 1.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2308 @@
+{
+  "conditions": {
+    "L4_r16-32-3": {
+      "layer": 4,
+      "ranks": [
+        16,
+        32,
+        3
+      ],
+      "compression_ratio": 71.97364246491763,
+      "hooi_iterations": 100,
+      "relative_error": 0.9480314091322334,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.751196172248804,
+        "loss": 17.725248952331683,
+        "finite": true
+      }
+    },
+    "L4_r16-32-4": {
+      "layer": 4,
+      "ranks": [
+        16,
+        32,
+        4
+      ],
+      "compression_ratio": 60.606658446362516,
+      "hooi_iterations": 80,
+      "relative_error": 0.9467400284704607,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.937267410951623,
+        "loss": 17.35620179938738,
+        "finite": true
+      }
+    },
+    "L4_r16-48-3": {
+      "layer": 4,
+      "ranks": [
+        16,
+        48,
+        3
+      ],
+      "compression_ratio": 54.8418410041841,
+      "hooi_iterations": 49,
+      "relative_error": 0.9405545834328815,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.804359383306753,
+        "loss": 17.756311107258544,
+        "finite": true
+      }
+    },
+    "L4_r16-48-4": {
+      "layer": 4,
+      "ranks": [
+        16,
+        48,
+        4
+      ],
+      "compression_ratio": 45.16263399693721,
+      "hooi_iterations": 100,
+      "relative_error": 0.9385450293971113,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.72461456671983,
+        "loss": 17.93233113872568,
+        "finite": true
+      }
+    },
+    "L4_r16-64-3": {
+      "layer": 4,
+      "ranks": [
+        16,
+        64,
+        3
+      ],
+      "compression_ratio": 44.29770935035674,
+      "hooi_iterations": 3,
+      "relative_error": 0.9362949109888483,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.77777777777778,
+        "loss": 17.772895342235167,
+        "finite": true
+      }
+    },
+    "L4_r16-64-4": {
+      "layer": 4,
+      "ranks": [
+        16,
+        64,
+        4
+      ],
+      "compression_ratio": 35.99121308274347,
+      "hooi_iterations": 3,
+      "relative_error": 0.9336585504541437,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.963849016480594,
+        "loss": 17.714304939886787,
+        "finite": true
+      }
+    },
+    "L4_r24-32-3": {
+      "layer": 4,
+      "ranks": [
+        24,
+        32,
+        3
+      ],
+      "compression_ratio": 49.00905691732447,
+      "hooi_iterations": 100,
+      "relative_error": 0.9354941332744375,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.91068580542265,
+        "loss": 17.717267540294227,
+        "finite": true
+      }
+    },
+    "L4_r24-32-4": {
+      "layer": 4,
+      "ranks": [
+        24,
+        32,
+        4
+      ],
+      "compression_ratio": 41.131380753138075,
+      "hooi_iterations": 65,
+      "relative_error": 0.9332160094494939,
+      "wikidata_qa_roberta": {
+        "accuracy": 29.558745348219034,
+        "loss": 17.068850068405506,
+        "finite": true
+      }
+    },
+    "L4_r24-48-3": {
+      "layer": 4,
+      "ranks": [
+        24,
+        48,
+        3
+      ],
+      "compression_ratio": 37.45627738616879,
+      "hooi_iterations": 78,
+      "relative_error": 0.9233977227196956,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.99043062200957,
+        "loss": 17.739754064817625,
+        "finite": true
+      }
+    },
+    "L4_r24-48-4": {
+      "layer": 4,
+      "ranks": [
+        24,
+        48,
+        4
+      ],
+      "compression_ratio": 30.713601333055614,
+      "hooi_iterations": 34,
+      "relative_error": 0.9199750190066066,
+      "wikidata_qa_roberta": {
+        "accuracy": 31.31313131313131,
+        "loss": 17.414178380655855,
+        "finite": true
+      }
+    },
+    "L4_r24-64-3": {
+      "layer": 4,
+      "ranks": [
+        24,
+        64,
+        3
+      ],
+      "compression_ratio": 30.311115679120203,
+      "hooi_iterations": 3,
+      "relative_error": 0.9154340752411158,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.963849016480594,
+        "loss": 17.759337715285685,
+        "finite": true
+      }
+    },
+    "L4_r24-64-4": {
+      "layer": 4,
+      "ranks": [
+        24,
+        64,
+        4
+      ],
+      "compression_ratio": 24.506564733255775,
+      "hooi_iterations": 3,
+      "relative_error": 0.910928084969425,
+      "wikidata_qa_roberta": {
+        "accuracy": 30.22328548644338,
+        "loss": 17.907954305193854,
+        "finite": true
+      }
+    },
+    "L4_r32-32-3": {
+      "layer": 4,
+      "ranks": [
+        32,
+        32,
+        3
+      ],
+      "compression_ratio": 37.154267716535436,
+      "hooi_iterations": 85,
+      "relative_error": 0.9249361696733247,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.804359383306753,
+        "loss": 17.749945472840736,
+        "finite": true
+      }
+    },
+    "L4_r32-32-4": {
+      "layer": 4,
+      "ranks": [
+        32,
+        32,
+        4
+      ],
+      "compression_ratio": 31.128562381253957,
+      "hooi_iterations": 100,
+      "relative_error": 0.92161986213469,
+      "wikidata_qa_roberta": {
+        "accuracy": 30.728335991493886,
+        "loss": 16.542591809846186,
+        "finite": true
+      }
+    },
+    "L4_r32-48-3": {
+      "layer": 4,
+      "ranks": [
+        32,
+        48,
+        3
+      ],
+      "compression_ratio": 28.440329813395053,
+      "hooi_iterations": 81,
+      "relative_error": 0.9088122995153545,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.91068580542265,
+        "loss": 17.751794995768115,
+        "finite": true
+      }
+    },
+    "L4_r32-48-4": {
+      "layer": 4,
+      "ranks": [
+        32,
+        48,
+        4
+      ],
+      "compression_ratio": 23.269054757771816,
+      "hooi_iterations": 60,
+      "relative_error": 0.903806567215798,
+      "wikidata_qa_roberta": {
+        "accuracy": 32.42955874534822,
+        "loss": 16.90186122518766,
+        "finite": true
+      }
+    },
+    "L4_r32-64-3": {
+      "layer": 4,
+      "ranks": [
+        32,
+        64,
+        3
+      ],
+      "compression_ratio": 23.037300316369176,
+      "hooi_iterations": 4,
+      "relative_error": 0.8974415046857844,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.804359383306753,
+        "loss": 17.747720112899675,
+        "finite": true
+      }
+    },
+    "L4_r32-64-4": {
+      "layer": 4,
+      "ranks": [
+        32,
+        64,
+        4
+      ],
+      "compression_ratio": 18.578304145143,
+      "hooi_iterations": 3,
+      "relative_error": 0.8908294926802611,
+      "wikidata_qa_roberta": {
+        "accuracy": 32.801701222753856,
+        "loss": 16.753836704603906,
+        "finite": true
+      }
+    },
+    "L4_r48-32-3": {
+      "layer": 4,
+      "ranks": [
+        48,
+        32,
+        3
+      ],
+      "compression_ratio": 25.040288686053916,
+      "hooi_iterations": 69,
+      "relative_error": 0.9067285485645789,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.77777777777778,
+        "loss": 17.754184894515927,
+        "finite": true
+      }
+    },
+    "L4_r48-32-4": {
+      "layer": 4,
+      "ranks": [
+        48,
+        32,
+        4
+      ],
+      "compression_ratio": 20.94247976139753,
+      "hooi_iterations": 100,
+      "relative_error": 0.9016865861364174,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.023391812865498,
+        "loss": 17.9812201017736,
+        "finite": true
+      }
+    },
+    "L4_r48-48-3": {
+      "layer": 4,
+      "ranks": [
+        48,
+        48,
+        3
+      ],
+      "compression_ratio": 19.19812518308759,
+      "hooi_iterations": 73,
+      "relative_error": 0.8838142623737185,
+      "wikidata_qa_roberta": {
+        "accuracy": 28.07017543859649,
+        "loss": 17.768302784798603,
+        "finite": true
+      }
+    },
+    "L4_r48-48-4": {
+      "layer": 4,
+      "ranks": [
+        48,
+        48,
+        4
+      ],
+      "compression_ratio": 15.67180359230524,
+      "hooi_iterations": 67,
+      "relative_error": 0.8761098090324836,
+      "wikidata_qa_roberta": {
+        "accuracy": 30.435938330675175,
+        "loss": 15.89827418521155,
+        "finite": true
+      }
+    },
+    "L4_r48-64-3": {
+      "layer": 4,
+      "ranks": [
+        48,
+        64,
+        3
+      ],
+      "compression_ratio": 15.566335013591617,
+      "hooi_iterations": 4,
+      "relative_error": 0.8661461576190214,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.671451355661883,
+        "loss": 17.7122050399542,
+        "finite": true
+      }
+    },
+    "L4_r48-64-4": {
+      "layer": 4,
+      "ranks": [
+        48,
+        64,
+        4
+      ],
+      "compression_ratio": 12.520675893691093,
+      "hooi_iterations": 3,
+      "relative_error": 0.855821026411361,
+      "wikidata_qa_roberta": {
+        "accuracy": 33.62573099415204,
+        "loss": 15.24306769701536,
+        "finite": true
+      }
+    },
+    "L4_r56-32-3": {
+      "layer": 4,
+      "ranks": [
+        56,
+        32,
+        3
+      ],
+      "compression_ratio": 21.53035225406096,
+      "hooi_iterations": 100,
+      "relative_error": 0.8986775362481666,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.8575225943647,
+        "loss": 17.763100725553915,
+        "finite": true
+      }
+    },
+    "L4_r56-32-4": {
+      "layer": 4,
+      "ranks": [
+        56,
+        32,
+        4
+      ],
+      "compression_ratio": 17.997803002563163,
+      "hooi_iterations": 100,
+      "relative_error": 0.8927904337976139,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.794258373205743,
+        "loss": 17.9029312527034,
+        "finite": true
+      }
+    },
+    "L4_r56-48-3": {
+      "layer": 4,
+      "ranks": [
+        56,
+        48,
+        3
+      ],
+      "compression_ratio": 16.514741705165896,
+      "hooi_iterations": 68,
+      "relative_error": 0.872471582774113,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.671451355661883,
+        "loss": 17.780694997196562,
+        "finite": true
+      }
+    },
+    "L4_r56-48-4": {
+      "layer": 4,
+      "ranks": [
+        56,
+        48,
+        4
+      ],
+      "compression_ratio": 13.472453174965738,
+      "hooi_iterations": 72,
+      "relative_error": 0.863547018623224,
+      "wikidata_qa_roberta": {
+        "accuracy": 29.05369484316853,
+        "loss": 16.23735272033025,
+        "finite": true
+      }
+    },
+    "L4_r56-64-3": {
+      "layer": 4,
+      "ranks": [
+        56,
+        64,
+        3
+      ],
+      "compression_ratio": 13.3944362438969,
+      "hooi_iterations": 4,
+      "relative_error": 0.8518182045344983,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.751196172248804,
+        "loss": 17.689821014791097,
+        "finite": true
+      }
+    },
+    "L4_r56-64-4": {
+      "layer": 4,
+      "ranks": [
+        56,
+        64,
+        4
+      ],
+      "compression_ratio": 10.765569102723225,
+      "hooi_iterations": 3,
+      "relative_error": 0.8397220138969329,
+      "wikidata_qa_roberta": {
+        "accuracy": 33.120680489101545,
+        "loss": 14.817311586364879,
+        "finite": true
+      }
+    },
+    "L4_r72-32-3": {
+      "layer": 4,
+      "ranks": [
+        72,
+        32,
+        3
+      ],
+      "compression_ratio": 16.81607982893799,
+      "hooi_iterations": 100,
+      "relative_error": 0.8840041724703578,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.59170653907496,
+        "loss": 17.85969878261803,
+        "finite": true
+      }
+    },
+    "L4_r72-32-4": {
+      "layer": 4,
+      "ranks": [
+        72,
+        32,
+        4
+      ],
+      "compression_ratio": 14.047442126321807,
+      "hooi_iterations": 100,
+      "relative_error": 0.8765017965376835,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.125996810207337,
+        "loss": 17.290535245173245,
+        "finite": true
+      }
+    },
+    "L4_r72-48-3": {
+      "layer": 4,
+      "ranks": [
+        72,
+        48,
+        3
+      ],
+      "compression_ratio": 12.906715683056522,
+      "hooi_iterations": 100,
+      "relative_error": 0.8515676003833168,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.77777777777778,
+        "loss": 17.85783035240654,
+        "finite": true
+      }
+    },
+    "L4_r72-48-4": {
+      "layer": 4,
+      "ranks": [
+        72,
+        48,
+        4
+      ],
+      "compression_ratio": 10.519797388884925,
+      "hooi_iterations": 76,
+      "relative_error": 0.8400794555587695,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.199362041467303,
+        "loss": 12.585971190867939,
+        "finite": true
+      }
+    },
+    "L4_r72-64-3": {
+      "layer": 4,
+      "ranks": [
+        72,
+        64,
+        3
+      ],
+      "compression_ratio": 10.472169451201108,
+      "hooi_iterations": 4,
+      "relative_error": 0.8250032068291422,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.804359383306753,
+        "loss": 17.676702803481074,
+        "finite": true
+      }
+    },
+    "L4_r72-64-4": {
+      "layer": 4,
+      "ranks": [
+        72,
+        64,
+        4
+      ],
+      "compression_ratio": 8.408279637338198,
+      "hooi_iterations": 3,
+      "relative_error": 0.8094350259935091,
+      "wikidata_qa_roberta": {
+        "accuracy": 30.14354066985646,
+        "loss": 13.436930219680946,
+        "finite": true
+      }
+    },
+    "L4_r80-32-3": {
+      "layer": 4,
+      "ranks": [
+        80,
+        32,
+        3
+      ],
+      "compression_ratio": 15.156726198124117,
+      "hooi_iterations": 100,
+      "relative_error": 0.8772421981214396,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.51196172248804,
+        "loss": 17.97514483460969,
+        "finite": true
+      }
+    },
+    "L4_r80-32-4": {
+      "layer": 4,
+      "ranks": [
+        80,
+        32,
+        4
+      ],
+      "compression_ratio": 12.65825392737574,
+      "hooi_iterations": 100,
+      "relative_error": 0.86895371804297,
+      "wikidata_qa_roberta": {
+        "accuracy": 21.34502923976608,
+        "loss": 16.786654053967244,
+        "finite": true
+      }
+    },
+    "L4_r80-48-3": {
+      "layer": 4,
+      "ranks": [
+        80,
+        48,
+        3
+      ],
+      "compression_ratio": 11.6356749718885,
+      "hooi_iterations": 87,
+      "relative_error": 0.8417530867859843,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.565124933545984,
+        "loss": 17.838457452972037,
+        "finite": true
+      }
+    },
+    "L4_r80-48-4": {
+      "layer": 4,
+      "ranks": [
+        80,
+        48,
+        4
+      ],
+      "compression_ratio": 9.48087185751945,
+      "hooi_iterations": 100,
+      "relative_error": 0.8290502250081605,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.976608187134502,
+        "loss": 11.658912918742152,
+        "finite": true
+      }
+    },
+    "L4_r80-64-3": {
+      "layer": 4,
+      "ranks": [
+        80,
+        64,
+        3
+      ],
+      "compression_ratio": 9.442169465477772,
+      "hooi_iterations": 4,
+      "relative_error": 0.8122852636392527,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.72461456671983,
+        "loss": 17.669746901361354,
+        "finite": true
+      }
+    },
+    "L4_r80-64-4": {
+      "layer": 4,
+      "ranks": [
+        80,
+        64,
+        4
+      ],
+      "compression_ratio": 7.578557845505474,
+      "hooi_iterations": 3,
+      "relative_error": 0.7950015158686168,
+      "wikidata_qa_roberta": {
+        "accuracy": 32.69537480063796,
+        "loss": 14.309247291618345,
+        "finite": true
+      }
+    },
+    "L4_r96-32-3": {
+      "layer": 4,
+      "ranks": [
+        96,
+        32,
+        3
+      ],
+      "compression_ratio": 12.658525592874772,
+      "hooi_iterations": 100,
+      "relative_error": 0.8645741001015964,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.37905369484317,
+        "loss": 17.98056139632592,
+        "finite": true
+      }
+    },
+    "L4_r96-32-4": {
+      "layer": 4,
+      "ranks": [
+        96,
+        32,
+        4
+      ],
+      "compression_ratio": 10.56804988174586,
+      "hooi_iterations": 100,
+      "relative_error": 0.8547532539143244,
+      "wikidata_qa_roberta": {
+        "accuracy": 21.79691653375864,
+        "loss": 18.215001714635182,
+        "finite": true
+      }
+    },
+    "L4_r96-48-3": {
+      "layer": 4,
+      "ranks": [
+        96,
+        48,
+        3
+      ],
+      "compression_ratio": 9.721038318912237,
+      "hooi_iterations": 100,
+      "relative_error": 0.8231560234982515,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.565124933545984,
+        "loss": 17.910022471610397,
+        "finite": true
+      }
+    },
+    "L4_r96-48-4": {
+      "layer": 4,
+      "ranks": [
+        96,
+        48,
+        4
+      ],
+      "compression_ratio": 7.91710067114094,
+      "hooi_iterations": 100,
+      "relative_error": 0.8080763662078151,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.422115895800108,
+        "loss": 16.282264491952144,
+        "finite": true
+      }
+    },
+    "L4_r96-64-3": {
+      "layer": 4,
+      "ranks": [
+        96,
+        64,
+        3
+      ],
+      "compression_ratio": 7.890094308073039,
+      "hooi_iterations": 5,
+      "relative_error": 0.7879259360272516,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.77777777777778,
+        "loss": 17.688916284005394,
+        "finite": true
+      }
+    },
+    "L4_r96-64-4": {
+      "layer": 4,
+      "ranks": [
+        96,
+        64,
+        4
+      ],
+      "compression_ratio": 6.329398635017384,
+      "hooi_iterations": 3,
+      "relative_error": 0.7670619283580397,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.02977139819245,
+        "loss": 14.247303158699696,
+        "finite": true
+      }
+    },
+    "L1_r16-32-3": {
+      "layer": 1,
+      "ranks": [
+        16,
+        32,
+        3
+      ],
+      "compression_ratio": 71.97364246491763,
+      "hooi_iterations": 26,
+      "relative_error": 0.9309209584561717,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.29558745348219,
+        "loss": 15.403176641688155,
+        "finite": true
+      }
+    },
+    "L1_r16-32-4": {
+      "layer": 1,
+      "ranks": [
+        16,
+        32,
+        4
+      ],
+      "compression_ratio": 60.606658446362516,
+      "hooi_iterations": 27,
+      "relative_error": 0.9301374133619179,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.342371079213184,
+        "loss": 15.131729257332818,
+        "finite": true
+      }
+    },
+    "L1_r16-48-3": {
+      "layer": 1,
+      "ranks": [
+        16,
+        48,
+        3
+      ],
+      "compression_ratio": 54.8418410041841,
+      "hooi_iterations": 17,
+      "relative_error": 0.9214866692608836,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.258904837852207,
+        "loss": 15.149543361927458,
+        "finite": true
+      }
+    },
+    "L1_r16-48-4": {
+      "layer": 1,
+      "ranks": [
+        16,
+        48,
+        4
+      ],
+      "compression_ratio": 45.16263399693721,
+      "hooi_iterations": 10,
+      "relative_error": 0.9202799792895159,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.43859649122807,
+        "loss": 15.648737262585218,
+        "finite": true
+      }
+    },
+    "L1_r16-64-3": {
+      "layer": 1,
+      "ranks": [
+        16,
+        64,
+        3
+      ],
+      "compression_ratio": 44.29770935035674,
+      "hooi_iterations": 6,
+      "relative_error": 0.9172493359860763,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.966507177033492,
+        "loss": 15.179556924232497,
+        "finite": true
+      }
+    },
+    "L1_r16-64-4": {
+      "layer": 1,
+      "ranks": [
+        16,
+        64,
+        4
+      ],
+      "compression_ratio": 35.99121308274347,
+      "hooi_iterations": 3,
+      "relative_error": 0.9156301515094065,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.225943646996278,
+        "loss": 15.322982130179733,
+        "finite": true
+      }
+    },
+    "L1_r24-32-3": {
+      "layer": 1,
+      "ranks": [
+        24,
+        32,
+        3
+      ],
+      "compression_ratio": 49.00905691732447,
+      "hooi_iterations": 46,
+      "relative_error": 0.9162714292231837,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.046251993620416,
+        "loss": 15.821855494438617,
+        "finite": true
+      }
+    },
+    "L1_r24-32-4": {
+      "layer": 1,
+      "ranks": [
+        24,
+        32,
+        4
+      ],
+      "compression_ratio": 41.131380753138075,
+      "hooi_iterations": 29,
+      "relative_error": 0.9147058921551505,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.996810207336523,
+        "loss": 16.70096942670967,
+        "finite": true
+      }
+    },
+    "L1_r24-48-3": {
+      "layer": 1,
+      "ranks": [
+        24,
+        48,
+        3
+      ],
+      "compression_ratio": 37.45627738616879,
+      "hooi_iterations": 19,
+      "relative_error": 0.9022885502440793,
+      "wikidata_qa_roberta": {
+        "accuracy": 11.589580010632643,
+        "loss": 18.49386608611179,
+        "finite": true
+      }
+    },
+    "L1_r24-48-4": {
+      "layer": 1,
+      "ranks": [
+        24,
+        48,
+        4
+      ],
+      "compression_ratio": 30.713601333055614,
+      "hooi_iterations": 23,
+      "relative_error": 0.8995136930973663,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.405635300372143,
+        "loss": 15.836207544018821,
+        "finite": true
+      }
+    },
+    "L1_r24-64-3": {
+      "layer": 1,
+      "ranks": [
+        24,
+        64,
+        3
+      ],
+      "compression_ratio": 30.311115679120203,
+      "hooi_iterations": 14,
+      "relative_error": 0.8945263406352303,
+      "wikidata_qa_roberta": {
+        "accuracy": 12.812333864965444,
+        "loss": 18.652966435256,
+        "finite": true
+      }
+    },
+    "L1_r24-64-4": {
+      "layer": 1,
+      "ranks": [
+        24,
+        64,
+        4
+      ],
+      "compression_ratio": 24.506564733255775,
+      "hooi_iterations": 3,
+      "relative_error": 0.8908412787067534,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.006911217437533,
+        "loss": 15.84826317614916,
+        "finite": true
+      }
+    },
+    "L1_r32-32-3": {
+      "layer": 1,
+      "ranks": [
+        32,
+        32,
+        3
+      ],
+      "compression_ratio": 37.154267716535436,
+      "hooi_iterations": 52,
+      "relative_error": 0.9049742324453431,
+      "wikidata_qa_roberta": {
+        "accuracy": 18.42105263157895,
+        "loss": 17.141635483310043,
+        "finite": true
+      }
+    },
+    "L1_r32-32-4": {
+      "layer": 1,
+      "ranks": [
+        32,
+        32,
+        4
+      ],
+      "compression_ratio": 31.128562381253957,
+      "hooi_iterations": 40,
+      "relative_error": 0.9023417831536897,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.927166400850613,
+        "loss": 16.366215923777627,
+        "finite": true
+      }
+    },
+    "L1_r32-48-3": {
+      "layer": 1,
+      "ranks": [
+        32,
+        48,
+        3
+      ],
+      "compression_ratio": 28.440329813395053,
+      "hooi_iterations": 17,
+      "relative_error": 0.8867735648061225,
+      "wikidata_qa_roberta": {
+        "accuracy": 16.135034556087188,
+        "loss": 17.651079222240412,
+        "finite": true
+      }
+    },
+    "L1_r32-48-4": {
+      "layer": 1,
+      "ranks": [
+        32,
+        48,
+        4
+      ],
+      "compression_ratio": 23.269054757771816,
+      "hooi_iterations": 71,
+      "relative_error": 0.8827109311173791,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.64486975013291,
+        "loss": 16.473884420574034,
+        "finite": true
+      }
+    },
+    "L1_r32-64-3": {
+      "layer": 1,
+      "ranks": [
+        32,
+        64,
+        3
+      ],
+      "compression_ratio": 23.037300316369176,
+      "hooi_iterations": 7,
+      "relative_error": 0.8757772736902969,
+      "wikidata_qa_roberta": {
+        "accuracy": 15.41733120680489,
+        "loss": 18.21937789274576,
+        "finite": true
+      }
+    },
+    "L1_r32-64-4": {
+      "layer": 1,
+      "ranks": [
+        32,
+        64,
+        4
+      ],
+      "compression_ratio": 18.578304145143,
+      "hooi_iterations": 3,
+      "relative_error": 0.8703112448380771,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.006911217437533,
+        "loss": 16.088882216737776,
+        "finite": true
+      }
+    },
+    "L1_r48-32-3": {
+      "layer": 1,
+      "ranks": [
+        48,
+        32,
+        3
+      ],
+      "compression_ratio": 25.040288686053916,
+      "hooi_iterations": 73,
+      "relative_error": 0.8868263354605483,
+      "wikidata_qa_roberta": {
+        "accuracy": 20.65390749601276,
+        "loss": 16.56519058500434,
+        "finite": true
+      }
+    },
+    "L1_r48-32-4": {
+      "layer": 1,
+      "ranks": [
+        48,
+        32,
+        4
+      ],
+      "compression_ratio": 20.94247976139753,
+      "hooi_iterations": 71,
+      "relative_error": 0.8824526466436122,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.587985114300903,
+        "loss": 16.725194367442633,
+        "finite": true
+      }
+    },
+    "L1_r48-48-3": {
+      "layer": 1,
+      "ranks": [
+        48,
+        48,
+        3
+      ],
+      "compression_ratio": 19.19812518308759,
+      "hooi_iterations": 45,
+      "relative_error": 0.8615778647349451,
+      "wikidata_qa_roberta": {
+        "accuracy": 19.32482721956406,
+        "loss": 16.361663215394437,
+        "finite": true
+      }
+    },
+    "L1_r48-48-4": {
+      "layer": 1,
+      "ranks": [
+        48,
+        48,
+        4
+      ],
+      "compression_ratio": 15.67180359230524,
+      "hooi_iterations": 100,
+      "relative_error": 0.8548673437595438,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.358851674641148,
+        "loss": 16.458529921556522,
+        "finite": true
+      }
+    },
+    "L1_r48-64-3": {
+      "layer": 1,
+      "ranks": [
+        48,
+        64,
+        3
+      ],
+      "compression_ratio": 15.566335013591617,
+      "hooi_iterations": 5,
+      "relative_error": 0.8443751377959063,
+      "wikidata_qa_roberta": {
+        "accuracy": 19.64380648591175,
+        "loss": 16.494435620787463,
+        "finite": true
+      }
+    },
+    "L1_r48-64-4": {
+      "layer": 1,
+      "ranks": [
+        48,
+        64,
+        4
+      ],
+      "compression_ratio": 12.520675893691093,
+      "hooi_iterations": 3,
+      "relative_error": 0.8352810138599238,
+      "wikidata_qa_roberta": {
+        "accuracy": 16.294524189261033,
+        "loss": 15.88532615365467,
+        "finite": true
+      }
+    },
+    "L1_r56-32-3": {
+      "layer": 1,
+      "ranks": [
+        56,
+        32,
+        3
+      ],
+      "compression_ratio": 21.53035225406096,
+      "hooi_iterations": 75,
+      "relative_error": 0.8789044651991463,
+      "wikidata_qa_roberta": {
+        "accuracy": 21.770334928229666,
+        "loss": 16.720722159489277,
+        "finite": true
+      }
+    },
+    "L1_r56-32-4": {
+      "layer": 1,
+      "ranks": [
+        56,
+        32,
+        4
+      ],
+      "compression_ratio": 17.997803002563163,
+      "hooi_iterations": 55,
+      "relative_error": 0.8737079304417641,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.434875066454016,
+        "loss": 16.257176648993752,
+        "finite": true
+      }
+    },
+    "L1_r56-48-3": {
+      "layer": 1,
+      "ranks": [
+        56,
+        48,
+        3
+      ],
+      "compression_ratio": 16.514741705165896,
+      "hooi_iterations": 75,
+      "relative_error": 0.8504931148849026,
+      "wikidata_qa_roberta": {
+        "accuracy": 21.21212121212121,
+        "loss": 16.39138673756872,
+        "finite": true
+      }
+    },
+    "L1_r56-48-4": {
+      "layer": 1,
+      "ranks": [
+        56,
+        48,
+        4
+      ],
+      "compression_ratio": 13.472453174965738,
+      "hooi_iterations": 100,
+      "relative_error": 0.8424826262143105,
+      "wikidata_qa_roberta": {
+        "accuracy": 28.25624667729931,
+        "loss": 15.569446256497473,
+        "finite": true
+      }
+    },
+    "L1_r56-64-3": {
+      "layer": 1,
+      "ranks": [
+        56,
+        64,
+        3
+      ],
+      "compression_ratio": 13.3944362438969,
+      "hooi_iterations": 4,
+      "relative_error": 0.8303945034547028,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.381711855396066,
+        "loss": 16.326992036211312,
+        "finite": true
+      }
+    },
+    "L1_r56-64-4": {
+      "layer": 1,
+      "ranks": [
+        56,
+        64,
+        4
+      ],
+      "compression_ratio": 10.765569102723225,
+      "hooi_iterations": 3,
+      "relative_error": 0.8195498647700836,
+      "wikidata_qa_roberta": {
+        "accuracy": 18.793195108984584,
+        "loss": 17.09732995689411,
+        "finite": true
+      }
+    },
+    "L1_r72-32-3": {
+      "layer": 1,
+      "ranks": [
+        72,
+        32,
+        3
+      ],
+      "compression_ratio": 16.81607982893799,
+      "hooi_iterations": 57,
+      "relative_error": 0.8646246400847147,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.710792131844762,
+        "loss": 16.150936544554128,
+        "finite": true
+      }
+    },
+    "L1_r72-32-4": {
+      "layer": 1,
+      "ranks": [
+        72,
+        32,
+        4
+      ],
+      "compression_ratio": 14.047442126321807,
+      "hooi_iterations": 74,
+      "relative_error": 0.8579795944771187,
+      "wikidata_qa_roberta": {
+        "accuracy": 18.075491759702285,
+        "loss": 16.093072994136012,
+        "finite": true
+      }
+    },
+    "L1_r72-48-3": {
+      "layer": 1,
+      "ranks": [
+        72,
+        48,
+        3
+      ],
+      "compression_ratio": 12.906715683056522,
+      "hooi_iterations": 67,
+      "relative_error": 0.8302836880294352,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.594364699627857,
+        "loss": 16.27682823433894,
+        "finite": true
+      }
+    },
+    "L1_r72-48-4": {
+      "layer": 1,
+      "ranks": [
+        72,
+        48,
+        4
+      ],
+      "compression_ratio": 10.519797388884925,
+      "hooi_iterations": 100,
+      "relative_error": 0.8198816008694927,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.31578947368421,
+        "loss": 13.511235507238464,
+        "finite": true
+      }
+    },
+    "L1_r72-64-3": {
+      "layer": 1,
+      "ranks": [
+        72,
+        64,
+        3
+      ],
+      "compression_ratio": 10.472169451201108,
+      "hooi_iterations": 3,
+      "relative_error": 0.8045657430799674,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.939925571504517,
+        "loss": 16.182628904983083,
+        "finite": true
+      }
+    },
+    "L1_r72-64-4": {
+      "layer": 1,
+      "ranks": [
+        72,
+        64,
+        4
+      ],
+      "compression_ratio": 8.408279637338198,
+      "hooi_iterations": 3,
+      "relative_error": 0.7904410370896021,
+      "wikidata_qa_roberta": {
+        "accuracy": 28.229665071770334,
+        "loss": 18.29091136696996,
+        "finite": true
+      }
+    },
+    "L1_r80-32-3": {
+      "layer": 1,
+      "ranks": [
+        80,
+        32,
+        3
+      ],
+      "compression_ratio": 15.156726198124117,
+      "hooi_iterations": 58,
+      "relative_error": 0.858039652975314,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.15257841573631,
+        "loss": 16.216978349014738,
+        "finite": true
+      }
+    },
+    "L1_r80-32-4": {
+      "layer": 1,
+      "ranks": [
+        80,
+        32,
+        4
+      ],
+      "compression_ratio": 12.65825392737574,
+      "hooi_iterations": 85,
+      "relative_error": 0.8507262405046591,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.049973418394472,
+        "loss": 13.766786874560584,
+        "finite": true
+      }
+    },
+    "L1_r80-48-3": {
+      "layer": 1,
+      "ranks": [
+        80,
+        48,
+        3
+      ],
+      "compression_ratio": 11.6356749718885,
+      "hooi_iterations": 100,
+      "relative_error": 0.8208061067836442,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.966507177033492,
+        "loss": 16.28107677725175,
+        "finite": true
+      }
+    },
+    "L1_r80-48-4": {
+      "layer": 1,
+      "ranks": [
+        80,
+        48,
+        4
+      ],
+      "compression_ratio": 9.48087185751945,
+      "hooi_iterations": 72,
+      "relative_error": 0.8093047165830694,
+      "wikidata_qa_roberta": {
+        "accuracy": 21.158958001063265,
+        "loss": 16.30295739103331,
+        "finite": true
+      }
+    },
+    "L1_r80-64-3": {
+      "layer": 1,
+      "ranks": [
+        80,
+        64,
+        3
+      ],
+      "compression_ratio": 9.442169465477772,
+      "hooi_iterations": 3,
+      "relative_error": 0.7924238959771867,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.365231259968102,
+        "loss": 16.13747301340188,
+        "finite": true
+      }
+    },
+    "L1_r80-64-4": {
+      "layer": 1,
+      "ranks": [
+        80,
+        64,
+        4
+      ],
+      "compression_ratio": 7.578557845505474,
+      "hooi_iterations": 3,
+      "relative_error": 0.7766869730835462,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.43859649122807,
+        "loss": 13.162019221321739,
+        "finite": true
+      }
+    },
+    "L1_r96-32-3": {
+      "layer": 1,
+      "ranks": [
+        96,
+        32,
+        3
+      ],
+      "compression_ratio": 12.658525592874772,
+      "hooi_iterations": 76,
+      "relative_error": 0.8457790151039392,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.205741626794257,
+        "loss": 16.10259771489641,
+        "finite": true
+      }
+    },
+    "L1_r96-32-4": {
+      "layer": 1,
+      "ranks": [
+        96,
+        32,
+        4
+      ],
+      "compression_ratio": 10.56804988174586,
+      "hooi_iterations": 100,
+      "relative_error": 0.8371957125260704,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.43859649122807,
+        "loss": 13.162768461939061,
+        "finite": true
+      }
+    },
+    "L1_r96-48-3": {
+      "layer": 1,
+      "ranks": [
+        96,
+        48,
+        3
+      ],
+      "compression_ratio": 9.721038318912237,
+      "hooi_iterations": 90,
+      "relative_error": 0.8029037444743102,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.365231259968102,
+        "loss": 16.212323118128634,
+        "finite": true
+      }
+    },
+    "L1_r96-48-4": {
+      "layer": 1,
+      "ranks": [
+        96,
+        48,
+        4
+      ],
+      "compression_ratio": 7.91710067114094,
+      "hooi_iterations": 93,
+      "relative_error": 0.7891792381407692,
+      "wikidata_qa_roberta": {
+        "accuracy": 16.294524189261033,
+        "loss": 16.220687147458985,
+        "finite": true
+      }
+    },
+    "L1_r96-64-3": {
+      "layer": 1,
+      "ranks": [
+        96,
+        64,
+        3
+      ],
+      "compression_ratio": 7.890094308073039,
+      "hooi_iterations": 3,
+      "relative_error": 0.7691481376494333,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.833599149388622,
+        "loss": 15.987954899433676,
+        "finite": true
+      }
+    },
+    "L1_r96-64-4": {
+      "layer": 1,
+      "ranks": [
+        96,
+        64,
+        4
+      ],
+      "compression_ratio": 6.329398635017384,
+      "hooi_iterations": 3,
+      "relative_error": 0.750265983151987,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.033492822966508,
+        "loss": 13.36452025060755,
+        "finite": true
+      }
+    },
+    "L5_r16-32-3": {
+      "layer": 5,
+      "ranks": [
+        16,
+        32,
+        3
+      ],
+      "compression_ratio": 71.97364246491763,
+      "hooi_iterations": 67,
+      "relative_error": 0.9563666155419844,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.986709197235513,
+        "loss": 16.47062797336614,
+        "finite": true
+      }
+    },
+    "L5_r16-32-4": {
+      "layer": 5,
+      "ranks": [
+        16,
+        32,
+        4
+      ],
+      "compression_ratio": 60.606658446362516,
+      "hooi_iterations": 45,
+      "relative_error": 0.9534927624472632,
+      "wikidata_qa_roberta": {
+        "accuracy": 22.22222222222222,
+        "loss": 16.190388873327755,
+        "finite": true
+      }
+    },
+    "L5_r16-48-3": {
+      "layer": 5,
+      "ranks": [
+        16,
+        48,
+        3
+      ],
+      "compression_ratio": 54.8418410041841,
+      "hooi_iterations": 36,
+      "relative_error": 0.9491796085916553,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.332270069112173,
+        "loss": 16.54777965109631,
+        "finite": true
+      }
+    },
+    "L5_r16-48-4": {
+      "layer": 5,
+      "ranks": [
+        16,
+        48,
+        4
+      ],
+      "compression_ratio": 45.16263399693721,
+      "hooi_iterations": 39,
+      "relative_error": 0.944908645645122,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.827219564061668,
+        "loss": 16.294039803311357,
+        "finite": true
+      }
+    },
+    "L5_r16-64-3": {
+      "layer": 5,
+      "ranks": [
+        16,
+        64,
+        3
+      ],
+      "compression_ratio": 44.29770935035674,
+      "hooi_iterations": 4,
+      "relative_error": 0.9447922244530029,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.960127591706538,
+        "loss": 16.706026364731148,
+        "finite": true
+      }
+    },
+    "L5_r16-64-4": {
+      "layer": 5,
+      "ranks": [
+        16,
+        64,
+        4
+      ],
+      "compression_ratio": 35.99121308274347,
+      "hooi_iterations": 3,
+      "relative_error": 0.9393098702445318,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.119617224880383,
+        "loss": 16.017471648331508,
+        "finite": true
+      }
+    },
+    "L5_r24-32-3": {
+      "layer": 5,
+      "ranks": [
+        24,
+        32,
+        3
+      ],
+      "compression_ratio": 49.00905691732447,
+      "hooi_iterations": 76,
+      "relative_error": 0.944678186041584,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.880382775119617,
+        "loss": 16.46707221928501,
+        "finite": true
+      }
+    },
+    "L5_r24-32-4": {
+      "layer": 5,
+      "ranks": [
+        24,
+        32,
+        4
+      ],
+      "compression_ratio": 41.131380753138075,
+      "hooi_iterations": 49,
+      "relative_error": 0.9407411919147968,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.16267942583732,
+        "loss": 16.201232619938775,
+        "finite": true
+      }
+    },
+    "L5_r24-48-3": {
+      "layer": 5,
+      "ranks": [
+        24,
+        48,
+        3
+      ],
+      "compression_ratio": 37.45627738616879,
+      "hooi_iterations": 24,
+      "relative_error": 0.9337886717917645,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.199362041467303,
+        "loss": 16.47465886367079,
+        "finite": true
+      }
+    },
+    "L5_r24-48-4": {
+      "layer": 5,
+      "ranks": [
+        24,
+        48,
+        4
+      ],
+      "compression_ratio": 30.713601333055614,
+      "hooi_iterations": 71,
+      "relative_error": 0.9278883877300863,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.086656034024454,
+        "loss": 16.155652070349678,
+        "finite": true
+      }
+    },
+    "L5_r24-64-3": {
+      "layer": 5,
+      "ranks": [
+        24,
+        64,
+        3
+      ],
+      "compression_ratio": 30.311115679120203,
+      "hooi_iterations": 4,
+      "relative_error": 0.9263116898842526,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.225943646996278,
+        "loss": 16.593951411087122,
+        "finite": true
+      }
+    },
+    "L5_r24-64-4": {
+      "layer": 5,
+      "ranks": [
+        24,
+        64,
+        4
+      ],
+      "compression_ratio": 24.506564733255775,
+      "hooi_iterations": 3,
+      "relative_error": 0.9184839417064221,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.863902179691653,
+        "loss": 15.855329910903544,
+        "finite": true
+      }
+    },
+    "L5_r32-32-3": {
+      "layer": 5,
+      "ranks": [
+        32,
+        32,
+        3
+      ],
+      "compression_ratio": 37.154267716535436,
+      "hooi_iterations": 50,
+      "relative_error": 0.934356486462622,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.737373737373737,
+        "loss": 16.444551783758932,
+        "finite": true
+      }
+    },
+    "L5_r32-32-4": {
+      "layer": 5,
+      "ranks": [
+        32,
+        32,
+        4
+      ],
+      "compression_ratio": 31.128562381253957,
+      "hooi_iterations": 75,
+      "relative_error": 0.9293523614348049,
+      "wikidata_qa_roberta": {
+        "accuracy": 29.34609250398724,
+        "loss": 16.44415804043996,
+        "finite": true
+      }
+    },
+    "L5_r32-48-3": {
+      "layer": 5,
+      "ranks": [
+        32,
+        48,
+        3
+      ],
+      "compression_ratio": 28.440329813395053,
+      "hooi_iterations": 43,
+      "relative_error": 0.9199701763597399,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.853801169590643,
+        "loss": 16.46221191947941,
+        "finite": true
+      }
+    },
+    "L5_r32-48-4": {
+      "layer": 5,
+      "ranks": [
+        32,
+        48,
+        4
+      ],
+      "compression_ratio": 23.269054757771816,
+      "hooi_iterations": 50,
+      "relative_error": 0.9123133549600969,
+      "wikidata_qa_roberta": {
+        "accuracy": 23.790536948431686,
+        "loss": 16.169787778660865,
+        "finite": true
+      }
+    },
+    "L5_r32-64-3": {
+      "layer": 5,
+      "ranks": [
+        32,
+        64,
+        3
+      ],
+      "compression_ratio": 23.037300316369176,
+      "hooi_iterations": 4,
+      "relative_error": 0.9093614119428942,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.784157363104732,
+        "loss": 16.497309502126388,
+        "finite": true
+      }
+    },
+    "L5_r32-64-4": {
+      "layer": 5,
+      "ranks": [
+        32,
+        64,
+        4
+      ],
+      "compression_ratio": 18.578304145143,
+      "hooi_iterations": 3,
+      "relative_error": 0.8993002308459469,
+      "wikidata_qa_roberta": {
+        "accuracy": 27.32589048378522,
+        "loss": 15.290334524688793,
+        "finite": true
+      }
+    },
+    "L5_r48-32-3": {
+      "layer": 5,
+      "ranks": [
+        48,
+        32,
+        3
+      ],
+      "compression_ratio": 25.040288686053916,
+      "hooi_iterations": 100,
+      "relative_error": 0.9164311021481499,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.066454013822433,
+        "loss": 16.45446816338686,
+        "finite": true
+      }
+    },
+    "L5_r48-32-4": {
+      "layer": 5,
+      "ranks": [
+        48,
+        32,
+        4
+      ],
+      "compression_ratio": 20.94247976139753,
+      "hooi_iterations": 93,
+      "relative_error": 0.9094212948865827,
+      "wikidata_qa_roberta": {
+        "accuracy": 20.86656034024455,
+        "loss": 16.378078250899378,
+        "finite": true
+      }
+    },
+    "L5_r48-48-3": {
+      "layer": 5,
+      "ranks": [
+        48,
+        48,
+        3
+      ],
+      "compression_ratio": 19.19812518308759,
+      "hooi_iterations": 53,
+      "relative_error": 0.8952401377575738,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.57150451887294,
+        "loss": 16.448390710719316,
+        "finite": true
+      }
+    },
+    "L5_r48-48-4": {
+      "layer": 5,
+      "ranks": [
+        48,
+        48,
+        4
+      ],
+      "compression_ratio": 15.67180359230524,
+      "hooi_iterations": 100,
+      "relative_error": 0.8843624866450762,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.16267942583732,
+        "loss": 15.210702543845525,
+        "finite": true
+      }
+    },
+    "L5_r48-64-3": {
+      "layer": 5,
+      "ranks": [
+        48,
+        64,
+        3
+      ],
+      "compression_ratio": 15.566335013591617,
+      "hooi_iterations": 3,
+      "relative_error": 0.8786404914293919,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.608187134502923,
+        "loss": 16.42129639687319,
+        "finite": true
+      }
+    },
+    "L5_r48-64-4": {
+      "layer": 5,
+      "ranks": [
+        48,
+        64,
+        4
+      ],
+      "compression_ratio": 12.520675893691093,
+      "hooi_iterations": 3,
+      "relative_error": 0.8640823734824834,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.57150451887294,
+        "loss": 14.346135859189044,
+        "finite": true
+      }
+    },
+    "L5_r56-32-3": {
+      "layer": 5,
+      "ranks": [
+        56,
+        32,
+        3
+      ],
+      "compression_ratio": 21.53035225406096,
+      "hooi_iterations": 100,
+      "relative_error": 0.9083665850928351,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.013290802764487,
+        "loss": 16.448944424169618,
+        "finite": true
+      }
+    },
+    "L5_r56-32-4": {
+      "layer": 5,
+      "ranks": [
+        56,
+        32,
+        4
+      ],
+      "compression_ratio": 17.997803002563163,
+      "hooi_iterations": 81,
+      "relative_error": 0.9003732650308954,
+      "wikidata_qa_roberta": {
+        "accuracy": 15.68314726209463,
+        "loss": 15.143149865227096,
+        "finite": true
+      }
+    },
+    "L5_r56-48-3": {
+      "layer": 5,
+      "ranks": [
+        56,
+        48,
+        3
+      ],
+      "compression_ratio": 16.514741705165896,
+      "hooi_iterations": 100,
+      "relative_error": 0.8839726946682778,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.97022860180755,
+        "loss": 16.437860316890536,
+        "finite": true
+      }
+    },
+    "L5_r56-48-4": {
+      "layer": 5,
+      "ranks": [
+        56,
+        48,
+        4
+      ],
+      "compression_ratio": 13.472453174965738,
+      "hooi_iterations": 78,
+      "relative_error": 0.871620973595158,
+      "wikidata_qa_roberta": {
+        "accuracy": 16.87931951089846,
+        "loss": 14.62665732508324,
+        "finite": true
+      }
+    },
+    "L5_r56-64-3": {
+      "layer": 5,
+      "ranks": [
+        56,
+        64,
+        3
+      ],
+      "compression_ratio": 13.3944362438969,
+      "hooi_iterations": 3,
+      "relative_error": 0.8645133546886812,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.97022860180755,
+        "loss": 16.433524685032335,
+        "finite": true
+      }
+    },
+    "L5_r56-64-4": {
+      "layer": 5,
+      "ranks": [
+        56,
+        64,
+        4
+      ],
+      "compression_ratio": 10.765569102723225,
+      "hooi_iterations": 3,
+      "relative_error": 0.8479072475550573,
+      "wikidata_qa_roberta": {
+        "accuracy": 15.33758639021797,
+        "loss": 13.82692858565684,
+        "finite": true
+      }
+    },
+    "L5_r72-32-3": {
+      "layer": 5,
+      "ranks": [
+        72,
+        32,
+        3
+      ],
+      "compression_ratio": 16.81607982893799,
+      "hooi_iterations": 100,
+      "relative_error": 0.8937460437895532,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.986709197235513,
+        "loss": 16.44792629828293,
+        "finite": true
+      }
+    },
+    "L5_r72-32-4": {
+      "layer": 5,
+      "ranks": [
+        72,
+        32,
+        4
+      ],
+      "compression_ratio": 14.047442126321807,
+      "hooi_iterations": 100,
+      "relative_error": 0.8837757074521106,
+      "wikidata_qa_roberta": {
+        "accuracy": 10.659223817118553,
+        "loss": 15.922453770501466,
+        "finite": true
+      }
+    },
+    "L5_r72-48-3": {
+      "layer": 5,
+      "ranks": [
+        72,
+        48,
+        3
+      ],
+      "compression_ratio": 12.906715683056522,
+      "hooi_iterations": 100,
+      "relative_error": 0.8631334792588735,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.677830940988837,
+        "loss": 16.441829170157,
+        "finite": true
+      }
+    },
+    "L5_r72-48-4": {
+      "layer": 5,
+      "ranks": [
+        72,
+        48,
+        4
+      ],
+      "compression_ratio": 10.519797388884925,
+      "hooi_iterations": 60,
+      "relative_error": 0.8479468560470398,
+      "wikidata_qa_roberta": {
+        "accuracy": 17.171717171717173,
+        "loss": 16.490874847505143,
+        "finite": true
+      }
+    },
+    "L5_r72-64-3": {
+      "layer": 5,
+      "ranks": [
+        72,
+        64,
+        3
+      ],
+      "compression_ratio": 10.472169451201108,
+      "hooi_iterations": 3,
+      "relative_error": 0.8378776990967238,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.422115895800108,
+        "loss": 16.396130147257868,
+        "finite": true
+      }
+    },
+    "L5_r72-64-4": {
+      "layer": 5,
+      "ranks": [
+        72,
+        64,
+        4
+      ],
+      "compression_ratio": 8.408279637338198,
+      "hooi_iterations": 3,
+      "relative_error": 0.8174466700953982,
+      "wikidata_qa_roberta": {
+        "accuracy": 12.679425837320574,
+        "loss": 15.954876737488553,
+        "finite": true
+      }
+    },
+    "L5_r80-32-3": {
+      "layer": 5,
+      "ranks": [
+        80,
+        32,
+        3
+      ],
+      "compression_ratio": 15.156726198124117,
+      "hooi_iterations": 100,
+      "relative_error": 0.8870420605638345,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.880382775119617,
+        "loss": 16.449620916047838,
+        "finite": true
+      }
+    },
+    "L5_r80-32-4": {
+      "layer": 5,
+      "ranks": [
+        80,
+        32,
+        4
+      ],
+      "compression_ratio": 12.65825392737574,
+      "hooi_iterations": 100,
+      "relative_error": 0.8760644320795142,
+      "wikidata_qa_roberta": {
+        "accuracy": 11.084529505582138,
+        "loss": 16.946553285844818,
+        "finite": true
+      }
+    },
+    "L5_r80-48-3": {
+      "layer": 5,
+      "ranks": [
+        80,
+        48,
+        3
+      ],
+      "compression_ratio": 11.6356749718885,
+      "hooi_iterations": 72,
+      "relative_error": 0.8534695555343211,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.598086124401913,
+        "loss": 16.42706541199222,
+        "finite": true
+      }
+    },
+    "L5_r80-48-4": {
+      "layer": 5,
+      "ranks": [
+        80,
+        48,
+        4
+      ],
+      "compression_ratio": 9.48087185751945,
+      "hooi_iterations": 100,
+      "relative_error": 0.8368100354936809,
+      "wikidata_qa_roberta": {
+        "accuracy": 12.78575225943647,
+        "loss": 14.773058518262985,
+        "finite": true
+      }
+    },
+    "L5_r80-64-3": {
+      "layer": 5,
+      "ranks": [
+        80,
+        64,
+        3
+      ],
+      "compression_ratio": 9.442169465477772,
+      "hooi_iterations": 3,
+      "relative_error": 0.8253318366939747,
+      "wikidata_qa_roberta": {
+        "accuracy": 26.023391812865498,
+        "loss": 16.414707498983063,
+        "finite": true
+      }
+    },
+    "L5_r80-64-4": {
+      "layer": 5,
+      "ranks": [
+        80,
+        64,
+        4
+      ],
+      "compression_ratio": 7.578557845505474,
+      "hooi_iterations": 3,
+      "relative_error": 0.8029156426886097,
+      "wikidata_qa_roberta": {
+        "accuracy": 14.67304625199362,
+        "loss": 16.941484038592783,
+        "finite": true
+      }
+    },
+    "L5_r96-32-3": {
+      "layer": 5,
+      "ranks": [
+        96,
+        32,
+        3
+      ],
+      "compression_ratio": 12.658525592874772,
+      "hooi_iterations": 100,
+      "relative_error": 0.874528074601667,
+      "wikidata_qa_roberta": {
+        "accuracy": 24.960127591706538,
+        "loss": 16.446539036574443,
+        "finite": true
+      }
+    },
+    "L5_r96-32-4": {
+      "layer": 5,
+      "ranks": [
+        96,
+        32,
+        4
+      ],
+      "compression_ratio": 10.56804988174586,
+      "hooi_iterations": 100,
+      "relative_error": 0.86181222358002,
+      "wikidata_qa_roberta": {
+        "accuracy": 18.28814460393408,
+        "loss": 16.90897848705187,
+        "finite": true
+      }
+    },
+    "L5_r96-48-3": {
+      "layer": 5,
+      "ranks": [
+        96,
+        48,
+        3
+      ],
+      "compression_ratio": 9.721038318912237,
+      "hooi_iterations": 100,
+      "relative_error": 0.83529792690636,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.598086124401913,
+        "loss": 16.431034979965176,
+        "finite": true
+      }
+    },
+    "L5_r96-48-4": {
+      "layer": 5,
+      "ranks": [
+        96,
+        48,
+        4
+      ],
+      "compression_ratio": 7.91710067114094,
+      "hooi_iterations": 100,
+      "relative_error": 0.8156759575810036,
+      "wikidata_qa_roberta": {
+        "accuracy": 16.08187134502924,
+        "loss": 16.06377705187529,
+        "finite": true
+      }
+    },
+    "L5_r96-64-3": {
+      "layer": 5,
+      "ranks": [
+        96,
+        64,
+        3
+      ],
+      "compression_ratio": 7.890094308073039,
+      "hooi_iterations": 3,
+      "relative_error": 0.8014541212239288,
+      "wikidata_qa_roberta": {
+        "accuracy": 25.651249335459863,
+        "loss": 16.414596779853895,
+        "finite": true
+      }
+    },
+    "L5_r96-64-4": {
+      "layer": 5,
+      "ranks": [
+        96,
+        64,
+        4
+      ],
+      "compression_ratio": 6.329398635017384,
+      "hooi_iterations": 3,
+      "relative_error": 0.7749123390756252,
+      "wikidata_qa_roberta": {
+        "accuracy": 12.78575225943647,
+        "loss": 17.748769172651638,
+        "finite": true
+      }
+    }
+  }
+}

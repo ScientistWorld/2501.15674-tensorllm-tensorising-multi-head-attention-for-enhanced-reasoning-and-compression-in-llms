@@ -1,0 +1,110 @@
+{
+  "bios_profession_roberta:0.75": {
+    "scale": 0.75,
+    "task": "bios_profession_roberta",
+    "accuracy": 72.06035379812695,
+    "loss": 5.261275727972466
+  },
+  "bios_profession_roberta:0.875": {
+    "scale": 0.875,
+    "task": "bios_profession_roberta",
+    "accuracy": 73.59521331945889,
+    "loss": 5.245652126650346
+  },
+  "bios_profession_roberta:1.0": {
+    "scale": 1.0,
+    "task": "bios_profession_roberta",
+    "accuracy": 74.4276795005203,
+    "loss": 5.238237002211294
+  },
+  "bios_profession_roberta:1.125": {
+    "scale": 1.125,
+    "task": "bios_profession_roberta",
+    "accuracy": 74.63579604578564,
+    "loss": 5.446624009374774
+  },
+  "bios_profession_roberta:1.25": {
+    "scale": 1.25,
+    "task": "bios_profession_roberta",
+    "accuracy": 73.6732570239334,
+    "loss": 5.842629387152927
+  },
+  "bios_profession_roberta:1.5": {
+    "scale": 1.5,
+    "task": "bios_profession_roberta",
+    "accuracy": 70.29136316337149,
+    "loss": 6.8681955784094075
+  },
+  "fever_roberta_binary:0.75": {
+    "scale": 0.75,
+    "task": "fever_roberta_binary",
+    "accuracy": 49.828047382499044,
+    "loss": 1.5580265259282662
+  },
+  "fever_roberta_binary:0.875": {
+    "scale": 0.875,
+    "task": "fever_roberta_binary",
+    "accuracy": 49.94268246083301,
+    "loss": 1.373927866963881
+  },
+  "fever_roberta_binary:1.0": {
+    "scale": 1.0,
+    "task": "fever_roberta_binary",
+    "accuracy": 53.38173481085212,
+    "loss": 1.1379045230721898
+  },
+  "fever_roberta_binary:1.125": {
+    "scale": 1.125,
+    "task": "fever_roberta_binary",
+    "accuracy": 51.12724493695071,
+    "loss": 2.8229215496316136
+  },
+  "fever_roberta_binary:1.25": {
+    "scale": 1.25,
+    "task": "fever_roberta_binary",
+    "accuracy": 50.24837600305693,
+    "loss": 6.001349616333142
+  },
+  "fever_roberta_binary:1.5": {
+    "scale": 1.5,
+    "task": "fever_roberta_binary",
+    "accuracy": 50.09552923194497,
+    "loss": 10.363039688340661
+  },
+  "wikidata_qa_roberta:0.75": {
+    "scale": 0.75,
+    "task": "wikidata_qa_roberta",
+    "accuracy": 34.901648059542794,
+    "loss": 16.109809560966305
+  },
+  "wikidata_qa_roberta:0.875": {
+    "scale": 0.875,
+    "task": "wikidata_qa_roberta",
+    "accuracy": 36.36363636363637,
+    "loss": 15.570058636455784
+  },
+  "wikidata_qa_roberta:1.0": {
+    "scale": 1.0,
+    "task": "wikidata_qa_roberta",
+    "accuracy": 36.36363636363637,
+    "loss": 15.21014866071793
+  },
+  "wikidata_qa_roberta:1.125": {
+    "scale": 1.125,
+    "task": "wikidata_qa_roberta",
+    "accuracy": 34.95481127060074,
+    "loss": 15.254761710395927
+  },
+  "wikidata_qa_roberta:1.25": {
+    "scale": 1.25,
+    "task": "wikidata_qa_roberta",
+    "accuracy": 29.6916533758639,
+    "loss": 15.828318970129041
+  },
+  "wikidata_qa_roberta:1.5": {
+    "scale": 1.5,
+    "task": "wikidata_qa_roberta",
+    "accuracy": 6.884635832004253,
+    "loss": 16.152858764720094
+  }
+}
