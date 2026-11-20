@@ -1,1 +1,0 @@
-{"format": "mha-projection-patch-v2", "blocks": [{"layer": 4, "targets": ["query", "key", "value", "output"], "layout": "heads", "factors": {"0": "U_model"}}]}

@@ -1,7 +1,0 @@
-{
-  "train_exit_code": 1,
-  "test_exit_code": 1,
-  "scores_test_exists": true,
-  "hidden_command": "bash scripts/evaluate_test.sh",
-  "fresh_process": true
-}

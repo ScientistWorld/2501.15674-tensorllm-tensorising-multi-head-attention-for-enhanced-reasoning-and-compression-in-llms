@@ -1,5 +1,0 @@
-state/transient/
-**/inference/
-**/checkpoint/
-__pycache__/
-*.pyc
