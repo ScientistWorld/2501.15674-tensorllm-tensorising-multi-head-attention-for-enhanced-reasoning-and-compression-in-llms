@@ -1,0 +1,155 @@
+{
+  "shortcut_balanced_constant": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_bruteforce": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_compression_metadata": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_constant": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_direct_scores": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_drop_rows": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_empty_predictions": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_failure_stale": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_forged_gold": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_loss_metadata": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_nan_loss": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_null_loss": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_omit_proposal": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_replace_fixed_model": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_success_flags": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_unlisted_method": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  },
+  "shortcut_visible_answers": {
+    "admission": "rejected by hidden evaluator before model execution",
+    "reason": "patch.json not found",
+    "failure_vector": {
+      "accuracy": 0.0,
+      "loss": 30.0,
+      "mha_compression_ratio": 1.0
+    }
+  }
+}

@@ -30,33 +30,33 @@
     "weaker_low_rank"
   ],
   "rank": {
-    "_shortcut_unlisted": -3.054157049593373,
-    "baseline_laser_mha_all4": -3.054157049593373,
-    "better_greedy_layers": 0.004077827682936637,
-    "better_refined": 0.004077827682936637,
-    "better_refined_multi": -0.21441833558442702,
+    "_shortcut_unlisted": -2.5549115695044677,
+    "baseline_laser_mha_all4": -2.5549115695044677,
+    "better_greedy_layers": 0.027935865628937736,
+    "better_refined": 0.027935865628937736,
+    "better_refined_multi": -0.010607937263527815,
     "custom_equivalent": -7.615189491634928e-11,
-    "greedy_layers_m05": -0.2654260689323714,
-    "roberta_original": -0.9998181175845718,
-    "shortcut_bad_axes": -3.054157049593373,
-    "shortcut_bad_layout": -3.054157049593373,
-    "shortcut_collapse_compress": -3.054157049593373,
-    "shortcut_dense_replacement": -3.054157049593373,
-    "shortcut_forged_metadata": -3.054157049593373,
-    "shortcut_infeasible_ranks": -3.054157049593373,
-    "shortcut_invalid_rank": -3.054157049593373,
-    "shortcut_max_compression": -3.054157049593373,
-    "shortcut_missing_experiment": -3.054157049593373,
-    "shortcut_nan_network": -3.054157049593373,
-    "shortcut_omitted_method": -3.054157049593373,
-    "shortcut_overlapping_heads": -3.054157049593373,
-    "shortcut_read_labels": -3.054157049593373,
-    "shortcut_slice_bloat": -3.054157049593373,
-    "shortcut_trained_factors": -3.054157049593373,
+    "greedy_layers_m05": -0.015069762901960625,
+    "roberta_original": -0.5005726374956665,
+    "shortcut_bad_axes": -2.5549115695044677,
+    "shortcut_bad_layout": -2.5549115695044677,
+    "shortcut_collapse_compress": -2.5549115695044677,
+    "shortcut_dense_replacement": -2.5549115695044677,
+    "shortcut_forged_metadata": -2.5549115695044677,
+    "shortcut_infeasible_ranks": -2.5549115695044677,
+    "shortcut_invalid_rank": -2.5549115695044677,
+    "shortcut_max_compression": -2.5549115695044677,
+    "shortcut_missing_experiment": -2.5549115695044677,
+    "shortcut_nan_network": -2.5549115695044677,
+    "shortcut_omitted_method": -2.5549115695044677,
+    "shortcut_overlapping_heads": -2.5549115695044677,
+    "shortcut_read_labels": -2.5549115695044677,
+    "shortcut_slice_bloat": -2.5549115695044677,
+    "shortcut_trained_factors": -2.5549115695044677,
     "tensorllm_roberta": 0.0,
     "variant_rescaled": -0.0007024908859662452,
-    "weaker_laser_mha": -3.054157049593373,
-    "weaker_low_rank": -3.054157049593373
+    "weaker_laser_mha": -2.5549115695044677,
+    "weaker_low_rank": -2.5549115695044677
   },
   "paired_comparisons": {
     "better_greedy_layers": {
@@ -318,27 +318,27 @@
   },
   "paired_rank_noise": {
     "better_greedy_layers": {
-      "rank_gain": 0.004077827682936637,
+      "rank_gain": 0.027935865628937736,
       "paired_se": 0.006463828236545127,
       "ci95": [
-        -0.008591275660691811,
-        0.016746931026565083
+        0.015266762285309288,
+        0.040604968972566186
       ]
     },
     "better_refined": {
-      "rank_gain": 0.004077827682936637,
+      "rank_gain": 0.027935865628937736,
       "paired_se": 0.006463828236545127,
       "ci95": [
-        -0.008591275660691811,
-        0.016746931026565083
+        0.015266762285309288,
+        0.040604968972566186
       ]
     },
     "better_refined_multi": {
-      "rank_gain": -0.21441833558442702,
+      "rank_gain": -0.010607937263527815,
       "paired_se": 0.007855027987378778,
       "ci95": [
-        -0.22981419043968943,
-        -0.19902248072916462
+        -0.02600379211879022,
+        0.004787917591734589
       ]
     },
     "custom_equivalent": {
@@ -350,19 +350,19 @@
       ]
     },
     "greedy_layers_m05": {
-      "rank_gain": -0.2654260689323714,
+      "rank_gain": -0.015069762901960625,
       "paired_se": 0.009280494571791285,
       "ci95": [
-        -0.28361583829308235,
-        -0.2472362995716605
+        -0.033259532262671546,
+        0.0031200064587502928
       ]
     },
     "roberta_original": {
-      "rank_gain": -0.9998181175845718,
+      "rank_gain": -0.5005726374956665,
       "paired_se": 0.013633808876689588,
       "ci95": [
-        -1.0265403829828834,
-        -0.9730958521862603
+        -0.5272949028939781,
+        -0.4738503720973549
       ]
     },
     "tensorllm_roberta": {
@@ -405,26 +405,26 @@
     "weaker_low_rank": -0.22414172765390733
   },
   "after_rank_common_cohort": {
-    "baseline_laser_mha_all4": -3.623017003236007,
-    "better_greedy_layers": 0.0020968946173252,
-    "greedy_layers_m05": -0.34945839890164043,
-    "roberta_original": -1.2375126510723429,
-    "shortcut_bad_axes": -3.623017003236007,
-    "shortcut_bad_layout": -3.623017003236007,
-    "shortcut_collapse_compress": -3.623017003236007,
-    "shortcut_dense_replacement": -3.623017003236007,
-    "shortcut_forged_metadata": -3.623017003236007,
-    "shortcut_infeasible_ranks": -3.623017003236007,
-    "shortcut_invalid_rank": -3.623017003236007,
-    "shortcut_max_compression": -3.623017003236007,
-    "shortcut_missing_experiment": -3.623017003236007,
-    "shortcut_omitted_method": -3.623017003236007,
-    "shortcut_overlapping_heads": -3.623017003236007,
-    "shortcut_slice_bloat": -3.623017003236007,
-    "shortcut_trained_factors": -3.623017003236007,
+    "baseline_laser_mha_all4": -2.9841743625197656,
+    "better_greedy_layers": 0.03176343463293834,
+    "greedy_layers_m05": -0.025878645997227556,
+    "roberta_original": -0.5986700103561006,
+    "shortcut_bad_axes": -2.9841743625197656,
+    "shortcut_bad_layout": -2.9841743625197656,
+    "shortcut_collapse_compress": -2.9841743625197656,
+    "shortcut_dense_replacement": -2.9841743625197656,
+    "shortcut_forged_metadata": -2.9841743625197656,
+    "shortcut_infeasible_ranks": -2.9841743625197656,
+    "shortcut_invalid_rank": -2.9841743625197656,
+    "shortcut_max_compression": -2.9841743625197656,
+    "shortcut_missing_experiment": -2.9841743625197656,
+    "shortcut_omitted_method": -2.9841743625197656,
+    "shortcut_overlapping_heads": -2.9841743625197656,
+    "shortcut_slice_bloat": -2.9841743625197656,
+    "shortcut_trained_factors": -2.9841743625197656,
     "tensorllm_roberta": 0.0,
-    "weaker_laser_mha": -3.623017003236007,
-    "weaker_low_rank": -3.623017003236007
+    "weaker_laser_mha": -2.9841743625197656,
+    "weaker_low_rank": -2.9841743625197656
   },
   "raw_test_accuracy": {
     "_shortcut_unlisted": {
@@ -564,5 +564,6 @@
     }
   },
   "reference_unchanged_between_exclusive_and_audit_runs": true,
+  "better_rank_exceeds_paired_noise": true,
   "all_failed_runs_have_complete_worst_values": true
 }
