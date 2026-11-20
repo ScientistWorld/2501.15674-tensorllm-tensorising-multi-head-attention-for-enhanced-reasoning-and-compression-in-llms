@@ -49,6 +49,7 @@
 - Complete worst values on all-task failure; open confined data-free decomposition procedure; hidden-answer boundary and packaging repaired.
 - Bios variant improves by 2.5501 points with a positive paired interval. Final weighting makes its rank advantage exceed paired noise.
 - WikidataQA-specific beyond-noise improvement remains unresolved; see HARDENING.md.
+- Final saved-output job 5471d878-b29 passed admission, paired-rank and reference-only score checks plus `python validate.py`; the end-to-end reference entrypoint is restored.
 
 ## Stop Justification
 - Completed at milestone `core_claim`.

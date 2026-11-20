@@ -16,6 +16,12 @@ identical between the exclusive and audit runs. Every method saw identical
 inputs. Fixed weights, deterministic decomposition and frozen backbone remove
 training-seed variation; paired intervals below measure finite-example noise.
 
+The saved-output follow-up job **5471d878-b29** also succeeded. It recomputed
+the final ranks and paired intervals without retraining or inference, rejected
+all 17 archived raw-artifact submissions at admission, and verified that the
+official train/test score files still contain only the reference and fixed
+original-model comparator. `python validate.py` passed in both jobs.
+
 [Final analysis](eval/test/final_results/analysis.json) contains the cohort,
 paired accuracy and rank intervals, and before/after ranks on a common cohort.
 [Before weighting](eval/test/final_results/analysis_before_weight_change.json)
@@ -180,8 +186,9 @@ preprocessing and difficulty; neither imports `method/` or each other. The
 briefing and all scoring documents now describe all three final experiments
 without exposing the reference's algorithm. `scripts/evaluate_test.sh` and
 `evaluate_train.sh` need no arguments and score all submitted directories.
-`python validate.py` passed in the bundled job. After the saved-output check,
-`scripts/run.sh` is restored to reproduce the reference end to end.
+`python validate.py` passed in both completed jobs. `scripts/run.sh` now invokes
+`scripts/reproduce.sh` to reproduce the reference end to end; the audit and
+saved-output rescore remain available as separate scripts.
 
 ## Headroom and remaining limits
 

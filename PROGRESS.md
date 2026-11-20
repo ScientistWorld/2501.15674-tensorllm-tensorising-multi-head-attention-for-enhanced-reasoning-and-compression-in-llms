@@ -7,7 +7,10 @@ complete failure vectors and an open, confined data-free decomposition interface
 Bundled job b730d9d9-25d passed all integrity checks and reproduced the reference
 exactly. A visible-selected Bios variant gains 2.55 points beyond paired noise.
 The final accuracy-first coefficients give it rank +0.027936 (paired 95% interval
-+0.015267 to +0.040605); an evaluation-only saved-output check is pending.
++0.015267 to +0.040605). Saved-output job 5471d878-b29 confirmed the final
+rank, rejected all 17 archived raw-artifact submissions at admission, preserved
+the reference-only official scores, and passed validation. The default job
+entrypoint again reproduces the reference end to end.
 WikidataQA-specific beyond-noise headroom requested in REVIEW remains unresolved.
 See HARDENING.md for evidence and limits. The remaining entries below are historical.
 

@@ -1,5 +1,3 @@
-action: submit
-gpus: 0
-test: false
+action: done
 milestone: core_claim
-notes: "Evaluation-only finalization: rescore saved paired outputs with accuracy-first weights, replay historical artifact rejection, verify reference-only score files and packaging. No training or inference."
+notes: "Hardened three-task gym; paired Bios rank headroom and failure scoring verified. WikidataQA-specific headroom remains unresolved."
