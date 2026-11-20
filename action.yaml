@@ -1,5 +1,5 @@
 action: submit
-gpus: 1
+gpus: 0
 test: false
 milestone: core_claim
-notes: "Final bundled hardening check: exclusive reference inference; finer visible-only ranks and custom procedures; all controls/major shortcuts; paired three-task headroom; complete worst-score and confinement checks."
+notes: "Evaluation-only finalization: rescore saved paired outputs with accuracy-first weights, replay historical artifact rejection, verify reference-only score files and packaging. No training or inference."

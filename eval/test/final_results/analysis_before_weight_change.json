@@ -1,0 +1,568 @@
+{
+  "ranking_definition": "sum experiment weight * abs(coefficient) * oriented improvement / population SD across listed methods",
+  "cohort": [
+    "_shortcut_unlisted",
+    "baseline_laser_mha_all4",
+    "better_greedy_layers",
+    "better_refined",
+    "better_refined_multi",
+    "custom_equivalent",
+    "greedy_layers_m05",
+    "roberta_original",
+    "shortcut_bad_axes",
+    "shortcut_bad_layout",
+    "shortcut_collapse_compress",
+    "shortcut_dense_replacement",
+    "shortcut_forged_metadata",
+    "shortcut_infeasible_ranks",
+    "shortcut_invalid_rank",
+    "shortcut_max_compression",
+    "shortcut_missing_experiment",
+    "shortcut_nan_network",
+    "shortcut_omitted_method",
+    "shortcut_overlapping_heads",
+    "shortcut_read_labels",
+    "shortcut_slice_bloat",
+    "shortcut_trained_factors",
+    "tensorllm_roberta",
+    "variant_rescaled",
+    "weaker_laser_mha",
+    "weaker_low_rank"
+  ],
+  "rank": {
+    "_shortcut_unlisted": -3.054157049593373,
+    "baseline_laser_mha_all4": -3.054157049593373,
+    "better_greedy_layers": 0.004077827682936637,
+    "better_refined": 0.004077827682936637,
+    "better_refined_multi": -0.21441833558442702,
+    "custom_equivalent": -7.615189491634928e-11,
+    "greedy_layers_m05": -0.2654260689323714,
+    "roberta_original": -0.9998181175845718,
+    "shortcut_bad_axes": -3.054157049593373,
+    "shortcut_bad_layout": -3.054157049593373,
+    "shortcut_collapse_compress": -3.054157049593373,
+    "shortcut_dense_replacement": -3.054157049593373,
+    "shortcut_forged_metadata": -3.054157049593373,
+    "shortcut_infeasible_ranks": -3.054157049593373,
+    "shortcut_invalid_rank": -3.054157049593373,
+    "shortcut_max_compression": -3.054157049593373,
+    "shortcut_missing_experiment": -3.054157049593373,
+    "shortcut_nan_network": -3.054157049593373,
+    "shortcut_omitted_method": -3.054157049593373,
+    "shortcut_overlapping_heads": -3.054157049593373,
+    "shortcut_read_labels": -3.054157049593373,
+    "shortcut_slice_bloat": -3.054157049593373,
+    "shortcut_trained_factors": -3.054157049593373,
+    "tensorllm_roberta": 0.0,
+    "variant_rescaled": -0.0007024908859662452,
+    "weaker_laser_mha": -3.054157049593373,
+    "weaker_low_rank": -3.054157049593373
+  },
+  "paired_comparisons": {
+    "better_greedy_layers": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": 2.5500910746812386,
+        "se_points": 0.5443467172786919,
+        "ci95_points": [
+          1.4831715088150028,
+          3.6170106405474742
+        ],
+        "z": 4.684681644503527
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      }
+    },
+    "better_refined": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": 2.5500910746812386,
+        "se_points": 0.5443467172786919,
+        "ci95_points": [
+          1.4831715088150028,
+          3.6170106405474742
+        ],
+        "z": 4.684681644503527
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      }
+    },
+    "better_refined_multi": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": 2.5500910746812386,
+        "se_points": 0.5443467172786919,
+        "ci95_points": [
+          1.4831715088150028,
+          3.6170106405474742
+        ],
+        "z": 4.684681644503527
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": 0.33222591362126247,
+        "se_points": 0.18555769989450044,
+        "ci95_points": [
+          -0.03146717817195839,
+          0.6959190054144834
+        ],
+        "z": 1.790418364800549
+      }
+    },
+    "custom_equivalent": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      }
+    },
+    "greedy_layers_m05": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": 2.5500910746812386,
+        "se_points": 0.5443467172786919,
+        "ci95_points": [
+          1.4831715088150028,
+          3.6170106405474742
+        ],
+        "z": 4.684681644503527
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": 0.8972019464720195,
+        "se_points": 0.6007572513757917,
+        "ci95_points": [
+          -0.28028226622453245,
+          2.0746861591685715
+        ],
+        "z": 1.4934517135121397
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": 0.33222591362126247,
+        "se_points": 0.18555769989450044,
+        "ci95_points": [
+          -0.03146717817195839,
+          0.6959190054144834
+        ],
+        "z": 1.790418364800549
+      }
+    },
+    "roberta_original": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": -8.847254748894093,
+        "se_points": 0.6675325568986219,
+        "ci95_points": [
+          -10.155618560415391,
+          -7.538890937372794
+        ],
+        "z": -13.253667791124268
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": -3.7256690997566912,
+        "se_points": 0.9909566889749268,
+        "ci95_points": [
+          -5.667944210147548,
+          -1.7833939893658346
+        ],
+        "z": -3.7596689554723395
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": -9.3421926910299,
+        "se_points": 0.3119950000709567,
+        "ci95_points": [
+          -9.953702891168975,
+          -8.730682490890826
+        ],
+        "z": -29.943405147214587
+      }
+    },
+    "tensorllm_roberta": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      }
+    },
+    "variant_rescaled": {
+      "bios_profession_roberta": {
+        "n": 3843,
+        "gain_points": 0.0,
+        "se_points": 0.3353051095849814,
+        "ci95_points": [
+          -0.6571980147865636,
+          0.6571980147865636
+        ],
+        "z": 0.0
+      },
+      "fever_roberta_binary": {
+        "n": 6576,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      },
+      "wikidata_qa_roberta": {
+        "n": 15050,
+        "gain_points": 0.0,
+        "se_points": 0.0,
+        "ci95_points": [
+          0.0,
+          0.0
+        ],
+        "z": null
+      }
+    }
+  },
+  "paired_rank_noise": {
+    "better_greedy_layers": {
+      "rank_gain": 0.004077827682936637,
+      "paired_se": 0.006463828236545127,
+      "ci95": [
+        -0.008591275660691811,
+        0.016746931026565083
+      ]
+    },
+    "better_refined": {
+      "rank_gain": 0.004077827682936637,
+      "paired_se": 0.006463828236545127,
+      "ci95": [
+        -0.008591275660691811,
+        0.016746931026565083
+      ]
+    },
+    "better_refined_multi": {
+      "rank_gain": -0.21441833558442702,
+      "paired_se": 0.007855027987378778,
+      "ci95": [
+        -0.22981419043968943,
+        -0.19902248072916462
+      ]
+    },
+    "custom_equivalent": {
+      "rank_gain": -7.615189491634928e-11,
+      "paired_se": 8.917514854382538e-11,
+      "ci95": [
+        -2.50935186062247e-10,
+        9.863139622954845e-11
+      ]
+    },
+    "greedy_layers_m05": {
+      "rank_gain": -0.2654260689323714,
+      "paired_se": 0.009280494571791285,
+      "ci95": [
+        -0.28361583829308235,
+        -0.2472362995716605
+      ]
+    },
+    "roberta_original": {
+      "rank_gain": -0.9998181175845718,
+      "paired_se": 0.013633808876689588,
+      "ci95": [
+        -1.0265403829828834,
+        -0.9730958521862603
+      ]
+    },
+    "tensorllm_roberta": {
+      "rank_gain": 0.0,
+      "paired_se": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "variant_rescaled": {
+      "rank_gain": -0.0007024908859662452,
+      "paired_se": 0.003975189788961507,
+      "ci95": [
+        -0.0084938628723308,
+        0.007088881100398309
+      ]
+    }
+  },
+  "before_rank_common_cohort": {
+    "baseline_laser_mha_all4": -0.15389185142583045,
+    "better_greedy_layers": 0.024860140080428385,
+    "greedy_layers_m05": -0.0715276780441681,
+    "roberta_original": -0.6113390379644028,
+    "shortcut_bad_axes": -2.5979823711608114,
+    "shortcut_bad_layout": -2.5979823711608114,
+    "shortcut_collapse_compress": -1.0184056231197238,
+    "shortcut_dense_replacement": -2.5979823711608114,
+    "shortcut_forged_metadata": 0.0,
+    "shortcut_infeasible_ranks": -2.5979823711608114,
+    "shortcut_invalid_rank": -2.5979823711608114,
+    "shortcut_max_compression": 0.2758610821197448,
+    "shortcut_missing_experiment": -2.0137408582234118,
+    "shortcut_omitted_method": -2.5979823711608114,
+    "shortcut_overlapping_heads": -2.5979823711608114,
+    "shortcut_slice_bloat": -2.5979823711608114,
+    "shortcut_trained_factors": -2.5979823711608114,
+    "tensorllm_roberta": 0.0,
+    "weaker_laser_mha": -0.44464258742598767,
+    "weaker_low_rank": -0.22414172765390733
+  },
+  "after_rank_common_cohort": {
+    "baseline_laser_mha_all4": -3.623017003236007,
+    "better_greedy_layers": 0.0020968946173252,
+    "greedy_layers_m05": -0.34945839890164043,
+    "roberta_original": -1.2375126510723429,
+    "shortcut_bad_axes": -3.623017003236007,
+    "shortcut_bad_layout": -3.623017003236007,
+    "shortcut_collapse_compress": -3.623017003236007,
+    "shortcut_dense_replacement": -3.623017003236007,
+    "shortcut_forged_metadata": -3.623017003236007,
+    "shortcut_infeasible_ranks": -3.623017003236007,
+    "shortcut_invalid_rank": -3.623017003236007,
+    "shortcut_max_compression": -3.623017003236007,
+    "shortcut_missing_experiment": -3.623017003236007,
+    "shortcut_omitted_method": -3.623017003236007,
+    "shortcut_overlapping_heads": -3.623017003236007,
+    "shortcut_slice_bloat": -3.623017003236007,
+    "shortcut_trained_factors": -3.623017003236007,
+    "tensorllm_roberta": 0.0,
+    "weaker_laser_mha": -3.623017003236007,
+    "weaker_low_rank": -3.623017003236007
+  },
+  "raw_test_accuracy": {
+    "_shortcut_unlisted": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": null
+    },
+    "baseline_laser_mha_all4": {
+      "bios_profession_roberta": 69.47697111631538,
+      "fever_roberta_binary": 50.623479318734795,
+      "wikidata_qa_roberta": 34.44518272425249
+    },
+    "better_greedy_layers": {
+      "bios_profession_roberta": 76.19047619047619,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": 37.32225913621262
+    },
+    "better_refined": {
+      "bios_profession_roberta": 76.19047619047619,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": 37.32225913621262
+    },
+    "better_refined_multi": {
+      "bios_profession_roberta": 76.19047619047619,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": 37.65448504983389
+    },
+    "custom_equivalent": {
+      "bios_profession_roberta": 73.64038511579496,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": 37.32225913621262
+    },
+    "greedy_layers_m05": {
+      "bios_profession_roberta": 76.19047619047619,
+      "fever_roberta_binary": 54.486009732360095,
+      "wikidata_qa_roberta": 37.65448504983389
+    },
+    "roberta_original": {
+      "bios_profession_roberta": 64.79313036690085,
+      "fever_roberta_binary": 49.863138686131386,
+      "wikidata_qa_roberta": 27.980066445182725
+    },
+    "shortcut_bad_axes": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_bad_layout": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_collapse_compress": {
+      "bios_profession_roberta": 56.6224303929222,
+      "fever_roberta_binary": 49.83272506082725,
+      "wikidata_qa_roberta": 22.956810631229235
+    },
+    "shortcut_dense_replacement": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_forged_metadata": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_infeasible_ranks": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_invalid_rank": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_max_compression": {
+      "bios_profession_roberta": 67.86364819151704,
+      "fever_roberta_binary": 49.81751824817518,
+      "wikidata_qa_roberta": 32.06644518272425
+    },
+    "shortcut_missing_experiment": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_nan_network": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_omitted_method": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_overlapping_heads": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_read_labels": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_slice_bloat": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "shortcut_trained_factors": {
+      "bios_profession_roberta": null,
+      "fever_roberta_binary": null,
+      "wikidata_qa_roberta": null
+    },
+    "tensorllm_roberta": {
+      "bios_profession_roberta": 73.64038511579496,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": 37.32225913621262
+    },
+    "variant_rescaled": {
+      "bios_profession_roberta": 73.64038511579496,
+      "fever_roberta_binary": 53.58880778588808,
+      "wikidata_qa_roberta": 37.32225913621262
+    },
+    "weaker_laser_mha": {
+      "bios_profession_roberta": 71.2984647410877,
+      "fever_roberta_binary": 49.81751824817518,
+      "wikidata_qa_roberta": 33.36212624584718
+    },
+    "weaker_low_rank": {
+      "bios_profession_roberta": 66.12021857923497,
+      "fever_roberta_binary": 49.83272506082725,
+      "wikidata_qa_roberta": 29.295681063122924
+    }
+  },
+  "reference_unchanged_between_exclusive_and_audit_runs": true,
+  "all_failed_runs_have_complete_worst_values": true
+}

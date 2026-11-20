@@ -33,3 +33,8 @@ for progress. Weight: 0.4, equal to the other task with a large reported gain.
 The evaluator-owned original model is the common baseline in every experiment.
 Every ranked number comes from new inference with the supplied representation;
 reported metrics, verdicts and selected subsets are never accepted.
+
+Accuracy has coefficient 1, loss 0.1, and compression 0.05 after division by
+each metric's standard deviation across ranked attempts. Significant accuracy
+gains take priority over small storage differences; compression remains a
+required benefit and receives positive credit.

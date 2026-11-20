@@ -97,7 +97,7 @@ improvement over the reference, with the sign determined by `higher_is_better`.
 Each improvement is divided by that metric's population standard deviation
 across the attempts being ranked. A constant metric contributes zero. Thus
 coefficients set relative importance, independently of measurement units.
-Accuracy has coefficient 1, compression 0.25, and loss 0.1. Experiment weights
+Accuracy has coefficient 1, compression 0.05, and loss 0.1. Experiment weights
 are Bios 0.4, FEVER 0.2 and WikidataQA 0.4.
 
 ## Fixed splits

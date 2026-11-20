@@ -1,0 +1,64 @@
+{
+  "experiments": {
+    "bios_profession_roberta": {
+      "weight": 0.4,
+      "metrics": {
+        "accuracy": {
+          "higher_is_better": true,
+          "coefficient": 1.0,
+          "description": "Held-out accuracy (%) of the modified model: the predicted profession is the candidate token with the highest probability at the masked position. Invalid runs or failures of either accuracy-significance constraint receive 0 on every experiment."
+        },
+        "loss": {
+          "higher_is_better": false,
+          "coefficient": 0.1,
+          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold profession token at the masked position. Lower is better. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645); a run that fails either gate receives the worst values (accuracy 0, loss 30, compression 1) on every experiment."
+        },
+        "mha_compression_ratio": {
+          "higher_is_better": true,
+          "coefficient": 0.25,
+          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus every head slice of a modified layer left dense), counted by the evaluator. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645) (otherwise 1); capped at 64."
+        }
+      }
+    },
+    "fever_roberta_binary": {
+      "weight": 0.2,
+      "metrics": {
+        "accuracy": {
+          "higher_is_better": true,
+          "coefficient": 1.0,
+          "description": "Held-out accuracy (%) of the modified model: the claim is predicted true when the masked position assigns ' true' a higher probability than ' false'. Invalid runs or failures of either accuracy-significance constraint receive 0 on every experiment."
+        },
+        "loss": {
+          "higher_is_better": false,
+          "coefficient": 0.1,
+          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax, clipped at 30 per example) of the gold answer token at the masked position. Lower is better. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645); a run that fails either gate receives the worst values (accuracy 0, loss 30, compression 1) on every experiment."
+        },
+        "mha_compression_ratio": {
+          "higher_is_better": true,
+          "coefficient": 0.25,
+          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus every head slice of a modified layer left dense), counted by the evaluator. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the majority-class rate (one-sided binomial z >= 1.645) (otherwise 1); capped at 64."
+        }
+      }
+    },
+    "wikidata_qa_roberta": {
+      "weight": 0.4,
+      "metrics": {
+        "accuracy": {
+          "higher_is_better": true,
+          "coefficient": 1.0,
+          "description": "Held-out accuracy (%) of the modified model: five mask tokens are appended to the question, the highest-probability token at each mask is decoded, and the question counts as answered when the gold answer occurs in the decoded text (case-insensitive substring match, as in LASER). Invalid runs or failures of either accuracy-significance constraint receive 0 on every experiment."
+        },
+        "loss": {
+          "higher_is_better": false,
+          "coefficient": 0.1,
+          "description": "Mean negative log-likelihood (nats, full-vocabulary softmax) per gold answer token when every answer token of '<question> <answer>' is masked, averaged over questions (each question's value clipped at 30). Lower is better. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the rate of the most common gold answer (one-sided binomial z >= 1.645); a run that fails either gate receives the worst values (accuracy 0, loss 30, compression 1) on every experiment."
+        },
+        "mha_compression_ratio": {
+          "higher_is_better": true,
+          "coefficient": 0.25,
+          "description": "Dense parameter count of the attention projections (query, key, value, output) of every modified layer divided by the parameters of the submitted low-rank representation of those layers (factor matrices + core of each declared block, plus every head slice of a modified layer left dense), counted by the evaluator. Credited only when the reasoning gate passes: the held-out accuracy gain is significant against the unmodified model (paired one-sided McNemar z >= 1.645) and against the rate of the most common gold answer (one-sided binomial z >= 1.645) (otherwise 1); capped at 64."
+        }
+      }
+    }
+  }
+}

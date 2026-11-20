@@ -76,6 +76,33 @@ def tamper():
     assert all(v==WORST for e in scores['experiments'].values() for v in e['results'].values())
 
 
+def legacy_admission():
+    m=load_module('test')
+    cases=sorted((ROOT/'eval/test/history').glob('shortcut_*'))
+    rejected={}
+    for source in cases:
+        if not source.is_dir() or not (source/'manifest.json').is_file():
+            continue
+        target=PRIVATE/'legacy_admission'/source.name
+        for task in EXPERIMENTS:
+            folder=target/task
+            folder.mkdir(parents=True,exist_ok=True)
+            for filename in ('predictions.jsonl','manifest.json'):
+                if (source/filename).exists():
+                    shutil.copyfile(source/filename,folder/filename)
+            try:
+                m.materialize_patch(folder,None)
+                raise AssertionError('legacy predictions were accepted: '+source.name)
+            except m.PatchError as exc:
+                assert 'patch.json not found' in str(exc),str(exc)
+        rejected[source.name]={'admission':'rejected by hidden evaluator before model execution',
+                               'reason':'patch.json not found','failure_vector':WORST}
+    assert len(rejected)>=16,len(rejected)
+    EVIDENCE.mkdir(parents=True,exist_ok=True)
+    (EVIDENCE/'legacy_admission.json').write_text(json.dumps(rejected,indent=2)+'\n')
+    print('Historical raw-artifact admission checks passed:',len(rejected),flush=True)
+
+
 def paired(a,b):
     diffs=[float(x)-float(y) for x,y in zip(a,b)]
     n=len(diffs); mean=sum(diffs)/n
@@ -91,6 +118,7 @@ def analyze():
     train=json.loads((PRIVATE/'scores_train_all.json').read_text())
     ref=json.loads((ROOT/'scoring/reference.json').read_text())
     old=json.loads((ROOT/'eval/test/history/hardening/results_round3/scores_test_all.json').read_text())
+    before_ref=json.loads((EVIDENCE/'ranking_before_weight_change.json').read_text())
     results={e:x['results'] for e,x in scores['experiments'].items()}
     methods=sorted(next(iter(results.values())))
     for e in EXPERIMENTS:
@@ -99,7 +127,7 @@ def analyze():
             assert set(v)==set(WORST) and all(math.isfinite(x) for x in v.values())
             if scores['metadata']['methods'][k][e].get('run_failed'):
                 assert all(results[t][k]==WORST for t in EXPERIMENTS),(k,e)
-    def ranks(data,cohort):
+    def ranks(data,cohort,settings=ref):
         scales={}
         for e in EXPERIMENTS:
             for metric in WORST:
@@ -109,7 +137,7 @@ def analyze():
         rank={}
         for key in cohort:
             value=0.
-            for e,exp in ref['experiments'].items():
+            for e,exp in settings['experiments'].items():
                 for metric,info in exp['metrics'].items():
                     sd=scales[e,metric]
                     if sd:
@@ -120,7 +148,7 @@ def analyze():
     rank,scales=ranks(results,methods)
     common=sorted(set(methods)&set(old['experiments'][EXPERIMENTS[0]]['results']))
     previous={e:old['experiments'][e]['results'] for e in EXPERIMENTS}
-    oldrank,_=ranks(previous,common)
+    oldrank,_=ranks(previous,common,before_ref)
     new_common,_=ranks(results,common)
     pairs={}; rank_noise={}
     dumps=PRIVATE/'dumps_test'
@@ -146,11 +174,15 @@ def analyze():
     for e in EXPERIMENTS:
         for k in ('roberta_original','tensorllm_roberta'):
             assert alone['experiments'][e]['results'][k]==results[e][k],(e,k,'batch/cohort regression')
+    assert rank_noise['better_greedy_layers']['ci95'][0] > 0, 'scientific improvement must outrank the reference beyond paired noise'
+    assert rank['roberta_original'] < 0
+    assert all(rank[k] < 0 for k in methods if any(scores['metadata']['methods'][k][e].get('run_failed') for e in EXPERIMENTS))
     summary={'ranking_definition':'sum experiment weight * abs(coefficient) * oriented improvement / population SD across listed methods',
              'cohort':methods,'rank':rank,'paired_comparisons':pairs,'paired_rank_noise':rank_noise,
              'before_rank_common_cohort':oldrank,'after_rank_common_cohort':new_common,
              'raw_test_accuracy':{k:{e:scores['metadata']['methods'][k][e].get('raw_accuracy') for e in EXPERIMENTS} for k in methods},
              'reference_unchanged_between_exclusive_and_audit_runs':True,
+             'better_rank_exceeds_paired_noise':True,
              'all_failed_runs_have_complete_worst_values':True}
     (EVIDENCE/'analysis.json').write_text(json.dumps(summary,indent=2)+'\n')
     for name in ('scores_test_all.json','scores_train_all.json','tampered_scores.json','scores_test_reference.json','scores_train_reference.json'):
@@ -162,4 +194,4 @@ def analyze():
     print(json.dumps({'rank':rank,'paired_rank_noise':rank_noise},indent=2),flush=True)
 
 if __name__=='__main__':
-    {'selftest':selftest,'tamper':tamper,'analyze':analyze}[sys.argv[1]]()
+    {'selftest':selftest,'tamper':tamper,'analyze':analyze,'legacy-admission':legacy_admission}[sys.argv[1]]()

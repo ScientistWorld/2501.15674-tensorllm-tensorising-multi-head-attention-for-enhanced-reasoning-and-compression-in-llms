@@ -1,5 +1,16 @@
 # Progress
 
+## Current final gym (2026-11-20)
+
+The final gym uses fixed-model inference on Bios, FEVER and WikidataQA, with
+complete failure vectors and an open, confined data-free decomposition interface.
+Bundled job b730d9d9-25d passed all integrity checks and reproduced the reference
+exactly. A visible-selected Bios variant gains 2.55 points beyond paired noise.
+The final accuracy-first coefficients give it rank +0.027936 (paired 95% interval
++0.015267 to +0.040605); an evaluation-only saved-output check is pending.
+WikidataQA-specific beyond-noise headroom requested in REVIEW remains unresolved.
+See HARDENING.md for evidence and limits. The remaining entries below are historical.
+
 ## What Works
 
 The workspace now contains a TensorLLM implementation for RoBERTa attention layers. It tensorizes Q/K/V/O weights by head, applies shared-factor Tucker HOOI reconstruction over the non-head modes, writes the reconstructed weights back, and evaluates FEVER binary predictions from generated artifacts.
@@ -55,11 +66,13 @@ The implementation reconstructs dense RoBERTa weights for ordinary Transformer i
   - 13 compressors, 2 structural variants and 3 new shortcuts scored.
 - Details in `HARDENING.md`.
 
-## Final hardening (pending bundled job)
+## Final hardening (bundled job completed)
 
 Read the paper, REDTEAM and REVIEW. Opened the data-free decomposition interface,
 closed runtime label access and method-written metadata, enforced complete
 all-task worst scores on failure, moved hidden-answer artifacts behind the test
 boundary, and reconciled all three-task documentation and paper-number scaling.
-One bundled job will rerun reference/baselines/controls, test confinement and
-malformed submissions, and measure paired headroom for visible-only refinements.
+The bundled job reran reference/baselines/controls, tested confinement and
+malformed submissions, and measured paired headroom for visible-only refinements.
+All checks passed; no new WikidataQA variant improved beyond paired noise.
+The final evaluator-only weighting check reuses those saved outputs.

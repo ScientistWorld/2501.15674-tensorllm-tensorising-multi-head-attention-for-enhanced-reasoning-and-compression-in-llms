@@ -44,5 +44,11 @@
 - Significance-based reasoning gate, with the worst loss on gate failure. Chance-level 64x compressors lost their credit (Bios 8/13 → 5/13 credited).
 - Wider structure language (head subsets, axis-group layouts). The reference is reproduced exactly from the final code.
 
+### [2026-11-20] - core_claim (final hardening)
+- Three-task reference rerun alone from final code: Bios 73.6404%, FEVER 53.5888%, WikidataQA 37.3223%, all with compression and significant gains over the fixed model.
+- Complete worst values on all-task failure; open confined data-free decomposition procedure; hidden-answer boundary and packaging repaired.
+- Bios variant improves by 2.5501 points with a positive paired interval. Final weighting makes its rank advantage exceed paired noise.
+- WikidataQA-specific beyond-noise improvement remains unresolved; see HARDENING.md.
+
 ## Stop Justification
 - Completed at milestone `core_claim`.

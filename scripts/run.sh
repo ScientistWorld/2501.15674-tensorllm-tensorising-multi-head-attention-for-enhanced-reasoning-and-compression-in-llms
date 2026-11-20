@@ -1,4 +1,4 @@
 #!/bin/bash
 set -euo pipefail
 cd /home/user
-bash scripts/run_hardening.sh
+bash scripts/rescore_hardening.sh
