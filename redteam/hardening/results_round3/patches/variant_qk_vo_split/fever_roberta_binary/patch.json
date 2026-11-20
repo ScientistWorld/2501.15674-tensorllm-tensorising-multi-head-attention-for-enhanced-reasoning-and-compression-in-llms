@@ -1,0 +1,32 @@
+{
+  "format": "mha-structure-patch-v3",
+  "blocks": [
+    {
+      "layer": 0,
+      "targets": [
+        "query",
+        "key"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 128,
+        "1": 48
+      }
+    },
+    {
+      "layer": 0,
+      "targets": [
+        "value",
+        "output"
+      ],
+      "layout": "heads",
+      "ranks": {
+        "0": 128,
+        "1": 48
+      }
+    }
+  ],
+  "notes": {
+    "variant": "reference ranks, query/key and value/output tensorised separately"
+  }
+}

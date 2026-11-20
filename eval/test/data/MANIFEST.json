@@ -32,6 +32,36 @@
         "true": 3297,
         "false": 3279
       }
+    },
+    "wikidata_qa_roberta": {
+      "file": "wikidata_qa_test.jsonl",
+      "sha256": "fed88e2d486e39d6a7b5cfcd6b2bebc651ddcf645dd24c3fb3e506ddb00dcf57",
+      "n_examples": 15050,
+      "n_full_dataset": 18812,
+      "portion": "everything after the first 20%: positions 3762..18811 of the ordered dataset (LASER's test portion; contains the paper's last 20%)",
+      "dropped_duplicates_of_visible_prompts": [],
+      "most_common_answers": {
+        "English": 1306,
+        "France": 815,
+        "Japan": 447,
+        "Germany": 423,
+        "French": 391,
+        "India": 350,
+        "Islam": 330,
+        "Italy": 304,
+        "Canada": 285,
+        "Australia": 281,
+        "baseball": 267,
+        "guitar": 264,
+        "Russia": 246,
+        "Spain": 232,
+        "piano": 215,
+        "Catholicism": 185,
+        "Mexico": 175,
+        "brown": 171,
+        "pitcher": 169,
+        "basketball": 165
+      }
     }
   }
 }

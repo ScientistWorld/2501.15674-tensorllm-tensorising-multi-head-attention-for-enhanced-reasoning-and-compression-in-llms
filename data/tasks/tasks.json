@@ -42,6 +42,37 @@
         "true": 1314,
         "false": 1303
       }
+    },
+    "wikidata_qa_roberta": {
+      "file": "wikidata_qa_val.jsonl",
+      "sha256": "a32e0a6d26cf9e219bb779dc6ad2a43cacc648e5af4bb5e33937511b7c479f30",
+      "n_examples": 3762,
+      "n_full_dataset": 18812,
+      "type": "generation",
+      "n_masks": 5,
+      "description": "BIG-bench WikidataQA open-ended factual completion (single-target questions); the answer is generated at five appended mask positions.",
+      "most_common_answers": {
+        "English": 347,
+        "France": 192,
+        "Japan": 109,
+        "French": 106,
+        "Germany": 102,
+        "India": 94,
+        "baseball": 85,
+        "Islam": 73,
+        "Italy": 73,
+        "guitar": 71,
+        "Russia": 64,
+        "Australia": 63,
+        "Canada": 62,
+        "Spain": 56,
+        "Mexico": 52,
+        "piano": 45,
+        "Catholicism": 42,
+        "Christianity": 41,
+        "basketball": 41,
+        "Hinduism": 39
+      }
     }
   }
 }

@@ -1,0 +1,6626 @@
+{
+  "L0_query_r64-32": {
+    "layer": 0,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.966701352757546,
+      "loss": 5.520580287499433,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8975715741065335,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 17.809675704412548,
+      "loss": 17.750218270001593,
+      "finite": true
+    }
+  },
+  "L0_query_r128-32": {
+    "layer": 0,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.69510926118627,
+      "loss": 5.305959225887128,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8619843716834583,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.799574694311538,
+      "loss": 17.75333196186711,
+      "finite": true
+    }
+  },
+  "L0_query_r256-32": {
+    "layer": 0,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.111342351716964,
+      "loss": 5.399184747941164,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.9100092677702007,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.533758639021798,
+      "loss": 17.591852625506835,
+      "finite": true
+    }
+  },
+  "L0_query_r64-48": {
+    "layer": 0,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.33090530697191,
+      "loss": 5.295928708201083,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7279127784753783,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.351408825093035,
+      "loss": 17.765234391623387,
+      "finite": true
+    }
+  },
+  "L0_query_r128-48": {
+    "layer": 0,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.267429760665976,
+      "loss": 5.331218664196168,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7710240550017513,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.261562998405104,
+      "loss": 17.839261046172915,
+      "finite": true
+    }
+  },
+  "L0_query_r256-48": {
+    "layer": 0,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.1633714880333,
+      "loss": 5.322235155381596,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7485810609824064,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.474215842636895,
+      "loss": 17.729242361681948,
+      "finite": true
+    }
+  },
+  "L0_key_r64-32": {
+    "layer": 0,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.14568158168574,
+      "loss": 5.7108904765637805,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7670401086504786,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.507177033492823,
+      "loss": 17.756294103742352,
+      "finite": true
+    }
+  },
+  "L0_key_r128-32": {
+    "layer": 0,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.602497398543186,
+      "loss": 5.472449784836772,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.745393151698515,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.74641148325359,
+      "loss": 17.74671854261766,
+      "finite": true
+    }
+  },
+  "L0_key_r256-32": {
+    "layer": 0,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.86264308012487,
+      "loss": 5.4898969287384185,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7085967841930048,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 17.1451355661882,
+      "loss": 17.75903825042266,
+      "finite": true
+    }
+  },
+  "L0_key_r64-48": {
+    "layer": 0,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.45785639958377,
+      "loss": 5.599318982302584,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7722691387723866,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 17.118553960659224,
+      "loss": 17.72828812514048,
+      "finite": true
+    }
+  },
+  "L0_key_r128-48": {
+    "layer": 0,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.20083246618106,
+      "loss": 5.345823980782581,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7321445433565983,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.89952153110048,
+      "loss": 17.683833208264513,
+      "finite": true
+    }
+  },
+  "L0_key_r256-48": {
+    "layer": 0,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.87721123829344,
+      "loss": 5.185368305640091,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5897392879290395,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.005847953216374,
+      "loss": 17.778369720250865,
+      "finite": true
+    }
+  },
+  "L0_value_r64-32": {
+    "layer": 0,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.215400624349634,
+      "loss": 4.65282452452451,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.090001281876121,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.830940988835724,
+      "loss": 14.49171813001621,
+      "finite": true
+    }
+  },
+  "L0_value_r128-32": {
+    "layer": 0,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 59.365244536940686,
+      "loss": 4.77750138858184,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4224959512134068,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.810738968633707,
+      "loss": 14.759000015949582,
+      "finite": true
+    }
+  },
+  "L0_value_r256-32": {
+    "layer": 0,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 58.29864724245577,
+      "loss": 4.938869114387606,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.582590459114639,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.86762360446571,
+      "loss": 13.949737317832401,
+      "finite": true
+    }
+  },
+  "L0_value_r64-48": {
+    "layer": 0,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.73881373569199,
+      "loss": 4.702049901429855,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.0471226318127607,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.106858054226475,
+      "loss": 14.85378658937083,
+      "finite": true
+    }
+  },
+  "L0_value_r128-48": {
+    "layer": 0,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.86576482830385,
+      "loss": 4.796530174994676,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.175983959862327,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.77777777777778,
+      "loss": 14.810443103155004,
+      "finite": true
+    }
+  },
+  "L0_value_r256-48": {
+    "layer": 0,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.82206035379813,
+      "loss": 4.685914059329495,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.301646939137531,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 32.29665071770335,
+      "loss": 15.144588889635012,
+      "finite": true
+    }
+  },
+  "L0_output_r64-32": {
+    "layer": 0,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 59.70343392299688,
+      "loss": 4.709487743082608,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.909703786791305,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.917065390749602,
+      "loss": 17.560343599036386,
+      "finite": true
+    }
+  },
+  "L0_output_r128-32": {
+    "layer": 0,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.49011446409989,
+      "loss": 4.743776589814228,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.9614473325767996,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.608187134502923,
+      "loss": 17.073100927459965,
+      "finite": true
+    }
+  },
+  "L0_output_r256-32": {
+    "layer": 0,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.111342351716964,
+      "loss": 4.866119476258135,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.81820908788966,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.943646996278574,
+      "loss": 17.252711615409492,
+      "finite": true
+    }
+  },
+  "L0_output_r64-48": {
+    "layer": 0,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.665972944849116,
+      "loss": 4.796413746343598,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0468805628876034,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.77777777777778,
+      "loss": 17.349444096231643,
+      "finite": true
+    }
+  },
+  "L0_output_r128-48": {
+    "layer": 0,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.81373569198751,
+      "loss": 4.828894845459079,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8554546497776436,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.98032961190856,
+      "loss": 17.590931413202405,
+      "finite": true
+    }
+  },
+  "L0_output_r256-48": {
+    "layer": 0,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.397502601456814,
+      "loss": 4.847086562493062,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.724817500480678,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.12333864965444,
+      "loss": 17.466399125251787,
+      "finite": true
+    }
+  },
+  "L1_query_r64-32": {
+    "layer": 1,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.61706555671176,
+      "loss": 5.744446710915025,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.289699487390981,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.74641148325359,
+      "loss": 17.718947330571943,
+      "finite": true
+    }
+  },
+  "L1_query_r128-32": {
+    "layer": 1,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.42351716961498,
+      "loss": 5.9873521983949125,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3433593440292717,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.19191919191919,
+      "loss": 17.58437861349277,
+      "finite": true
+    }
+  },
+  "L1_query_r256-32": {
+    "layer": 1,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.61706555671176,
+      "loss": 5.9274676489904445,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3372589790688973,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.893141945773525,
+      "loss": 17.603231530746797,
+      "finite": true
+    }
+  },
+  "L1_query_r64-48": {
+    "layer": 1,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.86576482830385,
+      "loss": 5.484733733229347,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3513383359274975,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.427432216905903,
+      "loss": 17.850382802832026,
+      "finite": true
+    }
+  },
+  "L1_query_r128-48": {
+    "layer": 1,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.50156087408949,
+      "loss": 5.502180717521106,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.416645285802622,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 17.43753322700691,
+      "loss": 17.745487634856378,
+      "finite": true
+    }
+  },
+  "L1_query_r256-48": {
+    "layer": 1,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.4120707596254,
+      "loss": 5.277349524827951,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.406458662765191,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.58054226475279,
+      "loss": 17.641090549614418,
+      "finite": true
+    }
+  },
+  "L1_key_r64-32": {
+    "layer": 1,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.825182101977106,
+      "loss": 5.809168098170725,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.348457532982176,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.926103136629454,
+      "loss": 18.20432759634722,
+      "finite": true
+    }
+  },
+  "L1_key_r128-32": {
+    "layer": 1,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.3225806451613,
+      "loss": 5.472008665133962,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.323520910594133,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 21.66400850611377,
+      "loss": 18.33969706834556,
+      "finite": true
+    }
+  },
+  "L1_key_r256-32": {
+    "layer": 1,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.60561914672216,
+      "loss": 5.51378944629375,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.240244254202254,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.780435938330676,
+      "loss": 18.121226401198488,
+      "finite": true
+    }
+  },
+  "L1_key_r64-48": {
+    "layer": 1,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.73569198751301,
+      "loss": 5.670436858619165,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3355042670672295,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.82615629984051,
+      "loss": 18.033541176994284,
+      "finite": true
+    }
+  },
+  "L1_key_r128-48": {
+    "layer": 1,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.85431841831425,
+      "loss": 5.4552896324851385,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3088941824176543,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.793195108984584,
+      "loss": 18.277516114137157,
+      "finite": true
+    }
+  },
+  "L1_key_r256-48": {
+    "layer": 1,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.27055150884496,
+      "loss": 5.193191806573526,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.268878280068792,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.41839447102605,
+      "loss": 18.07887590481799,
+      "finite": true
+    }
+  },
+  "L1_value_r64-32": {
+    "layer": 1,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.71279916753382,
+      "loss": 4.977231570642585,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3468059037175397,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 31.10047846889952,
+      "loss": 16.012574316201302,
+      "finite": true
+    }
+  },
+  "L1_value_r128-32": {
+    "layer": 1,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.01352757544225,
+      "loss": 4.977062092324512,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4699181972408186,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 30.14354066985646,
+      "loss": 16.834846728916567,
+      "finite": true
+    }
+  },
+  "L1_value_r256-32": {
+    "layer": 1,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.49323621227887,
+      "loss": 5.008516539640252,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4921504165272608,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.372674109516215,
+      "loss": 17.304221610333848,
+      "finite": true
+    }
+  },
+  "L1_value_r64-48": {
+    "layer": 1,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.42976066597295,
+      "loss": 4.93509409617745,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.410204368303603,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.372674109516215,
+      "loss": 15.031448095276405,
+      "finite": true
+    }
+  },
+  "L1_value_r128-48": {
+    "layer": 1,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.8720083246618,
+      "loss": 5.05223991838938,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.330743626027696,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.11323763955343,
+      "loss": 16.69200370528481,
+      "finite": true
+    }
+  },
+  "L1_value_r256-48": {
+    "layer": 1,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.15504682622269,
+      "loss": 5.021027725798531,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.413556060583299,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.904306220095695,
+      "loss": 17.708020648507595,
+      "finite": true
+    }
+  },
+  "L1_output_r64-32": {
+    "layer": 1,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.174817898022894,
+      "loss": 4.923423334837937,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7644111432325853,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.718234981392875,
+      "loss": 16.868912532252246,
+      "finite": true
+    }
+  },
+  "L1_output_r128-32": {
+    "layer": 1,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.87721123829344,
+      "loss": 4.846910449595779,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6244485865215057,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.282828282828284,
+      "loss": 17.12307500469015,
+      "finite": true
+    }
+  },
+  "L1_output_r256-32": {
+    "layer": 1,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.903225806451616,
+      "loss": 4.708649114342203,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4596261415355842,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.182881446039342,
+      "loss": 17.539370590102983,
+      "finite": true
+    }
+  },
+  "L1_output_r64-48": {
+    "layer": 1,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.9063475546306,
+      "loss": 4.830288221786316,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7624612544892075,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.78787878787879,
+      "loss": 17.924950524274706,
+      "finite": true
+    }
+  },
+  "L1_output_r128-48": {
+    "layer": 1,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.397502601456814,
+      "loss": 4.853461240268042,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5378326181241198,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.751196172248804,
+      "loss": 17.304267429643208,
+      "finite": true
+    }
+  },
+  "L1_output_r256-48": {
+    "layer": 1,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.93236212278876,
+      "loss": 4.727051626321057,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.342267455538129,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.741095162147793,
+      "loss": 17.715199644380107,
+      "finite": true
+    }
+  },
+  "L2_query_r64-32": {
+    "layer": 2,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.68678459937566,
+      "loss": 5.394341339615952,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5029478622248122,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.681552365762894,
+      "loss": 15.342892071424643,
+      "finite": true
+    }
+  },
+  "L2_query_r128-32": {
+    "layer": 2,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.43808532778355,
+      "loss": 5.132124728745123,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.623597230945874,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.452418926103135,
+      "loss": 15.815336727555206,
+      "finite": true
+    }
+  },
+  "L2_query_r256-32": {
+    "layer": 2,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.44953173777315,
+      "loss": 5.0413837010015685,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.554939589133279,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 30.48910154173312,
+      "loss": 16.462624186924874,
+      "finite": true
+    }
+  },
+  "L2_query_r64-48": {
+    "layer": 2,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.67221644120707,
+      "loss": 5.7085654831856765,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.226407888352894,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.99043062200957,
+      "loss": 15.085032629307635,
+      "finite": true
+    }
+  },
+  "L2_query_r128-48": {
+    "layer": 2,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.18106139438085,
+      "loss": 5.242114804878939,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4972360981389863,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.282828282828284,
+      "loss": 15.496391762386665,
+      "finite": true
+    }
+  },
+  "L2_query_r256-48": {
+    "layer": 2,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.81685744016649,
+      "loss": 4.853935426455786,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.467699825125976,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 30.170122275385435,
+      "loss": 16.97874715198086,
+      "finite": true
+    }
+  },
+  "L2_key_r64-32": {
+    "layer": 2,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.61186264308013,
+      "loss": 5.2965359704939186,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6505529017770932,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.771398192450825,
+      "loss": 14.98591911643823,
+      "finite": true
+    }
+  },
+  "L2_key_r128-32": {
+    "layer": 2,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.01352757544225,
+      "loss": 5.5617109700866845,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6039878006741253,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.927166400850613,
+      "loss": 16.304315720644063,
+      "finite": true
+    }
+  },
+  "L2_key_r256-32": {
+    "layer": 2,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.70447450572321,
+      "loss": 5.49616581700843,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5734931918606305,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.57150451887294,
+      "loss": 16.103743807931078,
+      "finite": true
+    }
+  },
+  "L2_key_r64-48": {
+    "layer": 2,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.894901144641,
+      "loss": 5.12345562226737,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7103317312306925,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 31.632110579479,
+      "loss": 16.102384019289882,
+      "finite": true
+    }
+  },
+  "L2_key_r128-48": {
+    "layer": 2,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.88033298647242,
+      "loss": 5.472079174940036,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.905306754947665,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 30.48910154173312,
+      "loss": 17.328006039395856,
+      "finite": true
+    }
+  },
+  "L2_key_r256-48": {
+    "layer": 2,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.8054110301769,
+      "loss": 5.651635675459449,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.555259920710774,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.495481127060074,
+      "loss": 17.317144101733504,
+      "finite": true
+    }
+  },
+  "L2_value_r64-32": {
+    "layer": 2,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.215400624349634,
+      "loss": 5.315713751076505,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6110695206258057,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.060074428495483,
+      "loss": 17.221276074948932,
+      "finite": true
+    }
+  },
+  "L2_value_r128-32": {
+    "layer": 2,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.657648283038505,
+      "loss": 5.099049967456838,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5792267691510573,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.624667729930888,
+      "loss": 17.137037793858646,
+      "finite": true
+    }
+  },
+  "L2_value_r256-32": {
+    "layer": 2,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.70967741935484,
+      "loss": 4.88234262586485,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.458723427300058,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.943646996278574,
+      "loss": 16.990033911883398,
+      "finite": true
+    }
+  },
+  "L2_value_r64-48": {
+    "layer": 2,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.81373569198751,
+      "loss": 5.3241026294781095,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4894705682161615,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.2461456671983,
+      "loss": 17.03069762744824,
+      "finite": true
+    }
+  },
+  "L2_value_r128-48": {
+    "layer": 2,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.4120707596254,
+      "loss": 4.926892144745071,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.633119376665953,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.4688995215311,
+      "loss": 17.116463123003943,
+      "finite": true
+    }
+  },
+  "L2_value_r256-48": {
+    "layer": 2,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.839750260145685,
+      "loss": 4.910842947667692,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.594399860149401,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.767676767676768,
+      "loss": 17.377776302784103,
+      "finite": true
+    }
+  },
+  "L2_output_r64-32": {
+    "layer": 2,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.22684703433923,
+      "loss": 4.9847765416003815,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.507718450498344,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.923444976076556,
+      "loss": 17.482487273452843,
+      "finite": true
+    }
+  },
+  "L2_output_r128-32": {
+    "layer": 2,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.0156087408949,
+      "loss": 4.854646087541758,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3162766649926216,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.495481127060074,
+      "loss": 17.396180931714415,
+      "finite": true
+    }
+  },
+  "L2_output_r256-32": {
+    "layer": 2,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 59.85952133194589,
+      "loss": 4.7741165509085,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.303508408660874,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 21.21212121212121,
+      "loss": 17.372726395718278,
+      "finite": true
+    }
+  },
+  "L2_output_r64-48": {
+    "layer": 2,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.00416233090531,
+      "loss": 4.887971792614299,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5647490920572276,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.518341307814993,
+      "loss": 17.140364422646904,
+      "finite": true
+    }
+  },
+  "L2_output_r128-48": {
+    "layer": 2,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.97814776274714,
+      "loss": 5.050604396994912,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.383116448203434,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.20308346624136,
+      "loss": 17.293728607186356,
+      "finite": true
+    }
+  },
+  "L2_output_r256-48": {
+    "layer": 2,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.888657648283036,
+      "loss": 5.156442305381321,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.23185065840782,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.86762360446571,
+      "loss": 17.360204855405584,
+      "finite": true
+    }
+  },
+  "L3_query_r64-32": {
+    "layer": 3,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.67533818938605,
+      "loss": 6.55420675448895,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4580044223463258,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.634768740031898,
+      "loss": 15.654477289946984,
+      "finite": true
+    }
+  },
+  "L3_query_r128-32": {
+    "layer": 3,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.53069719042664,
+      "loss": 6.035607126761426,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5090779758246744,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.794258373205743,
+      "loss": 15.196007366259007,
+      "finite": true
+    }
+  },
+  "L3_query_r256-32": {
+    "layer": 3,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.19562955254943,
+      "loss": 5.360325207896957,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.473318837210109,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.730994152046783,
+      "loss": 16.641624892083296,
+      "finite": true
+    }
+  },
+  "L3_query_r64-48": {
+    "layer": 3,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.48699271592091,
+      "loss": 7.034650752094112,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4200895315688853,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.7538543328017,
+      "loss": 15.284956706398331,
+      "finite": true
+    }
+  },
+  "L3_query_r128-48": {
+    "layer": 3,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.643080124869925,
+      "loss": 6.669431091052685,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5088739980483354,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.953748006379584,
+      "loss": 15.906683144365752,
+      "finite": true
+    }
+  },
+  "L3_query_r256-48": {
+    "layer": 3,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.6347554630593,
+      "loss": 5.489443364627776,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8330689659772776,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.455077086656033,
+      "loss": 16.825079776590947,
+      "finite": true
+    }
+  },
+  "L3_key_r64-32": {
+    "layer": 3,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.95837669094693,
+      "loss": 5.543265037052527,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.808406288244818,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.136097820308347,
+      "loss": 11.581958074437564,
+      "finite": true
+    }
+  },
+  "L3_key_r128-32": {
+    "layer": 3,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.81685744016649,
+      "loss": 5.557515467126524,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7205072024600123,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.31578947368421,
+      "loss": 11.208192598382311,
+      "finite": true
+    }
+  },
+  "L3_key_r256-32": {
+    "layer": 3,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.44120707596254,
+      "loss": 5.015491993921449,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.635224303923174,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.31578947368421,
+      "loss": 10.979056542200249,
+      "finite": true
+    }
+  },
+  "L3_key_r64-48": {
+    "layer": 3,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.03642039542143,
+      "loss": 5.484375050029757,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.083673786720703,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.11323763955343,
+      "loss": 12.687069699145761,
+      "finite": true
+    }
+  },
+  "L3_key_r128-48": {
+    "layer": 3,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.48178980228928,
+      "loss": 4.893443522271269,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.362380732276488,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.12333864965444,
+      "loss": 13.781804538113251,
+      "finite": true
+    }
+  },
+  "L3_key_r256-48": {
+    "layer": 3,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.07700312174818,
+      "loss": 4.945778331522608,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.371901117416115,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.33599149388623,
+      "loss": 14.53785991036795,
+      "finite": true
+    }
+  },
+  "L3_value_r64-32": {
+    "layer": 3,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.29656607700312,
+      "loss": 5.001543040351475,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7483008830293154,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.319510898458265,
+      "loss": 17.51553295583098,
+      "finite": true
+    }
+  },
+  "L3_value_r128-32": {
+    "layer": 3,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.55359001040583,
+      "loss": 5.3540404350782715,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7380440775155566,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.58160552897395,
+      "loss": 17.656907686269516,
+      "finite": true
+    }
+  },
+  "L3_value_r256-32": {
+    "layer": 3,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.22996878251821,
+      "loss": 5.0428270155042565,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5240707053999705,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.505582137161085,
+      "loss": 17.379187250145783,
+      "finite": true
+    }
+  },
+  "L3_value_r64-48": {
+    "layer": 3,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.42663891779397,
+      "loss": 4.977451565494213,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7959415119114293,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.718234981392875,
+      "loss": 17.408057242964638,
+      "finite": true
+    }
+  },
+  "L3_value_r128-48": {
+    "layer": 3,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.12591050988554,
+      "loss": 4.789323877438546,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.60663855144164,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.4688995215311,
+      "loss": 17.81100024564161,
+      "finite": true
+    }
+  },
+  "L3_value_r256-48": {
+    "layer": 3,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.02185223725286,
+      "loss": 4.922386602063457,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.39782214759186,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.452418926103135,
+      "loss": 17.530229148882913,
+      "finite": true
+    }
+  },
+  "L3_output_r64-32": {
+    "layer": 3,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.49011446409989,
+      "loss": 4.848458623689959,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6384682374734845,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.30940988835726,
+      "loss": 17.3052322054805,
+      "finite": true
+    }
+  },
+  "L3_output_r128-32": {
+    "layer": 3,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.68366285119667,
+      "loss": 5.078817576146709,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.740058660142787,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.585326953748005,
+      "loss": 17.635360826325087,
+      "finite": true
+    }
+  },
+  "L3_output_r256-32": {
+    "layer": 3,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.761706555671175,
+      "loss": 5.249648411001362,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.622311144964723,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.0802764486975,
+      "loss": 17.424227066819977,
+      "finite": true
+    }
+  },
+  "L3_output_r64-48": {
+    "layer": 3,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.64620187304891,
+      "loss": 4.919231575311905,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4756952979020777,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.166400850611378,
+      "loss": 17.64651882029501,
+      "finite": true
+    }
+  },
+  "L3_output_r128-48": {
+    "layer": 3,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.96982310093652,
+      "loss": 4.810903640148016,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.337302359338475,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.761297182349814,
+      "loss": 17.68856753590849,
+      "finite": true
+    }
+  },
+  "L3_output_r256-48": {
+    "layer": 3,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.55671175858481,
+      "loss": 4.900454422714853,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.505201314964229,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.555023923444978,
+      "loss": 17.799515957277166,
+      "finite": true
+    }
+  },
+  "L4_query_r64-32": {
+    "layer": 4,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 69.4588969823101,
+      "loss": 6.303094177027151,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.314448452264606,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.917065390749602,
+      "loss": 17.149886893735967,
+      "finite": true
+    }
+  },
+  "L4_query_r128-32": {
+    "layer": 4,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.210197710718,
+      "loss": 6.200369586045858,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.2282054864317122,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.943646996278574,
+      "loss": 16.69790703927543,
+      "finite": true
+    }
+  },
+  "L4_query_r256-32": {
+    "layer": 4,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.5598335067638,
+      "loss": 6.135268296988276,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3917222989621307,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.41839447102605,
+      "loss": 17.242123261994553,
+      "finite": true
+    }
+  },
+  "L4_query_r64-48": {
+    "layer": 4,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.83454734651404,
+      "loss": 6.638553568230831,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.94268246083301,
+      "loss": 2.763837548513015,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.687931951089844,
+      "loss": 16.638190773590523,
+      "finite": true
+    }
+  },
+  "L4_query_r128-48": {
+    "layer": 4,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 69.06867845993756,
+      "loss": 6.315217170891479,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.530449426420144,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.78787878787879,
+      "loss": 17.013445593365198,
+      "finite": true
+    }
+  },
+  "L4_query_r256-48": {
+    "layer": 4,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.8720083246618,
+      "loss": 6.167171497142154,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5190654954110387,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.12333864965444,
+      "loss": 15.49088283037645,
+      "finite": true
+    }
+  },
+  "L4_key_r64-32": {
+    "layer": 4,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.06555671175859,
+      "loss": 6.121744514612576,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.646966315677797,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.36895268474216,
+      "loss": 15.073242856296224,
+      "finite": true
+    }
+  },
+  "L4_key_r128-32": {
+    "layer": 4,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 69.25078043704474,
+      "loss": 6.064172478142687,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.390389568873111,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.322169059011163,
+      "loss": 14.94477459120239,
+      "finite": true
+    }
+  },
+  "L4_key_r256-32": {
+    "layer": 4,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 69.74505723204994,
+      "loss": 6.113918565050868,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.501724604800497,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.179160021265286,
+      "loss": 13.764634668415114,
+      "finite": true
+    }
+  },
+  "L4_key_r64-48": {
+    "layer": 4,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.81997918834547,
+      "loss": 5.743153531007414,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.6102015001654486,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.166400850611378,
+      "loss": 13.8605493100668,
+      "finite": true
+    }
+  },
+  "L4_key_r128-48": {
+    "layer": 4,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.52237252861603,
+      "loss": 5.946629850498161,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.463861986772678,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.292929292929294,
+      "loss": 13.782440207749422,
+      "finite": true
+    }
+  },
+  "L4_key_r256-48": {
+    "layer": 4,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.85744016649323,
+      "loss": 5.9155314125423,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.529763383586579,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.6916533758639,
+      "loss": 12.869888588086352,
+      "finite": true
+    }
+  },
+  "L4_value_r64-32": {
+    "layer": 4,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.74401664932362,
+      "loss": 5.38832349090427,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.194853657386118,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 31.84476342371079,
+      "loss": 16.322465849724427,
+      "finite": true
+    }
+  },
+  "L4_value_r128-32": {
+    "layer": 4,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.86264308012487,
+      "loss": 4.948967277961051,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.1841331634259107,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 31.871345029239766,
+      "loss": 16.62190587729105,
+      "finite": true
+    }
+  },
+  "L4_value_r256-32": {
+    "layer": 4,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.11446409989594,
+      "loss": 5.083915523227215,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.212088924352568,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.771398192450825,
+      "loss": 16.87621380475086,
+      "finite": true
+    }
+  },
+  "L4_value_r64-48": {
+    "layer": 4,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.12278876170656,
+      "loss": 5.028741796592078,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.559811525459639,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 32.82828282828283,
+      "loss": 16.76906472447703,
+      "finite": true
+    }
+  },
+  "L4_value_r128-48": {
+    "layer": 4,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.54214360041624,
+      "loss": 4.920575584470063,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.7907251476284927,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 32.004253056884636,
+      "loss": 16.39141369054509,
+      "finite": true
+    }
+  },
+  "L4_value_r256-48": {
+    "layer": 4,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.85119667013527,
+      "loss": 4.38824447315539,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0286168063648065,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.53216374269006,
+      "loss": 16.26560208490295,
+      "finite": true
+    }
+  },
+  "L4_output_r64-32": {
+    "layer": 4,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.056191467221645,
+      "loss": 5.182912288937217,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4251879645888024,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.94630515683147,
+      "loss": 17.19566156590912,
+      "finite": true
+    }
+  },
+  "L4_output_r128-32": {
+    "layer": 4,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.18626430801249,
+      "loss": 5.153882665015005,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3061663775804804,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.049973418394472,
+      "loss": 17.251976981032897,
+      "finite": true
+    }
+  },
+  "L4_output_r256-32": {
+    "layer": 4,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.00416233090531,
+      "loss": 5.197013717512992,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.071413087876735,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.248803827751196,
+      "loss": 16.57259333418887,
+      "finite": true
+    }
+  },
+  "L4_output_r64-48": {
+    "layer": 4,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.52757544224766,
+      "loss": 5.218811452039881,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.1713079134608027,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.30940988835726,
+      "loss": 17.34413852080922,
+      "finite": true
+    }
+  },
+  "L4_output_r128-48": {
+    "layer": 4,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.38605619146722,
+      "loss": 4.861338739487866,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.1398430823778716,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.33492822966507,
+      "loss": 17.360230932110234,
+      "finite": true
+    }
+  },
+  "L4_output_r256-48": {
+    "layer": 4,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.657648283038505,
+      "loss": 4.452529322253259,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.2502333892863082,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.774056353003722,
+      "loss": 16.86535232969786,
+      "finite": true
+    }
+  },
+  "L5_query_r64-32": {
+    "layer": 5,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.54838709677419,
+      "loss": 6.889975662130968,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6457374794454944,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.547581073896865,
+      "loss": 16.405015192301416,
+      "finite": true
+    }
+  },
+  "L5_query_r128-32": {
+    "layer": 5,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.97606659729449,
+      "loss": 6.374825021261727,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.587630505934443,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.55396065922382,
+      "loss": 17.6205514091117,
+      "finite": true
+    }
+  },
+  "L5_query_r256-32": {
+    "layer": 5,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.10301768990635,
+      "loss": 6.088835941734224,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.9278173665532092,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 17.783094098883574,
+      "loss": 18.535150587590433,
+      "finite": true
+    }
+  },
+  "L5_query_r64-48": {
+    "layer": 5,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.99895941727367,
+      "loss": 7.052354244176108,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3279154204347456,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.666666666666668,
+      "loss": 16.529063600524612,
+      "finite": true
+    }
+  },
+  "L5_query_r128-48": {
+    "layer": 5,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.3225806451613,
+      "loss": 6.579438726298519,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3770890126804107,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.391812865497077,
+      "loss": 17.23227259357749,
+      "finite": true
+    }
+  },
+  "L5_query_r256-48": {
+    "layer": 5,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.67533818938605,
+      "loss": 5.739913676938083,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.2266695662951443,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 21.79691653375864,
+      "loss": 17.527359776033823,
+      "finite": true
+    }
+  },
+  "L5_key_r64-32": {
+    "layer": 5,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.97606659729449,
+      "loss": 5.351939824222743,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.828047382499044,
+      "loss": 2.991547280201531,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.195640616693247,
+      "loss": 16.92652367927621,
+      "finite": true
+    }
+  },
+  "L5_key_r128-32": {
+    "layer": 5,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.58584807492196,
+      "loss": 4.937344669981721,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8539689985631664,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.218500797448165,
+      "loss": 17.584886180558104,
+      "finite": true
+    }
+  },
+  "L5_key_r256-32": {
+    "layer": 5,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.63787721123829,
+      "loss": 4.963676548792625,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.883267569459938,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.55396065922382,
+      "loss": 17.628299534394767,
+      "finite": true
+    }
+  },
+  "L5_key_r64-48": {
+    "layer": 5,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.77939646201872,
+      "loss": 5.461846393722029,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.886122159389398,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.852737905369484,
+      "loss": 17.830509900571435,
+      "finite": true
+    }
+  },
+  "L5_key_r128-48": {
+    "layer": 5,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.58584807492196,
+      "loss": 4.734644403535791,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.736590533161783,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.494417862838915,
+      "loss": 17.8597541587817,
+      "finite": true
+    }
+  },
+  "L5_key_r256-48": {
+    "layer": 5,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.31425598335068,
+      "loss": 4.694037929555241,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.3773828384117355,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.22222222222222,
+      "loss": 18.087165856010714,
+      "finite": true
+    }
+  },
+  "L5_value_r64-32": {
+    "layer": 5,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.46722164412071,
+      "loss": 5.99499115913052,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7999843483350184,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.252525252525253,
+      "loss": 16.05401418499758,
+      "finite": true
+    }
+  },
+  "L5_value_r128-32": {
+    "layer": 5,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.29656607700312,
+      "loss": 6.0410605405033815,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3172004994974365,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.44869750132908,
+      "loss": 16.205676182700497,
+      "finite": true
+    }
+  },
+  "L5_value_r256-32": {
+    "layer": 5,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.943808532778355,
+      "loss": 6.263468388975845,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3041719673105354,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.072833599149387,
+      "loss": 16.59054239927909,
+      "finite": true
+    }
+  },
+  "L5_value_r64-48": {
+    "layer": 5,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.57127991675338,
+      "loss": 5.400176721618246,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0116151580384183,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.219564061669324,
+      "loss": 15.882362054591264,
+      "finite": true
+    }
+  },
+  "L5_value_r128-48": {
+    "layer": 5,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.05411030176899,
+      "loss": 5.401046836994875,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.741614080905732,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.25624667729931,
+      "loss": 15.94580890820547,
+      "finite": true
+    }
+  },
+  "L5_value_r256-48": {
+    "layer": 5,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.78772112382934,
+      "loss": 5.783330725046586,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.2199087300326106,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.491759702286018,
+      "loss": 16.03097533818447,
+      "finite": true
+    }
+  },
+  "L5_output_r64-32": {
+    "layer": 5,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.174817898022894,
+      "loss": 6.33538850182115,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7360719205953257,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.272727272727273,
+      "loss": 16.591168098176773,
+      "finite": true
+    }
+  },
+  "L5_output_r128-32": {
+    "layer": 5,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.27055150884496,
+      "loss": 6.339253330422986,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.2858487039200894,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.880382775119617,
+      "loss": 16.90386837320549,
+      "finite": true
+    }
+  },
+  "L5_output_r256-32": {
+    "layer": 5,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.55671175858481,
+      "loss": 6.0383927382908675,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.241040598016046,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.27538543328017,
+      "loss": 16.59043126617069,
+      "finite": true
+    }
+  },
+  "L5_output_r64-48": {
+    "layer": 5,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.2528616024974,
+      "loss": 6.267745002065316,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8612603050267644,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.289207868155238,
+      "loss": 16.868698454560192,
+      "finite": true
+    }
+  },
+  "L5_output_r128-48": {
+    "layer": 5,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.73881373569199,
+      "loss": 6.0013446548912945,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.09110847456017,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.1424774056353,
+      "loss": 17.343814564051197,
+      "finite": true
+    }
+  },
+  "L5_output_r256-48": {
+    "layer": 5,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.74193548387096,
+      "loss": 5.6917624449305055,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.194944964869131,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.89686337054758,
+      "loss": 17.22944542739739,
+      "finite": true
+    }
+  },
+  "L6_query_r64-32": {
+    "layer": 6,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 45.34339229968783,
+      "loss": 8.421024639636247,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 3.6745669355727717,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 8.532695374800637,
+      "loss": 18.92933797369438,
+      "finite": true
+    }
+  },
+  "L6_query_r128-32": {
+    "layer": 6,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 49.14151925078044,
+      "loss": 6.928971387128056,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.979453442841028,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 13.769271664008507,
+      "loss": 18.526915390092636,
+      "finite": true
+    }
+  },
+  "L6_query_r256-32": {
+    "layer": 6,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 54.60457856399584,
+      "loss": 6.437305190033521,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 4.2026839960063285,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 21.21212121212121,
+      "loss": 18.27698685998045,
+      "finite": true
+    }
+  },
+  "L6_query_r64-48": {
+    "layer": 6,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 47.7627471383975,
+      "loss": 8.285782213358676,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.2053403320501994,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 6.034024455077087,
+      "loss": 18.925691813531543,
+      "finite": true
+    }
+  },
+  "L6_query_r128-48": {
+    "layer": 6,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 45.655567117585846,
+      "loss": 7.792326393952975,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.140236912495226,
+      "loss": 5.253371021881511,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 7.46943115364168,
+      "loss": 18.92957200598214,
+      "finite": true
+    }
+  },
+  "L6_query_r256-48": {
+    "layer": 6,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 52.78355879292404,
+      "loss": 6.311493638596661,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.63698891860909,
+      "loss": 4.3743139657985175,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 15.311004784688995,
+      "loss": 18.018861112517705,
+      "finite": true
+    }
+  },
+  "L6_key_r64-32": {
+    "layer": 6,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.55046826222685,
+      "loss": 6.286586500650018,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5595352165927676,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.966507177033492,
+      "loss": 17.140316728917753,
+      "finite": true
+    }
+  },
+  "L6_key_r128-32": {
+    "layer": 6,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.784599375650366,
+      "loss": 5.84228103979259,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.828047382499044,
+      "loss": 2.2748364555639853,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.694311536416798,
+      "loss": 17.4700249436475,
+      "finite": true
+    }
+  },
+  "L6_key_r256-32": {
+    "layer": 6,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.52757544224766,
+      "loss": 5.8723705830081565,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.7638133130867972,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.455077086656033,
+      "loss": 17.87356818865192,
+      "finite": true
+    }
+  },
+  "L6_key_r64-48": {
+    "layer": 6,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 59.079084287200835,
+      "loss": 5.648724694467856,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.828047382499044,
+      "loss": 2.633930047117757,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.248803827751196,
+      "loss": 16.705301587957237,
+      "finite": true
+    }
+  },
+  "L6_key_r128-48": {
+    "layer": 6,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.63163371488033,
+      "loss": 5.860292126559318,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.248686395189805,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.89686337054758,
+      "loss": 16.77269573137098,
+      "finite": true
+    }
+  },
+  "L6_key_r256-48": {
+    "layer": 6,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.37981269510926,
+      "loss": 5.886197680861347,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.463664408057165,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.923444976076556,
+      "loss": 17.614762246909763,
+      "finite": true
+    }
+  },
+  "L6_value_r64-32": {
+    "layer": 6,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.888657648283036,
+      "loss": 6.580634005639109,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 1.802030921346776,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.587985114300903,
+      "loss": 16.554317192027444,
+      "finite": true
+    }
+  },
+  "L6_value_r128-32": {
+    "layer": 6,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.86264308012487,
+      "loss": 6.4125050773822805,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.423890319930081,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.810738968633707,
+      "loss": 16.405357246626654,
+      "finite": true
+    }
+  },
+  "L6_value_r256-32": {
+    "layer": 6,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.73881373569199,
+      "loss": 5.619964182485403,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7390238800529856,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.013290802764487,
+      "loss": 17.01820963035972,
+      "finite": true
+    }
+  },
+  "L6_value_r64-48": {
+    "layer": 6,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.38605619146722,
+      "loss": 5.828769879770329,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.971419989903282,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.986709197235513,
+      "loss": 16.266237949165237,
+      "finite": true
+    }
+  },
+  "L6_value_r128-48": {
+    "layer": 6,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.52757544224766,
+      "loss": 5.548098637064402,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.3930841216523544,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.800637958532697,
+      "loss": 16.618513154778604,
+      "finite": true
+    }
+  },
+  "L6_value_r256-48": {
+    "layer": 6,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 59.23517169614984,
+      "loss": 5.880762527344999,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.515303504047933,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.830940988835724,
+      "loss": 16.56874874487173,
+      "finite": true
+    }
+  },
+  "L6_output_r64-32": {
+    "layer": 6,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.2330905306972,
+      "loss": 6.148400033642921,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 50.171952617500956,
+      "loss": 4.804413292213939,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 17.251461988304094,
+      "loss": 17.312408161442185,
+      "finite": true
+    }
+  },
+  "L6_output_r128-32": {
+    "layer": 6,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.69823100936524,
+      "loss": 5.954371635332068,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.828047382499044,
+      "loss": 2.714054247555862,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.248803827751196,
+      "loss": 17.393972332281525,
+      "finite": true
+    }
+  },
+  "L6_output_r256-32": {
+    "layer": 6,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.78251821019771,
+      "loss": 5.856768137660037,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.0973045302339304,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.279106858054227,
+      "loss": 17.298047825839326,
+      "finite": true
+    }
+  },
+  "L6_output_r64-48": {
+    "layer": 6,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.50468262226848,
+      "loss": 5.226880924185035,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.67520061138708,
+      "loss": 3.7028303846950332,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 16.640085061137693,
+      "loss": 17.198623611247648,
+      "finite": true
+    }
+  },
+  "L6_output_r128-48": {
+    "layer": 6,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.4786680541103,
+      "loss": 4.771551575666753,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 50.019105846388996,
+      "loss": 3.512800892755919,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.9792663476874,
+      "loss": 17.590077417097085,
+      "finite": true
+    }
+  },
+  "L6_output_r256-48": {
+    "layer": 6,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 69.4588969823101,
+      "loss": 4.673610931675218,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.6320135399818785,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.149920255183414,
+      "loss": 17.228808310729864,
+      "finite": true
+    }
+  },
+  "L7_query_r64-32": {
+    "layer": 7,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.73881373569199,
+      "loss": 4.8615498460410596,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.975074113986854,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.757575757575758,
+      "loss": 17.51829299197095,
+      "finite": true
+    }
+  },
+  "L7_query_r128-32": {
+    "layer": 7,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.54214360041624,
+      "loss": 4.941774167225121,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.2511854167197742,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.12333864965444,
+      "loss": 17.585591967247822,
+      "finite": true
+    }
+  },
+  "L7_query_r256-32": {
+    "layer": 7,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.49011446409989,
+      "loss": 5.095124030410158,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.749840449776684,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.884104199893674,
+      "loss": 17.758425049561673,
+      "finite": true
+    }
+  },
+  "L7_query_r64-48": {
+    "layer": 7,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.21852237252861,
+      "loss": 5.023780319967639,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 4.1736768093735925,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.066454013822433,
+      "loss": 17.5788856887942,
+      "finite": true
+    }
+  },
+  "L7_query_r128-48": {
+    "layer": 7,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.25598335067637,
+      "loss": 5.115633370721098,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.3379286707108102,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.757575757575758,
+      "loss": 17.52372324487831,
+      "finite": true
+    }
+  },
+  "L7_query_r256-48": {
+    "layer": 7,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.28199791883455,
+      "loss": 5.19348783002203,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0294688909983973,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.017012227538544,
+      "loss": 17.6837392462371,
+      "finite": true
+    }
+  },
+  "L7_key_r64-32": {
+    "layer": 7,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.79916753381894,
+      "loss": 4.802045358653092,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.2977960503279,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.670388091440724,
+      "loss": 17.594885816773516,
+      "finite": true
+    }
+  },
+  "L7_key_r128-32": {
+    "layer": 7,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.43808532778355,
+      "loss": 4.883504189004294,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.610443416878974,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.527379053694844,
+      "loss": 17.446202757076318,
+      "finite": true
+    }
+  },
+  "L7_key_r256-32": {
+    "layer": 7,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.27367325702393,
+      "loss": 4.888183796326712,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3312338417752536,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.72355130249867,
+      "loss": 17.510791198562572,
+      "finite": true
+    }
+  },
+  "L7_key_r64-48": {
+    "layer": 7,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.25910509885536,
+      "loss": 5.034412391778396,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.4370209390897535,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.780435938330676,
+      "loss": 17.567947365524457,
+      "finite": true
+    }
+  },
+  "L7_key_r128-48": {
+    "layer": 7,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.67221644120707,
+      "loss": 4.71406878780624,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.9270928596147474,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.189261031366293,
+      "loss": 17.390745399491745,
+      "finite": true
+    }
+  },
+  "L7_key_r256-48": {
+    "layer": 7,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.80228928199791,
+      "loss": 4.6547226407037,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.3408211455073666,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.41839447102605,
+      "loss": 17.543079167208354,
+      "finite": true
+    }
+  },
+  "L7_value_r64-32": {
+    "layer": 7,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.51612903225806,
+      "loss": 5.1149159840479665,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 4.44292708111939,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.160021265284424,
+      "loss": 17.241630438132294,
+      "finite": true
+    }
+  },
+  "L7_value_r128-32": {
+    "layer": 7,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.8054110301769,
+      "loss": 4.645961370974252,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.835672416302554,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.0802764486975,
+      "loss": 17.441428497557776,
+      "finite": true
+    }
+  },
+  "L7_value_r256-32": {
+    "layer": 7,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.2996878251821,
+      "loss": 4.626492636039869,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0666999470472427,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.820839978734714,
+      "loss": 17.601771416529775,
+      "finite": true
+    }
+  },
+  "L7_value_r64-48": {
+    "layer": 7,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.943808532778355,
+      "loss": 4.747498266957119,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.634323940461129,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.7979797979798,
+      "loss": 17.351195538797093,
+      "finite": true
+    }
+  },
+  "L7_value_r128-48": {
+    "layer": 7,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.3225806451613,
+      "loss": 4.781934656559429,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 4.204565407986581,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.904306220095695,
+      "loss": 17.700912790382542,
+      "finite": true
+    }
+  },
+  "L7_value_r256-48": {
+    "layer": 7,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.16961498439126,
+      "loss": 4.778053062309925,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.911807344940996,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.93088782562467,
+      "loss": 17.818020754538175,
+      "finite": true
+    }
+  },
+  "L7_output_r64-32": {
+    "layer": 7,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.37148803329865,
+      "loss": 5.222771344750996,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.713412304165075,
+      "loss": 4.5197903963277755,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.667729930887827,
+      "loss": 17.698478619695955,
+      "finite": true
+    }
+  },
+  "L7_output_r128-32": {
+    "layer": 7,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.31945889698231,
+      "loss": 5.054958523765718,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.713412304165075,
+      "loss": 3.418377383592523,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.73471557682084,
+      "loss": 17.62319167611364,
+      "finite": true
+    }
+  },
+  "L7_output_r256-32": {
+    "layer": 7,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.09157127991675,
+      "loss": 4.945197855809492,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.713412304165075,
+      "loss": 2.9906574569679556,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.432216905901118,
+      "loss": 17.768888223663453,
+      "finite": true
+    }
+  },
+  "L7_output_r64-48": {
+    "layer": 7,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.64620187304891,
+      "loss": 4.942380977622025,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.793790258566842,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.432216905901118,
+      "loss": 17.43590381449469,
+      "finite": true
+    }
+  },
+  "L7_output_r128-48": {
+    "layer": 7,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.72424557752342,
+      "loss": 4.878807919923678,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.449651696365846,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.830940988835724,
+      "loss": 17.454606126274978,
+      "finite": true
+    }
+  },
+  "L7_output_r256-48": {
+    "layer": 7,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.03642039542143,
+      "loss": 4.877885809344599,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5287624640368214,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.348750664540137,
+      "loss": 17.66434579871657,
+      "finite": true
+    }
+  },
+  "L8_query_r64-32": {
+    "layer": 8,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.04786680541103,
+      "loss": 5.964820978529247,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.479035334683667,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 13.05156831472621,
+      "loss": 17.118234537931365,
+      "finite": true
+    }
+  },
+  "L8_query_r128-32": {
+    "layer": 8,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.62018730489073,
+      "loss": 5.7889599719246645,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.427536393241387,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 14.354066985645932,
+      "loss": 17.37449659747518,
+      "finite": true
+    }
+  },
+  "L8_query_r256-32": {
+    "layer": 8,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.19250780437045,
+      "loss": 5.975068572036434,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.4748354666461734,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 15.098351940457203,
+      "loss": 17.589939907079636,
+      "finite": true
+    }
+  },
+  "L8_query_r64-48": {
+    "layer": 8,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.49011446409989,
+      "loss": 5.773126520658383,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.1760707585284123,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 14.699627857522595,
+      "loss": 17.20512065005687,
+      "finite": true
+    }
+  },
+  "L8_query_r128-48": {
+    "layer": 8,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.41519250780438,
+      "loss": 5.017906381656551,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8222465973388706,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.474215842636895,
+      "loss": 17.40452050997943,
+      "finite": true
+    }
+  },
+  "L8_query_r256-48": {
+    "layer": 8,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.41831425598335,
+      "loss": 4.8891335368528575,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.2835853762147442,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.248803827751196,
+      "loss": 17.213995237353,
+      "finite": true
+    }
+  },
+  "L8_key_r64-32": {
+    "layer": 8,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.62018730489073,
+      "loss": 5.156923507009783,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8539526756364606,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 17.942583732057415,
+      "loss": 17.767327580905306,
+      "finite": true
+    }
+  },
+  "L8_key_r128-32": {
+    "layer": 8,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.9063475546306,
+      "loss": 5.230712500783643,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.713412304165075,
+      "loss": 2.9541171334561476,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.441254651780966,
+      "loss": 17.63802617393274,
+      "finite": true
+    }
+  },
+  "L8_key_r256-32": {
+    "layer": 8,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.73881373569199,
+      "loss": 5.276916015866085,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.962278477098817,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.670388091440724,
+      "loss": 17.780382538853694,
+      "finite": true
+    }
+  },
+  "L8_key_r64-48": {
+    "layer": 8,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.9063475546306,
+      "loss": 4.972172810801699,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7912305045501395,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.647527910685806,
+      "loss": 17.831720081348276,
+      "finite": true
+    }
+  },
+  "L8_key_r128-48": {
+    "layer": 8,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.22996878251821,
+      "loss": 5.216870379923968,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7208670222399385,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.013290802764487,
+      "loss": 17.101139204638997,
+      "finite": true
+    }
+  },
+  "L8_key_r256-48": {
+    "layer": 8,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.0624349635796,
+      "loss": 5.187106947442682,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4376915433865083,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.986709197235513,
+      "loss": 16.73677493306776,
+      "finite": true
+    }
+  },
+  "L8_value_r64-32": {
+    "layer": 8,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.460978147762745,
+      "loss": 6.00772272503928,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8861560736806693,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 14.008506113769272,
+      "loss": 17.177903979441048,
+      "finite": true
+    }
+  },
+  "L8_value_r128-32": {
+    "layer": 8,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.14880332986473,
+      "loss": 5.833205550195771,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0886355950989977,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.9792663476874,
+      "loss": 17.338761283545217,
+      "finite": true
+    }
+  },
+  "L8_value_r256-32": {
+    "layer": 8,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.839750260145685,
+      "loss": 5.279847403412586,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0275686808018727,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.537480063795854,
+      "loss": 17.147012554181714,
+      "finite": true
+    }
+  },
+  "L8_value_r64-48": {
+    "layer": 8,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.92924037460978,
+      "loss": 6.109484519534255,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.872522263204409,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 15.603402445507708,
+      "loss": 17.28566625021925,
+      "finite": true
+    }
+  },
+  "L8_value_r128-48": {
+    "layer": 8,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.160249739854315,
+      "loss": 5.57408276404197,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0474585348474736,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.33492822966507,
+      "loss": 17.568161825571373,
+      "finite": true
+    }
+  },
+  "L8_value_r256-48": {
+    "layer": 8,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.657648283038505,
+      "loss": 4.884697098850925,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.8548949753276984,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.906964380648592,
+      "loss": 18.11411770677051,
+      "finite": true
+    }
+  },
+  "L8_output_r64-32": {
+    "layer": 8,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.50156087408949,
+      "loss": 6.277099425428616,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 4.186972484635997,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 20.60074428495481,
+      "loss": 17.536690736036654,
+      "finite": true
+    }
+  },
+  "L8_output_r128-32": {
+    "layer": 8,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.28511966701353,
+      "loss": 5.885457653005711,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.8917130683732024,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.328548644338117,
+      "loss": 17.869256877368922,
+      "finite": true
+    }
+  },
+  "L8_output_r256-32": {
+    "layer": 8,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.9063475546306,
+      "loss": 5.6768182824742786,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.7633653350308234,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.31578947368421,
+      "loss": 18.135504311309443,
+      "finite": true
+    }
+  },
+  "L8_output_r64-48": {
+    "layer": 8,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.111342351716964,
+      "loss": 5.898872006913254,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 3.9054685155079936,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 18.44763423710792,
+      "loss": 17.671989111059123,
+      "finite": true
+    }
+  },
+  "L8_output_r128-48": {
+    "layer": 8,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.42663891779397,
+      "loss": 5.624753083215792,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 4.053321599459256,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.01967038809144,
+      "loss": 18.089216007327384,
+      "finite": true
+    }
+  },
+  "L8_output_r256-48": {
+    "layer": 8,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.31113423517169,
+      "loss": 5.103993825405123,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.2178657108196833,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.328548644338117,
+      "loss": 18.380584740298623,
+      "finite": true
+    }
+  },
+  "L9_query_r64-32": {
+    "layer": 9,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.16649323621228,
+      "loss": 4.671102813849154,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.2722195167782018,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.033492822966508,
+      "loss": 16.94136742418082,
+      "finite": true
+    }
+  },
+  "L9_query_r128-32": {
+    "layer": 9,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.21852237252861,
+      "loss": 4.744705939252593,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.243317777389873,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.17650186071239,
+      "loss": 17.033184476182246,
+      "finite": true
+    }
+  },
+  "L9_query_r256-32": {
+    "layer": 9,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.64620187304891,
+      "loss": 4.673420642284555,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4247213133109358,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.229665071770334,
+      "loss": 16.966379791688308,
+      "finite": true
+    }
+  },
+  "L9_query_r64-48": {
+    "layer": 9,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.54214360041624,
+      "loss": 4.648041754224484,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.67520061138708,
+      "loss": 2.2728929934631017,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.272727272727273,
+      "loss": 17.059682002879622,
+      "finite": true
+    }
+  },
+  "L9_query_r128-48": {
+    "layer": 9,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.01040582726327,
+      "loss": 4.798482664809422,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.618969266679754,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.11323763955343,
+      "loss": 16.936142844457105,
+      "finite": true
+    }
+  },
+  "L9_query_r256-48": {
+    "layer": 9,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.67221644120707,
+      "loss": 4.814722128255093,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.378510257101806,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.50186071238703,
+      "loss": 17.041812362367548,
+      "finite": true
+    }
+  },
+  "L9_key_r64-32": {
+    "layer": 9,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.82830385015609,
+      "loss": 4.802434202093674,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.36950706916316,
+      "loss": 2.6404365723398198,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.83732057416268,
+      "loss": 16.811224744756366,
+      "finite": true
+    }
+  },
+  "L9_key_r128-32": {
+    "layer": 9,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.54214360041624,
+      "loss": 4.76257827390338,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.538681819960959,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.385433280170123,
+      "loss": 16.696846531011232,
+      "finite": true
+    }
+  },
+  "L9_key_r256-32": {
+    "layer": 9,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.59417273673257,
+      "loss": 4.718829780223931,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.586389054812955,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.68421052631579,
+      "loss": 16.62800399742291,
+      "finite": true
+    }
+  },
+  "L9_key_r64-48": {
+    "layer": 9,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.03642039542143,
+      "loss": 4.706677269744885,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.48414214749713,
+      "loss": 2.3176584725713383,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.42849548112706,
+      "loss": 17.330925336854584,
+      "finite": true
+    }
+  },
+  "L9_key_r128-48": {
+    "layer": 9,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.1519250780437,
+      "loss": 4.996650564303073,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.306828478615294,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.943646996278574,
+      "loss": 16.984479726596696,
+      "finite": true
+    }
+  },
+  "L9_key_r256-48": {
+    "layer": 9,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.72424557752342,
+      "loss": 4.89774733786854,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4958479730828738,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.385433280170123,
+      "loss": 16.965813404519185,
+      "finite": true
+    }
+  },
+  "L9_value_r64-32": {
+    "layer": 9,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.48699271592091,
+      "loss": 5.098194704273799,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.922599035271443,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.149920255183414,
+      "loss": 17.975025697541792,
+      "finite": true
+    }
+  },
+  "L9_value_r128-32": {
+    "layer": 9,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.007284079084286,
+      "loss": 5.295618886529283,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6102847730471153,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.58160552897395,
+      "loss": 18.215044168014384,
+      "finite": true
+    }
+  },
+  "L9_value_r256-32": {
+    "layer": 9,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.64620187304891,
+      "loss": 5.205896452301871,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5492322323292234,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.89686337054758,
+      "loss": 18.049805905957104,
+      "finite": true
+    }
+  },
+  "L9_value_r64-48": {
+    "layer": 9,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.69823100936524,
+      "loss": 4.93016239216902,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.160437611846647,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.58160552897395,
+      "loss": 18.15260903747733,
+      "finite": true
+    }
+  },
+  "L9_value_r128-48": {
+    "layer": 9,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.99583766909469,
+      "loss": 5.075052097718872,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.7373850949174083,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.817118553960658,
+      "loss": 18.38860133141358,
+      "finite": true
+    }
+  },
+  "L9_value_r256-48": {
+    "layer": 9,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.215400624349634,
+      "loss": 4.933740752943938,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.832438684347981,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.43859649122807,
+      "loss": 18.94476314254756,
+      "finite": true
+    }
+  },
+  "L9_output_r64-32": {
+    "layer": 9,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.70967741935484,
+      "loss": 4.481885232729111,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.672800691791924,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.634768740031898,
+      "loss": 17.72951858856567,
+      "finite": true
+    }
+  },
+  "L9_output_r128-32": {
+    "layer": 9,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.33402705515088,
+      "loss": 4.699603084044513,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6225284941104428,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.38915470494418,
+      "loss": 17.574957939690357,
+      "finite": true
+    }
+  },
+  "L9_output_r256-32": {
+    "layer": 9,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 68.60041623309053,
+      "loss": 4.5302372114979015,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.431877521166694,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.4688995215311,
+      "loss": 17.52449074307803,
+      "finite": true
+    }
+  },
+  "L9_output_r64-48": {
+    "layer": 9,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.267429760665976,
+      "loss": 4.577857485267796,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.66677936001684,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.634768740031898,
+      "loss": 17.74974258158217,
+      "finite": true
+    }
+  },
+  "L9_output_r128-48": {
+    "layer": 9,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.033298647242454,
+      "loss": 4.968759226253204,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.595339250897104,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.86762360446571,
+      "loss": 17.78739551264788,
+      "finite": true
+    }
+  },
+  "L9_output_r256-48": {
+    "layer": 9,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.43808532778355,
+      "loss": 4.6568096944913036,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.2963808870607085,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.618288144603934,
+      "loss": 17.951521950306336,
+      "finite": true
+    }
+  },
+  "L10_query_r64-32": {
+    "layer": 10,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.8054110301769,
+      "loss": 4.711580039481714,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.613008443549429,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.060074428495483,
+      "loss": 18.051021831420726,
+      "finite": true
+    }
+  },
+  "L10_query_r128-32": {
+    "layer": 10,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.9063475546306,
+      "loss": 4.838327295830111,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.658067466559463,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.608187134502923,
+      "loss": 18.06398033022606,
+      "finite": true
+    }
+  },
+  "L10_query_r256-32": {
+    "layer": 10,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.4120707596254,
+      "loss": 4.844558587241588,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.938370635366458,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.04359383306752,
+      "loss": 18.155096626991543,
+      "finite": true
+    }
+  },
+  "L10_query_r64-48": {
+    "layer": 10,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.40374609781477,
+      "loss": 4.691488760596182,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.4834292802730498,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.986709197235513,
+      "loss": 17.96340042671138,
+      "finite": true
+    }
+  },
+  "L10_query_r128-48": {
+    "layer": 10,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.9843912591051,
+      "loss": 4.79453608525663,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.286236007089691,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.730994152046783,
+      "loss": 18.032371375459576,
+      "finite": true
+    }
+  },
+  "L10_query_r256-48": {
+    "layer": 10,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.91779396462019,
+      "loss": 4.920715679737286,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.537116940940752,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.432216905901118,
+      "loss": 18.110460397581587,
+      "finite": true
+    }
+  },
+  "L10_key_r64-32": {
+    "layer": 10,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.483870967741936,
+      "loss": 4.954643618513159,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.6114299948724753,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.24508240297714,
+      "loss": 17.91273682876489,
+      "finite": true
+    }
+  },
+  "L10_key_r128-32": {
+    "layer": 10,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.09989594172737,
+      "loss": 4.674266590553643,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.713412304165075,
+      "loss": 2.946808659852713,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.138755980861244,
+      "loss": 17.68690115569353,
+      "finite": true
+    }
+  },
+  "L10_key_r256-32": {
+    "layer": 10,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.92924037460978,
+      "loss": 4.70154967235787,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.779625434045533,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.537480063795854,
+      "loss": 17.828448943163973,
+      "finite": true
+    }
+  },
+  "L10_key_r64-48": {
+    "layer": 10,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.643080124869925,
+      "loss": 4.727425555899181,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.330916310864457,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 22.62094630515683,
+      "loss": 18.27552566845409,
+      "finite": true
+    }
+  },
+  "L10_key_r128-48": {
+    "layer": 10,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.085327783558796,
+      "loss": 4.556295426343408,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.5466711247609597,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 19.670388091440724,
+      "loss": 18.096854786236573,
+      "finite": true
+    }
+  },
+  "L10_key_r256-48": {
+    "layer": 10,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.0738813735692,
+      "loss": 4.686754080460142,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.392885133948634,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.843700159489632,
+      "loss": 17.648130755015305,
+      "finite": true
+    }
+  },
+  "L10_value_r64-32": {
+    "layer": 10,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 58.58480749219563,
+      "loss": 4.785734956692536,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.67520061138708,
+      "loss": 3.2098734674446447,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.598086124401913,
+      "loss": 19.657483719430576,
+      "finite": true
+    }
+  },
+  "L10_value_r128-32": {
+    "layer": 10,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.914672216441204,
+      "loss": 4.583838296399048,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 2.975254722301132,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.730994152046783,
+      "loss": 19.60636119144449,
+      "finite": true
+    }
+  },
+  "L10_value_r256-32": {
+    "layer": 10,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.301768990634756,
+      "loss": 4.775134902704278,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0571306262437195,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.066454013822433,
+      "loss": 19.270092679579466,
+      "finite": true
+    }
+  },
+  "L10_value_r64-48": {
+    "layer": 10,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 59.15712799167534,
+      "loss": 4.786693467754719,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.33363956383817,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.189261031366293,
+      "loss": 19.9271237294043,
+      "finite": true
+    }
+  },
+  "L10_value_r128-48": {
+    "layer": 10,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.01040582726327,
+      "loss": 4.500115422006701,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.949804348302425,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.11323763955343,
+      "loss": 19.784712767508058,
+      "finite": true
+    }
+  },
+  "L10_value_r256-48": {
+    "layer": 10,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.174817898022894,
+      "loss": 4.743382952431881,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.9089485241522257,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.272727272727273,
+      "loss": 19.964415617262073,
+      "finite": true
+    }
+  },
+  "L10_output_r64-32": {
+    "layer": 10,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 58.94901144640999,
+      "loss": 4.996948261596999,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.026452914785692,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.708133971291865,
+      "loss": 18.45649208191035,
+      "finite": true
+    }
+  },
+  "L10_output_r128-32": {
+    "layer": 10,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.49011446409989,
+      "loss": 4.751890125908306,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.948152198197507,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.751196172248804,
+      "loss": 18.487542827237522,
+      "finite": true
+    }
+  },
+  "L10_output_r256-32": {
+    "layer": 10,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 62.04474505723205,
+      "loss": 4.831798153337282,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.623212560880353,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.312068048910156,
+      "loss": 17.997731144897653,
+      "finite": true
+    }
+  },
+  "L10_output_r64-48": {
+    "layer": 10,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 61.57648283038502,
+      "loss": 4.635226626538368,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.1275990557297066,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.262626262626263,
+      "loss": 18.593349332983102,
+      "finite": true
+    }
+  },
+  "L10_output_r128-48": {
+    "layer": 10,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.21852237252861,
+      "loss": 4.728974794726683,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.112363852113542,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.608187134502923,
+      "loss": 18.695728788926374,
+      "finite": true
+    }
+  },
+  "L10_output_r256-48": {
+    "layer": 10,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.20395421436004,
+      "loss": 4.882421528298357,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.701261582336309,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.322169059011163,
+      "loss": 18.15476549075213,
+      "finite": true
+    }
+  },
+  "L11_query_r64-32": {
+    "layer": 11,
+    "matrix": "query",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.02497398543184,
+      "loss": 4.582988726283335,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.620947569620076,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.106858054226475,
+      "loss": 17.003241048021007,
+      "finite": true
+    }
+  },
+  "L11_query_r128-32": {
+    "layer": 11,
+    "matrix": "query",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.27055150884496,
+      "loss": 4.611868745884805,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.3342492506164243,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.61190855927698,
+      "loss": 17.205099960020327,
+      "finite": true
+    }
+  },
+  "L11_query_r256-32": {
+    "layer": 11,
+    "matrix": "query",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.9843912591051,
+      "loss": 4.5974458510930285,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.2893070428481663,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.874003189792663,
+      "loss": 17.443859122090156,
+      "finite": true
+    }
+  },
+  "L11_query_r64-48": {
+    "layer": 11,
+    "matrix": "query",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.93548387096774,
+      "loss": 4.638382464941905,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.337610071744908,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 30.75491759702286,
+      "loss": 16.707547401665753,
+      "finite": true
+    }
+  },
+  "L11_query_r128-48": {
+    "layer": 11,
+    "matrix": "query",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.86888657648284,
+      "loss": 4.664242509605206,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.207416350166443,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.319510898458265,
+      "loss": 16.62204439589767,
+      "finite": true
+    }
+  },
+  "L11_query_r256-48": {
+    "layer": 11,
+    "matrix": "query",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.50156087408949,
+      "loss": 4.899101256711736,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.126100075805192,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.442317916002125,
+      "loss": 17.06453900673743,
+      "finite": true
+    }
+  },
+  "L11_key_r64-32": {
+    "layer": 11,
+    "matrix": "key",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.21852237252861,
+      "loss": 4.668117442989138,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.31542726231751,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.33599149388623,
+      "loss": 16.839482094286478,
+      "finite": true
+    }
+  },
+  "L11_key_r128-32": {
+    "layer": 11,
+    "matrix": "key",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.78772112382934,
+      "loss": 4.62484143746476,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 3.196177121196305,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 26.44869750132908,
+      "loss": 16.714967569106225,
+      "finite": true
+    }
+  },
+  "L11_key_r256-32": {
+    "layer": 11,
+    "matrix": "key",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 66.62330905306972,
+      "loss": 4.509553151063691,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.331848463121151,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.99043062200957,
+      "loss": 15.976709822729173,
+      "finite": true
+    }
+  },
+  "L11_key_r64-48": {
+    "layer": 11,
+    "matrix": "key",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 64.95837669094693,
+      "loss": 4.653089568104195,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 2.9955752719710427,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.495481127060074,
+      "loss": 17.765369806183198,
+      "finite": true
+    }
+  },
+  "L11_key_r128-48": {
+    "layer": 11,
+    "matrix": "key",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.55359001040583,
+      "loss": 4.83832854707798,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 3.1471182209961643,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.485380116959064,
+      "loss": 17.830072672627356,
+      "finite": true
+    }
+  },
+  "L11_key_r256-48": {
+    "layer": 11,
+    "matrix": "key",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 65.40062434963579,
+      "loss": 4.688202357782162,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0127002697752596,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.16267942583732,
+      "loss": 17.28070770908328,
+      "finite": true
+    }
+  },
+  "L11_value_r64-32": {
+    "layer": 11,
+    "matrix": "value",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 57.67429760665973,
+      "loss": 4.955109150512348,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 4.1347512494620355,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.444976076555022,
+      "loss": 22.002651825993492,
+      "finite": true
+    }
+  },
+  "L11_value_r128-32": {
+    "layer": 11,
+    "matrix": "value",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 57.960457856399586,
+      "loss": 4.985864869064025,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.8472128260623055,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.657628920786816,
+      "loss": 21.28180786857955,
+      "finite": true
+    }
+  },
+  "L11_value_r256-32": {
+    "layer": 11,
+    "matrix": "value",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 58.1945889698231,
+      "loss": 4.746644273322778,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.1328692350125196,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.060074428495483,
+      "loss": 20.9078886606223,
+      "finite": true
+    }
+  },
+  "L11_value_r64-48": {
+    "layer": 11,
+    "matrix": "value",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 57.44016649323621,
+      "loss": 4.9457743194082155,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 4.104408876650836,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 23.870281765018607,
+      "loss": 21.985146553005578,
+      "finite": true
+    }
+  },
+  "L11_value_r128-48": {
+    "layer": 11,
+    "matrix": "value",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 58.272632674297604,
+      "loss": 5.116976766956585,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.72683913510949,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 24.880382775119617,
+      "loss": 21.687472184129415,
+      "finite": true
+    }
+  },
+  "L11_value_r256-48": {
+    "layer": 11,
+    "matrix": "value",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 57.36212278876171,
+      "loss": 4.961082043163052,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.036256195025723,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.006911217437533,
+      "loss": 20.741460437166676,
+      "finite": true
+    }
+  },
+  "L11_output_r64-32": {
+    "layer": 11,
+    "matrix": "output",
+    "ranks": [
+      64,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 60.301768990634756,
+      "loss": 4.644473271946443,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.273137231432485,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.305688463583202,
+      "loss": 21.254580345302536,
+      "finite": true
+    }
+  },
+  "L11_output_r128-32": {
+    "layer": 11,
+    "matrix": "output",
+    "ranks": [
+      128,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.007284079084286,
+      "loss": 4.752998839501722,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.75162399694307,
+      "loss": 3.3113686829338467,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 29.00053163211058,
+      "loss": 20.395151849410297,
+      "finite": true
+    }
+  },
+  "L11_output_r256-32": {
+    "layer": 11,
+    "matrix": "output",
+    "ranks": [
+      256,
+      32
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 67.32570239334026,
+      "loss": 4.616333835741794,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.0212863721964145,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.20308346624136,
+      "loss": 19.79433853847431,
+      "finite": true
+    }
+  },
+  "L11_output_r64-48": {
+    "layer": 11,
+    "matrix": "output",
+    "ranks": [
+      64,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 58.50676378772113,
+      "loss": 4.768997963537287,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.407718761941155,
+      "loss": 3.5985310644332715,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 25.917065390749602,
+      "loss": 21.44613219566555,
+      "finite": true
+    }
+  },
+  "L11_output_r128-48": {
+    "layer": 11,
+    "matrix": "output",
+    "ranks": [
+      128,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 59.67741935483871,
+      "loss": 4.907457508499522,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.63698891860909,
+      "loss": 3.4358406609417513,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 28.04359383306752,
+      "loss": 20.506303033211033,
+      "finite": true
+    }
+  },
+  "L11_output_r256-48": {
+    "layer": 11,
+    "matrix": "output",
+    "ranks": [
+      256,
+      48
+    ],
+    "bios_profession_roberta": {
+      "accuracy": 63.68366285119667,
+      "loss": 4.809742093039725,
+      "finite": true
+    },
+    "fever_roberta_binary": {
+      "accuracy": 49.78983568972105,
+      "loss": 3.1751706555092842,
+      "finite": true
+    },
+    "wikidata_qa_roberta": {
+      "accuracy": 27.405635300372143,
+      "loss": 19.479457988365947,
+      "finite": true
+    }
+  }
+}

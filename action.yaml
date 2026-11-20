@@ -1,6 +1,8 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: done
+action: submit
+gpus: 1
+test: false
 milestone: core_claim
-notes: "Hardening round 2: significance-based reasoning gate with worst loss on gate failure (chance-level 64x compressors lose credit), wider evaluator-run structure language (head subsets, axis-group layouts); reference reproduced exactly (FEVER 53.59, Bios 73.64); greedy multi-layer variant still +2.55 +- 0.54 on Bios; see HARDENING.md."
+notes: "Hardening round 3: build BIG-bench WikidataQA splits (LASER protocol), self-test, reproduce reference end to end (WikidataQA search), extend variants/baselines/shortcuts, score all with both scorers, tamper check, analysis (redteam/hardening/run_round3.sh)"
